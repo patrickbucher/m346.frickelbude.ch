@@ -1,7 +1,27 @@
 baseURL = 'https://m346.frickelbude.ch'
 languageCode = 'de-ch'
 title = 'Modul 346'
+enableEmoji = true
+
+[minify]
+  minifyOutput = true
 
 [module]
   [[module.imports]]
     path = 'github.com/McShelby/hugo-theme-relearn'
+
+[params]
+  disableMathJax = true
+  disableOpenapi = true
+  showVisitedLinks = true
+  collapsibleMenu = true
+
+  [params.author]
+    name = 'Patrick Bucher'
+
+  [[params.themeVariant]]
+    identifier = 'relearn-dark'
+
+  [[params.themeVariant]]
+    identifier = 'relearn-light'
+    
