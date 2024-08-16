@@ -14,7 +14,7 @@ Add the following to `hugo.tmol`:
 
 Run:
 
-    $ hugo server --disableFastRender --ignoreCache
+    $ hugo server --disableFastRender --ignoreCache --noHTTPCache
 
 ## Adding Content
 
