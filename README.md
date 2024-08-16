@@ -29,3 +29,8 @@ Add a chapter:
 Add a page:
 
     $ hugo new admin/hanok.md
+
+# TODO
+
+- [ ] for rsync script, exclude `js/mathjax` and `swagger-ui`
+    - `rsync --exclude 'js/mathjax' --exclude 'js/swagger-ui' […]`
