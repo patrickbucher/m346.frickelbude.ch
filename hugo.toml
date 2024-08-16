@@ -1,0 +1,7 @@
+baseURL = 'https://m346.frickelbude.ch'
+languageCode = 'de-ch'
+title = 'Modul 346'
+
+[module]
+  [[module.imports]]
+    path = 'github.com/McShelby/hugo-theme-relearn'
