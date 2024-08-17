@@ -1,6 +1,7 @@
 +++
 title = 'Vorteile & Risiken'
 date = 2024-08-16T14:05:37+02:00
+draft = true
 +++
 
 - In der frühen Phasen eines Unternehmens ist der Aufbau eigener

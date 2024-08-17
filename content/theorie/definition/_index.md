@@ -12,7 +12,7 @@ und Dienste), welche schnell und mit minimalem Verwaltungsaufwand oder
 Interaktion mit dem Dienstanbieter bereitgestellt und freigegeben werden
 können.[^1]
 
-# Grundlegende Charakteristiken
+## Grundlegende Charakteristiken
 
 - **On-demand self-service**: *Selbstbedienung nach Bedarf*: Ein Abnehmer kann von
   sich aus (*unilaterally*), nach Bedarf und automatisch Rechenkapazitäten
@@ -49,7 +49,7 @@ können.[^1]
   rapportiert werden, was sowohl für Anbieter als auch für Abnehmer Transparenz
   im Hinblick auf die genutzten Dienste schafft.
 
-# Service-Modelle
+## Service-Modelle
 
 - **Software as a Service (SaaS)**: Die dem Abnehmer zur Verfügung gestellte
   Ressource ist die Nutzung von Anwendungen des Anbieters, welche auf einer
@@ -80,7 +80,7 @@ können.[^1]
   eingeschränkte Kontrolle auf vorgegebene Netzwerkkomponenten (z.B. auf die
   Firewalls der einzelnen Hosts).
 
-# Deployment-Modelle
+## Deployment-Modelle
 
 - **Private cloud**: Die Cloud-Infrastruktur wird für den Exklusivgebrauch einer
   einzigen Organisation bestehend aus mehreren Abnehmern (z.B.

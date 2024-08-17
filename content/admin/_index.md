@@ -4,4 +4,4 @@ title = "Admin"
 weight = 1
 +++
 
-This is a new chapter.
+Dieser Teil enthält administrative Informationen zum Modul.

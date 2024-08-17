@@ -12,7 +12,6 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
        Delivery, On-Demand Pricing, Dynamische Skalierung und die Globale
        Infrastruktur der Hyperscaler).
         - [/theorie/definition/](/theorie/definition/)
-        - [/theorie/vorteile-risiken/](/theorie/vorteile-risiken/)
     2. Kennt die Cloud Service- (IaaS, PaaS, SaaS) und Betriebsmodelle
        (On-Premise, hybrid Cloud und Cloud-Native) und deren Unterschiede. 
         - [/theorie/definition/](/theorie/definition/)

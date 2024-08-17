@@ -1,7 +1,7 @@
 +++
 archetype = "chapter"
 title = "Theorie"
-weight = 2
+weight = 3
 +++
 
-This is a new chapter.
+Hier geht es um die Theorie rund um das _Cloud Computing_.
