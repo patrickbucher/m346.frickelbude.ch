@@ -19,7 +19,7 @@ title = "Prüfung 1: Lernziele"
 
 - [Definition](/theorie/definition)
 
-## Datenschutz & -sicherheit
+## DSGVO & Cloud Computing
 
 1. Sie können die Begriffe _Verbot mit Erlaubnisvorbehalt_,
    _Erlaubnistatbestand_, _betroffene Person_, _Verantwortlicher_,
