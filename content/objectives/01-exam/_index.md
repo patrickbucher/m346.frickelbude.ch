@@ -2,7 +2,7 @@
 title = "Prüfung 1: Lernziele"
 +++
 
-## Definition
+## Definition von «Cloud Computing»
 
 1. Sie können die fünf grundlegenden Charakteristiken von Cloud Computing _On
    Demand Self-Service_, _Broad Network Access_, _Resource Pooling_, _Rapid
@@ -19,7 +19,20 @@ title = "Prüfung 1: Lernziele"
 
 - [Definition](/theorie/definition)
 
-## Datenschutz & Sicherheit
+## Datenschutz & -sicherheit
+
+1. Sie können die Begriffe _Verbot mit Erlaubnisvorbehalt_,
+   _Erlaubnistatbestand_, _betroffene Person_, _Verantwortlicher_,
+   _Auftragsverarbeiter_ und _Empfänger_ definieren und können sie auf konkrete
+   Beispiele anwenden.
+2. Sie verstehen das _Marktortprinzip_ und können erklären, was bei der
+   Übertragung von Daten über Landesgrenzen hinweg zu beachten ist.
+3. Sie können wiedergeben, was bei einer _Auftragsverarbeitung_ zu beachten ist.
+4. Sie können erklären, was eine _Datenschutzverletzung_ ("Datenpanne") ist, wie
+   man sich bei einer solchen zu verhalten hat und wie dieses Verhalten sich auf
+   eine mögliche Busse auswirkt.
+
+### Unterlagen
 
 TODO
 

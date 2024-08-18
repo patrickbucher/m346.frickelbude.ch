@@ -1,7 +1,7 @@
 +++
 archetype = "chapter"
-title = "Admin"
+title = "Administratives"
 weight = 1
 +++
 
-Dieser Teil enthält administrative Informationen zum Modul.
+Dieser Teil enthält administrative Informationen zum Modul 346.
