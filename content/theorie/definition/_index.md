@@ -3,6 +3,48 @@ title = 'Definition'
 date = 2024-08-16T14:04:59+02:00
 +++
 
+## Überblick
+
+```mermaid
+---
+title: Die definierten Cloud-Begriffe im Überblick
+---
+mindmap
+    root)Cloud-Begriffe(
+        ::icon(fa fa-cloud)
+        [Grundlegende Charakteristiken]
+        ::icon(fa fa-square-check)
+            On-demand Self Service
+            ::icon(fa fa-cart-shopping)
+            Broad Network Access
+            ::icon(fa fa-network-wired)
+            Resource pooling
+            ::icon(fa fa-warehouse)
+            Rapid Elasticity
+            ::icon(fa fa-chart-line)
+            Measured service
+            ::icon(fa fa-clock)
+        [Service-Modelle]
+        ::icon(fa fa-bell-concierge)
+            IaaS: Infrastructure as a Service
+            ::icon(fa fa-gear)
+            PaaS: Platform as a Service
+            ::icon(fa fa-layer-group)
+            SaaS: Software as a Service
+            ::icon(fa fa-mobile)
+        [Deployment-Modelle]
+        ::icon(fa fa-truck)
+            Public Cloud
+            ::icon(fa fa-earth-americas)
+            Private Cloud
+            ::icon(fa fa-building)
+            Community Cloud
+            ::icon(fa fa-users)
+            Hybrid Cloud
+            ::icon(fa fa-blender)
+
+```
+
 Cloud Computing ist ein Modell zur Ermöglichung eines allgegenwärtigen
 (*ubiquitous*), bequemen (*convenient*) und bedarfsorientierten
 (*on-demand*) Netwerkzugriffs zu einer geteilten Ansammlung von
@@ -14,17 +56,17 @@ können.[^1]
 
 ## Grundlegende Charakteristiken
 
-- **On-demand self-service**: *Selbstbedienung nach Bedarf*: Ein Abnehmer kann von
+- **On-Demand Self-Service**: *Selbstbedienung nach Bedarf*: Ein Abnehmer kann von
   sich aus (*unilaterally*), nach Bedarf und automatisch Rechenkapazitäten
   bereitstellen, wie etwa Rechenzeit eines Servers (*server time*) oder
   Netzwerkspeicher, ohne dass dies persönliche Interaktion mit einem der
   jeweiligen Dienstanbieter erforderte.
-- **Broad network access**: *Umfassender Netzwerkzugriff*: Ressourcen
+- **Broad Network Access**: *Umfassender Netzwerkzugriff*: Ressourcen
   (*capabilities*) stehen über das Netzwerk zur Verfügung, worauf über
   Standardmechanismen, welche die Verwendung heterogener Thin- oder
   Thick-Client-Plattformen (Smartphones, Tablets, Laptops, Arbeitstationen)
   fördern, zugegriffen werden kann.
-- **Resource pooling**: *Ressourcenzusammenschluss*: Die Rechenkapazitäten eines
+- **Resource Pooling**: *Ressourcenzusammenschluss*: Die Rechenkapazitäten eines
   Anbieters werden zusammengeschlossen, um mehreren Abnehmern in einem
   mandantenfähigen Modell (*multi-tenant model*) angeboten werden zu können,
   wobei verschiedene physische und virtuelle Ressourcen entsprechend dem
@@ -35,13 +77,13 @@ können.[^1]
   den Ort auf einer höheren Abstraktionsebene (z.B. Land, Region, Rechenzentrum)
   vorzugeben. Beispiele für Ressourcen sind Speicherplatz, Prozessorleistung,
   Arbeitsspeicher und Netzwerkbandbreite.
-- **Rapid elasticity**: *Schnelle Anpassungsfähigkeit*: Ressourcen können
+- **Rapid Elasticity**: *Schnelle Anpassungsfähigkeit*: Ressourcen können
   elastisch bereitgestellt und freigegeben werden, in manchen Fällen
   automatisch, um schnell innerlich und äusserlich dem Bedarf entsprechend zu
   skalieren. Für den Verbraucher erscheinen die Resourcen, die bereitgestellt
   werden können, oftmals als unerschöpflich und können in beliebiger Menge zu
   beliebiger Zeit in Anspruch genommen werden.
-- **Measured service**: *Gemessener Dienst*: Cloud-Systeme kontrollieren und
+- **Measured Service**: *Gemessener Dienst*: Cloud-Systeme kontrollieren und
   optimieren die Verwendung von Ressourcen mithilfe einer Messeinrichtung
   (*metering capability*[^2]) auf einer der Art von Dienst entsprechenden
   Abstraktionsstufe (z.B. Speicherplatz, Prozessorleistung, Bandbreite, Anzahl
@@ -82,25 +124,25 @@ können.[^1]
 
 ## Deployment-Modelle
 
-- **Private cloud**: Die Cloud-Infrastruktur wird für den Exklusivgebrauch einer
+- **Private Cloud**: Die Cloud-Infrastruktur wird für den Exklusivgebrauch einer
   einzigen Organisation bestehend aus mehreren Abnehmern (z.B.
   Unternehmensbereichen) bereitgestellt. Sie kann von der Organisation selber,
   einer Drittpartei oder einer Kombination daraus besessen, verwaltet und
   betrieben werden, und sie kann sich innerhalb oder ausserhalb des Geländes der
   Organisation (*on-premise*/*off-premise*) befinden.
-- **Community cloud**: Die Cloud-Infrastruktur wird für den Exklusivgebrauch
+- **Community Cloud**: Die Cloud-Infrastruktur wird für den Exklusivgebrauch
   einer Gesellschaft von Abnehmern verschiedener Organisationen mit gemeinsamen
   Anliegen (z.B. Auftrag, Sicherheitsanforderungen, Richtlinien und
   Compliance-Bedürfnissen) bereitgestellt. Sie kann von einer oder mehreren
   Organisationen dieser Gesellschaft, einer Drittpartei oder einer Kombination
   daraus besessen, verwaltet und betrieben werden, und sie kann sich in- oder
   ausserhalb des Geländes der Gesellschaft befinden.
-- **Public cloud**: Die Cloud-Infrastruktur wird für die offene Verwendung der
+- **Public Cloud**: Die Cloud-Infrastruktur wird für die offene Verwendung der
   breiten Öffentlichkeit bereitgestellt. Sie kann von einer Firma, einer
   akademischen bzw.  Regierungsorganisation oder einer Kombination daraus
   besessen, verwaltet und betrieben werden. Sie befindet sich auf dem Gelände
   des Cloud-Anbieters.
-- **Hybrid cloud**: Die Cloud-Infrastruktur setzt sich aus zwei oder mehreren
+- **Hybrid Cloud**: Die Cloud-Infrastruktur setzt sich aus zwei oder mehreren
   verschiedenen Cloud-Infrastrukturen (*private*, *community* oder *public*)
   zusammen, die einzigartige Einheiten bleiben, jedoch von einer
   standardisierten oder proprietären Technologie miteinander verbunden werden,
