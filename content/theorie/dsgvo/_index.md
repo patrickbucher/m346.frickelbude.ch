@@ -1,5 +1,6 @@
 +++
 title = "DSGVO & Cloud Computing"
+draft = true
 +++
 
 Datenschutz war bereits das Thema im [Modul
