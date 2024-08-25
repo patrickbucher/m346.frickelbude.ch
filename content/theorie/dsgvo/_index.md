@@ -59,7 +59,7 @@ und Grundsatz der DSGVO hier aufgeführt:
 
 ### Grundsätze der Datenverarbeitung
 
-Bei der Verarberbeitung personenbezogener Daten müssen die folgenden Grundsätze
+Bei der Verarbeitung personenbezogener Daten müssen die folgenden Grundsätze
 eingehalten werden:
 
 1. **Rechtmässigkeit**: Eine Datenverarbeitung darf nur erfolgen, wenn die
@@ -68,7 +68,7 @@ eingehalten werden:
    informiert werden.
 3. **Transparenz**: Der Zweck der Datenverarbeitung muss für die betroffene
    Person nachvollziehbar sein.
-4. **Zweckbindung**: Die Daten dürfen nur für einen festgelegten Zweck
+4. **Zweckbindung**: Die Daten dürfen nur zu einem festgelegten Zweck
    verarbeitet werden.
 5. **Datenminimierung**: Es dürfen nur die zum jeweiligen Zweck nötigen Daten
    verarbeitet werden (Prinzip der Verhältnismässigkeit).
@@ -93,19 +93,20 @@ Für die DSGVO sind u.a. die folgenden Akteure relevant:
       Kontaktinformationen, Absenzen, Noten).
 - Ein **Verantwortlicher** (_Controller_) ist eine natürliche oder juristische
   Person, die über Zweck und Mittel einer Datenverarbeitung entscheidet.
-    - Der Betreiber einer Schulverwaltungssoftware ist ein Verantwortlicher und
-      entscheidet über Zweck und Mittel dieser Datenverarbeitung (z.B.
-      warum und wie die Daten von Lernenden abgelegt werden sollen).
-- Ein **Auftragsverarbeiter** (_Processor_) ist Dienstleister, der
+    - Der Betreiber einer Schulverwaltungssoftware (in diesem Fall die
+      Berufsschule) ist ein Verantwortlicher und entscheidet über Zweck und
+      Mittel dieser Datenverarbeitung (z.B. warum und wie die Daten von
+      Lernenden abgelegt werden sollen).
+- Ein **Auftragsverarbeiter** (_Processor_) ist ein Dienstleister, der
   personenbezogene Daten im Auftrag eines Verantwortlichen übernimmt.
     - Microsoft ist ein Dienstleister im Auftrag der Berufsschule und
       verarbeitet z.B. mit _Teams_ die personenbezogenen Daten der Lehrpersonen
       und Lernenden als Auftragsverarbeiter.
 - **Dritte** (_Third Party_) sind Aussenstehende, die nicht in die Verarbeitung
   eingebunden sind.
-    - Die Reinigungskräfte an der Berufsschule sind Dritte und sollten somit
-      keinen Zugriff auf die persönlichen Daten der Lernenden und Lehrpersonen
-      haben.
+    - Die externen Reinigungskräfte an der Berufsschule sind Dritte und sollten
+      somit keinen Zugriff auf die persönlichen Daten der Lernenden und
+      Lehrpersonen haben.
 - Ein **Empfänger** (_Recipient_) ist jeder, dem personenbezogene Daten
   offengelegt werden.
     - Ein Webseitenbesucher ist ein Empfänger der dort abrufbaren
@@ -133,7 +134,7 @@ sein:
    manuell oder (teilweise) automatisch.
 3. Es gilt das _Marktortprinzip_: Die Verarbeitung…
     - erfolgt durch eine Niederlassung im EU-Raum.
-    - …betrifft Personen, die sich gerade im EU-Raum aufhalten.
+    - betrifft Personen, die sich gerade im EU-Raum aufhalten.
 
 Mehr Details sind im Artikel [Anwendbarkeit auf Schweizer
 Unternehmen](https://www.infosec.ch/blog/anwendbarkeit-auf-schweizer-unternehmen-art-3-und-27-dsgvo/)
@@ -149,16 +150,20 @@ oben aufgelisteten Bedingungen _nicht_ greift:
     - Bei anonymisierten Daten kann man _nicht_ mehr auf die betroffene Person
       schliessen.
     - Bei pseudonymisierten Daten ist es weiterhin möglich, auf die betroffene
-      Person zu schliessen.
+      Person zu schliessen. (Z.B. wenn Daten von einer Person von den
+      eindeutig identifizierenden Merkmalen getrennt worden sind, eine
+      entsprechende Zuordnungstabelle aber noch aufbewahrt wird.)
 2. Betreffen die Daten ausschliesslich _verstorbene_ Personen, gelten diese
    nicht mehr als schützenswert.
+    - Andere Gesetze wie z.B. das Urheberrecht (Copyright) können aber weiterhin
+      gelten und das Interesse der Angehörigen schützen.
 3. _Haushaltsausnahme_: Erfolgt die Verarbeitung zu rein privaten Zwecken ohne
    Gewinnabsicht, ist diese erlaubt.
     - Das Versenden von Partyfotos in einem Gruppenchat ist erlaubt, sofern sich
       nur Teilnehmer dieser Party im Gruppenchat befinden.
     - Bewirbt der Fotograf aber beispielsweise hochauflösende Versionen dieser
-      Fotos zum Verkauf, greift die Haushaltsausnahme nicht mehr, da er eine
-      kommerzielle Absicht verfolgt.
+      Fotos im selben Gruppenchat zum Verkauf, greift die Haushaltsausnahme
+      nicht mehr, da er eine kommerzielle Absicht verfolgt.
 4. _Colocation_: Mietet sich jemand in ein Rechenzentrum an einem EU-Standort
    ein, ohne dass lokales Personal Zugriff auf die Daten erhält, greift die
    DSGVO nicht.
@@ -168,8 +173,9 @@ oben aufgelisteten Bedingungen _nicht_ greift:
 Es gibt verschiedene Möglichkeiten, wie eine Datenverarbeitung erlaubt werden
 kann:
 
-1. **Einwilligung**: Die betroffene Person stimmt der (widerrufbaren)
-   Datenverarbeitung zu. Hierzu müssen folgende Bedingungen gelten:
+1. **Einwilligung**: Die betroffene Person stimmt der Datenverarbeitung (später
+   widerrufbar) zu.
+   Hierzu müssen folgende Bedingungen erfüllt sein:
     1. _Freiwilligkeit_: Es darf keine Zwangssituation vorliegen; der
        betroffenen Person dürfen durch die Verweigerung keine Schäden entstehen.
     2. _Bestimmtheit_: Der Zweck der Verarbeitung muss genau bestimmt sein.
@@ -186,10 +192,10 @@ kann:
 4. **Wahrung berechtigter Interessen**: Ist die Datenweitergabe in einer
    bestimmten Situation für eine betroffene Person wichtiger als der Schutz
    dieser Daten, dürfen diese weitergegeben werden.
-    - Z.B. darf ein Konzern die Bankverbindungen eines angestellten an eine
+    - Z.B. darf ein Konzern die Bankverbindungen eines Angestellten an eine
       Tochterfirma, welche die Löhne ausbezahlt, weiterleiten, da ein
       Angestellter gegenüber dem Arbeitgeber ein höheres Interesse an einem
-      Monatslohn hat als am Schutz seiner Bankverbindungen.
+      Monatslohn hat als am Schutz seiner Bankverbindung.
 5. **Auftragsverarbeitung**: Die Verarbeitung von Daten darf vom
    Verantwortlichen an einen _Auftragsverarbeiter_ weiterdelegiert werden,
    sofern sich dieser an die gleichen Regeln hält.
@@ -210,6 +216,10 @@ Cloud-Provider) ist unter den folgenden Bedingungen möglich:
 5. Verantwortlicher und AV schliessen einen _Auftragsverarbeitungsvertrag_
    (AV-Vertrag) ab.
 
+Betroffene Personen werden über die Datenverarbeitung informiert: mit dem
+Verzeichnis der Auftragsverarbeiter auf der Webseite als Teil der
+Datenschutzerklärung.
+
 ## Grenzübergreifende Datenübermittlung
 
 Bei der länderübergreifenden Datenübertragung unterscheidet man zwischen:
@@ -219,8 +229,8 @@ Bei der länderübergreifenden Datenübertragung unterscheidet man zwischen:
     - Eine Datenübertragung ist _grundsätzlich erlaubt_.
 2. Datenübertragung in ein Drittland, wobei man zwischen zwei Kategorien
    unterscheidet:
-    1. _sichere Drittländer_ mit angemessenem Datenschutzniveau: z.B. Schweiz,
-       Japan, und (noch?) das Vereinigte Königreich
+    1. _sichere Drittländer_ mit angemessenem Datenschutzniveau: z.B. die
+       Schweiz, Japan, und (noch) das Vereinigte Königreich
     2. _unsichere Drittländer_ mit unzureichendem Datenschutzniveau: z.B. USA
 
 **Vorsicht**: Der Datenzugriff aus einem Drittland (z.B. durch Supportpersonal)
@@ -228,8 +238,8 @@ kommt einer Datenübertragung gleich!
 
 Da viele Cloud-Provider (Microsoft Azure, Amazon Web Services, Google Cloud) und
 andere grosse IT-Firmen (Apple, Oracle, IBM) in den USA beheimatet sind, ergeben
-sich hierduch einige datenschutztechnischen Herausforderungen. Um die
-Zusammenarbeit mit US-Firmen zu erleichtern, wurden zwischen den EU und den USA
+sich hierdurch einige datenschutztechnische Herausforderungen. Um die
+Zusammenarbeit mit US-Firmen zu erleichtern, wurden zwischen der EU und den USA
 folgende Vereinbarungen abgeschlossen:
 
 1. Die **Safe-Harbor-Vereinbarung** galt 2000-2015 zwischen der EU und den USA.
@@ -240,7 +250,7 @@ folgende Vereinbarungen abgeschlossen:
       diese Vereinbarung.
     - Mit dem Schrems-I-Urteil wurde das Abkommen für **ungültig** erklärt.
 - Der **EU-U.S. Privacy Shield** galt 2016-2020 zwischen EU und USA als
-  Folgeabkommen zu gekippten Safe-Harbor-Vereinbarung.
+  Folgeabkommen zur gekippten Safe-Harbor-Vereinbarung.
     - Es basierte wieder auf der Selbstzertifizierung der US-Vertragspartner.
     - Max Schrems klagte auch gegen dieses Abkommen.
     - Mit dem Schrems-II-Urteil (EuGH) wurde auch dieses Abkommen für
@@ -249,11 +259,14 @@ folgende Vereinbarungen abgeschlossen:
   beiden vorherigen Regelungen eingeführt.
     - Ob das Abkommen Bestand hat, wird sich noch zeigen.
     - Max Schrems hat sich bereits [damit
-      beschäftigt](https://www.youtube.com/watch?v=nTeFSHO-880).
+      beschäftigt](https://www.youtube.com/watch?v=nTeFSHO-880) und dürfte wohl
+      eine Klage dagegen anstrengen.
 
 Als Alternativen zu diesen Abkommen bieten die Cloud-Anbieter _besondere
 Vereinbarungen_ (BCR) und _Standardvertragklauseln_ (SCC) an, welche dem Kunden
-im DSGVO-Raum ein entsprechendes Datenschutzniveau garantieren sollen.
+im DSGVO-Raum ein entsprechendes Datenschutzniveau garantieren sollen. Solchen
+Vertragszusätzen stimmt man i.d.R. bei der Annahme der AGB eines entsprechenden
+Anbieters zu.
 
 ### Der CLOUD-Act
 
@@ -263,10 +276,10 @@ extraterritorialen Zugriff auf Tochtergesellschaften von US-Unternehmen (z.B. im
 EU-Raum) im Rahmen von Strafverfahren.
 
 Beispiel: Betreibt man als Verantwortlicher eine Datenbank auf Microsoft Azure
-mit dem Standort Irland, greift zwar die DSGVO, da Irland im EU-Raum liegt.
-Haben US-Ermittlungsbehöden jedoch einen begründeten Verdacht, dass diese
-Datenbank zu kriminellen Zwecken verwendet werden könnte, dürfen sie Microsoft
-gemäss US-Recht zur Herausgabe dieser Daten zwingen.
+mit dem Standort Irland, schützt zwar die DSGVO diese Daten, da Irland im
+EU-Raum liegt. Haben US-Ermittlungsbehöden jedoch einen begründeten Verdacht,
+dass diese Datenbank zu kriminellen Zwecken verwendet werden könnte, dürfen sie
+Microsoft gemäss US-Recht zur Herausgabe dieser Daten zwingen.
 
 Der Anbieter ist nun in einem Dilemma:
 
@@ -285,18 +298,18 @@ verschiedene Rechte. Im Cloud Computing besonders relevant sind diese:
 
 1. **Recht auf Information**: Der Verantwortliche informiert die betroffene
    Person über die Datenverarbeitung.
-    - _Direkterhebung_: Die Daten werden zu eigenen Zwecken ehoben.
+    - _Direkterhebung_: Die Daten werden zu eigenen Zwecken erhoben.
     - _Dritterhebung_: Die Daten werden zu Zwecken eines Dienstleisters (z.B.
       durch Google Analytics) erhoben.
     - _Datenschutzerklärung_: Die betroffene Person wird bei Vertragsabschluss
       (Bestätigung z.B. mit Checkbox) über die Datenverarbeitung informiet.
 2. **Recht auf Auskunft**: Die betroffene Person erhält die erhobenen Daten auf
    Anfrage. Hierbei unterscheidet man zwischen:
-    - erster Stufe: eine Auskunft, _ob_ überhaupt Daten zur jeweiligen Person vorliegen
+    - erster Stufe: eine Auskunft, _ob_ überhaupt Daten zur jeweiligen Person vorliegen.
     - zweite Stufe: die vorliegenden Daten werden vollständig an die jeweilige
-      Person herausgegeben
+      Person herausgegeben.
     - Hierzu muss eine _Identitätsprüfung_ der jeweiligen Person erfolgen, damit
-      die Daten nicht in Falsche Hände geraten!
+      die Daten nicht in falsche Hände geraten!
 
 ## Datenschutzbeauftragter
 
@@ -332,7 +345,7 @@ unternehmen:
 5. bei abgeschlossener Cybercrime-Versicherung: die Versicherung informieren
 6. bei besonders schweren Fällen: weiterer Behörden (wie z.B. Polizei) informieren
 
-Es lohnt sich, für solche Fälle einen **Notfallplan** auszuarbeiten und das
+Es lohnt sich, für solche Fälle einen _Notfallplan_ auszuarbeiten und das
 Vorgehen im Ernstfall auch (durch simulierte Datenpannen) einzuüben.
 
 ### Haftung & Strafen
@@ -344,7 +357,7 @@ drohen hohe Bussen!
 Im [GDPR Enforcement Tracker](https://www.enforcementtracker.com/) sind die
 bisher ausgesprochenen Bussen gesammelt und können nach verschiedenen Kriterien
 gefiltert, sortiert und durchsucht werden (Land, Höhe des Bussgeldes, Details
-zur Datenschutzverletzung).
+zur Datenschutzverletzung usw.).
 
 Für die Höhe der Bussen werden verschiedenste Faktoren berücksichtigt:
 
