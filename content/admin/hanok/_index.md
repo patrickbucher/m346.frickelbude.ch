@@ -24,7 +24,7 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
     5. Kennt die Verteilung der Verantwortlichkeiten für den sicheren Betrieb
        von Cloud Services und die grundlegenden Richtlinien und
        Datenschutzgarantien der grossen Cloud Provider.
-        - TODO: Datenschutz & Sicherheit
+        - [/theorie/dsgvo/](/theorie/dsgvo/)
     6. Kennt das grundlegende Netzwerkkonzept einer Cloud (Virtuelle Private
        Cloud, Anbindungsmöglichkeiten, Routing, Netzwerksicherheit) und dessen
        Funktionsweise.
