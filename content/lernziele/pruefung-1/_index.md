@@ -43,4 +43,17 @@ title = "Prüfung 1: Lernziele"
 
 ## Virtuelle Maschinen, Container und Serveless
 
-TODO
+1. Sie können die Vorteile virtueller gegenüber physischer Maschinen mithilfe
+   der Begriffe _Multiplizität_, _Entkopplung_ und _Isolation_ erklären.
+2. Sie können die Para-Virtualisierung (Typ 1) von der Voll-Virtualisierung (Typ
+   2) unterscheiden.
+3. Sie können die Vor- und Nachteile von _Serverless Computing_/_Function as a
+   Service_ (FaaS als Spezialfall von PaaS) gegenüber einem IaaS-Modell (Server)
+   erklären.
+4. Sie können die Betriebssystemvirtualisierung für Container von der Para- und
+   Voll-Virtualisierung (Typ 1 und 2) unterscheiden und Vorteile von CaaS
+   gegenüber PaaS/FaaS und IaaS benennen.
+
+### Unterlagen
+
+- [Virtuelle Maschinen, Container und Serverless Computing](/theorie/vms-container-serverless)

@@ -2,16 +2,17 @@
 title = "Virtuelle Maschinen, Container und Serverless Computing"
 +++
 
-Ein wichtiger Vorteil von Cloud Computing gegenüber dem eigenen Betrieb einer
-Serverinfrastruktur ist die schnelle Skalierung: Die zur Ressourcen können mit
+Ein wichtiger Vorteil vom Cloud Computing gegenüber dem eigenen Betrieb der
+Serverinfrastruktur ist die schnelle Skalierung: Die Ressourcen können mit
 steigendem Bedarf schnell hochgefahren ‒ und bei sinkendem Bedarf auch wieder
 heruntergefahren werden. Sogenannte _Compute_-Optionen stellen Rechenleistung
 zur Verfügung: eine Ressource, deren Bedarf starken Schwankungen unterliegen
-kann. Verschiedene Arten von Compute-Angeboten skalieren dabei unterschiedlich.
+kann. Verschiedene Arten von Compute-Angeboten skalieren dabei unterschiedlich,
+was auch einen Einfluss auf die Kosten hat.
 
 ## Virtuelle Maschinen
 
-Bei der Virtualisierung wird eine _virtuelle Realität_ erzeugt und auf einer
+Bei der Virtualisierung wird eine _virtuelle Realität_ erzeugt und auf eine
 _physischen Realität_ abgebildet. Im Kontext von virtuellen Maschinen bedeutet
 dies, dass mehrere virtuelle Computer mit einem Betriebssystem auf einen
 physischen Computer abgebildet werden. Im Bezug auf den Betrieb virtueller
@@ -118,9 +119,9 @@ flowchart LR
     event_source --> event --> message_bus
 ```
 
-Von einer Ereignisquelle wird ein Ereignis ausgelöst, z.B. eine Interaktion mit
-einer Web-Anwendung. Dieses gelangt über einen Nachrichtenkanal an eine
-Anwendungsinstanz, die auf einem Server läuft. (Es könnte auch ein _Load
+Von einer Ereignisquelle wird ein Ereignis ausgelöst, z.B. durch eine
+Interaktion mit einer Web-Anwendung. Dieses gelangt über einen Nachrichtenkanal
+an eine Anwendungsinstanz, die auf einem Server läuft. (Es könnte auch ein _Load
 Balancer_ vorgelagert sein, der die Last auf mehrere Server verteilt.) Die
 Anwendung auf dem Server bedient die Anfrage, wozu der persistente Zustand (etwa
 aus einer Datenbank) herbeigezogen bzw. manipuliert wird.
@@ -169,7 +170,7 @@ schlafenliegende Instanz "aufgeweckt" wird. (Ein Kaltstart kann mehrere Sekunden
 dauern, ein Warmstart erfolgt in der Regel wesentlich schneller. Die Anfrage
 wird um die entsprechende Anlaufzeit verzögert beantwortet.)
 
-Werden keine Anfrage bedient, können alle Funktionen komplett ausgeschaltet
+Werden keine Anfragen bedient, können alle Funktionen komplett herungergefahren
 werden: Die Instanzen werden auf null herunterskaliert (_Scale to Zero_). Laufen
 keine Instanzen, entstehen dem Kunden auch keine Kosten. Dadurch eignet sich
 FaaS besonders für Anwendungen, die nur sporadisch verwendet werden. Auf eine
@@ -184,25 +185,28 @@ muss über eine externe Datenbank festgehalten werden, welche im Gegensatz zu de
 Funktionen permanent laufen muss ‒ und darum auch laufende Kosten erzeugt.
 
 Nicht alle Arten von Problemen eignen sich für Serverless Computing. Anfragen
-müssen in einem engen Zeitramen bearbeitet werden, wodurch für lang laufende
-Prozesse andere Lösungen in Betracht gezogen werden müssen. Durch eine sehr
-feingranulare Aufteilung des zu lösenden Problems in viele verschiedene
-Funktionen kann es nötig werden, dass zur Bedienung einer Anfrage mehrere
-Funktionen aufgerufen werden müssen, wodurch höhere Kosten entstehen
+müssen innerhalb eines engen Zeitrahmens bearbeitet werden, wodurch für lang
+laufende Prozesse andere Lösungen in Betracht gezogen werden müssen. Durch eine
+sehr feingranulare Aufteilung des zu lösenden Anwendungsproblems in viele
+verschiedene Funktionen kann es nötig werden, dass zur Bedienung einer Anfrage
+mehrere Funktionen aufgerufen werden müssen, wodurch höhere Kosten entstehen
 (_Double-Spending-Problem_). Ausserdem gestaltet sich die Umsetzung von
 Funktionen anbieterspezifisch, wodurch man sich als Kunde vom jeweiligen
 Angebot abhängig macht (_Vendor Lock-in_).
+
+Verbreitete FaaS-Angebote sind _AWS Lambda_, _Azure Functions_ und _Google Cloud
+Functions_.
 
 ## Container (as a Service, CaaS)
 
 Verglichen mit Paas-Angeboten sind Container besser portabel und somit weniger
 allfällig für einen _Vendor Lock-in_. _Container as a Service_ kann als Managed
-Service von einer Public Cloud bezogen oder als self-hsoted Service im Rahmen
+Service von einer Public Cloud bezogen oder als self-hosted Service im Rahmen
 einer Private Cloud zur Verfügung gestellt werden. Das CaaS-Modell dürfte das
 PaaS-Modell aufgrund besserer Portierbarkeit und weniger Anbieterabhängigkeit
 zusehends verdrängen.
 
-Im Gegensatz zu virtuellen Maschinen kommt keine keine Para- (Typ 1) oder
+Im Gegensatz zu virtuellen Maschinen kommt keine Para- (Typ 1) oder
 Voll-Virtualisierung (Typ 2) sondern eine _Betriebssystemvirtualisierung_ zum
 Einsatz:
 
@@ -285,22 +289,23 @@ Gigabyte-Bereich. Die Startzeiten eines kompletten Betriebssystems liegen im
 Minutenbereich und sind damit recht hoch.
 
 Eine schlankere Alternative hierzu sind Angebote auf der Ebene _Platform as a
-Service_ (PaaS) wie z.B. die _Google App Engine_ oder _Heroku_. Im Gegensatz zu
-IaaS-Angeboten erhält man hierbei keinen Zugriff auf der Betriebssystem-Ebene,
-sondern auf eine Laufzeit- und Entwicklungsumgebung. Die Anwendung kann
-automatisch skalieren und bietet zusätzlich Schnittstellen zur Administration
-und fürs Monitoring der Anwendung.
+Service_ (PaaS) wie z.B. die _Google App Engine_ oder _Heroku_ oder
+_Function as a Service_-Angebote (FaaS) Angebote der grossen Cloud-Anbieter. Im
+Gegensatz zu IaaS-Angeboten erhält man hierbei keinen Zugriff auf die
+Betriebssystem-Ebene, sondern auf eine Laufzeit- und Entwicklungsumgebung. Die
+Anwendung kann automatisch skalieren und bietet zusätzlich Schnittstellen zur
+Administration und fürs Monitoring der Anwendung.
 
 PaaS-Angebote locken oft mit kostenfreien Einstiegsangeboten, die zwar einen
-hohen Funktionsumfang bieten, aber Einschränkungen im Volumen (Anzahl laufender
-Instanzen, Anzahl behandelter Anfragen, verfügbare CPU-Ressourcen pro Instanz
-usw.) Auf diese Weise kann sich der Kunde mit der Plattform vertraut machen, und
-der Anbieter kann eine Bindung zum Kunden aufbauen. Da PaaS-Plattformen
-verschiedener Hersteller weitgehend imkompatibel zueinander sind und bei der
-Migration von einem Anbieter zum anderen Anpassungen auf der Anwendungsebene
-erfordern, stellt der Wechsel des Anbieters eine grosse technische Hürde dar.
-Hierbei spricht man vom _Vendor Lock-in_: als Abnehmer ist man an einen Anbieter
-gebunden.
+hohen Funktionsumfang bieten, aber Einschränkungen im Volumen aufweisen (Anzahl
+laufender Instanzen, Anzahl behandelter Anfragen, verfügbare CPU-Ressourcen pro
+Instanz usw.) Auf diese Weise kann sich der Kunde mit der Plattform vertraut
+machen, und der Anbieter kann eine Bindung zum Kunden aufbauen. Da
+PaaS-Plattformen verschiedener Hersteller weitgehend imkompatibel zueinander
+sind und bei der Migration von einem Anbieter zum anderen Anpassungen auf der
+Anwendungsebene erfordern, stellt der Wechsel des Anbieters eine grosse
+technische Hürde dar.  Hierbei spricht man vom _Vendor Lock-in_: als Abnehmer
+ist man an einen Anbieter gebunden.
 
 PaaS-Angebote unterliegen oft technische Einschränkungen:
 
