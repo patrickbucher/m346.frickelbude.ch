@@ -57,7 +57,7 @@ columns 4
     para["Typ 1: Para-Virtualisierung"]:4
     hardware["Hardware"]:4
     style para stroke-width:4px
-    style os stroke-width: 2px stroke-dasharray: 5 1
+    style os stroke-width: 2px,stroke-dasharray: 5 1
 ```
 
 Dadurch können nur spezialisierte Betriebssysteme als Gast auf diesem Hypervisor
@@ -99,6 +99,50 @@ Beispiele für Voll-Virtualisierung sind _Oracle VirtualBox_, _VMWare
 Workstation_ und _Microsoft Virtual PC_.
 
 ## Serverless Computing: Function as a Service (FaaS)
+
+TODO
+
+```mermaid
+flowchart LR
+    event_source((Ereignisquelle))
+    event{"fa:fa-bolt-lightning Ereignis"}
+    message_bus[/Nachrichtenkanal/]
+    subgraph Server
+        load_balancer[Load Balancer] 
+        load_balancer --> server1
+        load_balancer --> server2
+        server1[Server 1]
+        server2[Server 2]
+    end
+    database[(Zustand)]
+    event_source --> event --> message_bus
+    message_bus --> load_balancer
+    server1 --> database
+    server2 --> database
+```
+
+TODO
+
+```mermaid
+flowchart LR
+    event_source((Ereignisquelle))
+    event{"fa:fa-bolt-lightning Ereignis"}
+    message_bus[/Nachrichtenkanal/]
+    subgraph Serverless
+        function1[λ Funktion 1]
+        function2[λ Funktion 2]
+        function3[λ Funktion n]
+        style function3 stroke-width: 1px,stroke-dasharray: 5 5
+    end
+    database[(Zustand)]
+    event_source --> event --> message_bus
+    message_bus --> function1
+    message_bus --> function2
+    message_bus --> function3
+    function1 --> database
+    function2 --> database
+    function3 --> database
+```
 
 TODO
 
