@@ -80,7 +80,7 @@ block-beta
         columns 3
         os1["Betriebssystem 1"]:1
         os2["Betriebssystem 2"]:1
-        osn["Betriebssystem n"]:1
+        os3["Betriebssystem 3"]:1
         full["Typ 2: Voll-Virtualisierung"]:3
     end
     host["Host-Betriebssystem"]:4
@@ -98,17 +98,127 @@ Gast-Betriebssystemen noch andere Anwendungen ausgeführt werden.
 Beispiele für Voll-Virtualisierung sind _Oracle VirtualBox_, _VMWare
 Workstation_ und _Microsoft Virtual PC_.
 
-## Container
+## Serverless Computing: Function as a Service (FaaS)
 
 TODO
 
-## Serverless Computing
+## Container (as a Service, CaaS)
 
-TODO
+Verglichen mit Paas-Angeboten sind Container besser portabel und somit weniger
+allfällig für einen _Vendor Lock-in_. _Container as a Service_ kann als Managed
+Service von einer Public Cloud bezogen oder als self-hsoted Service im Rahmen
+einer Private Cloud zur Verfügung gestellt werden. Das CaaS-Modell dürfte das
+PaaS-Modell aufgrund besserer Portierbarkeit und weniger Anbieterabhängigkeit
+zusehends verdrängen.
 
-## Vor- und Nachteile
+Im Gegensatz zu virtuellen Maschinen kommt keine keine Para- (Typ 1) oder
+Voll-Virtualisierung (Typ 2) sondern eine _Betriebssystemvirtualisierung_ zum
+Einsatz:
 
-TODO
+```mermaid
+block-beta
+    columns 3
+    block:container_1
+        columns 1
+        container1["Container 1"]
+        app1["Anwendung 1"]
+        lib1["Bibliotheken"]
+        style container1 fill:none, stroke:none
+    end
+    block:container_2
+        columns 1
+        container2["Container 2"]
+        app2["Anwendung 2"]
+        lib2["Bibliotheken"]
+        style container2 fill:none, stroke:none
+    end
+    block:container_3
+        columns 1
+        container3["Container 3"]
+        app3["Anwendung 3"]
+        lib3["Bibliotheken"]
+        style container3 fill:none, stroke:none
+    end
+    host["Host-Betriebssystem"]:3
+    hardware["Hardware"]:3
+```
+
+Da hierbei keine Hypervisor-Schicht nötig ist, entfällt der Overhead, sodass
+Container wesentlich ressourcenschonender betrieben werden können als virtuelle
+Maschinen. Eine Isolation (Prozess-Namensraum, Dateisystem, Benutzer) sowie
+Ressourcenbegrenzung (Prozessorleistung, Arbeitsspeicher, Speicherplatz) ist
+trotzdem möglich.
+
+Container sind das Thema der Module
+[347](https://www.modulbaukasten.ch/module/347/1/de-DE?title=Dienst-mit-Container-anwenden)
+(Applikationsentwicklung) bzw.
+[169](https://www.modulbaukasten.ch/module/169/1/de-DE?title=Services-mit-Containern-bereitstellen)
+(Plattformentwicklung) und werden an dieser Stelle nicht weiter vertieft.
+
+## IaaS und PaaS: Vor- und Nachteile
+
+Zur Erinnerung:
+
+- SaaS-Angebote erfordern Anwenderkenntnisse.
+- PaaS-Angebote erfordern Entwicklerkenntnisse.
+- IaaS-Angebote erfordern Systemadministratorenkenntnisse.
+
+Die verschiedenen Service-Modelle erfordern ein unterschiedliches Ausmass an
+Wissen und Fähigkeiten. Dabei muss man bedenken, dass das Fehlen der
+entsprechenden Fähigkeiten sowohl als Vorteil (man braucht sich weniger Wissen
+anzueignen) als auch als Nachteil (im Bedarfsfall verfügt man nicht über das
+notwendige Wissen) gesehen werden kann.
+
+| Was wird selber gemacht? |      Legacy IT     |        IaaS        |        PaaS        | SaaS |
+|--------------------------|:------------------:|:------------------:|:------------------:|:----:|
+| Applikationen            | :white_check_mark: | :white_check_mark: | :white_check_mark: |  :x: |
+| Sicherheit               | :white_check_mark: | :white_check_mark: |         :x:        |  :x: |
+| Datenbanken              | :white_check_mark: | :white_check_mark: |         :x:        |  :x: |
+| Betriebssysteme          | :white_check_mark: | :white_check_mark: |         :x:        |  :x: |
+| Virtualisierung          | :white_check_mark: |         :x:        |         :x:        |  :x: |
+| Server                   | :white_check_mark: |         :x:        |         :x:        |  :x: |
+| Speicher (Storage)       | :white_check_mark: |         :x:        |         :x:        |  :x: |
+| Netzwerk                 | :white_check_mark: |         :x:        |         :x:        |  :x: |
+| Rechenzentrum            | :white_check_mark: |         :x:        |         :x:        |  :x: |
+
+Geht man eine Stufe höher in der Pyamide (Legacy IT :arrow_right: IaaS
+:arrow_right: PaaS :arrow_right: SaaS), verliert man dabei Wissen, wodurch der
+Schritt nach unten in der Pyramide (SaaS :arrow_right: PaaS :arrow_right: IaaS
+:arrow_right: Legacy IT) schwieriger wird und mit einen enormen
+Wissens(wieder)aufbau erfordert.
+
+Virtuelle Maschinen sind Angebote auf der Ebene _Infrastructure as a Service_
+(IaaS) und können von allen grossen Cloud-Providern bezogen werden. Die
+Deployment-Einheiten (VM-Images) sind dabei sehr gross und liegen im
+Gigabyte-Bereich. Die Startzeiten eines kompletten Betriebssystems liegen im
+Minutenbereich und sind damit recht hoch.
+
+Eine schlankere Alternative hierzu sind Angebote auf der Ebene _Platform as a
+Service_ (PaaS) wie z.B. die _Google App Engine_ oder _Heroku_. Im Gegensatz zu
+IaaS-Angeboten erhält man hierbei keinen Zugriff auf der Betriebssystem-Ebene,
+sondern auf eine Laufzeit- und Entwicklungsumgebung. Die Anwendung kann
+automatisch skalieren und bietet zusätzlich Schnittstellen zur Administration
+und fürs Monitoring der Anwendung.
+
+PaaS-Angebote locken oft mit kostenfreien Einstiegsangeboten, die zwar einen
+hohen Funktionsumfang bieten, aber Einschränkungen im Volumen (Anzahl laufender
+Instanzen, Anzahl behandelter Anfragen, verfügbare CPU-Ressourcen pro Instanz
+usw.) Auf diese Weise kann sich der Kunde mit der Plattform vertraut machen, und
+der Anbieter kann eine Bindung zum Kunden aufbauen. Da PaaS-Plattformen
+verschiedener Hersteller weitgehend imkompatibel zueinander sind und bei der
+Migration von einem Anbieter zum anderen Anpassungen auf der Anwendungsebene
+erfordern, stellt der Wechsel des Anbieters eine grosse technische Hürde dar.
+Hierbei spricht man vom _Vendor Lock-in_: als Abnehmer ist man an einen Anbieter
+gebunden.
+
+PaaS-Angebote unterliegen oft technische Einschränkungen:
+
+- Es dürfen nicht alle Funktionen der Standardbibliothek verwendet werden wie
+  etwa das Starten von Threads.
+- Der Zugriff auf die Laufzeitumgebung ist eingeschränkt.
+- Es gibt Grössen- und Zeitlimitierungen bei Anfragen und Antworten.
+- Die Anwendung muss für bestimmte Funktionen auf anbieterspezifische
+  Bibliotheken zurückgreifen.
 
 ## Quellen
 

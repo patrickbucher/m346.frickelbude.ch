@@ -6,10 +6,6 @@ enableEmoji = true
 [minify]
 minifyOutput = true
 
-[module]
-[[module.imports]]
-path = 'github.com/McShelby/hugo-theme-relearn'
-
 [params]
 disableMathJax = true
 disableOpenapi = true
@@ -25,3 +21,6 @@ identifier = 'relearn-dark'
 [[params.themeVariant]]
 identifier = 'relearn-light'
 
+[module]
+[[module.imports]]
+path = 'github.com/McShelby/hugo-theme-relearn'
