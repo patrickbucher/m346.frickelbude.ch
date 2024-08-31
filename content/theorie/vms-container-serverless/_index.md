@@ -100,28 +100,44 @@ Workstation_ und _Microsoft Virtual PC_.
 
 ## Serverless Computing: Function as a Service (FaaS)
 
-TODO
+Verwendet man das IaaS-Modell, sprich virtuelle Maschinen, gestaltet sich der
+Zugriff auf die Anwendungslogik und den dazugehörigen Zustand etwa
+folgendermassen:
 
 ```mermaid
 flowchart LR
     event_source((Ereignisquelle))
     event{"fa:fa-bolt-lightning Ereignis"}
     message_bus[/Nachrichtenkanal/]
+    message_bus --> instance
     subgraph Server
-        load_balancer[Load Balancer] 
-        load_balancer --> server1
-        load_balancer --> server2
-        server1[Server 1]
-        server2[Server 2]
+        instance[Anwendungsinstanz]
+        database[(Zustand)]
+        instance --> database
     end
-    database[(Zustand)]
     event_source --> event --> message_bus
-    message_bus --> load_balancer
-    server1 --> database
-    server2 --> database
 ```
 
-TODO
+Von einer Ereignisquelle wird ein Ereignis ausgelöst, z.B. eine Interaktion mit
+einer Web-Anwendung. Dieses gelangt über einen Nachrichtenkanal an eine
+Anwendungsinstanz, die auf einem Server läuft. (Es könnte auch ein _Load
+Balancer_ vorgelagert sein, der die Last auf mehrere Server verteilt.) Die
+Anwendung auf dem Server bedient die Anfrage, wozu der persistente Zustand (etwa
+aus einer Datenbank) herbeigezogen bzw. manipuliert wird.
+
+Dieses Modell ist ‒ innerhalb und ausserhalb der Cloud ‒ weit verbreitet, hat
+aber den Nachteil, dass die Anwendungsinstanz und der Server permanent laufen
+müssen, auch wenn keine Anfragen zu bedienen sind. Dadurch entstehen laufend
+Kosten, selbst wenn niemand die Anwendung verwendet.
+
+Ausserdem muss die Serverinfrastruktur, sei sie nun virtuell oder physisch, zur
+Verfügung gestellt und gewartet werden, was wiederum Kosten versursacht und
+Wissen voraussetzt.
+
+_Function as a Service_ (FaaS) oder _Serverless Computing_ ist eine Ausprägung
+von _Platform as a Service_, bei der die Anwendungslogik in viele feingranulare
+Funktionen aufgeteilt wird. Der Zugriff auf die Anwendungslogik sieht dabei
+folgendermassen aus:
 
 ```mermaid
 flowchart LR
@@ -144,7 +160,38 @@ flowchart LR
     function3 --> database
 ```
 
-TODO
+Die Berechnung wird wiederum über ein Ereignis ausgelöst, das über einen
+Nachrichtenkanal eingeht. Die Anfrage wird nun aber von einer sogenannten
+_Function_ oder _Funktion_ bedient, welche entweder bereits läuft oder hierzu
+eigens gestartet wird. Dies kann als _Kaltstart_ erfolgen, wobei die
+Funktionsinstanz komplett neu gestartet wird, oder als _Warmstart_, wobei eine
+schlafenliegende Instanz "aufgeweckt" wird. (Ein Kaltstart kann mehrere Sekunden
+dauern, ein Warmstart erfolgt in der Regel wesentlich schneller. Die Anfrage
+wird um die entsprechende Anlaufzeit verzögert beantwortet.)
+
+Werden keine Anfrage bedient, können alle Funktionen komplett ausgeschaltet
+werden: Die Instanzen werden auf null herunterskaliert (_Scale to Zero_). Laufen
+keine Instanzen, entstehen dem Kunden auch keine Kosten. Dadurch eignet sich
+FaaS besonders für Anwendungen, die nur sporadisch verwendet werden. Auf eine
+hohe Last kann schnell und automatisch durch das Aufstarten vieler
+Funktionsinstanzen reagiert werden (_Rapid Elasticity_). Die Ressourcenzuweisung
+richtet sich nach dem Bedarf. Dadurch entfällt aufseiten des Kunden sowohl die
+Kapazitätsplanung als auch die Konfiguration, die Verwaltung und der Betrieb der
+Infrastruktur.
+
+Da Funktionen jedoch kurzlebig sind, verfügen sie über keinerlei Zustand. Dieser
+muss über eine externe Datenbank festgehalten werden, welche im Gegensatz zu den
+Funktionen permanent laufen muss ‒ und darum auch laufende Kosten erzeugt.
+
+Nicht alle Arten von Problemen eignen sich für Serverless Computing. Anfragen
+müssen in einem engen Zeitramen bearbeitet werden, wodurch für lang laufende
+Prozesse andere Lösungen in Betracht gezogen werden müssen. Durch eine sehr
+feingranulare Aufteilung des zu lösenden Problems in viele verschiedene
+Funktionen kann es nötig werden, dass zur Bedienung einer Anfrage mehrere
+Funktionen aufgerufen werden müssen, wodurch höhere Kosten entstehen
+(_Double-Spending-Problem_). Ausserdem gestaltet sich die Umsetzung von
+Funktionen anbieterspezifisch, wodurch man sich als Kunde vom jeweiligen
+Angebot abhängig macht (_Vendor Lock-in_).
 
 ## Container (as a Service, CaaS)
 
