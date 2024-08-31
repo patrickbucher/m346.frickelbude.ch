@@ -17,7 +17,7 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
         - [/theorie/definition/](/theorie/definition/)
     3. Kennt Computer-Optionen und deren Unterschiede und Anwendungszwecke
        (virtuelle Maschinen, Container und Serverless).
-        - TODO: Virtuelle Maschinen, Container, Serverless
+        - [/theorie/vms-container-serverless/](/theorie/vms-container-serverless/)
     4. Kennt Cloud Services, um die drei Hauptdatentypen (Strukturierte,
        teilweise strukturierte und unstrukturierte Daten) zu speichern.
         - TODO: Hauptdatentypen
