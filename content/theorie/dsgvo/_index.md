@@ -366,5 +366,8 @@ Für die Höhe der Bussen werden verschiedenste Faktoren berücksichtigt:
 - Zusammenarbeit mit und Information der Aufsichtsbehörden
 - Kategorien betroffener Daten
 
+Die Maximalbusse liegt bei 20'000'000 € oder 4% des Jahresumsatzes (es gilt der
+höhere Wert).
+
 Neben dem Bussgeld, welches die Organisation an die EU zu entrichten hat, können
 Geschädigte betroffene Personen auch Anspruch auf Schadensersatz geltend machen.
