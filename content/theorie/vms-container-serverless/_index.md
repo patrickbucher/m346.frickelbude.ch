@@ -8,7 +8,7 @@ steigendem Bedarf schnell hochgefahren ‒ und bei sinkendem Bedarf auch wieder
 heruntergefahren werden. Sogenannte _Compute_-Optionen stellen Rechenleistung
 zur Verfügung: eine Ressource, deren Bedarf starken Schwankungen unterliegen
 kann. Verschiedene Arten von Compute-Angeboten skalieren dabei unterschiedlich,
-was auch einen Einfluss auf die Kosten hat.
+was auch einen Einfluss auf die anfallenden Kosten hat.
 
 ## Virtuelle Maschinen
 
@@ -62,8 +62,8 @@ columns 4
 ```
 
 Dadurch können nur spezialisierte Betriebssysteme als Gast auf diesem Hypervisor
-laufen. Die Performance-Einbusse durch diese Art der Virtualisierung ist aber
-mit weniger als 5% sehr gering.
+laufen. Die Performance-Einbusse durch diese Art der Virtualisierung ist mit
+weniger als 5% sehr gering.
 
 Beispiele für Para-Virtualisierung sind _VMware ESXi_, _Microsoft Hyper-V_ und
 _KVM_.
@@ -122,14 +122,15 @@ flowchart LR
 Von einer Ereignisquelle wird ein Ereignis ausgelöst, z.B. durch eine
 Interaktion mit einer Web-Anwendung. Dieses gelangt über einen Nachrichtenkanal
 an eine Anwendungsinstanz, die auf einem Server läuft. (Es könnte auch ein _Load
-Balancer_ vorgelagert sein, der die Last auf mehrere Server verteilt.) Die
-Anwendung auf dem Server bedient die Anfrage, wozu der persistente Zustand (etwa
-aus einer Datenbank) herbeigezogen bzw. manipuliert wird.
+Balancer_ vorgelagert sein, der die Last glechmässig auf mehrere Server
+verteilt.) Die Anwendung auf dem Server bedient die Anfrage, wozu der
+persistente Zustand (etwa aus einer Datenbank) herbeigezogen bzw. manipuliert
+wird.
 
 Dieses Modell ist ‒ innerhalb und ausserhalb der Cloud ‒ weit verbreitet, hat
 aber den Nachteil, dass die Anwendungsinstanz und der Server permanent laufen
-müssen, auch wenn keine Anfragen zu bedienen sind. Dadurch entstehen laufend
-Kosten, selbst wenn niemand die Anwendung verwendet.
+müssen, auch wenn keine Anfragen zu beantworten sind. Dadurch entstehen laufend
+Kosten (_Leerlaufkosten_), selbst wenn niemand die Anwendung verwendet.
 
 Ausserdem muss die Serverinfrastruktur, sei sie nun virtuell oder physisch, zur
 Verfügung gestellt und gewartet werden, was wiederum Kosten versursacht und
@@ -182,10 +183,10 @@ Infrastruktur.
 
 Da Funktionen jedoch kurzlebig sind, verfügen sie über keinerlei Zustand. Dieser
 muss über eine externe Datenbank festgehalten werden, welche im Gegensatz zu den
-Funktionen permanent laufen muss ‒ und darum auch laufende Kosten erzeugt.
+Funktionen permanent laufen muss ‒ und darum auch laufend Kosten erzeugt.
 
 Nicht alle Arten von Problemen eignen sich für Serverless Computing. Anfragen
-müssen innerhalb eines engen Zeitrahmens bearbeitet werden, wodurch für lang
+müssen innerhalb eines engen Zeitrahmens beantwortet werden, wodurch für lang
 laufende Prozesse andere Lösungen in Betracht gezogen werden müssen. Durch eine
 sehr feingranulare Aufteilung des zu lösenden Anwendungsproblems in viele
 verschiedene Funktionen kann es nötig werden, dass zur Bedienung einer Anfrage
@@ -195,12 +196,14 @@ Funktionen anbieterspezifisch, wodurch man sich als Kunde vom jeweiligen
 Angebot abhängig macht (_Vendor Lock-in_).
 
 Verbreitete FaaS-Angebote sind _AWS Lambda_, _Azure Functions_ und _Google Cloud
-Functions_.
+Functions_. (Der Begriff _Lambda_ stammt aus der funktionalen Programmierung und
+ist als Referenz auf _reine Funktionen_ zu verstehen, welche zustandslos
+arbeiten.)
 
 ## Container (as a Service, CaaS)
 
 Verglichen mit Paas-Angeboten sind Container besser portabel und somit weniger
-allfällig für einen _Vendor Lock-in_. _Container as a Service_ kann als Managed
+anfällig für einen _Vendor Lock-in_. _Container as a Service_ kann als Managed
 Service von einer Public Cloud bezogen oder als self-hosted Service im Rahmen
 einer Private Cloud zur Verfügung gestellt werden. Das CaaS-Modell dürfte das
 PaaS-Modell aufgrund besserer Portierbarkeit und weniger Anbieterabhängigkeit
@@ -244,6 +247,11 @@ Maschinen. Eine Isolation (Prozess-Namensraum, Dateisystem, Benutzer) sowie
 Ressourcenbegrenzung (Prozessorleistung, Arbeitsspeicher, Speicherplatz) ist
 trotzdem möglich.
 
+Container gibt es in verschiedenen Implementierungen: _Solaris Zones_, _FreeBSD
+Jails_ und _Docker_ sind einige Beispiele davon. Unter Linux haben sich
+Container dank _Control Groups_ (cgroups) durchgesetzt, womit das Betriebssystem
+den laufenden Containern Ressourcenlimits auferlegen kann.
+
 Container sind das Thema der Module
 [347](https://www.modulbaukasten.ch/module/347/1/de-DE?title=Dienst-mit-Container-anwenden)
 (Applikationsentwicklung) bzw.
@@ -255,7 +263,7 @@ Container sind das Thema der Module
 Zur Erinnerung:
 
 - SaaS-Angebote erfordern Anwenderkenntnisse.
-- PaaS-Angebote erfordern Entwicklerkenntnisse.
+- PaaS-Angebote (FaaS, CaaS) erfordern Entwicklerkenntnisse.
 - IaaS-Angebote erfordern Systemadministratorenkenntnisse.
 
 Die verschiedenen Service-Modelle erfordern ein unterschiedliches Ausmass an
@@ -263,6 +271,10 @@ Wissen und Fähigkeiten. Dabei muss man bedenken, dass das Fehlen der
 entsprechenden Fähigkeiten sowohl als Vorteil (man braucht sich weniger Wissen
 anzueignen) als auch als Nachteil (im Bedarfsfall verfügt man nicht über das
 notwendige Wissen) gesehen werden kann.
+
+Die folgende Tabelle bietet eine Übersicht über verschiedene
+Bereitstellungsmodelle von Informatik-Ressourcen und über das dazu notwendige
+Fachwissen:
 
 | Was wird selber gemacht? |      Legacy IT     |        IaaS        |        PaaS        | SaaS |
 |--------------------------|:------------------:|:------------------:|:------------------:|:----:|
@@ -279,19 +291,20 @@ notwendige Wissen) gesehen werden kann.
 Geht man eine Stufe höher in der Pyamide (Legacy IT :arrow_right: IaaS
 :arrow_right: PaaS :arrow_right: SaaS), verliert man dabei Wissen, wodurch der
 Schritt nach unten in der Pyramide (SaaS :arrow_right: PaaS :arrow_right: IaaS
-:arrow_right: Legacy IT) schwieriger wird und mit einen enormen
+:arrow_right: Legacy IT) schwieriger wird und einen enormen
 Wissens(wieder)aufbau erfordert.
 
 Virtuelle Maschinen sind Angebote auf der Ebene _Infrastructure as a Service_
-(IaaS) und können von allen grossen Cloud-Providern bezogen werden. Die
-Deployment-Einheiten (VM-Images) sind dabei sehr gross und liegen im
-Gigabyte-Bereich. Die Startzeiten eines kompletten Betriebssystems liegen im
-Minutenbereich und sind damit recht hoch.
+(IaaS) und können von allen grossen Cloud-Providern bezogen werden, wodurch die
+Abhängigkeit von einem Cloud-Anbieter minimiert wird. Die Deployment-Einheiten
+(VM-Images) sind dabei sehr gross und liegen im Gigabyte-Bereich. Die
+Startzeiten eines kompletten Betriebssystems liegen im Minutenbereich und sind
+damit recht hoch.
 
 Eine schlankere Alternative hierzu sind Angebote auf der Ebene _Platform as a
 Service_ (PaaS) wie z.B. die _Google App Engine_ oder _Heroku_ oder
-_Function as a Service_-Angebote (FaaS) Angebote der grossen Cloud-Anbieter. Im
-Gegensatz zu IaaS-Angeboten erhält man hierbei keinen Zugriff auf die
+_Function as a Service_-Angebote (FaaS) der grossen Cloud-Anbieter. Im Gegensatz
+zu IaaS-Angeboten erhält man hierbei keinen Zugriff auf die
 Betriebssystem-Ebene, sondern auf eine Laufzeit- und Entwicklungsumgebung. Die
 Anwendung kann automatisch skalieren und bietet zusätzlich Schnittstellen zur
 Administration und fürs Monitoring der Anwendung.
@@ -302,7 +315,7 @@ laufender Instanzen, Anzahl behandelter Anfragen, verfügbare CPU-Ressourcen pro
 Instanz usw.) Auf diese Weise kann sich der Kunde mit der Plattform vertraut
 machen, und der Anbieter kann eine Bindung zum Kunden aufbauen. Da
 PaaS-Plattformen verschiedener Hersteller weitgehend imkompatibel zueinander
-sind und bei der Migration von einem Anbieter zum anderen Anpassungen auf der
+sind und bei der Migration von einem Anbieter zum anderen Anpassungen auf
 Anwendungsebene erfordern, stellt der Wechsel des Anbieters eine grosse
 technische Hürde dar.  Hierbei spricht man vom _Vendor Lock-in_: als Abnehmer
 ist man an einen Anbieter gebunden.
@@ -315,6 +328,10 @@ PaaS-Angebote unterliegen oft technische Einschränkungen:
 - Es gibt Grössen- und Zeitlimitierungen bei Anfragen und Antworten.
 - Die Anwendung muss für bestimmte Funktionen auf anbieterspezifische
   Bibliotheken zurückgreifen.
+
+In der Praxis gilt es einen Kompromiss bzw. eine Mischung aus verschiedenen
+Angeboten zu finden, wodurch der Nutzen der Cloud maximiert und dabei das Risiko
+minimiert wird.
 
 ## Quellen
 

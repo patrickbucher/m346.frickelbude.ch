@@ -6,14 +6,14 @@ title = "Prüfung 1: Lernziele"
 
 1. Sie können die fünf grundlegenden Charakteristiken von Cloud Computing _On
    Demand Self-Service_, _Broad Network Access_, _Resource Pooling_, _Rapid
-   Elasticity_, _Measured Service_ erklären und diese auf ein Fallbeispiel
+   Elasticity_ und _Measured Service_ erklären und diese auf ein Fallbeispiel
    anwenden.
 2. Sie können die vier Deployment-Modelle _Private Cloud_, _Public Cloud_,
-   _Community Cloud_, _Hybrid Cloud_ voneinander abgrenzen und deren
+   _Community Cloud_ und _Hybrid Cloud_ voneinander abgrenzen und deren
    Einsatzgebiete erklären.
 3. Sie können die drei Service-Modelle _Infrastructure as a Service_ (IaaS),
-  _Platform as a Service_ (PaaS), _Software as a Service_ (SaaS) definieren und
-  konkrete Services auf den entsprechenden Ebenen verorten.
+  _Platform as a Service_ (PaaS) und _Software as a Service_ (SaaS) definieren
+  und konkrete Services auf den entsprechenden Ebenen verorten.
 
 ### Unterlagen
 
@@ -23,7 +23,7 @@ title = "Prüfung 1: Lernziele"
 
 1. Sie können die Begriffe _Verbot mit Erlaubnisvorbehalt_,
    _Erlaubnistatbestand_, _betroffene Person_, _Verantwortlicher_,
-   _Auftragsverarbeiter_ und _Empfänger_ definieren und können sie auf konkrete
+   _Auftragsverarbeiter_ und _Empfänger_ definieren und sie auf konkrete
    Beispiele anwenden.
 2. Sie verstehen das _Marktortprinzip_ und können erklären, was bei der
    Übertragung von Daten über Landesgrenzen hinweg zu beachten ist.
@@ -47,9 +47,9 @@ title = "Prüfung 1: Lernziele"
    der Begriffe _Multiplizität_, _Entkopplung_ und _Isolation_ erklären.
 2. Sie können die Para-Virtualisierung (Typ 1) von der Voll-Virtualisierung (Typ
    2) unterscheiden.
-3. Sie können die Vor- und Nachteile von _Serverless Computing_/_Function as a
-   Service_ (FaaS als Spezialfall von PaaS) gegenüber einem IaaS-Modell (Server)
-   erklären.
+3. Sie können die Vor- und Nachteile von _Serverless Computing_ bzw. _Function
+   as a Service_ (FaaS als Spezialfall von PaaS) gegenüber dem IaaS-Modell
+   (Server) erklären.
 4. Sie können die Betriebssystemvirtualisierung für Container von der Para- und
    Voll-Virtualisierung (Typ 1 und 2) unterscheiden und Vorteile von CaaS
    gegenüber PaaS/FaaS und IaaS benennen.
