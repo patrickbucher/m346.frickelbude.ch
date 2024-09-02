@@ -241,7 +241,7 @@ block-beta
     hardware["Hardware"]:3
 ```
 
-Da hierbei keine Hypervisor-Schicht nötig ist, entfällt der Overhead, sodass
+Da hierbei keine Hypervisor-Schicht nötig wird, entfällt der Overhead, sodass
 Container wesentlich ressourcenschonender betrieben werden können als virtuelle
 Maschinen. Eine Isolation (Prozess-Namensraum, Dateisystem, Benutzer) sowie
 Ressourcenbegrenzung (Prozessorleistung, Arbeitsspeicher, Speicherplatz) ist
@@ -288,7 +288,7 @@ Fachwissen:
 | Netzwerk                 | :white_check_mark: |         :x:        |         :x:        |  :x: |
 | Rechenzentrum            | :white_check_mark: |         :x:        |         :x:        |  :x: |
 
-Geht man eine Stufe höher in der Pyamide (Legacy IT :arrow_right: IaaS
+Geht man eine Stufe höher in der Pyramide (Legacy IT :arrow_right: IaaS
 :arrow_right: PaaS :arrow_right: SaaS), verliert man dabei Wissen, wodurch der
 Schritt nach unten in der Pyramide (SaaS :arrow_right: PaaS :arrow_right: IaaS
 :arrow_right: Legacy IT) schwieriger wird und einen enormen
