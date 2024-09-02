@@ -49,7 +49,7 @@ title = "Prüfung 1: Lernziele"
    2) unterscheiden.
 3. Sie können die Vor- und Nachteile von _Serverless Computing_ bzw. _Function
    as a Service_ (FaaS als Spezialfall von PaaS) gegenüber dem IaaS-Modell
-   (Server) erklären.
+   (Server) und die Problematik beim _Vendor Lock-in_ erklären.
 4. Sie können die Betriebssystemvirtualisierung für Container von der Para- und
    Voll-Virtualisierung (Typ 1 und 2) unterscheiden und Vorteile von CaaS
    gegenüber PaaS/FaaS und IaaS benennen.
