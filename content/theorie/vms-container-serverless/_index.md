@@ -133,7 +133,7 @@ müssen, auch wenn keine Anfragen zu beantworten sind. Dadurch entstehen laufend
 Kosten (_Leerlaufkosten_), selbst wenn niemand die Anwendung verwendet.
 
 Ausserdem muss die Serverinfrastruktur, sei sie nun virtuell oder physisch, zur
-Verfügung gestellt und gewartet werden, was wiederum Kosten versursacht und
+Verfügung gestellt und gewartet werden, was wiederum Kosten verursacht und
 Wissen voraussetzt.
 
 _Function as a Service_ (FaaS) oder _Serverless Computing_ ist eine Ausprägung
