@@ -41,7 +41,7 @@ title = "Prüfung 1: Lernziele"
     - Buchzusammenfassung: [PDF](https://raw.githubusercontent.com/patrickbucher/books/master/hennrich_cloud-computing-dsgvo.pdf)
     - Video (YouTube): [Vortrag](https://www.youtube.com/watch?v=8lz2lwo9vT4)
 
-## Virtuelle Maschinen, Container und Serveless
+## Virtuelle Maschinen, Container und Serverless
 
 1. Sie können die Vorteile virtueller gegenüber physischer Maschinen mithilfe
    der Begriffe _Multiplizität_, _Entkopplung_ und _Isolation_ erklären.
