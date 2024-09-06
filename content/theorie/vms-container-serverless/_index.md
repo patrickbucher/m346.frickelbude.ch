@@ -171,7 +171,7 @@ schlafenliegende Instanz "aufgeweckt" wird. (Ein Kaltstart kann mehrere Sekunden
 dauern, ein Warmstart erfolgt in der Regel wesentlich schneller. Die Anfrage
 wird um die entsprechende Anlaufzeit verzögert beantwortet.)
 
-Werden keine Anfragen bedient, können alle Funktionen komplett herungergefahren
+Werden keine Anfragen bedient, können alle Funktionen komplett heruntergefahren
 werden: Die Instanzen werden auf null herunterskaliert (_Scale to Zero_). Laufen
 keine Instanzen, entstehen dem Kunden auch keine Kosten. Dadurch eignet sich
 FaaS besonders für Anwendungen, die nur sporadisch verwendet werden. Auf eine
