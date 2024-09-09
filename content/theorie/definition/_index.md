@@ -1,6 +1,7 @@
 +++
 title = 'Definition «Cloud Computing»'
 date = 2024-08-16T14:04:59+02:00
+weight = 1
 +++
 
 ## Überblick

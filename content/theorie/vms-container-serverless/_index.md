@@ -1,5 +1,6 @@
 +++
 title = "Virtuelle Maschinen, Container und Serverless Computing"
+weight = 3
 +++
 
 Ein wichtiger Vorteil vom Cloud Computing gegenüber dem eigenen Betrieb der
