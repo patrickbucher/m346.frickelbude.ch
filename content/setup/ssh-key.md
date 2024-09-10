@@ -22,7 +22,7 @@ erscheinen. Führen Sie nun den folgenden Befehl aus, wobei Sie
 `[vorname]_[nachname]@sluz.ch` durch die entsprechende Adresse ersetzen:
 
 ```bash
-ssh-keygen -t ed25519 -C '[vorname]_[nachname]@sluz.ch
+ssh-keygen -t ed25519 -C '[vorname]_[nachname]@sluz.ch'
 ```
 
 Also z.B. für den Lernenden _Hans Meier_:
