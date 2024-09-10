@@ -28,7 +28,7 @@ ssh-keygen -t ed25519 -C '[vorname]_[nachname]@sluz.ch
 Also z.B. für den Lernenden _Hans Meier_:
 
 ```bash
-ssh-keygen -t ed25519 -C 'Hans_Meier@sluz.ch
+ssh-keygen -t ed25519 -C 'Hans_Meier@sluz.ch'
 ```
 
 Führen Sie den Befehl mit _[Enter]_ aus.
