@@ -26,11 +26,11 @@ Regionen erfüllen folgende Zwecke:
    andere Region nicht direkt beeinflussen sollte. Ereignet sich beispielsweise
    in Kalifornien ein grösseres Erdbeben, ist mit Ausfällen in der Region _US
    West_ (Westküste) zu rechnen. Die Rechenzentren in der Region _US East_
-   (Ostküste) sollten aber dadurch nicht direkt betroffen sein.
+   (Ostküste) sollten aber davon nicht direkt betroffen sein.
 
 Beispiele für Regionen sind die US-Westküste in Nordamerika oder die britischen
 Inseln in Europa, wobei die einzelnen Cloud-Anbieter die Regionen
-unterschiedlich bezeichnen können.
+unterschiedlich aufteilen und bezeichnen.
 
 ![Amazon Global Infrastructure (Quelle: AWS)](/img/amazon-global-infrastructure.png)
 
@@ -40,7 +40,7 @@ Zonen oder _Verfügbarkeitszonen_ sind geografische Orte _innerhalb_ einer
 Region. Pro Region gibt es eine oder mehrere Zonen, welche als einzelne
 Rechenzentren betrieben werden.
 
-Zonen folgende Zwecke:
+Zonen erfüllen folgende Zwecke:
 
 1. **Isolation**: Da die einzelnen Rechenzentren voneinander getrennt sind,
    können sich Fehler nicht von einer Zone in eine andere Zone ausbreiten.
@@ -50,19 +50,21 @@ Zonen folgende Zwecke:
    geografische Nähe dabei nur eine untergeordnete Rolle. So kann es sich
    lohnen, Ressourcen in mehreren Zonen innerhalb der gleichen Region
    redundant bereitzustellen. So kann die Kundschaft im Falle eines lokalen
-   Ereignisses (z.B. bei einem Brand im Rechenzentrum) einfach von der anderen
-   Zone bedient werden.
+   Ereignisses (z.B. bei einem Brand im Rechenzentrum) oder bei grösseren
+   Wartungen innerhalb der einen Zone (durch den Cloud-Anbieter oder durch den
+   Cloud-Kunden) einfach von der anderen Zone bedient werden.
 
 Beispiele für Regionen bei AWS sind `eu-central-1` (Europa), `us-east-1` und
 `ca-central-1` (Nordamerika).
 
 ## :house: :hut: Edge-Standorte und Virtual Private Cloud
 
-Für besondere Anforderungen (geografische Nähe an einer Börse, Datenhaltung auf
-dem Firmengelände) bieten Cloud-Anbieter sogenannte _Edge-Standorte_ oder
-_Outpost_ an. Dabei stellt der Cloud-Anbieter dem Kunden Hardware zur Verfügung,
-die auf seinem Firmengelände platziert wird (_on premise_). Um Wartung und
-Betrieb der Infrastruktur kümmert sich jedoch der Cloud-Anbieter.
+Für besondere Anforderungen (geografische Nähe zu einer Börse beim
+Hochfrequenzhandel, Datenhaltung auf dem Firmengelände) bieten Cloud-Anbieter
+sogenannte _Edge-Standorte_ oder _Outpost_ an. Dabei stellt der Cloud-Anbieter
+dem Kunden Hardware zur Verfügung, die auf seinem Firmengelände platziert wird
+(_on premise_). Um Wartung und Betrieb der Infrastruktur kümmert sich jedoch der
+Cloud-Anbieter.
 
 Durch dieses Setup kann der Kunde einerseits Nutzen vom reichhaltigen
 Cloud-Angebot der grossen Hyperscaler (Azure, AWS, Google Cloud) machen, seinen
