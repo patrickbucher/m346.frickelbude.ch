@@ -31,7 +31,7 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
         - TODO: SSH & SSH-Tunnel
     7. Kennt Infrastruktur, Best Practices und weitere Informationsquellen von
        Hyperscaler (z.B. Referenzarchitekturen und Security Dokumentationen).
-        - TODO: Cloud-Infrastruktur & Cloud-Migration
+        - [/theorie/cloud-infrastruktur](/theorie/cloud-infrastruktur)
 2. Spezifiziert die Kosten einschliesslich Betriebsaufwand der vorgeschlagenen
    Lösung und bestimmt die zweckmässige Cloud Adoption.
     1. Kennt Kostenmodelle und das Vorgehen für einfache Kostenanalysen anhand
@@ -39,7 +39,7 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
         - TODO: Mengen- & Kostenabschätzung
     2. Kennt die Grundsätze für Cloudmigrationen (z.B. Lift-and-Shift und
        Lift-and-Reshape).
-        - TODO: Cloud-Infrastruktur & Cloud-Migration
+        - [/theorie/cloud-migration](/theorie/cloud-migration)
 3. Entwickelt unter Berücksichtigung der technischen Rahmenbedingungen und
    Anforderungen des entsprechenden Anwendungsbereichs ein technisches Konzept
    für die Integration der ausgewählten Cloudlösung.
