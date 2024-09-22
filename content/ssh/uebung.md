@@ -41,7 +41,7 @@ bestätigt werden.
 Mit dem Befehl `exit` oder durch Betätigung der Tastenkombination `[Ctrl]`-`[D]`
 gelangt man zurück auf das Terminal des lokalen Systems.
 
-Installiere nun einen Webserver, z.B. `nginx`:
+Installieren Sie nun einen Webserver, z.B. `nginx`:
 
     $ sudo apt install nginx
 
@@ -82,25 +82,26 @@ Das `pingpong`-Programm kann mit `[Ctrl]`-`[C]` wieder gestoppt werden.
 
 Das `pingpong`-Programm unterstützt zwei Parameter, womit Adresse und Port
 angepasst werden können, auf welche das Programm lauscht. Standardmässig wird
-die Adresse `0.0.0.0`, wodurch Verbindungen von überall her erlaubt werden. Als
-Port ist `8000` vorkonfiguriert, der auf allen VMs offen sein sollte.
+die Adresse `0.0.0.0` verwendet, wodurch Verbindungen von überall her erlaubt
+werden. Als Port ist `8000` vorkonfiguriert, der auf allen VMs offen sein
+sollte.
 
 Starte nun die Anwendung so, dass Sie nur Verbindungen von `localhost`
-akzepiert. Tipp:
+akzepiert. Die Parameter lassen sich folgendermassen anzeigen:
 
     $ ./pingpong -help
 
 Funktioniert der Zugriff von aussen?
 
-Stoppe die Anwendung nun und starte sie so, dass sie auf Port `7000` lauscht,
-aber wieder Verbindungen von der Adresse `0.0.0.0` akzeptiert.
+Stoppen Sie die Anwendung nun und starten Sie sie so, dass sie auf Port `7000`
+lauscht, aber wieder Verbindungen von der Adresse `0.0.0.0` akzeptiert.
 
-Funktioniert der Zugriff von aussen?
+Funktioniert der Zugriff von aussen (wieder)?
 
 ## Aufgabe 4: Local Forwarding
 
 Stellen Sie sicher, dass die Anwendung `pingpong` läuft, aber dass sie auf Port
-`7000` lauscht und nur Verbindungen von `localhost` entgegennimmt.
+`7000` lauscht und nur Verbindungen von `127.0.0.1` entgegennimmt.
 
 Um von aussen auf den Server zugreifen zu können, muss nun ein Local Forwarding
 eingerichtet werden.
@@ -108,15 +109,19 @@ eingerichtet werden.
 Richten Sie die entsprechende Weiterleitung ein, sodass man von aussen wieder
 auf die Anwendung zugreifen kann. Tipp: `ssh -L` ist weiter oben dokumentiert.
 
+Mit welchen Parametern muss der `pingpong`-Server nun gestartet werden?
+
+Unter welcher Adresse ist der `pingpong`-Server nun erreichbar?
+
 ## Aufgabe 5: Programm lokal ausführen
 
-Stoppe das `pingpong`-Programm und lösche es:
+Stoppen Sie das `pingpong`-Programm und löschen Sie es:
 
     $ rm pingpong
 
-Kompilieren Sie das Programm nun für dein lokales System, z.B. für Windows:
+Kompilieren Sie das Programm nun für Ihr lokales System, z.B. für Windows:
 
-    $ GOOS=windows go build pingpong.go
+    $ GOOS=windows GOARCH=amd64 go build pingpong.go
 
 Es sollte ein Programm `pingpong.exe` erstellt worden sein.
 
@@ -135,7 +140,9 @@ Bzw. auf macOS:
 
     $ scp [Benutzername]@[IP-Adresse]:pingpong .
 
-Führe nun das Programm lokal aus und teste es.
+Führen Sie nun das Programm lokal aus und testen Sie es.
+
+Über welche URL kann das Programm angesprochen werden?
 
 ## Aufgabe 7: Remote Forwarding
 
@@ -149,4 +156,6 @@ dokumentiert.
 Um den Zugriff vom Server auf den lokalen Recher zu testen, kann das Programm
 `curl` verwendet werden:
 
-    $ curl http://localhost:8000/ping
+    $ curl http://[IP-Adresse]:[Port]/ping
+
+Über welche URL kann das Programm angesprochen werden?
