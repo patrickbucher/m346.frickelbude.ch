@@ -131,16 +131,123 @@ Home-Verzeichnis unter den Namen `backup.sql`.
 
 ## SSH-Tunnel
 
-TODO: Einführung
+Oftmals steht man vor dem Problem, dass man von ausserhalb eines Servers auf
+eine bestimmte Anwendung auf diesem Server zugreifen muss, der entsprechende
+Port aber nicht offen ist (von der Firewall blockiert) oder die Anwendung nur
+Verbindungen von `localhost` entgegennimmt (da der Zugriff normalerweise nur von
+hier aus nötig ist).
+
+**Beispielszenario I**: Eine Anwendung läuft auf einem Server und greift auf
+eine Datenbank zu. Die Datenbank läuft auf Port `5432` (PostgreSQL). Die
+Datenbank lauscht auf `127.0.0.1:5432`, d.h. nimmt nur lokale Verbindungen
+entgegen. (Lauschte sie auf `0.0.0.0:5432`, wären auch Verbindungen von aussen
+möglich. Hierzu müsste aber die Datenbank besser geschützt werden, z.B. per
+Passwort. Der Angriffsvektor wird dadurch aber grösser!)
+
+Ein anderes ‒ wenn auch selteneres ‒ Problem ist, dass zwar der Zugriff von
+einem Client auf einen Server möglich ist, man aber keine Möglichkeit hat, vom
+Server her auf einen Client zuzugreifen. Einerseits verfügt der Client nicht
+über eine öffentliche IP-Adresse oder eine vergleichbare öffentlich erreichbare
+Adressierung (z.B. DynDNS). Andererseits dürfte der Clients hinter einer
+Firewall sein, welche Zugriff von aussen (_ingress_) her nicht erlaubt.
+(Ausgehende Verbindungen, _egress_, werden im geringeren Ausmass blockiert.)
+
+**Beispielszenario II**: Eine Anwendung läuft auf einem Server und funktioniert
+nicht wie gewünscht. Ein Benutzer schildert das Verhalten, doch der Entwickler
+der Anwendung kann dieses auf seiner lokalen Entwicklungsumgebung aber nicht
+nachvollziehen. Schön wäre es, wenn der Benutzer den Anwendungsfall auf dem
+Computer des Entwicklers durchspielen könnte. Der Benutzer und der Entwickler
+sind aber nicht am gleichen Ort. Der Rechner des Entwicklers ist wiederum nicht
+vom Internet her zugreifbar.
+
+In diesen beiden Szenarien schafft SSH Abhilfe, indem es einen sicheren Kanal
+zwischen zwei Systemen erzeugt, über den ein Port, der geschlossen ist,
+"getunnelt" werden kann. Dieses Verfahren bezeichnet man entsprechend als "SSH
+Tunneling".
 
 ### Local Forwarding
 
-TODO: Beschreibung
+Beim _Local Forwarding_ wird das Problem aus Beispielszenario I gelöst. Hierbei
+möchte man Zugriff auf eine Anwendung erhalten, deren Port nicht freigegeben
+ist, oder die nur Verbindungen von `localhost` entgegennimmt.
+
+Die Lösung ist ein SSH-Tunnel, wobei ein lokaler Port auf dem Client auf einen
+entfernten Port auf dem Server umgeleitet wird. Der betreffende Port muss dabei
+_nicht_ offen sein, denn die Kommunikation findet über den SSH-Port `22` statt.
+(Dieser muss natürlich offen sein. Doch SSH-Zugriff ist in der Regel erlaubt.)
 
 ![SSH Local Forwarding](/img/local-forwarding.png)
 
+Möchte man vom Client her eine Weiterleitung vom lokalen Port `1234` auf den
+entfernten Port `5432` erstellen, verwendet man den folgenden Befehl:
+
+    $ ssh -L localhost:1234:server:5432 user@server
+
+Erklärung:
+
+- Das Flag `-L` steht für _Local_ Forwarding.
+- Die Angabe `localhost:1234` ist der Port, den man lokal ansteuern möchte
+  (Weiterleitung von).
+- Die Angabe `server:5432` ist der Port, den man auf dem Server verwenden möchte
+  (Weiterleitung zu).
+- Mit `user@server` wird die SSH-Verbindung mit dem jeweiligen Benutzer auf das
+  entfernte System aufgenommen.
+
+Ist diese SSH-Sitzung offen, kann der Benutzer via `localhost:1234` auf die
+Datenbank zugreifen. Die Kommunikation erfolgt verschlüsselt und wird auf
+`server:5432` weitergeleitet. Wird die Verbindung geschlossen, ist auch kein
+Zugriff auf die Datenbank von aussen mehr möglich.
+
 ### Remote Forwarding
 
-TODO: Beschreibung
+Beim _Remote Forwarding_ wird das Problem aus Beispielszenario II gelöst.
+Hierbei soll der Zugriff vom Server aus auf den Client umgeleitet werden.
+
+Konkret möchte der Entwickler aus dem Beispielszenario die Anwendung lokal bei
+sich laufen lassen, und die Anfragen, die vom Benutzer auf dem Server eingehen,
+auf seinen Computer weiterleiten.
+
+Die Lösung ist ein SSH-Tunnel, wobei ein entfernter Port auf dem Server auf
+einen lokalen Port auf dem Client umgeleitet wird. Hierzu ist es nicht nötig,
+dass der Client vom Internet aus zugreifbar ist, solange der SSH-Port `22` offen
+ist.
+
+Wichtig: Auch hier wird die Verbindung vom Client auf den Server erstellt. Die
+Weiterleitung des Ports erfolgt aber in entgegengesetzter Richtung!
 
 ![SSH Remote Forwarding](/img/remote-forwarding.png)
+
+Möchte man vom Server her eine Weiterleitung vom Port `8080`, worauf die
+Anwendung läuft, auf den lokalen Port `1234`, worauf die Anwendung auf dem
+Entwickler-Computer läuft, einrichten, verwendet man den folgenden Befehl:
+
+    $ ssh -R server:8080:localhost:1234 user@server
+
+Erklärung:
+
+- Das Flag `-R` steht für _Remote Forwarding_.
+- Die Angabe `server:8080` ist der Port, von auf den die Anfragen auf dem Server
+  eingehen.
+- Die Angabe `localhost:1234` ist der Port, auf den die Anfragen weitergeleitet
+  werden sollen.
+- Mit `user@server` wird die SSH-Verbindung mit dem jeweiligen Benutzer auf das
+  entfernte System aufgenommen.
+
+Bevor diese SSH-Sitzung mit Remote Forwarding eröffnet werden kann, muss die
+Serveranwendung auf Port `8080` geschlossen werden, damit der Port frei wird.
+Solange die SSH-Sitzung offen ist, werden die Anfragen, die auf dem Server unter
+Port `8080` eingehen, auf den Computer des Entwicklers umgeleitet.
+
+#### Warnung
+
+Remote Forwarding ist eine sehr mächtige ‒ und darum auch eine sehr
+_gefährliche_ Technik! Schliesslich merkt der entfernte Benutzer nicht, dass
+seine Anfragen nicht mehr vom Server sondern von einem Entwickler-Computer
+behandelt werden. Dies bietet dem Entwickler die Möglichkeit, den Benutzern eine
+angepasste Version seiner Anwendung ausführen zu lassen, die möglicherweise
+bösartige Anpassungen enthält. (Man denke an eine eBanking-Anwendung, welche
+Beträge oder das Zielkonto manipuliert.)
+
+Aus diesem Grund ist SSH Remote Forwarding oftmals deaktiviert. Auch wenn es
+aktiv ist, sollte es nur nach Abspache mit dem Systemadministrator verwendet
+werden.
