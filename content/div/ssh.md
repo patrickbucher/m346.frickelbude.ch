@@ -1,5 +1,5 @@
 +++
-title = "SSH: Secure Shell"
+title = "SSH & SSH-Tunnel"
 weight = 2
 +++
 
