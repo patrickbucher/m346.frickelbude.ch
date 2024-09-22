@@ -1,5 +1,6 @@
 +++
 title = "Lerntechnik"
+weight = 1
 +++
 
 ## Aktives Erinnern
