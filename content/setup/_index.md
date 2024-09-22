@@ -1,7 +1,7 @@
 +++
 archetype = "chapter"
 title = "Setup"
-weight = 5
+weight = 6
 +++
 
 In diesem Abschnitt geht es um das Setup der Arbeitsumgebung.
