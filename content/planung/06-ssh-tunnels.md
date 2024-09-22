@@ -22,13 +22,13 @@ Port Forwarding für verschiedene Anwendungsfälle einrichten.
 
 - [5 min.] Administratives
 - [5 min.] Lernziele zu SSH
-- [35 min.] Einführung in SSH (Theorie)
+- [35 min.] [Einführung in SSH](/ssh/intro/) (Theorie)
 - [5 min.] Hochfahren der Cloud-Infrastruktur
 
 ### Lektion 2
 
-- [45 min.] Arbeit an den SSH-Übungen
+- [45 min.] Arbeit an den [SSH-Übungen](/ssh/uebung/)
 
 ### Hausaufgaben
 
-Dokumentieren Sie die Übung wie in Aufgabe 0 beschrieben.
+Dokumentieren Sie die Übung wie in [Aufgabe 0](/ssh/uebung/index.html#aufgabe-0-ergebnissicherung) beschrieben.
