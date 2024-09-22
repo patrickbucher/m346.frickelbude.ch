@@ -28,7 +28,8 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
     6. Kennt das grundlegende Netzwerkkonzept einer Cloud (Virtuelle Private
        Cloud, Anbindungsmöglichkeiten, Routing, Netzwerksicherheit) und dessen
        Funktionsweise.
-        - TODO: SSH & SSH-Tunnel
+        - [/theorie/cloud-infrastruktur](/theorie/cloud-infrastruktur)
+        - [/ssh](/ssh/)
     7. Kennt Infrastruktur, Best Practices und weitere Informationsquellen von
        Hyperscaler (z.B. Referenzarchitekturen und Security Dokumentationen).
         - [/theorie/cloud-infrastruktur](/theorie/cloud-infrastruktur)
