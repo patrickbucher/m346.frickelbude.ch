@@ -1,5 +1,6 @@
 +++
 title = "Block 1: Definition"
+weight = 1
 +++
 
 Im ersten Block geht es um die Definition des Begriffs _Cloud Computing_.

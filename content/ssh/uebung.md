@@ -24,6 +24,10 @@ Halten Sie für die folgenden Aufgaben jeweils folgendes fest:
 Die Form der Dokumentation ist frei. Sie soll der Lehrperson auf Nachfrage
 gezeigt werden können und fliesst in die Bewertung ein (Prädikate).
 
+**Achtung**: Die virtuellen Maschinen werden am Ende des Unterrichts
+unwiederbringlich _gelöscht_! Die Befehle müssen darum _lokal_ festgehalten
+werden und können nicht auf dem Server nachgeschaut werden.
+
 ## Aufgabe 1: Verbindung aufnehmen
 
 Nehmen Sie die Verbindung zu Ihrem Server auf, indem Sie den folgenden Befehl

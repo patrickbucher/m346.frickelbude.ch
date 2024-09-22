@@ -1,5 +1,6 @@
 +++
 title = "Block 5: Cloud-Migration und Cloud-Infrastruktur"
+weight = 5
 +++
 
 Im fünften Block schauen wir uns den letzten Theorieblock zu den Themen

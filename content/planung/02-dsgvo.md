@@ -1,5 +1,6 @@
 +++
 title = "Block 2: DSGVO & Cloud Computing"
+weight = 2
 +++
 
 Im zweiten Block geht es um die Datenschutz-Grundverordnung (DSGVO) im

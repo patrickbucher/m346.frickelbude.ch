@@ -1,5 +1,6 @@
 +++
 title = "Block 4: Prüfung 1"
+weight = 4
 +++
 
 Im vierten Block wird der Theorieteil vorerst mit einer Prüfung abgeschlossen.

@@ -1,5 +1,6 @@
 +++
 title = "Block 3: Virtuelle Maschinen, Container und Serverless Computing"
+weight = 3
 +++
 
 Im dritten Block geht es um verschiedene _Compute_-Optionen in der Cloud:

@@ -10,3 +10,5 @@ weight = 2
 - [Block 2](02-dsgvo/): DSGVO & Cloud Computing
 - [Block 3](03-vms-container-serverless/): Virtuelle Maschinen, Container und Serverless Computing
 - [Block 4](04-pruefung-1/): Prüfung 1
+- [Block 5](05-cloud-migration-infrastruktur/): Cloud-Migration und Cloud-Infrastruktur
+- [Block 6](06-ssh-tunnels/): SSH & SSH-Tunnels
