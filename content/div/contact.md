@@ -13,7 +13,7 @@ Luzern, Schweiz). Ich bin der Autor dieser Webseite und betreibe sie. Ich bin
 - GitHub: [patrickbucher](https://github.com/patrickbucher)
     - Repository dieser Webseite:
       [m346.frickelbude.ch](https://github.com/patrickbucher/m346.frickelbude.ch)
-- YouTube: [Modul 346](https://www.linkedin.com/in/patrick-bucher-88a18b282/)
+- YouTube: [Modul 346](https://www.youtube.com/@modul346)
 - private Webseite: [paedubucher.ch](https://www.paedubucher.ch)
 - Firmenwebseite: [composed.ch](https://www.composed.ch)
 
