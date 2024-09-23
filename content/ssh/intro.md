@@ -38,7 +38,7 @@ Ist keine Desktop-Umgebung verfügbar, stehen Lösungen wie _Windows Remote
 Management_ (WinRM) oder die _Secure Shell_ (SSH) zur Verfügung. In diesem Modul
 soll SSH im Vordergrund stehen, weil dies eine weit verbreitete, sehr erprobte,
 sichere und zuverlässige Lösung ist, die Clients für alle gängigen
-Betriebssysteme anbietet. Ausserde ist SSH der Industriestandard für den
+Betriebssysteme anbietet. Ausserdem ist SSH der Industriestandard für den
 Fernzugriff auf Linux-Systeme, die in diesem Modul zum Einsatz kommen.
 
 ## Telnet
