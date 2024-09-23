@@ -83,7 +83,7 @@ symmetrischer Schlüssel generiert, womit dann der Datenverkehr für die laufend
 Sitzung verschlüsselt wird.)
 
 SSH arbeitet nach dem Client-Server-Prinzip: Auf einem Server, der per SSH
-zugänglich ist, muss der SSH-Daemon `sshd` laufen.  Clients verwenden das
+zugänglich ist, muss der SSH-Daemon `sshd` laufen. Clients verwenden das
 interaktive Client-Programm `ssh` ‒ zumindest für interaktive Sitzungen oder
 einzelne auf dem Server auszuführende Befehle. Es gibt weitere Client-Programme
 wie z.B. `scp` oder `sftp` zum sicheren Kopieren von Daten zwischen entfernten
@@ -133,22 +133,18 @@ Home-Verzeichnis unter den Namen `backup.sql`.
 
 Oftmals steht man vor dem Problem, dass man von ausserhalb eines Servers auf
 eine bestimmte Anwendung auf diesem Server zugreifen muss, der entsprechende
-Port aber nicht offen ist (von der Firewall blockiert) oder die Anwendung nur
-Verbindungen von `localhost` entgegennimmt (da der Zugriff normalerweise nur von
-hier aus nötig ist).
+Port aber nicht offen ist (von der Firewall blockiert).
 
 **Beispielszenario I**: Eine Anwendung läuft auf einem Server und greift auf
 eine Datenbank zu. Die Datenbank läuft auf Port `5432` (PostgreSQL). Die
-Datenbank lauscht auf `127.0.0.1:5432`, d.h. nimmt nur lokale Verbindungen
-entgegen. (Lauschte sie auf `0.0.0.0:5432`, wären auch Verbindungen von aussen
-möglich. Hierzu müsste aber die Datenbank besser geschützt werden, z.B. per
-Passwort. Der Angriffsvektor wird dadurch aber grösser!)
+Datenbank lauscht auf `0.0.0.0:5432`, d.h. nimmt grundsätzlich Verbindungen von
+überall her entgegen, doch nur auf Port `5432`, der geschlossen ist.
 
 Ein anderes ‒ wenn auch selteneres ‒ Problem ist, dass zwar der Zugriff von
 einem Client auf einen Server möglich ist, man aber keine Möglichkeit hat, vom
 Server her auf einen Client zuzugreifen. Einerseits verfügt der Client nicht
 über eine öffentliche IP-Adresse oder eine vergleichbare öffentlich erreichbare
-Adressierung (z.B. DynDNS). Andererseits dürfte der Clients hinter einer
+Adressierung (z.B. DynDNS). Andererseits dürfte der Client hinter einer
 Firewall sein, welche Zugriff von aussen (_ingress_) her nicht erlaubt.
 (Ausgehende Verbindungen, _egress_, werden im geringeren Ausmass blockiert.)
 
@@ -169,7 +165,7 @@ Tunneling".
 
 Beim _Local Forwarding_ wird das Problem aus Beispielszenario I gelöst. Hierbei
 möchte man Zugriff auf eine Anwendung erhalten, deren Port nicht freigegeben
-ist, oder die nur Verbindungen von `localhost` entgegennimmt.
+ist.
 
 Die Lösung ist ein SSH-Tunnel, wobei ein lokaler Port auf dem Client auf einen
 entfernten Port auf dem Server umgeleitet wird. Der betreffende Port muss dabei
