@@ -55,7 +55,8 @@ man diesem HTTP-Anfragen schicken (sofern er noch Inhalt unter diesem Port
 ausliefert):
 
     $ telnet www.website.com 80
-    GET /index.html HTTP/1.1
+    GET /ping HTTP/1.1
+    Host: www.website.com
 
     <!DOCTYPE html>
     <html>
