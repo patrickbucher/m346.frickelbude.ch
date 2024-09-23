@@ -10,8 +10,10 @@ Voraussetzungen:
 
 - Die [Git Bash](https://git-scm.com/downloads) ist unter Windows installiert
   oder als portable Version verfügbar. (Unter macOS und Linux stehen die Befehle
-  `ssh-keygen`, `ssh` und eine Unix-Shell anderweitig zur Verfügung.)
+  `ssh-keygen`, `ssh` und eine Unix-Shell bereits zur Verfügung.)
 - Es wurde ein SSH-Schlüssel erzeugt und der Lehrperson abgegeben.
+- Die Lehrperson stellt eine virtuelle Maschine mit hinterlegtem SSH-Schlüssel
+  bereit.
 
 ## Aufgabe 0: Ergebnissicherung
 
@@ -33,50 +35,51 @@ werden und können nicht auf dem Server nachgeschaut werden.
 Nehmen Sie die Verbindung zu Ihrem Server auf, indem Sie den folgenden Befehl
 in der Bash eingeben:
 
-    $ ssh [Benutzername]@[IP-Adresse]
+    ssh user@[IP-Adresse]
 
-Die Parameter `[Benutzername]` (z.B. `hans.meier`, falls die sluz-Adresse
-`hans_meier@sluz.ch` lautet) und `[IP-Adresse]` werden im Unterricht zur
+Der Benutzername lautet immer `user`. Die IP-Adresse wird im Unterricht zur
 Verfügung gestellt.
 
-Beim ersten Verbindungsversuch muss dieser durch das Eintippen von `yes`
-bestätigt werden.
+Beim ersten Verbindungsversuch muss durch das Eintippen von `yes` bestätigt
+werden, dass man dem Server auf der anderen Seite vertraut.
 
 Mit dem Befehl `exit` oder durch Betätigung der Tastenkombination `[Ctrl]`-`[D]`
 gelangt man zurück auf das Terminal des lokalen Systems.
 
-Installieren Sie nun einen Webserver, z.B. `nginx`:
+Installieren Sie nun testhalber einen Webserver, z.B. `nginx`:
 
-    $ sudo apt install nginx
+    sudo apt install nginx -y
 
-Greife nun im Browser über die IP-Adresse auf diesen Webserver zu. Es sollte die
-`nginx`-Startseite angezeigt werden.
+Greifen Sie nun im Browser über die IP-Adresse auf diesen Webserver zu. Es
+sollte die `nginx`-Startseite angezeigt werden.
 
 ## Aufgabe 2: Beispielanwendung in Betrieb nehmen
 
-Im Verzeichnis `/share` sollte sich eine Datei namens `pingpong.go` befinden.
-Dies ist ein einfacher Server, womit die Konnektivität auf den Server als
-Frage-Antwort-Spiel demonstriert werden kann.
+Im aktuellen Arbeitsverzeichnis (`/home/user`) sollte sich eine Datei namens
+`pingpong.go` befinden. Dies ist ein einfacher Server, womit die Konnektivität
+auf den Server als Frage-Antwort-Spiel demonstriert werden kann.
 
-Zuerst soll die Datei ins Home-Verzeichnis kopiert werden:
+Das Programm ist in der Sprache [Go](https://go.dev/) geschrieben und kann mit
+dem `go`-Befehl kompiliert werden:
 
-    $ cp /share/pingpong.go .
-
-Anschliessend wird das Programm kompiliert:
-
-    $ go build pingpong.go
+    go build pingpong.go
 
 Es ist nun eine Binärdatei namens `pingpong` entstanden. Diese kann
 folgendermassen gestartet werden:
 
-    $ ./pingpong
+    ./pingpong
 
 Nun kann vom einem Browser aus auf den Server zugegriffen werden, wozu folgende
 URL verwendet werden kann: `http://[IP-Adresse]:8000/ping`.
 
-Es sollte eine Meldung der folgenden Form erscheinen:
+Im Browser sollte eine Meldung der folgenden Form erscheinen:
 
-    pong back to 178.196.200.21:53834
+    pong back to 178.196.200.21:50974
+
+Gleichzeitig erscheint im Terminal auf dem Server eine Logmeldung der folgenden
+Form:
+
+    pinged from 178.196.200.21:50974
 
 Hierbei können IP-Adresse und Port natürlich variieren.
 
@@ -93,25 +96,27 @@ sollte.
 Starte nun die Anwendung so, dass Sie nur Verbindungen von `localhost`
 akzepiert. Die Parameter lassen sich folgendermassen anzeigen:
 
-    $ ./pingpong -help
+    ./pingpong -help
 
-Funktioniert der Zugriff von aussen?
+Funktioniert der Zugriff von aussen noch?
 
 Stoppen Sie die Anwendung nun und starten Sie sie so, dass sie auf Port `7000`
 lauscht, aber wieder Verbindungen von der Adresse `0.0.0.0` akzeptiert.
 
-Funktioniert der Zugriff von aussen (wieder)?
+Funktioniert der Zugriff von aussen (wieder) über diesen Port?
 
 ## Aufgabe 4: Local Forwarding
 
 Stellen Sie sicher, dass die Anwendung `pingpong` läuft, aber dass sie auf Port
-`7000` lauscht und nur Verbindungen von `127.0.0.1` entgegennimmt.
+`7000` lauscht (per Parameter angeben) und nur Verbindungen von `0.0.0.0`
+entgegennimmt (Standardeinstellung).
 
 Um von aussen auf den Server zugreifen zu können, muss nun ein Local Forwarding
-eingerichtet werden.
+eingerichtet werden. Öffnen Sie hierzu eine neue Shell (Bash).
 
 Richten Sie die entsprechende Weiterleitung ein, sodass man von aussen wieder
-auf die Anwendung zugreifen kann. Tipp: `ssh -L` ist weiter oben dokumentiert.
+auf die Anwendung zugreifen kann. Tipp: `ssh -L` ist unter [Local
+Forwarding](/ssh/intro/index.html#local-forwarding) dokumentiert.
 
 Mit welchen Parametern muss der `pingpong`-Server nun gestartet werden?
 
@@ -121,32 +126,38 @@ Unter welcher Adresse ist der `pingpong`-Server nun erreichbar?
 
 Stoppen Sie das `pingpong`-Programm und löschen Sie es:
 
-    $ rm pingpong
+    rm pingpong
 
-Kompilieren Sie das Programm nun für Ihr lokales System, z.B. für Windows:
+Unterbrechen Sie die SSH-Sitzung mit dem Port-Forwarding mit `exit` oder der
+Tastenkombination `[Ctrl]`-`[D]`.
 
-    $ GOOS=windows GOARCH=amd64 go build pingpong.go
+Kompilieren Sie das Programm nun für Ihr lokales System mit entsprechenden
+`GOOS`- und `GOARCH`-Parametern, um das Zielbetriebssystem und die
+Zielarchitektur festzulegen. Für Windows mit AMD64-Architektur lauten die
+Angaben beispielsweise:
+
+    GOOS=windows GOARCH=amd64 go build pingpong.go
 
 Es sollte ein Programm `pingpong.exe` erstellt worden sein.
 
 Für macOS mit ARM-CPUs sieht der Befehl folgendermassen aus:
 
-    $ GOOS=darwin GOARCH=arm64 go build pingpong.go
+    GOOS=darwin GOARCH=arm64 go build pingpong.go
 
 Hierbei wird eine Datei namens `pingpong` erzeugt.
 
-Öffnen Sie nun eine zweite Bash und kopieren Sie das Programm vom Server auf den
-lokalen Rechner:
+Verwenden Sie nun die zweite Bash und kopieren Sie das Programm vom Server auf
+den lokalen Rechner:
 
-    $ scp [Benutzername]@[IP-Adresse]:pingpong.exe .
+    scp user@[IP-Adresse]:pingpong.exe .
 
 Bzw. auf macOS:
 
-    $ scp [Benutzername]@[IP-Adresse]:pingpong .
+    scp user@[IP-Adresse]:pingpong .
 
 Führen Sie nun das Programm lokal aus und testen Sie es.
 
-Über welche URL kann das Programm angesprochen werden?
+Über welche URL kann das Programm lokal angesprochen werden?
 
 ## Aufgabe 7: Remote Forwarding
 
@@ -154,12 +165,12 @@ Um vom Server auf die lokale `pingpong`-Anwendung zugreifen zu können, muss ein
 Remote Forwarding eingerichtet werden.
 
 Richten Sie die entsprechende Weiterleitung ein, sodass der Zugriff vom Server
-auf den lokalen Rechner funktioniert. Tipp: `ssh -R` ist weiter oben
-dokumentiert.
+auf den lokalen Rechner funktioniert. Tipp: `ssh -R` ist unter [Remote
+Forwarding](/ssh/intro/index.html#remote-forwarding) dokumentiert.
 
 Um den Zugriff vom Server auf den lokalen Recher zu testen, kann das Programm
 `curl` verwendet werden:
 
-    $ curl http://[IP-Adresse]:[Port]/ping
+    curl http://[IP-Adresse]:[Port]/ping
 
 Über welche URL kann das Programm angesprochen werden?
