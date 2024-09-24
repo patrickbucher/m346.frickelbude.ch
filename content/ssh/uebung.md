@@ -159,7 +159,7 @@ Führen Sie nun das Programm lokal aus und testen Sie es.
 
 Über welche URL kann das Programm lokal angesprochen werden?
 
-## Aufgabe 7: Remote Forwarding
+## Aufgabe 6: Remote Forwarding
 
 Um vom Server auf die lokale `pingpong`-Anwendung zugreifen zu können, muss ein
 Remote Forwarding eingerichtet werden.
