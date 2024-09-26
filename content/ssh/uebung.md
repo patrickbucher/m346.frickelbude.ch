@@ -37,6 +37,13 @@ in der Bash eingeben:
 
     ssh user@[IP-Adresse]
 
+Ist der zu verwendende private Schlüssel _nicht_ unter `~/.ssh/id_ed25519` oder
+`~/.ssh/id_rsa` abgelegt, muss der Pfad zur entsprechenden Datei mit dem
+Parameter `-i` explizit angegeben werden, z.B. falls der Schlüssel unter
+`Documents/m346/ssh-key` abgelegt ist:
+
+    ssh -i ~/Documents/m346/ssh-key user@[IP-Adresse]
+
 Der Benutzername lautet immer `user`. Die IP-Adresse wird im Unterricht zur
 Verfügung gestellt.
 
