@@ -40,12 +40,13 @@ Computing»_](/theorie/definition) demonstriert werden. Wie geht man dabei vor?
    zwischen dem zu Lernenden und dem tatsächlich Gewussten klar erkennt.
 5. Entferne dich nun wieder vom Computer und lese das Blatt mit den ganzen
    Korrekturen und Ergänzungen noch einmal in Ruhe durch.
-6. Nun kommt ein wichtiger Hack: **Zerreise das Blatt** und entsorge es. Solange
-   die Information auf dem Papier vorhanden ist, glaubt das Gehirn, sich nicht
-   daran erinnern zu müssen. (Wir schreiben ja auch Einkaufszettel, um uns
-   _nicht_ an die zu kaufenden Artikel erinnern zu müssen.) Ist das Papier weg,
-   kann sich das Gehirn nicht mehr darauf verlassen und muss sich die
-   Information _merken_.
+6. Nun kommt ein wichtiger Hack: **Zerreise das Blatt** und entsorge es. (Noch
+   effektiver ist das _Verbrennen_ des Blattes, aber nur, wenn man sich im
+   Freien befindet.) Solange die Information auf dem Papier vorhanden ist,
+   glaubt das Gehirn, sich nicht daran erinnern zu müssen. (Wir schreiben ja
+   auch Einkaufszettel, um uns _nicht_ an die zu kaufenden Artikel erinnern zu
+   müssen.) Ist das Papier weg, kann sich das Gehirn nicht mehr darauf
+   verlassen und muss sich die Information _merken_.
 7. Mache nun irgend etwas anderes, aber beschäftige dich die nächsten paar
    Stunden _nicht_ mehr aktiv und vorsätzlich mit dem gelernten Thema.
 8. Wenn du einen Spaziergang (ohne Smartphone!) unternimmst, wirst du dich von
