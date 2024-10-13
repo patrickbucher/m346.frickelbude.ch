@@ -227,6 +227,202 @@ Ausgabe:
 Datenbestand. Beschreibe die Auswertung in eigenen Worten (was sie erreichen
 soll), formuliere den SQL-Befehl und halte die Ausgabe fest.
 
+DuckDB kann mit dem Befehl `exit` oder durch Betätigung der Tastenkombination
+`[Ctrl]`-`[D]` verlassen werden.
+
 ### Übung 2 (selbständig): Fussball-Ligatabellen
 
-TODO: siehe [leagues.zip](/files/leagues.zip)
+Das Archiv [leagues.zip](/files/leagues.zip) beinhaltet fiktive Spielergebnisse
+verschiedener europäischer Fussball-Liegen. Es kann folgendermassen entpackt
+werden:
+
+```bash
+unzip leagues.zip
+```
+
+Die Struktur des daraus resultierenden Verzeichnises `leagues` kann mit dem
+Befehl `tree` betrachtet werden:
+
+```bash
+tree leagues
+```
+
+Das Verzeichnis enthält ein Unterverzeichnis pro Liga (`bundesliga`, `la-liga`
+usw.). Jedes Unterverzeichnis enthält eine Reihe von JSON-Dateien; eine pro
+Spieltag (`day01.json`, `day02.json` usw.).
+
+Die Dateien sehen folgendermassen aus (z.B. `bundesliga/day01.json`, Auszug):
+
+```json
+[
+  {
+    "homeTeam": "Bayern München",
+    "awayTeam": "FSV Mainz 05",
+    "homeGoals": 2,
+    "awayGoals": 3
+  },
+  {
+    "homeTeam": "RB Leipzig",
+    "awayTeam": "Werder Bremen",
+    "homeGoals": 1,
+    "awayGoals": 2
+  },
+  …
+]
+```
+
+Jede Datei enthält eine Reihe von Spielen mit einer Heim- und einer
+Auswärtsmannschaft sowie deren erzielten Toren. Der obenstehende Auszug
+bezeichnet folgende Spielergebnisse:
+
+- Bayern München 2:3 FSV Mainz 05
+- RB Leipzig 1:2 Werder Bremen
+
+Aus diesen Speilergebnissen soll eine Ligatabelle berechnet werden. Bei der
+Bundesliga sieht diese folgendermassen aus:
+
+|  # | team                |  m |  p |  w |  t |  d | g+ | g- |  g= |
+|---:|---------------------|---:|---:|---:|---:|---:|---:|---:|----:|
+|  1 | SC Freiburg         | 34 | 62 | 18 |  8 |  8 | 55 | 34 |  21 |
+|  2 | Borussia Dortmund   | 34 | 59 | 18 |  5 | 11 | 50 | 36 |  14 |
+|  3 | Eintracht Frankfurt | 34 | 57 | 16 |  9 |  9 | 57 | 52 |   5 |
+|  4 | FSV Mainz 05        | 34 | 55 | 14 | 13 |  7 | 45 | 28 |  17 |
+|  5 | Holsten Kiel        | 34 | 55 | 15 | 10 |  9 | 43 | 39 |   4 |
+|  6 | 1. FC Heidenheim    | 34 | 50 | 13 | 11 | 10 | 41 | 29 |  12 |
+|  7 | Union Berlin        | 34 | 50 | 13 | 11 | 10 | 29 | 22 |   7 |
+|  8 | Bayern München      | 34 | 49 | 14 |  7 | 13 | 57 | 49 |   8 |
+|  9 | VfB Stuttgart       | 34 | 47 | 13 |  8 | 13 | 45 | 42 |   3 |
+| 10 | RB Leipzig          | 34 | 45 | 12 |  9 | 13 | 44 | 45 |  -1 |
+| 11 | Bayer Leverkusen    | 34 | 44 | 10 | 14 | 10 | 39 | 31 |   8 |
+| 12 | Mönchengladbach     | 34 | 43 | 10 | 13 | 11 | 27 | 33 |  -6 |
+| 13 | FC St. Pauli        | 34 | 43 | 11 | 10 | 13 | 31 | 37 |  -6 |
+| 14 | Werder Bremen       | 34 | 40 | 11 |  7 | 16 | 44 | 52 |  -8 |
+| 15 | Augsburg            | 34 | 39 |  9 | 12 | 13 | 30 | 44 | -14 |
+| 16 | VfL Wolfsburg       | 34 | 34 |  9 |  7 | 18 | 38 | 53 | -15 |
+| 17 | TSG Hoffenheim      | 34 | 34 | 10 |  4 | 20 | 27 | 51 | -24 |
+| 18 | VfL Bochum          | 34 | 27 |  5 | 12 | 17 | 15 | 40 | -25 |
+
+Die Spalten haben folgende Bedeutung:
+
+- `#`: Rang (absteigend sortiert nach Punkten und Tordifferenz)
+- `team`: Mannschaft
+- `m`: Anzahl Spiele ("matches")
+- `p`: Anzahl Punkte (3 pro Sieg, 1 pro Unentschieden, 0 pro Niederlage)
+- `w`: Anzahl Siege ("wins")
+- `t`: Anzahl Unentschieden ("ties")
+- `d`: Anzahl Niederlagen ("defeats")
+- `g+`: Anzahl erzielter Tore
+- `g-`: Anzahl kassierter Tore
+- `g=`: Tordifferenz (erzielte minus kassierte Tore)
+
+Zuerst soll DuckDB mit einer neuen Datenbank gestartet werden:
+
+```bash
+duckdb leagues-db
+```
+
+Das Schema der JSON-Dateien kann folgendermassen beschrieben werden:
+
+```sql
+describe from "leagues/bundesliga/day*.json";
+```
+
+**Aufgabe**: Erstellen Sie eine Sequenz namens `bundesliga_match_id` und eine
+Tabelle namens `bundesliga_matches`. Neben den vier Informationen aus den
+JSON-Dateien soll eine automatisch nummerierte ID aus der Sequenz
+`bundesliga_match_id` vergeben werden. Halten Sie die Befehle fest! Lesen Sie
+anschliessend die Daten der Bundesliga ein (`insert into … from
+"leagues/bundesliga/day*.json`).
+
+Tipp: Bei Unklarheiten schauen Sie oben bei [Übung
+1](#übung-1-geführt-vorratslager) nach.
+
+Die Tabelle sollte ungefähr folgendermassen aussehen (Auszug von `select * from
+bundesliga_matches;`):
+
+| id |      homeTeam       |    awayTeam     | homeGoals | awayGoals |
+|---:|---------------------|-----------------|----------:|----------:|
+| 1  | Bayern München      | FSV Mainz 05    | 2         | 3         |
+| 2  | RB Leipzig          | Werder Bremen   | 1         | 2         |
+| 3  | Eintracht Frankfurt | VfL Wolfsburg   | 0         | 2         |
+| 4  | SC Freiburg         | Augsburg        | 0         | 0         |
+| 5  | Bayer Leverkusen    | Mönchengladbach | 0         | 0         |
+
+Um die Spielergebnisse pro Mannschaft auswerten zu können, müssen diese Einträge
+auseinandergenommen werden, sodass für jedes Spiel zwei Einträge entstehen.
+Hierzu soll eine View namens `bundesliga_per_team` erstellt werden:
+
+```sql
+create view bundesliga_per_team as (
+    select id as gameId, homeTeam as team, homeGoals as goals_scored,
+    awayGoals as goals_conceded from bundesliga_matches
+    union
+    select id as gameId, awayTeam as team, awayGoals as goals_scored,
+    homeGoals as goals_conceded from bundesliga_matches
+);
+```
+
+Die View sollte ungefähr folgendermassen aussehen (Auszug von `select * from
+bundesliga_per_team;`):
+
+| gameId |        team         | goals_scored | goals_conceded |
+|-------:|---------------------|-------------:|---------------:|
+| 58     | 1. FC Heidenheim    | 1            | 0              |
+| 27     | FC St. Pauli        | 4            | 2              |
+| 74     | FSV Mainz 05        | 4            | 1              |
+| 79     | FC St. Pauli        | 1            | 2              |
+| 83     | Werder Bremen       | 1            | 4              |
+
+**Aufgabe**: Erstellen Sie anhand dieser Informationen eine neue View namens
+`bundesliga_result_day`, welche für jeden Eintrag die folgenden Informationen
+als berechnete Felder enthält:
+
+- Tordifferenz: `goals_scored` - `goals_conceded`
+- Anzahl Punkte: 3 für einen Sieg, 1 für ein Unentschieden, 0 für eine Niederlage
+    - siehe [`CASE`-Statement](https://duckdb.org/docs/sql/expressions/case.html)
+- Anzahl Siege: 1 falls es sich um einen Sieg handelt, 0 andernfalls
+- Anzahl Unentschieden: 1 falls es sich um ein Unentschieden handelt, 0 andernfalls
+- Anzahl Niederlagen: 1 falls es sich um eine Niederlage handelt, 0 andernfalls
+
+Halte Sie den dazu verwendeten Befehl fest.
+
+Die View sollte ungefähr folgendermassen aussehen (Auszug von `select * from
+bundesliga_result_day;`):
+
+|       team        | goals_scored | goals_conceded | goals_diff | points | wins | ties | defeats |
+|-------------------|-------------:|---------------:|-----------:|-------:|-----:|-----:|--------:|
+| RB Leipzig        | 1            | 2              | -1         | 0      | 0    | 0    | 1       |
+| VfB Stuttgart     | 0            | 0              | 0          | 1      | 0    | 1    | 0       |
+| SC Freiburg       | 0            | 0              | 0          | 1      | 0    | 1    | 0       |
+| Borussia Dortmund | 1            | 0              | 1          | 3      | 1    | 0    | 0       |
+| Werder Bremen     | 0            | 2              | -2         | 0      | 0    | 0    | 1       |
+
+Die Einträge dieser View entsprechen nun einer Mini-Tabelle pro Spieltag und
+Mannschaft. Nun sollen die Einträge pro Mannschaft aggregiert werden, indem man
+die Summe aller Felder berechnet und sie nach der Spalte `team` gruppiert.
+
+**Aufgabe**: Erstellen Sie eine View `bundesliga_table`, in welcher die Daten
+aus der View `bundesliga_result_day` wie beschrieben aggregiert werden. Die View
+sollte nach Punkten und Tordifferenz absteigend sortiert sein. Halten Sie den
+dazu verwendeten Befehl fest.
+
+Die Tabelle sollte ungefähr folgendermassen aussehen (Auszug aus `select * from
+bundesliga_table;`):
+
+| team                |  m |  p |  w |  t |  d | g+ | g- | g= |
+|---------------------|---:|---:|---:|---:|---:|---:|---:|---:|
+| SC Freiburg         | 34 | 62 | 18 |  8 |  8 | 55 | 34 | 21 |
+| Borussia Dortmund   | 34 | 59 | 18 |  5 | 11 | 50 | 36 | 14 |
+| Eintracht Frankfurt | 34 | 57 | 16 |  9 |  9 | 57 | 52 |  5 |
+| FSV Mainz 05        | 34 | 55 | 14 | 13 |  7 | 45 | 28 | 17 |
+| Holsten Kiel        | 34 | 55 | 15 | 10 |  9 | 43 | 39 |  4 |
+
+Der Rang muss noch separat berechnet werden, was mit folgendem Befehl
+bewerkstelligt werden kann:
+
+```sql
+select row_number() over() as '#', * from bundesliga_table;
+```
+
+Das Vorgehen kann mit einer weiteren Liga und anhand der festgehaltenen Befehle
+wiederholt werden.
