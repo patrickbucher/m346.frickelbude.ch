@@ -1,0 +1,13 @@
+name,unit,price,quantity,category,vegan
+Gruyère,kg,22.35,16.4,dairy,false
+Steak,kg,39.23,4.7,meat,false
+Milk,l,1.65,97.4,dairy,false
+Eggplant,kg,4.5,5.9,vegetables,true
+Croissant,piece,1.30,27,pastries,false
+Whole-Grain Bread,kg,4.25,17,pastries,true
+Eggs,piece,0.65,234,proteins,false
+Olive Oil,l,10.95,54,oils,true
+Coconut Oil,l,7.30,45,oils,true
+Peanuts,kg,8.20,23,nuts,true
+Candy Bar,piece,0.95,64,candy,false
+Gummi Bears,kg,5.95,19,candy,false
