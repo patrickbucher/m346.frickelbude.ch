@@ -20,7 +20,9 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
         - [/theorie/vms-container-serverless/](/theorie/vms-container-serverless/)
     4. Kennt Cloud Services, um die drei Hauptdatentypen (Strukturierte,
        teilweise strukturierte und unstrukturierte Daten) zu speichern.
-        - TODO: Hauptdatentypen
+        - [/hauptdatentypen](/hauptdatentypen)
+        - [/hauptdatentypen/strukturierte](/hauptdatentypen/strukturierte)
+        - [/hauptdatentypen/strukturierte/duckdb](/hauptdatentypen/strukturierte/duckdb)
     5. Kennt die Verteilung der Verantwortlichkeiten für den sicheren Betrieb
        von Cloud Services und die grundlegenden Richtlinien und
        Datenschutzgarantien der grossen Cloud Provider.
