@@ -128,23 +128,105 @@ Zur Kontrolle können die Daten aus der Tabelle ausgegeben werden:
 select * from foodstock;
 ```
 
-Diese sollte ungefähr folgendermassen aussehen:
+Diese sollte ungefähr folgendermassen aussehen (Ausgabe gekürzt):
 
 | id |       name        | unit  | price | quantity |  category  | vegan |
 |---:|-------------------|-------|------:|---------:|------------|------:|
 | 1  | Gruyère           | kg    | 22.35 | 16.4     | dairy      | false |
 | 2  | Steak             | kg    | 39.23 | 4.7      | meat       | false |
 | 3  | Milk              | l     | 1.65  | 97.4     | dairy      | false |
-| 4  | Eggplant          | kg    | 4.5   | 5.9      | vegetables | true  |
-| 5  | Croissant         | piece | 1.3   | 27.0     | pastries   | false |
-| 6  | Whole-Grain Bread | kg    | 4.25  | 17.0     | pastries   | true  |
-| 7  | Eggs              | piece | 0.65  | 234.0    | proteins   | false |
-| 8  | Olive Oil         | l     | 10.95 | 54.0     | oils       | true  |
-| 9  | Coconut Oil       | l     | 7.3   | 45.0     | oils       | true  |
-| 10 | Peanuts           | kg    | 8.2   | 23.0     | nuts       | true  |
-| 11 | Candy Bar         | piece | 0.95  | 64.0     | candy      | false |
-| 12 | Gummi Bears       | kg    | 5.95  | 19.0     | candy      | false |
+
+Anhand dieses Datenbestandes sollen nun Auswertungen vorgenommen werden. Damit
+die Abfragen einfach gehalten werden können, empfiehlt sich der Gebrauch
+sogenannter _Sichten_ oder _Ansichten_ (engl. _Views_).
+
+Eine View lässt sich wie eine Tabelle abfragen, ist aber nichts weiter als eine
+gespeicherte Abfrage. Im Gegensatz zu einer kopierten Tabelle sind Views darum
+immer aktuell: Wird die zugrundeliegende Tabelle angepasst, liefert die View
+auch die aktualisierten Daten zurück.
+
+Um den Wert des Lebensmittel-Bestandes berechnen zu können, müssen die
+Preisangaben mit den Mengenangaben multipliziert werden. Hierzu soll eine View
+namens `foods_worth` erstellt werden:
+
+```sql
+create view foods_worth as (
+    select id, name, unit, price, quantity, (price * quantity) as worth, category, vegan
+    from foodstock
+);
+```
+
+Das Feld `worth` ist ein _berechnetes Feld_: das Produkt aus Preis (`price`) und
+Menge (`quantity`). Bei jeder Abfrage der View wird dieser Wert neu berechnet.
+
+Diese View kann nun wie eine Tabelle abgefragt werden:
+
+```sql
+select * from foods_worth;
+```
+
+Das Ergebnis sollte ungefähr folgendermassen aussehen (Ausgabe gekürzt):
+
+| id |       name        | unit  | price | quantity |       worth        |  category  | vegan |
+|---:|-------------------|-------|------:|---------:|-------------------:|------------|------:|
+| 1  | Gruyère           | kg    | 22.35 | 16.4     | 366.53999999999996 | dairy      | false |
+| 2  | Steak             | kg    | 39.23 | 4.7      | 184.381            | meat       | false |
+| 3  | Milk              | l     | 1.65  | 97.4     | 160.71             | dairy      | false |
+
+Die Spalte `worth` beinhaltet nun den Wert des Warenbestands für jedes einzelne
+Lebensmittel.
+
+Es lassen sich nun weitere Auswertungen anstellen, z.B. der Wert pro Kategorie
+aller nicht-veganen Produkte. Hierzu wird nach der Spalte `category` gruppiert
+und dabei die Spalte `worth` aufsummiert:
+
+```sql
+select sum(worth) as category_worth, category
+from foods_worth
+where vegan = false
+group by category
+having category_worth > 150
+order by category_worth desc;
+```
+
+- Mit `sum(worth)` wird die Spalte `worth` aufsummiert.
+  gruppiert.
+- Mit `where` wird eine Filter-Bedingung auf die Originaldaten angewendet.
+  Konkret werden mit `where vegan = false` werden nur Produkte berücksichtigt,
+  die nicht vegan sind.
+- Mit `group by category` werden die Einträge nach der Spalte `category`
+- Mit `having` wird eine Filter-Bedingung auf die _aggregierten_ (d.h.
+  gruppierten bzw. summierten) Daten angewendet. Konkret werden mit `having
+  category_worth > 150` nur Kategorien zurückgeliefert, deren Gesamtwert 150.-
+  übersteigt.
+- Mit `order by category_worth desc` werden die Einträge absteigend
+  ("descending") nach ihrem Gesamtwert sortiert.
+
+Ausgabe:
+
+| category_worth | category |
+|---------------:|----------|
+| 527.25         | dairy    |
+| 184.381        | meat     |
+| 173.85         | candy    |
+| 152.1          | proteins |
+
+Schliesslich kann der Gesamtwert des Vorratslagers berechnet werden:
+
+```sql
+select sum(worth) as total from foods_worth;
+```
+
+Ausgabe:
+
+|       total        |
+|-------------------:|
+| 2279.8810000000003 |
+
+**Aufgabe**: Überlege dir mindestens eine weitere Auswertung zu diesem
+Datenbestand. Beschreibe die Auswertung in eigenen Worten (was sie erreichen
+soll), formuliere den SQL-Befehl und halte die Ausgabe fest.
 
 ### Übung 2 (selbständig): Fussball-Ligatabellen
 
-[leagues.zip](/files/leagues.zip)
+TODO: siehe [leagues.zip](/files/leagues.zip)
