@@ -14,7 +14,7 @@ vorgestellt. Anhand von Übungen wird zu jeder Art von Daten eine bestimmte
 Technologie betrachtet.
 
 1. [strukturierte Daten](/hauptdatentypen/strukturierte/)
-    - DuckDB
+    - [DuckDB](/hauptdatentypen/strukturierte/duckdb)
 2. halbstrukturierte Daten
     - Redis
 3. unstrukturierte Daten

@@ -33,3 +33,19 @@ title = "Prüfung 2: Lernziele"
 
 - [Einführung](/ssh/intro/)
 - [Übung](/ssh/uebung/)
+
+## Hauptdatentypen
+
+1. Sie strukturierte, halbstrukturierte und unstrukturierte Daten anhand von gegebenen Beispieldaten unterscheiden und diese Unterscheidung begründen.
+
+### Strukturierte Daten
+
+1. Sie können die Eigenschaften strukturierter Daten benennen (Felder, Datentypen, Zusatzinformationen) und diese zur Einordnung gegebener Beispieldaten heranziehen.
+2. Sie können verschiedene Repräsentationen strukturierter Daten voneinander unterscheiden (Datenstrukturen, verschachtelte Dokumente, relationale Datenbanken) und Transformationen von Beispieldaten erläutern (z.B. Verschachtelung durch Fremdschlüssel ersetzen).
+3. Sie können zwischen SQL- und NoSQL-Datenbanken sowie zwischen OLTP- und OLAP-Datenbanken unterscheiden, deren Einsatzzwecke benennen und die Technologie DuckDB anhand dieser Begriffe einordnen.
+
+### Unterlagen
+
+- [Hauptdatentypen](/hauptdatentypen)
+- [Strukturierte Daten](/hauptdatentypen/strukturierte)
+- [DuckDB](/hauptdatentypen/strukturierte/duckdb)
