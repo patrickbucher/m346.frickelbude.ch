@@ -24,6 +24,11 @@ Dienst, sondern ein Werkzeug. Eine der Hauptstärken von DuckDB ist das Einlesen
 von Daten aus verschiedenen Quellen in verschiedenen Formaten ‒ eine Eigenschaft
 die gerade im Cloud Computing sehr nützlich ist.
 
+Die umfassende [Dokumentation](https://duckdb.org/docs/) enthält viele nützliche
+Informationen, z.B. zum [SQL-Dialekt](https://duckdb.org/docs/sql/introduction)
+von DuckDB. Mit [MotherDuck](https://motherduck.com/) steht ein Cloud-Angebot
+für DuckDB zur Verfügung.
+
 ## Installation
 
 Auf der im Unterricht zur Verfügung gestellten Cloud-VM ist DuckDB bereits
