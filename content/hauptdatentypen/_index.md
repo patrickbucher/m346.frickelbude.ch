@@ -5,7 +5,7 @@ weight = 7
 +++
 
 Im Modul 346 unterscheiden wir zwischen drei Arten bzw. Formen, in denen Daten
-vorliegen können: **strukturierte**, **halbstrukturierte** und
+vorliegen können: **strukturierte**, **teilweise strukturierte** und
 **unstrukturierte** Daten.
 
 Für jede Form von Daten gibt es Software, womit diese Daten verwaltet und
@@ -15,7 +15,7 @@ Technologie betrachtet.
 
 1. [strukturierte Daten](/hauptdatentypen/strukturierte/)
     - [DuckDB](/hauptdatentypen/strukturierte/duckdb)
-2. halbstrukturierte Daten
+2. teilweise strukturierte Daten
     - Redis
 3. unstrukturierte Daten
     - Minio (S3)
