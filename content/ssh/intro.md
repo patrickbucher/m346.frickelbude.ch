@@ -47,7 +47,9 @@ Eine ältere Lösung zum Fernzugriff auf andere Systeme ist _Telnet_. Damit läs
 sich eine textorientierte Verbindung zu beispielsweise einem Webserver
 aufnehmen, indem man eine Adresse und einen Port angibt:
 
-    $ telnet ADDRESS PORT
+```bash
+telnet ADDRESS PORT
+```
 
 Ist eine Verbindung aufgenommen, kann man interaktiv mit diesem System
 kommunizieren. Spricht man beispielsweise einen Webserver auf Port 80 an, kann
@@ -94,35 +96,47 @@ Systemen.
 
 Ein SSH-Schlüsselpaar kann mit dem Programm `ssh-keygen` erstellt werden:
 
-    $ ssh-keygen -t ed25519 -C vorname_nachname@sluz.ch
+```bash
+ssh-keygen -t ed25519 -C vorname_nachname@sluz.ch
+```
 
 Eine interaktive Sitzung mit einem Server kann folgendermassen gestartet werden:
 
-    $ ssh user@server
+```bash
+ssh user@server
+```
 
 Haben der lokale Benutzer und derjenige auf dem Server den gleichen Namen, kann
 der Benutzername auch weggelassen werden:
 
-    $ ssh server
+```bash
+ssh server
+```
 
 Beim Verbindungsaufbau muss man das Passwort vom Benutzer eingeben. Dem kann man
 Abhilfe schaffen, indem man seinen öffentlichen SSH-Schlüssel auf das entfernte
 System kopiert:
 
-    $ ssh-copy-id user@server
+```bash
+ssh-copy-id user@server
+```
 
 Es ist auch möglich, keine interaktive Sitzung zu eröffnen, sondern nur einen
 einzigen Befehl auf dem entfernten System auszuführen:
 
-    $ ssh server 'sudo apt install htop'
+```bash
+ssh server 'sudo apt install htop'
+```
 
 Mit diesem Befehl wird auf einem Debian-artigen Linux-Server das Programm `htop`
 installiert.
 
 Weiter können Daten mit `scp` verschlüsselt übertragen werden:
 
-    $ scp ~/script.py server:bin/
-    $ scp server:/backup/db.sql ~/backup.sql
+```bash
+scp ~/script.py server:bin/
+scp server:/backup/db.sql ~/backup.sql
+```
 
 Der erste Befehl kopiert die Datei `script.py` aus dem lokalen Home-Verzeichnis
 ins `bin`-Unterverzeichnis vom Home-Verzeichnis des Benutzers auf dem Server.
@@ -178,7 +192,9 @@ _nicht_ offen sein, denn die Kommunikation findet über den SSH-Port `22` statt.
 Möchte man vom Client her eine Weiterleitung vom lokalen Port `1234` auf den
 entfernten Port `5432` erstellen, verwendet man den folgenden Befehl:
 
-    $ ssh -L localhost:1234:server:5432 user@server
+```bash
+ssh -L localhost:1234:server:5432 user@server
+```
 
 Erklärung:
 
@@ -218,7 +234,9 @@ Möchte man vom Server her eine Weiterleitung vom Port `8080`, worauf die
 Anwendung läuft, auf den lokalen Port `1234`, worauf die Anwendung auf dem
 Entwickler-Computer läuft, einrichten, verwendet man den folgenden Befehl:
 
-    $ ssh -R server:8080:localhost:1234 user@server
+```bash
+ssh -R server:8080:localhost:1234 user@server
+```
 
 Erklärung:
 
