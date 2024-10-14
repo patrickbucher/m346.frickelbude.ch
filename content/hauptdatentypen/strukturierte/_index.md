@@ -198,7 +198,7 @@ im Gegensatz zu den Klassen nicht über eine Verschachtelung ("eine Person hat
 eine Liste von Anstellungen") sondern über eine Referenzierung ("jede Anstellung
 verweist auf eine Person") mittels Fremdschlüssel gelöst. Zum Zweck der
 Eindeutigkeit werden die Entitäten um künstliche `id`-Attribute ergänzt, die
-mithlfe einer Sequenz automatisch durchnummeriert werden.
+mithilfe einer Sequenz automatisch durchnummeriert werden.
 
 Die konkreten Daten können mit SQL (genauer: Data Manipulation Language, DML) in
 die Datenbank eingefügt werden:
