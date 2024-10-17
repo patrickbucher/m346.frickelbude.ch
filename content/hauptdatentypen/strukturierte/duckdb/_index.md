@@ -9,8 +9,8 @@ Datenbanken lassen sich in zwei Kategorien einteilen:
 
 Die meisten relationalen Datenbanken (PostgreSQL, Microsoft SQL Server, MySQL,
 SQLite) sind OLTP-Datenbanken. Sie werden als persistenter Datenspeicher von
-Anwendungen. Die Anwendung verändert den Zustand der Datenbank laufend in
-sogenannten Transaktionen (z.B. Mutation eines Kunden-Datensatzes).
+Anwendungen eingesetzt. Die Anwendung verändert den Zustand der Datenbank
+laufend in sogenannten Transaktionen (z.B. Mutation eines Kunden-Datensatzes).
 
 OLAP-Datenbanken dienen zur Auswertung bestehender Datensätze. Dabei steht nicht
 das laufende Verändern des Datenbestandes im Vordergrund, sondern die Analyse
