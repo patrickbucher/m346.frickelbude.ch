@@ -163,7 +163,7 @@ Eine Software, die Zugriff auf diese Daten bietet, kann dem Benutzer die Daten
 
 Hierbei liegen Personal und Anstellungen verschachtelt vor ‒ wie es auch mit den
 beiden Klassen modelliert worden ist. Diese Repräsentation der Daten könnte auch
-direkt in eier Dokument- bzw. NoSQL-Datenbank abgelegt werden.
+direkt in einer Dokument- bzw. NoSQL-Datenbank abgelegt werden.
 
 ### Relationale Datenbank
 
