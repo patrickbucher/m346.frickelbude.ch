@@ -36,7 +36,7 @@ title = "Prüfung 2: Lernziele"
 
 ## Hauptdatentypen
 
-1. Sie strukturierte, teilweise strukturierte und unstrukturierte Daten anhand
+1. Sie können strukturierte, teilweise strukturierte und unstrukturierte Daten anhand
    von gegebenen Beispieldaten unterscheiden und diese Unterscheidung begründen.
 
 ### Strukturierte Daten
