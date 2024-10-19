@@ -11,6 +11,18 @@ einen Dienst, den man als (entferntes) "Wörterbuch" verwenden kann. Dies soll
 heissen, dass man in diesem Service Werte anhand eines Schlüssels ablegen und
 nachschlagen kann.
 
+> [!NOTE]
+> Redis ist eine OpenSource-Software, die unter der BSD-Lizenz entwickelt worden
+> ist. 2024 ist das Projekt jedoch auf eine andere Lizenz umgestiegen, womit
+> Redis Status als OpenSource-Software umstritten ist. Mit
+> [Valkey](https://valkey.io/) (BSD-Lizenz) und
+> [Redict](https://codeberg.org/redict/redict) (LGPL-Lizenz) gibt es zwei
+> _Forks_ (d.h. Abspaltungen) von Redis, die aktiv unter einer OpenSource-Lizenz
+> weiterentwickelt werden. Da derzeit (Stand: Oktober 2024) einzig Redis unter
+> den Standardpaketquellen von Debian zur Verfügung steht, soll in diesem Modul
+> bis auf Weiteres Redis zum Einsatz kommen. Längerfristig dürfte sich jedoch
+> Valkey als OpenSource-Variante durchsetzen.
+
 ### Redis als Nachschlagewerk
 
 Die Schlüssel müssen _eindeutig_ sein, damit man sie zum Nachschlagen von Werten
