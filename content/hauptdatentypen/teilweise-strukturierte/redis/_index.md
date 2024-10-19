@@ -312,36 +312,31 @@ machen.
 
 ### Übung 0: Mit Redis verbinden
 
-Verbinden Sie sich per SSH mit Ihrer virtuellen Maschine. Überprüfen Sie, ob
-Redis läuft:
+Verbinden Sie sich mittels `redis-cli` mit der Datenbank:
 
-    $ systemctl status redis
-
-Falls Sie `Active: active (running)` lesen, läuft Redis.
-
-Andernfalls können Sie Redis folgendermassen starten:
-
-    $ sudo systemctl start redis.service
-
-Verbinden Sie sich nun mittels `redis-cli` mit der Datenbank:
-
-    $ redis-cli
-    127.0.0.1:6379>
+```plain
+$ redis-cli
+127.0.0.1:6379>
+```
 
 Es sollte nun die Eingabeaufforderung `127.0.0.1:6379>` erscheinen.
 
 Setzen Sie den Befehl `PING` ab, der `PONG` zurückgeben sollte:
 
-    127.0.0.1:6379> PING
-    PONG
+```plain
+127.0.0.1:6379> PING
+PONG
+```
 
 Hilfe zu einem Befehl bekommen Sie mit dem `HELP`-Befehl:
 
-    > HELP PING
+```plain
+> HELP PING
 
-      PING [message]
-      summary: Ping the server
-      …
+  PING [message]
+  summary: Ping the server
+  …
+```
 
 Mit `[Ctrl]-[D]` oder `[Ctrl]-[C]` können Sie die Sitzung beenden.
 
@@ -358,6 +353,8 @@ persönlichen Steckbrief abzuspeichern. Speichern Sie die folgenden Angaben ab:
 - Alter (in ganzen Jahren)
 - Wohnort
 - Lieblingsessen
+
+Überlegen Sie sich vorher eine geeignete Struktur für die Schlüssel.
 
 Verwenden Sie anschliessend den
 [`MSET`](https://redis.io/commands/mset/)-Befehl, um den persönlichen Steckbrief
@@ -456,18 +453,29 @@ Sie diese.
 
 ### Zusatzübung B: Passwort vergeben
 
-[Finden Sie
-heraus](https://redis.io/docs/latest/operate/oss_and_stack/management/config-file/),
-wie man in der Konfigurationsdatei `/etc/redis/redis.conf` ein Passwort
-definiert. Setzen Sie ein Passwort, und starten Sie Redis neu:
+Finden Sie heraus, wie man in der Konfigurationsdatei `/etc/redis/redis.conf`
+ein Passwort definiert. Bearbeiten Sie die Datei dazu mit einem Texteditor wie
+z.B. `nano`:
 
-    $ sudo systemctl restart redis.service
+```plain
+sudo vim /etc/redis/redis.conf
+```
+
+Tipp: Suchen Sie nach `requirepass`.
+
+Setzen Sie ein Passwort, und starten Sie Redis neu:
+
+```plain
+sudo systemctl restart redis.service
+```
 
 Anschliessend funktioniert Redis nicht mehr ohne Authentifizierung:
 
-    $ redis-cli
-    127.0.0.1:6379> PING
-    (error) NOAUTH Authentication required.
+```plain
+$ redis-cli
+127.0.0.1:6379> PING
+(error) NOAUTH Authentication required.
+```
 
 Finden Sie drei Wege, sich zu authentifizieren:
 
