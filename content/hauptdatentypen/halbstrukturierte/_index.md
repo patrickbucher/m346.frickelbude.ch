@@ -3,18 +3,43 @@ title = "Halbstrukturierte Daten"
 weight = 2
 +++
 
+Der Begriff der _halbstrukturierten_ oder _semistrukturierten_ Daten ist weniger
+genau definiert als derjenige der _strukturierten_ Daten. Manche Definitionen
+des Begriffs verwenden das Vorhandensein von _Metadaten_ (Zusatzdaten) als
+Kriterium: Demnach sind halbstrukturierte Daten unstrukturierte Daten, die um
+Meta-Daten angereichert worden sind. Anhand dieser Metadaten (z.B.
+Erstellungsdatum, Autor usw.) lassen sich die sonst unstrukturierten Daten
+einordnen.
+
+In anderen Definitionen werden halbstrukturierte Daten als Datenformate
+angesehen, deren Form zwar vorgegeben ist (z.B. JSON, XML, CSV), die konkreten
+Inhalte jedoch nicht einem bestimmten Schema folgen sondern variieren können.
+
 Im Block zu [strukturierten Daten](/hauptdatentypen/strukturierte) haben wir
-gesehen, dass sich Objekte aus der realen Welt im Programmcode durch Klassen
-bzw. Strukturen und auf Datenbanken durch Relationen bzw. Tabellen ausdrücken
+gesehen, dass sich Objekte aus der realen Welt im Programmcode mittels Klassen
+bzw. Strukturen und auf Datenbanken mittels Relationen bzw. Tabellen abbilden
 lassen.
 
-In der Informatik bildet man jedoch nicht nur Objekte aus der realen Welt wie
-z.B. Personen oder Adressen ab, sondern oftmals auch nur Teilaspekte von diesen
+In der Informatik bildet man nicht nur Objekte aus der realen Welt wie z.B.
+Personen oder Adressen ab, sondern oftmals auch nur Teilaspekte von diesen
 Objekten, z.B. eine Liste bekannter Vornamen oder eine Zuordnung von
 Postleitzahlen zu Orten. Solche Sachverhalte bildet man im Programmcode durch
 sogenannte _abstrakte Datentypen_ ab, die persistent in verschiedenen Arten
 von Services verwaltet werden können (z.B. in einem _Key-Value-Store_ oder in
 einer _Time-Series-Datenbank_).
+
+Diese abstrakten Datentypen müssen für einen konkreten Einsatzzweck genauer
+spezifiziert werden. Verwendet man eine Liste, muss man sich bewusst sein,
+welchen Datentyp die einzelnen Listenelemente haben. Verwendet man eine Map,
+muss man für die Schlüssel und die Werte einen Datentyp definieren.
+
+Im Rahmen dieses Moduls sollen halbstrukturierte Daten als abstrakte Datentypen
+betrachtet werden, die sich über einen Service verwalten und bei Bedarf
+persistent abspeichern lassen. Im Gegensatz zu strukturierten Daten kann dieser
+Service jedoch nur gewisse Eigenschaften dieser Daten garantieren (z.B. ob es
+sich um eine Liste mit mehrdeutigen oder um eine Menge mit eindeutigen Elementen
+handelt), aber kein Schema für diese Daten forcieren (z.B. dass ein
+Listeneintrag über einen Vor- und Nachnamen verfügen muss).
 
 ## Abstrakte Datentypen
 
@@ -28,36 +53,23 @@ Möchte man beispielsweise die Hierarchie eines Dateisystems oder ein Organigram
 einer Firma abbilden, eignet sich hierzu ein _Baum_ (engl. _Tree_) als
 abstrakter Datentyp. Möchte man hingegen bloss eine Reihe von Werten
 abspeichern, ist ein Array oder eine Liste der geeignete abstrakte Datentyp.
-Sind die Elemente einer Liste bzw. eines Arrays eindeutig, kann man diese als
-eine Menge (engl. _Set_) abbilden. Möchte man Werte nach einem bestimmten
-Schlüssel nachschlagen können, sind _Maps_ bzw. _Hashes_ die richtige Wahl.
+Sind die Elemente einer Liste bzw. eines Arrays eindeutig, und ist deren
+Reihenfolge nicht relevant, kann man diese als eine Menge (engl. _Set_)
+abbilden. Möchte man Werte nach einem bestimmten Schlüssel nachschlagen können,
+sind _Maps_ bzw. _Hashes_ die richtige Wahl.
 
 ### Arrays
 
 Ein _Array_ ist eine Datenstruktur, welche ihre Elemente unter Indizes von
-`[0..n[` ablegt, d.h. 0 (inklusiv) ist der kleinste Index, n (exklusiv,
+`[0..n[` ablegt, d.h. 0 (inklusiv) ist der kleinste Index, `n` (exklusiv,
 d.h.`n-1`) ist der höchste Index.
 
 ![Arrays](/img/redis-array.png)
 
-### Maps bzw. Hashes
-
-Eine _Map_ oder ein _Hash_ ist eine Datenstruktur, die arbiträre d.h. beliebige
-Indizes unterstützt:
-
-![Maps](/img/redis-map.png)
-
-Die Indizes müssen auch hier eindeutig sein, aber keinem bestimmten Schema
-folgen. Die Indizes kann man sich als eine Menge (_Set_) vorstellen, in welcher
-alle Elemente eindeutig sein müssen.
-
-Maps haven in verschiedenen Programmiersprachen verschiedene Bezeichnungen:
-_Dictionary_ (Python), _Hash_ (Ruby), _Table_ (Lua)
-
 ### Listen
 
 Im Gegensatz zu Arrays werden Listen nicht über einen Index geordnet, sondern
-speichern zu jedem Element den Nachfolger ab:
+speichern zu jedem Element eine Referenz auf dessen Nachfolger ab:
 
 ![Listen](/img/redis-list.png)
 
@@ -99,12 +111,25 @@ Elementen. Betrachten wir die folgenden beiden Mengen A und B:
 
 Auf diese Mengen können verschiedene _Mengenoperationen_ angewendet werden:
 
-- Schnittmenge: $ A \cup B = \\{1, 2, 3, 4, 5, 6, 8, 10 \\} $
-- Vereinigungsmenge: $ A \cap B = \\{2, 4\\} $
+- Schnittmenge: $ A \cap B = \\{2, 4\\} $
+- Vereinigungsmenge: $ A \cup B = \\{1, 2, 3, 4, 5, 6, 8, 10 \\} $
 - Differenz ("A ohne B"): $ A - B = \\{1, 3, 5\\} $
 - Differenz ("B ohne A"): $ B - A = \\{6, 8, 10\\} $
 
-Die Schlüssel einer Map sind selber als Set zu verstehen.
+### Maps bzw. Hashes
+
+Eine _Map_ oder ein _Hash_ ist eine Datenstruktur, die arbiträre d.h. beliebige
+Indizes unterstützt:
+
+![Maps](/img/redis-map.png)
+
+Die Indizes müssen auch hier eindeutig sein, aber keinem bestimmten Schema
+folgen. Die Indizes kann man sich als eine Menge (_Set_) vorstellen, in welcher
+alle Elemente eindeutig sein müssen.
+
+Maps haven in verschiedenen Programmiersprachen verschiedene Bezeichnungen:
+_Dictionary_ (Python), _Hash_ (Ruby), _Table_ (Lua) usw.
+
 
 ## Weiterführende Literatur
 
