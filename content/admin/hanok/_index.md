@@ -23,6 +23,8 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
         - [/hauptdatentypen](/hauptdatentypen)
         - [/hauptdatentypen/strukturierte](/hauptdatentypen/strukturierte)
         - [/hauptdatentypen/strukturierte/duckdb](/hauptdatentypen/strukturierte/duckdb)
+        - [/hauptdatentypen/teilweise-strukturierte](/hauptdatentypen/teilweise-strukturierte)
+        - [/hauptdatentypen/teilweise-strukturierte/redis](/hauptdatentypen/teilweise-strukturierte/redis)
     5. Kennt die Verteilung der Verantwortlichkeiten für den sicheren Betrieb
        von Cloud Services und die grundlegenden Richtlinien und
        Datenschutzgarantien der grossen Cloud Provider.

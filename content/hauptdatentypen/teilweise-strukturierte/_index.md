@@ -1,53 +1,53 @@
 +++
-title = "Halbstrukturierte Daten"
+title = "Teilweise Strukturierte Daten"
 weight = 2
 +++
 
-Der Begriff der _halbstrukturierten_ oder _semistrukturierten_ Daten ist weniger
-genau definiert als derjenige der _strukturierten_ Daten. Manche Definitionen
-des Begriffs verwenden das Vorhandensein von _Metadaten_ (Zusatzdaten) als
-Kriterium: Demnach sind halbstrukturierte Daten unstrukturierte Daten, die um
-Meta-Daten angereichert worden sind. Anhand dieser Metadaten (z.B.
-Erstellungsdatum, Autor usw.) lassen sich die sonst unstrukturierten Daten
-einordnen.
+Der Begriff der _teilweise strukturierten_, _halbstrukturierten_ oder
+_semistrukturierten_ Daten ist weniger genau definiert als derjenige der
+_strukturierten_ Daten. Manche Definitionen des Begriffs verwenden das
+Vorhandensein von _Metadaten_ (Zusatzdaten) als Kriterium: Demnach sind
+teilweise strukturierte Daten unstrukturierte Daten, die um Meta-Daten
+angereichert worden sind. Anhand dieser Metadaten (z.B. Erstellungsdatum, Autor
+usw.) lassen sich die sonst unstrukturierten Daten (z.B. Dokumente) einordnen.
 
-In anderen Definitionen werden halbstrukturierte Daten als Datenformate
+In anderen Definitionen werden teilweise strukturierte Daten als Datenformate
 angesehen, deren Form zwar vorgegeben ist (z.B. JSON, XML, CSV), die konkreten
 Inhalte jedoch nicht einem bestimmten Schema folgen sondern variieren können.
 
 Im Block zu [strukturierten Daten](/hauptdatentypen/strukturierte) haben wir
 gesehen, dass sich Objekte aus der realen Welt im Programmcode mittels Klassen
-bzw. Strukturen und auf Datenbanken mittels Relationen bzw. Tabellen abbilden
-lassen.
+bzw. Strukturen und auf Datenbanken mittels Relationen bzw. Tabellen bzw. in
+NoSQL-Datenbanken beispielsweise als Dokumente abbilden lassen.
 
 In der Informatik bildet man nicht nur Objekte aus der realen Welt wie z.B.
 Personen oder Adressen ab, sondern oftmals auch nur Teilaspekte von diesen
 Objekten, z.B. eine Liste bekannter Vornamen oder eine Zuordnung von
 Postleitzahlen zu Orten. Solche Sachverhalte bildet man im Programmcode durch
 sogenannte _abstrakte Datentypen_ ab, die persistent in verschiedenen Arten
-von Services verwaltet werden können (z.B. in einem _Key-Value-Store_ oder in
-einer _Time-Series-Datenbank_).
+von Services verwaltet werden können (z.B. in einem _Key-Value-Store_, in einer
+_Message Queue_ oder in einer _Time-Series-Datenbank_).
 
 Diese abstrakten Datentypen müssen für einen konkreten Einsatzzweck genauer
 spezifiziert werden. Verwendet man eine Liste, muss man sich bewusst sein,
 welchen Datentyp die einzelnen Listenelemente haben. Verwendet man eine Map,
 muss man für die Schlüssel und die Werte einen Datentyp definieren.
 
-Im Rahmen dieses Moduls sollen halbstrukturierte Daten als abstrakte Datentypen
-betrachtet werden, die sich über einen Service verwalten und bei Bedarf
-persistent abspeichern lassen. Im Gegensatz zu strukturierten Daten kann dieser
-Service jedoch nur gewisse Eigenschaften dieser Daten garantieren (z.B. ob es
-sich um eine Liste mit mehrdeutigen oder um eine Menge mit eindeutigen Elementen
-handelt), aber kein Schema für diese Daten forcieren (z.B. dass ein
+Im Rahmen dieses Moduls sollen teilweise strukturierte Daten als abstrakte
+Datentypen betrachtet werden, die sich über einen Service verwalten und bei
+Bedarf persistent abspeichern lassen. Im Gegensatz zu strukturierten Daten kann
+dieser Service jedoch nur gewisse Eigenschaften dieser Daten garantieren (z.B.
+ob es sich um eine Liste mit mehrdeutigen oder um eine Menge mit eindeutigen
+Elementen handelt), aber kein Schema für diese Daten forcieren (z.B. dass ein
 Listeneintrag über einen Vor- und Nachnamen verfügen muss).
 
 ## Abstrakte Datentypen
 
-Im Gegensatz zu einem konkreten Datentypen wie einer `class Person` oder `struct
-Address` sind abstrakte Datentypen weniger konkret auf ein bestimmtes
+Im Gegensatz zu einem konkreten Datentyp wie einer `class Person` oder `struct
+Address` sind abstrakte Datentypen weniger spezifisch auf ein bestimmtes
 Einsatzgebiet eingeschränkt. Man kann sie sehr flexibel für die verschiedensten
 Probleme verwenden, wobei es wichtig ist, für das vorliegende Problem die
-richtige Datenstruktur zu finden.
+richtige Datenstruktur zu wählen.
 
 Möchte man beispielsweise die Hierarchie eines Dateisystems oder ein Organigramm
 einer Firma abbilden, eignet sich hierzu ein _Baum_ (engl. _Tree_) als
