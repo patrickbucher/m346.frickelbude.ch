@@ -232,7 +232,7 @@ Ausgabe:
 Datenbestand. Beschreibe die Auswertung in eigenen Worten (was sie erreichen
 soll), formuliere den SQL-Befehl und halte die Ausgabe fest.
 
-DuckDB kann mit dem Befehl `exit` oder durch Betätigung der Tastenkombination
+DuckDB kann mit dem Befehl `.exit` oder durch Betätigung der Tastenkombination
 `[Ctrl]`-`[D]` verlassen werden.
 
 ### Übung 2 (selbständig): Fussball-Ligatabellen
