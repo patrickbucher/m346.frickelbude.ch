@@ -8,8 +8,8 @@ minifyOutput = true
 
 [params]
 disableInlineCopyToClipBoard = true
-disableMathJax = true
-disableOpenapi = true
+math = true
+openapi = false
 showVisitedLinks = true
 collapsibleMenu = true
 
