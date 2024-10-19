@@ -6,10 +6,10 @@ title = "Redis"
 
 Redis ist ein sogenannter _Key-Value-Store_, der Werte (_Values_) unter
 eindeutigen Schlüsseln (_Keys_) abspeichert. Der Name "Redis" ist eine Abkürzung
-für **Re**mote **Di**ctionary **S**ervie: Bei Redis handelt es sich also um
+für **Re**mote **Di**ctionary **S**ervcie: Bei Redis handelt es sich also um
 einen Dienst, den man als (entferntes) "Wörterbuch" verwenden kann. Dies soll
-heissen, dass man in diesem Service Werte anhand eines Schlüssels nachschlagen
-kann.
+heissen, dass man in diesem Service Werte anhand eines Schlüssels ablegen und
+nachschlagen kann.
 
 ### Redis als Nachschlagewerk
 
@@ -38,7 +38,7 @@ beispielsweise:
 
 ### Datentypen
 
-Redis ist ein Datenspeicher für _teilweise strukturierte Daten_, d.h. die darin
+Redis ist ein Datenspeicher für _abstrakte Datentypen_, d.h. die darin
 gespeicherten Daten folgen keinem strengen Schema wie bei relationalen
 Datenbanken, aber weisen gewisse Strukturen auf. Es werden u.a. die folgenden
 [Datentypen](https://redis.io/docs/latest/develop/data-types/) unterstützt,
@@ -53,29 +53,36 @@ welche entprechende Gegenstücke in Programmiersprachen haben:
 | Mengen                     | [Set](https://redis.io/docs/latest/develop/data-types/#sets)       |
 
 Redis ist also ein Datenspeicher für _Datenstrukturen_ und funktioniert selber
-wie eine grosse Map.
+wie eine grosse Map mit (eindeutigen) Schlüsseln und dazu zugeordneten Werten.
 
-### Datenspeicherung
+### Persistente Datenspeicherung 
 
 Redis kann Daten auf verschiedene Arten speichern:
 
 - Das **RDB**-Format ("Redis Database") speichert die Datenbank als _Zustand_ in
   einer Datei ab. Dieses Format ist sehr kompakt, schnell im Zugriff und kann
   sehr einfach gesichert werden (Backup). Änderungen werden nicht in Echtzeit
-  geschrieben, sondern nur periodisch, wodurch Datenverlust auftreten kann.
-- Das **AOF**-Format ("Append only File") speichert die Datenbank als
+  geschrieben, sondern nur periodisch, wodurch Datenverluste auftreten können.
+    - Analogie: Das aktuelle Saldo eines Bankkontos, wovon man aber nicht weiss,
+      welche Zahlungsein- und -ausgänge zu diesem Saldo geführt haben.
+- Das **AOF**-Format ("Append-only File") speichert die Datenbank als
   _Transaktionslog_ in einer Datei ab. Dabei wird jede einzelne Operation
   abgespeichert, sodass es nachvollziehbar ist, was mit der Datenbank passiert
   ist. Dieses Format bietet Nachvollziehbarkeit und Sicherheit, benötigt aber
   viel Platz und ist langsam, da der aktuelle Zustand anhand der abgespeicherten
   Transaktionen berechnet werden muss.
+    - Analogie: Die Zahlungsein- und -ausgänge eines Bankkontos, die aufsummiert
+      werden müssen, damit man das Saldo zu einem bestimmten Zeitpunkt
+      herausfinden kann.
 
 Es ist auch möglich, beide Formate zu aktivieren. Dadurch hat man die Vorteile
 beider Formate, benötigt aber auch mehr Speicherplatz und opfert etwas
 Performance.
 
 Möchte man Redis als schnellen Zwischenspeicher (Cache) einsetzen, ist es auch
-möglich, keines der beiden Formate zu verwenden.
+möglich, keines der beiden Formate zu verwenden. Wird Redis neu gestartet, sind
+die Daten unwiderruflich verloren. (In solchen Einsatzszenarien lassen sich aber
+die Daten einfach neu berechnen.)
 
 Standardmässig ist Redis so konfiguriert, dass es das RDB-Format verwendet. Bei
 der Auswahl der Speicherart kann man sich folgendes überlegen:
@@ -87,7 +94,18 @@ der Auswahl der Speicherart kann man sich folgendes überlegen:
 - Möchte man Redis nur als Cache ohne Persistenz einsetzen, kann man Redis ohne
   RDB/AOF betreiben.
 
+Der Abschnitt
+[Persistenz](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/)
+der Redis-Dokumentation enthält weiterführende Informationen zu diesen Formaten,
+deren Vor- und Nachteilen sowie zur Konfiguration.
+
 ### Verwendung: Beispielsession
+
+Der Redis-Server kann über verschiedene
+[Sprachanbindungen](https://redis.io/docs/latest/develop/connect/clients/) aus
+einer Programmiersprache heraus angesprochen werden. Für den interaktiven
+Gebrauch steht das Kommandozeilenwerkzeug `redis-cli` zur Verfügung. Eine solche
+Session kann folgendermassen ausseehen:
 
 ```plain
 $ redis-cli
@@ -105,11 +123,23 @@ OK
 (integer) 0
 ```
 
+- Die Session wird mit dem Befehl `redis-cli` geöffnet.
+- Mit `PING` wird geprüft, ob die Verbindung zum Server funktioniert.
+- Mit `SET` wird ein Eintrag (key: `name`, value: `John`) geschrieben.
+- Mit `KEYS *` werden alle vorhandenen Schlüssel aufgelistet (aktuell nur
+  `name`).
+- Mit `DEL` wird der Schlüssel `name` gelöscht.
+- Mit `EXISTS` kann man das Vorhandensein eines Schlüssels überprüfen (`0`
+  heisst "negativ", d.h. der Schlüssel `name` existiert nicht).
+
 ### Befehlstruktur
 
-Redis kennt über 400 [Befehle](https://redis.io/commands/).
+Redis kennt über 400 [Befehle](https://redis.io/commands/). Diese muss man nicht
+auswendig kennen. Es ist aber hlfreich, sich mit folgenden Regeln durch die
+Befehlsstruktur orientieren zu können:
 
-- Das Präfix richtet sich nach der Datenstruktur, auf welcher der Befehl operiert:
+- Befehle haben ein _Präfix_. Dieses richtet sich nach der Datenstruktur, auf
+  welcher der Befehl operiert:
     - List: `L` bzw. `R` für Operationen am linken bzw. rechten Listenende
     - Sets: `S`
     - Hashes: `H`
@@ -118,8 +148,12 @@ Redis kennt über 400 [Befehle](https://redis.io/commands/).
     - `FLUSHALL`: keine Parameter
     - `GET key`: ein Parameter
     - `SET key value`: zwei Parameter
+    - `HGET key field1 value1 [field2 value2 …]`: beliebig viele Parameter
 
-### Einige Befehle
+### Grundlegende Befehle
+
+Die folgenden Befehle werden im interaktiven Umgang mit Redis sehr häufig
+verwendet. Ihren Gebrauch sollte man beherrschen:
 
 - [`PING`](https://redis.io/commands/ping/): Verbindung testen (gibt `PONG` aus,
   wenn Verbindung steht)
@@ -134,7 +168,10 @@ Redis kennt über 400 [Befehle](https://redis.io/commands/).
   einem Schlüssel aus
 - [`SAVE`](https://redis.io/commands/save/): Persistente Speicherung forcieren
 
-### Befehle für einfache Werte
+#### Befehle für einfache Werte
+
+Der einfachste Einsatz von Redis ist das Verwalten einfacher Werte, d.h.
+von Schlüssel-Wert-Paaren.
 
 - [`SET`](https://redis.io/commands/set/): Ein Schlüssel/Wert-Paar definieren
     - [`MSET`](https://redis.io/commands/mset/): Mehrere Schlüssel/Wert-Paare
@@ -143,9 +180,14 @@ Redis kennt über 400 [Befehle](https://redis.io/commands/).
 - [`DEL`](https://redis.io/commands/del/): Eintrag entfernen
 - [`RENAME`](https://redis.io/commands/rename/): Schlüssel umbenennen
 
-### Strukturierte Schlüsselnamen
+#### Strukturierte Schlüsselnamen
 
-Schlüsselnamen können gemäss einer Konvention strukturiert werden:
+Schlüsselnamen können gemäss einer Konvention strukturiert werden. Hierbei
+werden Teile des Schlüssels durch einem Punkt oder durch einen Doppelpunkt
+voneinander getrennt. (Diese Zeichen haben keine besonderen Bedeutungen, sondern
+dienen einfach zur optischen Strukturierung der Schlüssel.)
+
+Beispiele:
 
 ```plain
 SET lucerne.name Luzern
@@ -155,22 +197,27 @@ SET employee:1234:name Dilbert
 SET employee:1234:position Engineer
 ```
 
-Schlüssel zum gleichen "Feld" auslesen:
+Mithilfe der `*`-Wildcard können verschiedene Schlüssel anhand eines Musters
+ausgelesen werden, z.B. die Namen aller Angestellter:
 
 ```plain
 GET employee:*:name
 ```
 
-Schlüssel zum gleichen "Datensatz" auslesen:
+Möchte man alle Schlüssel zu einem bestimmten Angestellten in Erfahrung bringen,
+kann man die `*`-Wildcard an der entsprechenden Stelle verwenden:
 
 ```plain
 GET employee:1234:*
 ```
 
-### Befehle für Hashes
+#### Befehle für Hashes
 
-Ein **Hash** speichert Schlüssel/Wert-Paare ab und ist mit einer `map` oder
-`struct` in Go vergleichbar, erlaubt aber keine Verschachtelung.
+Ein Hash speichert Schlüssel/Wert-Paare ab und ist mit dem Map- bzw.
+Hash-Datentyp verschiedener Programmiersprachen vergleichbar, erlaubt aber keine
+Verschachtelung.
+
+Die wichtigsten Befehle für Hashes sind:
 
 - [`HSET`](https://redis.io/commands/hset/): Definiert einen Hash mit
   Schlüssel/Wert-Paaren
@@ -188,9 +235,7 @@ Ein **Hash** speichert Schlüssel/Wert-Paare ab und ist mit einer `map` oder
   sofern es noch nicht definiert ist
 
 Die Struktur von einem zusammengesetzten Objekt muss nicht über den Namen
-codiert werden.
-
-#### Beispiel: Hashes für Mitarbeiterverwaltung
+codiert werden, sondern kann über einen Hash gelöst werden:
 
 ```plain
 HSET employee.dilbert
@@ -207,19 +252,31 @@ KEYS employee.*
 1) "employee.dilbert"
 ```
 
-### Ausgabe von CSV und JSON
+Hashes kennen kein Schema, wie es bei Tabellen relationaler Datenbanken zum
+Einsatz kommt.
+
+### Export im CSV- und JSON-Format
+
+Redis erlaubt den Export von Daten ins CSV-Format:
 
 ```bash
 $ redis-cli --csv HGETALL employee.dilbert
 ```
 
+Ausgabe:
+
 ```csv
 "id","715","name","Dilbert","position","Engineer","salary","125000","hired","1992"
 ```
 
+Ab Redis-Version 7, die auf den VMs vorinstalliert ist, lassen sich auch
+JSON-Datenstrukturen in Redis verwalten und daraus exportieren:
+
 ```bash
 $ redis-cli --json HGETALL employee.dilbert
 ```
+
+Ausgabe:
 
 ```json
 {
@@ -231,11 +288,15 @@ $ redis-cli --json HGETALL employee.dilbert
 }
 ```
 
+Über diese Austauschformate liessen sich die halbstrukturierten Daten aus Redis
+als strukturierte Daten in [DuckDB](/hauptdatentypen/strukturierte/duckdb)
+einlesen und dort analysieren.
+
 ## Übungen
 
 TODO
 
-## Links
+## Weiterführende Links
 
 - [Webseite](https://redis.io/)
 - [Cloud-Angebot](https://redis.io/try-free/)
