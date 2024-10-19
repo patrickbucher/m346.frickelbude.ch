@@ -389,7 +389,7 @@ als berechnete Felder enthält:
 - Anzahl Unentschieden: 1 falls es sich um ein Unentschieden handelt, 0 andernfalls
 - Anzahl Niederlagen: 1 falls es sich um eine Niederlage handelt, 0 andernfalls
 
-Halte Sie den dazu verwendeten Befehl fest.
+Halten Sie den dazu verwendeten Befehl fest.
 
 Die View sollte ungefähr folgendermassen aussehen (Auszug von `select * from
 bundesliga_result_day;`):
