@@ -12,7 +12,7 @@ Willkommen beim Modul 346!
 title: Lernpfad
 ---
 graph LR;
-    theorie[Theorie] --> kosten[Mengen- und Kostenabschätzung]
+    theorie[Theorie] --> kosten[Mengen- und<br>Kostenabschätzung]
     theorie --> wahl{Wahlprogramm}
     datentypen[Hauptdatentypen] --> wahl
     wahl --> monitoring[Monitoring-System]
