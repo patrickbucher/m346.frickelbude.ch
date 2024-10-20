@@ -13,12 +13,12 @@ usw.) lassen sich die sonst unstrukturierten Daten (z.B. Dokumente) einordnen.
 
 In anderen Definitionen werden teilweise strukturierte Daten als Datenformate
 angesehen, deren Form zwar vorgegeben ist (z.B. JSON, XML, CSV), die konkreten
-Inhalte jedoch nicht einem bestimmten Schema folgen sondern variieren können.
+Inhalte jedoch nicht einem bestimmten Schema folgen müssen.
 
 Im Block zu [strukturierten Daten](/hauptdatentypen/strukturierte) haben wir
 gesehen, dass sich Objekte aus der realen Welt im Programmcode mittels Klassen
-bzw. Strukturen und auf Datenbanken mittels Relationen bzw. Tabellen bzw. in
-NoSQL-Datenbanken beispielsweise als Dokumente abbilden lassen.
+bzw. Strukturen, in relationalen Datenbanken mittels Relationen bzw. Tabellen
+und in NoSQL-Datenbanken beispielsweise als Dokumente abbilden lassen.
 
 In der Informatik bildet man nicht nur Objekte aus der realen Welt wie z.B.
 Personen oder Adressen ab, sondern oftmals auch nur Teilaspekte von diesen
@@ -51,7 +51,7 @@ richtige Datenstruktur zu wählen.
 
 Möchte man beispielsweise die Hierarchie eines Dateisystems oder ein Organigramm
 einer Firma abbilden, eignet sich hierzu ein _Baum_ (engl. _Tree_) als
-abstrakter Datentyp. Möchte man hingegen bloss eine Reihe von Werten
+abstrakter Datentyp. Möchte man hingegen bloss eine Reihe von Messwerten
 abspeichern, ist ein Array oder eine Liste der geeignete abstrakte Datentyp.
 Sind die Elemente einer Liste bzw. eines Arrays eindeutig, und ist deren
 Reihenfolge nicht relevant, kann man diese als eine Menge (engl. _Set_)
@@ -127,8 +127,9 @@ Die Indizes müssen auch hier eindeutig sein, aber keinem bestimmten Schema
 folgen. Die Indizes kann man sich als eine Menge (_Set_) vorstellen, in welcher
 alle Elemente eindeutig sein müssen.
 
-Maps haven in verschiedenen Programmiersprachen verschiedene Bezeichnungen:
-_Dictionary_ (Python), _Hash_ (Ruby), _Table_ (Lua) usw.
+Maps haben in verschiedenen Programmiersprachen verschiedene Bezeichnungen:
+_Map_ (Go), _Dictionary_ (Python), _Hash_ (Ruby), _Table_ (Lua), _assoziatives
+Array_ (PHP) usw.
 
 
 ## Weiterführende Literatur

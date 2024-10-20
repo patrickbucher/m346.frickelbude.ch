@@ -9,7 +9,7 @@ eindeutigen Schlüsseln (_Keys_) abspeichert. Der Name "Redis" ist eine Abkürzu
 für **Re**mote **Di**ctionary **S**ervcie: Bei Redis handelt es sich also um
 einen Dienst, den man als (entferntes) "Wörterbuch" verwenden kann. Dies soll
 heissen, dass man in diesem Service Werte anhand eines Schlüssels ablegen und
-nachschlagen kann.
+nachschlagen kann. Redis ist somit als eine grosse Map zu verstehen.
 
 > [!NOTE]
 > Redis ist eine OpenSource-Software, die unter der BSD-Lizenz entwickelt worden
@@ -21,12 +21,14 @@ nachschlagen kann.
 > weiterentwickelt werden. Da derzeit (Stand: Oktober 2024) einzig Redis unter
 > den Standardpaketquellen von Debian zur Verfügung steht, soll in diesem Modul
 > bis auf Weiteres Redis zum Einsatz kommen. Längerfristig dürfte sich jedoch
-> Valkey als OpenSource-Variante durchsetzen.
+> Valkey als OpenSource-Variante durchsetzen, da dieses Projekt von der Linux
+> Foundation getragen wird.
 
 ### Redis als Nachschlagewerk
 
-Die Schlüssel müssen _eindeutig_ sein, damit man sie zum Nachschlagen von Werten
-verwenden kann:
+In Redis müssen die Schlüssel _eindeutig_ sein, damit man sie zum Nachschlagen
+von Werten verwenden kann. Werte dürfen hingegen mehrmals die gleichen
+vorkommen. Hierzu einige Beispiele:
 
 | **Schlüssel** |                           **Wert** |
 |---------------|-----------------------------------:|
@@ -46,6 +48,8 @@ beispielsweise:
 - ein Telefonbuch zum Nachschlagen von Telefonnummern (Values) anhand von Namen
   (Keys)
 - ein Lexikon zum Nachschlagen von Bedeutungen (Values) anhand von Begriffen
+  (Keys)
+- ein Dateisystem zum Ablegen von Dateien (Values) unter bestimmten Pfaden
   (Keys)
 
 ### Datentypen
@@ -72,9 +76,10 @@ wie eine grosse Map mit (eindeutigen) Schlüsseln und dazu zugeordneten Werten.
 Redis kann Daten auf verschiedene Arten speichern:
 
 - Das **RDB**-Format ("Redis Database") speichert die Datenbank als _Zustand_ in
-  einer Datei ab. Dieses Format ist sehr kompakt, schnell im Zugriff und kann
-  sehr einfach gesichert werden (Backup). Änderungen werden nicht in Echtzeit
-  geschrieben, sondern nur periodisch, wodurch Datenverluste auftreten können.
+  einer Datei ab. Dieses Format ist sehr kompakt, schnell im Zugriff und eignet
+  sich sehr gut für Datensicherungen (Backups). Änderungen werden nicht in
+  Echtzeit geschrieben, sondern nur periodisch, wodurch Datenverluste auftreten
+  können.
     - Analogie: Das aktuelle Saldo eines Bankkontos, wovon man aber nicht weiss,
       welche Zahlungsein- und -ausgänge zu diesem Saldo geführt haben.
 - Das **AOF**-Format ("Append-only File") speichert die Datenbank als
@@ -88,8 +93,9 @@ Redis kann Daten auf verschiedene Arten speichern:
       herausfinden kann.
 
 Es ist auch möglich, beide Formate zu aktivieren. Dadurch hat man die Vorteile
-beider Formate, benötigt aber auch mehr Speicherplatz und opfert etwas
-Performance.
+beider Formate, benötigt aber auch mehr Speicherplatz und opfert zusätzlich
+Performance, da einerseits jede Transaktion (AOF) und andererseits der aktuelle
+Zustand periodisch (RDB) gesichert werden muss.
 
 Möchte man Redis als schnellen Zwischenspeicher (Cache) einsetzen, ist es auch
 möglich, keines der beiden Formate zu verwenden. Wird Redis neu gestartet, sind
@@ -117,7 +123,7 @@ Der Redis-Server kann über verschiedene
 [Sprachanbindungen](https://redis.io/docs/latest/develop/connect/clients/) aus
 einer Programmiersprache heraus angesprochen werden. Für den interaktiven
 Gebrauch steht das Kommandozeilenwerkzeug `redis-cli` zur Verfügung. Eine solche
-Session kann folgendermassen ausseehen:
+Session kann folgendermassen aussehen:
 
 ```plain
 $ redis-cli
@@ -136,13 +142,14 @@ OK
 ```
 
 - Die Session wird mit dem Befehl `redis-cli` geöffnet.
-- Mit `PING` wird geprüft, ob die Verbindung zum Server funktioniert.
+- Mit `PING` wird geprüft, ob die Verbindung zum Server funktioniert. (Es kommt
+  `PONG` zurück.)
 - Mit `SET` wird ein Eintrag (key: `name`, value: `John`) geschrieben.
 - Mit `KEYS *` werden alle vorhandenen Schlüssel aufgelistet (aktuell nur
   `name`).
 - Mit `DEL` wird der Schlüssel `name` gelöscht.
 - Mit `EXISTS` kann man das Vorhandensein eines Schlüssels überprüfen (`0`
-  heisst "negativ", d.h. der Schlüssel `name` existiert nicht).
+  heisst "negativ", d.h. der Schlüssel `name` existiert nicht (mehr)).
 
 ### Befehlstruktur
 
@@ -168,9 +175,9 @@ Die folgenden Befehle werden im interaktiven Umgang mit Redis sehr häufig
 verwendet. Ihren Gebrauch sollte man beherrschen:
 
 - [`PING`](https://redis.io/commands/ping/): Verbindung testen (gibt `PONG` aus,
-  wenn Verbindung steht)
+  wenn die Verbindung steht)
 - `HELP`: Hilfe ausgeben, z.B. zu einem Befehl
-    - `HELP PING`
+    - Beispiel: `HELP PING`
 - [`AUTH`](https://redis.io/commands/auth/): Interaktive Authentifizierung mit Passwort
 - [`FLUSHALL`](https://redis.io/commands/flushall/): Löscht **alle** Einträge
 - [`KEYS`](https://redis.io/commands/flushall/): Schlüssel gemäss Muster anzeigen
@@ -194,10 +201,11 @@ von Schlüssel-Wert-Paaren.
 
 #### Strukturierte Schlüsselnamen
 
-Schlüsselnamen können gemäss einer Konvention strukturiert werden. Hierbei
-werden Teile des Schlüssels durch einem Punkt oder durch einen Doppelpunkt
-voneinander getrennt. (Diese Zeichen haben keine besonderen Bedeutungen, sondern
-dienen einfach zur optischen Strukturierung der Schlüssel.)
+Schlüsselnamen können gemäss einer selbst gewählten Konvention strukturiert
+werden. Hierbei werden Teile des Schlüssels durch einem Punkt oder durch einen
+Doppelpunkt voneinander getrennt. (Diese Zeichen haben keine besonderen
+Bedeutungen, sondern dienen einfach zur optischen Strukturierung der
+Schlüssel.)
 
 Beispiele:
 
@@ -227,7 +235,7 @@ GET employee:1234:*
 
 Ein Hash speichert Schlüssel/Wert-Paare ab und ist mit dem Map- bzw.
 Hash-Datentyp verschiedener Programmiersprachen vergleichbar, erlaubt aber keine
-Verschachtelung.
+Verschachtelung. (Alle Schlüssel und Werte sind Strings.)
 
 Die wichtigsten Befehle für Hashes sind:
 
@@ -265,7 +273,8 @@ KEYS employee.*
 ```
 
 Hashes kennen kein Schema, wie es bei Tabellen relationaler Datenbanken zum
-Einsatz kommt.
+Einsatz kommt. Man kann sich also nicht darauf verlassen, dass ein Hash
+bestimmte Felder enthält!
 
 ### Export im CSV- und JSON-Format
 
@@ -354,14 +363,15 @@ persönlichen Steckbrief abzuspeichern. Speichern Sie die folgenden Angaben ab:
 - Wohnort
 - Lieblingsessen
 
-Überlegen Sie sich vorher eine geeignete Struktur für die Schlüssel.
+Überlegen Sie sich vorher eine geeignete Namensstruktur für die Schlüssel.
 
 Verwenden Sie anschliessend den
 [`MSET`](https://redis.io/commands/mset/)-Befehl, um den persönlichen Steckbrief
-einer weiteren Person, die sie kennen, in einem einzigen Befehl einzugeben.
+einer weiteren Person, die sie kennen, in einem einzigen Befehl abzuspeichern.
 
 Erhöhen Sie anschliessend mit dem
-[`INCR`](https://redis.io/commands/incr/)-Befehl Ihr Alter um ein Jahr.
+[`INCR`](https://redis.io/commands/incr/)-Befehl Ihr Alter beider Personen um
+ein Jahr.
 
 Verwenden Sie den [`KEYS`](https://redis.io/commands/keys/)-Befehl, um alle
 Schlüssel anzuzeigen. Geben Sie anschliessend alle Werte mithilfe des
@@ -423,20 +433,38 @@ erstellen:
 
 ### Übung 4: Endpunkte als Hashes abspeichern
 
-Betrachten Sie die Datei `config.csv` von der letzten Woche. Erstellen Sie pro
-Zeile einen Hash, der alle Angaben enthält. Verwenden Sie hierzu den
+Betrachten Sie die Datei [config.csv](/files/config.csv), die bereits auf der
+VM vorhanden sein sollte.
+
+```csv
+m346,https://m346.frickelbude.ch/,GET,200,5m0s,3
+duckdb,https://duckdb.org/,GET,200,2m30s,3
+redis,https://libvirt.org/,GET,200,1m0s,5
+```
+
+Diese enthält folgende Spalten:
+
+- Name (z.B. `m346`)
+- URL (z.B. `https://m346.frickelbude.ch/`)
+- HTTP-Methode (z.B. `GET`)
+- HTTP-Status (z.B. `200`)
+- Frequenz (z.B. `2m30s`)
+- Versuche (z.B. `3`)
+
+Hierbei handelt es sich um die Konfiguration zu einem Monitoring-System, womit
+eine URL periodisch mithilfe von HTTP auf ihre Erreichbarkeit überprüft wird.
+
+Erstellen Sie pro Zeile der Datei `config.csv` einen Hash, der alle Angaben
+aus dieser Datei enthält. Verwenden Sie hierzu den
 [`HSET`](https://redis.io/commands/hset/)-Befehl. Verwenden Sie Schlüssel der
-Form `endpoint:[identifier]`, also z.B. `endpoint:frickelbude`.
+Form `endpoint:[identifier]`, also z.B. `endpoint:m346`.
 
 Stoppen Sie nun die Redis-Sitzung mit `[Ctrl]-[D]`. Exportieren Sie nun alle
-Ihre Endpoints als CSV-Dateien (`endpoint-[identifier].csv`), indem Sie den
-Redis-Client mit dem Parameter `--csv` und dem Aufruf des
+Ihre Endpoints als JSON-Dateien (`endpoint-[identifier].json`), indem Sie den
+Redis-Client mit dem Parameter `--json` und dem Aufruf des
 [`HGETALL`](https://redis.io/commands/hgetall/) kombinieren:
 
-    $ redis-cli --csv HGETALL endpoint:… > endpoint-[identifier].csv
-
-Wiederholen Sie den Vorgang nun noch für JSON (Parameter `--json`, Dateiendung:
-`.json`).
+    $ redis-cli --json HGETALL endpoint:… > endpoint-[identifier].json
 
 ### Zusatzübung A: Weitere Befehle kennenlernen
 
@@ -458,10 +486,10 @@ ein Passwort definiert. Bearbeiten Sie die Datei dazu mit einem Texteditor wie
 z.B. `nano`:
 
 ```plain
-sudo vim /etc/redis/redis.conf
+sudo nano /etc/redis/redis.conf
 ```
 
-Tipp: Suchen Sie nach `requirepass`.
+Tipp: Suchen Sie nach der Einstellung `requirepass`!
 
 Setzen Sie ein Passwort, und starten Sie Redis neu:
 
@@ -477,9 +505,9 @@ $ redis-cli
 (error) NOAUTH Authentication required.
 ```
 
-Finden Sie drei Wege, sich zu authentifizieren:
+Finden Sie drei Wege um sich zu authentifizieren:
 
-1. mit einem Redis-Befehl
+1. mit einem interaktiven Redis-Befehl
 2. mit einem Kommandozeilenparameter
 3. mit einer Umgebungsvariable
 
@@ -494,6 +522,10 @@ Dokumentieren Sie alle Schritte.
 Folgen Sie der [Videoanleitung](https://www.youtube.com/watch?v=LSRxm72evE0), um
 eine kostenlose Redis-Datenbank in der Cloud zu bekommen. Verbinden Sie sich per
 `redis-cli` mit dieser Datenbank. (Sie brauchen hier nichts zu dokumentieren.)
+
+Auf diese Cloud-Redis-Instanz lässt sich mit der Software [Redis
+Insight](https://redis.io/insight/) zugreifen, die auch unter Windows verfügbar
+ist.
 
 ## Weiterführende Links
 
