@@ -321,6 +321,8 @@ machen.
 
 ### Übung 0: Mit Redis verbinden
 
+Bei dieser Übung brauchen Sie nichts zu dokumentieren.
+
 Verbinden Sie sich mittels `redis-cli` mit der Datenbank:
 
 ```plain
@@ -395,7 +397,7 @@ Sie die erledigte Aufgabe dieser neuen Liste hinzu.
 
 Verschieben Sie eine weitere erledigte Aufgabe mit dem
 [`RPOPLPUSH`](https://redis.io/commands/rpoplpush/)-Befehl von der einen in die
-andere Liste.
+andere Liste. Geben Sie anschliessend beide Listen noch einmal aus.
 
 ### Übung 3: Mengenoperationen
 
