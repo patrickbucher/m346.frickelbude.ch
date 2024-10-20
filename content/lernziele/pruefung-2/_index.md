@@ -52,8 +52,24 @@ title = "Prüfung 2: Lernziele"
    OLAP-Datenbanken unterscheiden, deren Einsatzzwecke benennen und die
    Technologie DuckDB anhand dieser Begriffe einordnen.
 
-### Unterlagen
+#### Unterlagen
 
 - [Hauptdatentypen](/hauptdatentypen)
 - [Strukturierte Daten](/hauptdatentypen/strukturierte)
 - [DuckDB](/hauptdatentypen/strukturierte/duckdb)
+
+### Teilweise Strukturierte Daten
+
+1. Sie können den Aufbau der abstrakten Datentypen Array, Liste, Menge und Map
+   beschreiben und Unterschiede im Zugriffsverhalten zwischen Array und Liste
+   nachvollziehen.
+2. Sie können in Redis bei gegebener Befehlsdokumentation mit den Datentypen
+   String, List, Hash und Set interaktiv arbeiten und hierzu die Schlüssel nach
+   einer sinnvollen Konvention strukturieren.
+3. Sie können die Persistenz-Formate von Redis (RDB, AOF, keine) voneinander
+   unterscheiden, ihre Vor- und Nachteile sowie Einsatzzwecke benennen.
+
+#### Unterlagen
+
+- [Teilweise strukturierte Daten](/hauptdatentypen/teilweise-strukturierte)
+- [Redis](/hauptdatentypen/teilweise-strukturierte/redis)
