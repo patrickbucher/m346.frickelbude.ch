@@ -221,14 +221,14 @@ Mithilfe der `*`-Wildcard können verschiedene Schlüssel anhand eines Musters
 ausgelesen werden, z.B. die Namen aller Angestellter:
 
 ```plain
-GET employee:*:name
+KEYS employee:*:name
 ```
 
 Möchte man alle Schlüssel zu einem bestimmten Angestellten in Erfahrung bringen,
 kann man die `*`-Wildcard an der entsprechenden Stelle verwenden:
 
 ```plain
-GET employee:1234:*
+KEYS employee:1234:*
 ```
 
 #### Befehle für Hashes

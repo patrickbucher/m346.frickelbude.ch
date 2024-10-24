@@ -12,3 +12,5 @@ weight = 2
 - [Block 4](04-pruefung-1/): Prüfung 1
 - [Block 5](05-cloud-migration-infrastruktur/): Cloud-Migration und Cloud-Infrastruktur
 - [Block 6](06-ssh-tunnels/): SSH & SSH-Tunnels
+- [Block 7](07-duckdb/): Strukturierte Daten und DuckDB
+- [Block 8](08-redis/): Teilweise Strukturierte Daten und Redis
