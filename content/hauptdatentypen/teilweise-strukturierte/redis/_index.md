@@ -258,12 +258,7 @@ Die Struktur von einem zusammengesetzten Objekt muss nicht über den Namen
 codiert werden, sondern kann über einen Hash gelöst werden:
 
 ```plain
-HSET employee.dilbert
-    id 715
-    name Dilbert
-    position Engineer
-    salary 125000
-    hired 1992
+HSET employee.dilbert id 715 name Dilbert position Engineer salary 125000 hired 1992
 
 HGET employee.dilbert position
 "Engineer"
