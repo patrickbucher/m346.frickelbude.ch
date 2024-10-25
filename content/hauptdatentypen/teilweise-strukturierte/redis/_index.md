@@ -6,7 +6,7 @@ title = "Redis"
 
 Redis ist ein sogenannter _Key-Value-Store_, der Werte (_Values_) unter
 eindeutigen Schlüsseln (_Keys_) abspeichert. Der Name "Redis" ist eine Abkürzung
-für **Re**mote **Di**ctionary **S**ervcie: Bei Redis handelt es sich also um
+für **Re**mote **Di**ctionary **S**ervice: Bei Redis handelt es sich also um
 einen Dienst, den man als (entferntes) "Wörterbuch" verwenden kann. Dies soll
 heissen, dass man in diesem Service Werte anhand eines Schlüssels ablegen und
 nachschlagen kann. Redis ist somit als eine grosse Map zu verstehen.
