@@ -14,3 +14,4 @@ weight = 2
 - [Block 6](06-ssh-tunnels/): SSH & SSH-Tunnels
 - [Block 7](07-duckdb/): Strukturierte Daten und DuckDB
 - [Block 8](08-redis/): Teilweise Strukturierte Daten und Redis
+- [Block 9](09-minio/): Unstrukturierte Daten und S3/Minio

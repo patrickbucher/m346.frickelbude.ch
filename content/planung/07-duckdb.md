@@ -24,4 +24,4 @@ Sie wissen in welcher Form strukturierte Daten vorliegen und können diese mit D
 
 ### Hausaufgaben
 
-Halten Sie die Ergebnisse ihrer Übung in Ihrer persönlichen Dokumentation fest.
+Halten Sie die Ergebnisse Ihrer Übung in Ihrer persönlichen Dokumentation fest.

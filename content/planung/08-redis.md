@@ -3,7 +3,7 @@ title = "Block 8: Teilweise strukturierte Daten und Redis"
 weight = 8
 +++
 
-Im achten Block schauen wir uns mit teilweise strukturierte Daten den zweiten
+Im achten Block schauen wir uns mit teilweise strukturierten Daten den zweiten
 Hauptdatentyp an. Dabei wird der Fokus auf abstrakte Datentypen gelegt. Nach
 einem Theorieblock wird die Technologie Redis betrachtet und mit verschiedenen
 Übungen vertieft.
@@ -26,4 +26,4 @@ diese in Redis verwenden.
 
 ### Hausaufgaben
 
-Halten Sie die Ergebnisse ihrer Übung in Ihrer persönlichen Dokumentation fest.
+Halten Sie die Ergebnisse Ihrer Übung in Ihrer persönlichen Dokumentation fest.
