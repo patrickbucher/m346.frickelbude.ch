@@ -73,3 +73,21 @@ title = "Prüfung 2: Lernziele"
 
 - [Teilweise strukturierte Daten](/hauptdatentypen/teilweise-strukturierte)
 - [Redis](/hauptdatentypen/teilweise-strukturierte/redis)
+
+### Unstrukturierte Daten
+
+1. Sie können unstrukturierte von strukturierten teilweise strukturierten Daten
+   abgrenzen.
+2. Sie können die Einordnung von Datenspeichern anhand der Kriterien
+   Zugriffsgeschwindigkeit, Speicherkapazität und Kosten pro Speichereinheit
+   nachvollziehen.
+3. Sie können die Organisation von S3 in Buckets und Objects nachvollziehen und
+   verstehen den Zusammenhang zwischen S3-Speicherklassen und der
+   Speicherhierarchie.
+4. Sie können mit Minio, dem Minio Client sowie den Hilfsprogrammen `s3cmd` und
+   FUSE arbeiten und damit einen S3-Speicher selber bereitstellen und verwenden.
+
+#### Unterlagen
+
+- [unstrukturierte Daten](/hauptdatentypen/unstrukturierte)
+- TODO: Minio
