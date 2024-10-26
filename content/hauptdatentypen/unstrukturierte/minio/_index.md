@@ -55,14 +55,17 @@ ausgegeben werden.
 Starten Sie nun den Minio-Server mit dem folgenden Befehl:
 
 ```bash
-minio server ~/minio-data
+minio server --console-address ':9090' ~/minio-data
 ```
+
+Es ist wichtig, dass der Server auf Port `9090` läuft, da dieser Port (und
+`9000`) in der Firewall spezifisch freigegeben worden ist.
 
 Lassen Sie den Server nun in diesem Terminal laufen.
 
 ### Auf Web-Interface einloggen
 
-Besuchen Sie im Browser die Seite `http://[IP-ADRESSE]:9000`, wobei Sie
+Besuchen Sie im Browser die Seite `http://[IP-ADRESSE]:9090`, wobei Sie
 `[IP-Adresse]` durch die jeweiligen IP-Adresse ihrer virtuellen Maschine
 ersetzen müssen. Sie werden zu einem Login-Bildschirm weitergeleitet.
 
