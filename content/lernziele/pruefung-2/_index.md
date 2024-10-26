@@ -74,7 +74,7 @@ title = "Prüfung 2: Lernziele"
 - [Teilweise strukturierte Daten](/hauptdatentypen/teilweise-strukturierte)
 - [Redis](/hauptdatentypen/teilweise-strukturierte/redis)
 
-### Unstrukturierte Daten
+### Unstrukturierte Daten [provisorisch!]
 
 1. Sie können unstrukturierte von strukturierten teilweise strukturierten Daten
    abgrenzen.
