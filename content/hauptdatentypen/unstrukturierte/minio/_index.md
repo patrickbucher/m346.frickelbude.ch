@@ -87,7 +87,7 @@ Klicken Sie in der Navigation links unter dem Abschnitt "User" auf den Link
 
 Betätigen Sie als nächstes die "Upload"-Schaltfläche oben rechts. Klicken Sie
 dann auf "Upload File". Laden Sie nun **drei** Dateien unterschiedlichen Typs
-aus Ihrem `$HOME`-Verzeichnis hoch:
+von Ihrem lokalen Dateisystem (BYOD-Laptop) hoch:
 
 1. eine Bilddatei (Endung `.png`, `.jpeg` usw.)
 2. eine Textdatei (Endung `.txt`)
@@ -101,8 +101,9 @@ Beantworten Sie folgende Fragen für Ihre persönliche Dokumentation:
    zusammengerechnet)?
 2. Wie gross ist der `hello`-Bucket auf dem Dateisystem unter `~/minio-data`?
    Verwenden Sie den Befehl `du -hs` um die Grösse zu ermitteln!
-3. Betrachten Sie die Dateien und Ordner im Verzeichnis `~/minio-data/hello`.
-   Wie sind die Daten organisiert, und warum ist das wohl so gelöst?
+3. Betrachten Sie die Dateien und Ordner im Verzeichnis `~/minio-data/hello`
+   mithilfe des `ls`-Befehls. Wie sind die Daten organisiert, und warum ist das
+   wohl so gelöst?
 
 ## Übung 2: Minio-Client verwenden
 
@@ -162,12 +163,12 @@ und Bucket (`[Alias]/[Bucket]`) angibt:
 mc ls local/hello
 ```
 
-Ausgabe:
+Mögliche Ausgabe (Beispiel):
 
 ```plain
-[2022-12-04 13:31:53 CET] 346KiB STANDARD minio-logo.png
-[2022-12-04 13:32:07 CET] 2.0KiB STANDARD exercises.md
-[2022-12-04 13:32:59 CET]  24MiB STANDARD mc
+[2024-10-26 15:05:56 UTC] 103MiB STANDARD deno.exe
+[2024-10-26 15:05:27 UTC]    29B STANDARD key-win-10-edu.txt
+[2024-10-26 15:05:09 UTC]  56KiB STANDARD rpoplpush.jpeg
 ```
 
 Weiter bietet `mc` einige Befehle, die nur im Zusammenhang mit einem S3-Storage
@@ -186,15 +187,15 @@ S3-Datenobjekten:
 ### Bucket via `mc` erstellen
 
 Erstellen Sie einen neuen Bucket namens `backup` mithilfe des `mc mb`-Befehls.
-Kopieren Sie dann wieder drei unterschiedliche Dateien mit dem `mc cp`-Befehl in
-den neuen Bucket.
+(Tipp: Eine Hilfeseite erhält man mit `mc mb --help`. Mit `q` kann man die Hilfe
+schliessen.) Kopieren Sie dann wieder drei unterschiedliche Dateien mit dem `mc
+cp`-Befehl in den neuen Bucket.
 
 Kontrollieren Sie anschliessend im Browser, ob der Bucket erstellt worden ist
 und alle Dateien enthält.
 
-Führen Sie nun den Befehl `mc ls local/backup` aus und leiten Sie dessen Ausgabe
-in die Datei `uebung-2-ls.txt` weiter. (Verwenden Sie hierzu den Operator `>`
-auf der Shell.) Übernehmen Sie die Ausgabe in Ihre persönliche Dokumentation.
+Führen Sie nun den Befehl `mc ls local/backup` aus und kopieren Sie dessen
+Ausgabe in Ihre persönliche Dokumentation.
 
 ### Buckets taggen
 
@@ -210,10 +211,8 @@ den Buckets die folgenden Tags zu vergeben:
 
 Mit `mc tag --help` bzw. `mc tag set --help` erhalten Sie Hilfestellungen dazu.
 
-Listen Sie nun die Tags mit `mc tag` **im JSON-Format** auf, und speichern Sie
-die Ausgaben unter den Dateien `aufgabe-2-tag-hello.json` und
-`aufgabe-2-tag-backup.json` ab. Fügen Sie die Inhalte dieser Dateien in ihre
-persönlichen Dokumentation ein.
+Listen Sie nun die Tags mit `mc tag list` **im JSON-Format** auf, und speichern
+Sie die Ausgaben in Ihrer persönlichen Dokumentation ab.
 
 ## Übung 3: s3cmd
 
@@ -258,13 +257,13 @@ Kopieren Sie die drei Dateien aus dem `backup`-Bucket in den
 
 Dokumentieren Sie die Befehle in Ihrer persönlichen Dokumentation.
 
-Kontrollieren Sie nun im MinIO-GUI im Browser sowie per `s3cmd ls`-Befehl, ob
-alle Dateien erfolgreich kopiert worden sind.
+Kontrollieren Sie nun im MinIO-GUI im Browser sowie mit den Befehlen `mc ls` und
+`s3cmd ls`, ob alle Dateien erfolgreich kopiert worden sind.
 
 ## Übung 4: s3fs
 
 FUSE (Filesystem in Userspace) bietet die Möglichkeit, Dateisysteme ohne
-Root-Berechtigungen einzubinden.
+Administratoren-Berechtigungen als Ordner einzubinden.
 
 Mithilfe von `s3fs` können S3-Buckets als normale Ordner eingebunden werden.
 
@@ -312,8 +311,9 @@ s3fs backup-copy ~/minio-mount/backup-copy -o use_path_request_style,url=http://
 Die Unterverzeichnisse von `~/minio-mount/` können nun weitgehend wie lokale
 Ordner verwendet werden.
 
-Kopieren Sie nun eine beliebige Datei, die noch nicht in MinIO vorhanden ist, in
-alle drei Buckets über das `~/minio-mount/`-Verzeichnis.
+Kopieren Sie nun eine beliebige Datei (z.B. `/usr/share/pixmaps/htop.png`), die
+noch nicht in MinIO vorhanden ist, mit dem `cp`-Befehl in alle drei Buckets über
+das `~/minio-mount/`-Verzeichnis.
 
 Überprüfen Sie nun im MinIO-GUI im Browser, ob Sie die Datei in jedem Bucket
 sehen können.
