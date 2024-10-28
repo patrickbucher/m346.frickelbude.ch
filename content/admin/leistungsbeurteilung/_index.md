@@ -14,7 +14,7 @@ Kenntnisse](/admin/hanok/) aufgelistet.
     - 1.2
     - 1.3
     - 1.5
-2. Prüfung (50%): Technik & Hauptdatentypen
+2. Prüfung (100%): Technik & Hauptdatentypen
     - 1.4
     - 1.6
     - 1.7
