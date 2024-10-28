@@ -84,9 +84,8 @@ title = "Prüfung 2: Lernziele"
    Speicherhierarchie.
 3. Sie können bei gegebener Befehlsdokumentation mit dem Minio-Server `minio`,
    dem Minio Client `mc` sowie den Hilfsprogrammen `s3cmd` und `s3fs` (FUSE)
-   arbeiten, den Zweck und die Funktionsweise der einzelnen Programme
-   voneinander unterscheiden und damit einen S3-Speicher selber bereitstellen
-   und verwenden.
+   arbeiten sowie den Zweck, die Funktionsweise und die Rolle der einzelnen
+   Programme im Kontext eines S3-Speichers voneinander unterscheiden.
    
 #### Unterlagen
 
