@@ -3,7 +3,7 @@ title = "Block 9: Unstrukturierte Daten und S3/Minio"
 weight = 9
 +++
 
-Im achten Block schauen wir uns mit unstrukturierten Daten den dritten
+Im neuten Block schauen wir uns mit unstrukturierten Daten den dritten
 Hauptdatentyp an. Hierzu wird die Speicherhierarchie betrachtet. Nach einem
 kurzen Theorieblock wird der Simple Storage Service (S3) betrachtet und mithilfe
 der freien Implementierung Minio und verschiedenen Zusatzprogrammen selber in
