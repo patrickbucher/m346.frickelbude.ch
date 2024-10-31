@@ -17,7 +17,11 @@ mkdir ~/minio-data
 ### Benutzername und Passwort konfigurieren
 
 Editieren Sie anschliessend die Datei `~/.bashrc` mit einem Texteditor Ihrer
-Wahl, z.B. mit `nano`.
+Wahl, z.B. mit `nano`:
+
+```bash
+nano ~/.bashrc
+```
 
 Definieren Sie ganz unten an der Datei zwei neue Umgebungsvariablen mit dem
 `export`-Befehl:
