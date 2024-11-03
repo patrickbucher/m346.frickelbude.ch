@@ -15,3 +15,4 @@ weight = 2
 - [Block 7](07-duckdb/): Strukturierte Daten und DuckDB
 - [Block 8](08-redis/): Teilweise Strukturierte Daten und Redis
 - [Block 9](09-minio/): Unstrukturierte Daten und S3/Minio
+- [Block 10](10-uebungslektion/): Übungslektion bzw. Allerheiligen (Ausfall)
