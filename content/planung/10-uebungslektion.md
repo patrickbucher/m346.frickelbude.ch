@@ -3,7 +3,7 @@ title = "Block 10: Übungslektion"
 weight = 10
 +++
 
-Der zehnte Block ist eine reine Überungs(doppel)lektion im Hinblick auf die
+Der zehnte Block ist eine reine Übungs(doppel)lektion im Hinblick auf die
 zweite Modulprüfung. Bei den Klassen, die das Modul 346 am Freitag besuchen,
 fällt dieser Block aufgrund des Feiertags Allerheiligen aus.
 
