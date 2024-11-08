@@ -24,7 +24,7 @@ Anwendern Zugriff auf diese Daten zu gewährleisten. Kriterien wie
 Vertrauenswürdigkeit, Integrität und Verfügbarkeit sind hier besonders wichtig.
 Der Inhalt der Daten ist jedoch hierfür völlig irrelevant: es kann sich auch um
 verschlüsselte Daten handeln, hinter denen der verwaltende Service nichts weiter
-einen Byte-Salat erkennt.
+als einen Byte-Salat erkennt.
 
 ## Speicherhierarchie
 
