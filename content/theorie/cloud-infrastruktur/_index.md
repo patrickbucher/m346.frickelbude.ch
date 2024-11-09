@@ -54,7 +54,7 @@ Zonen erfüllen folgende Zwecke:
    Wartungen innerhalb der einen Zone (durch den Cloud-Anbieter oder durch den
    Cloud-Kunden) einfach von der anderen Zone bedient werden.
 
-Beispiele für Regionen bei AWS sind `eu-central-1` (Europa), `us-east-1` und
+Beispiele für Zonen bei AWS sind `eu-central-1` (Europa), `us-east-1` und
 `ca-central-1` (Nordamerika).
 
 ## :house: :hut: Edge-Standorte und Virtual Private Cloud
