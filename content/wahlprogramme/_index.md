@@ -2,6 +2,7 @@
 archetype = "chapter"
 title = "Wahlprogramme"
 weight = 8
+draft = true
 +++
 
 Zur Vertiefung stehen zwei Programme zur Verfügung, bei denen es um folgendes geht:

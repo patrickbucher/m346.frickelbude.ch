@@ -1,7 +1,7 @@
 +++
 archetype = "chapter"
 title = "Diverses"
-weight = 8
+weight = 10
 +++
 
 Dieser Teil der Webseite enthält verschiedenartige Informationen, die sonst in
