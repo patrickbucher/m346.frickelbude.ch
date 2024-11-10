@@ -1,5 +1,6 @@
 +++
 title = "Prüfung 2: Lernziele"
+weight = 2
 +++
 
 ## Cloud-Migration und Cloud-Infrastruktur

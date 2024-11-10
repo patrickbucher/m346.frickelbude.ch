@@ -1,5 +1,6 @@
 +++
 title = "Prüfung 1: Lernziele"
+weight = 1
 +++
 
 ## Definition von «Cloud Computing»
