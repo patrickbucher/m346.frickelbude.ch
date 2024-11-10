@@ -1,5 +1,6 @@
 +++
 title = "SSH-Schlüssel"
+weight = 1
 +++
 
 Für den Zugriff auf eine virtuelle Maschine wird ein SSH-Schlüsselpaar benötigt.
