@@ -17,5 +17,5 @@ Technologie betrachtet.
     - [DuckDB](/hauptdatentypen/strukturierte/duckdb)
 2. [teilweise strukturierte Daten](/hauptdatentypen/teilweise-strukturierte/)
     - [Redis](/hauptdatentypen/teilweise-strukturierte/redis)
-3. unstrukturierte Daten
-    - Minio (S3)
+3. [unstrukturierte Daten](/hauptdatentypen/unstrukturierte)
+    - [Minio (S3)](/hauptdatentypen/unstrukturierte/minio)
