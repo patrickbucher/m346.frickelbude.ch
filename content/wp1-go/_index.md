@@ -13,3 +13,24 @@ Blöcken sollen die folgenden Bereiche der Sprache erkundet werden:
 
 Zu diesen Theorieteilen gibt es eine
 [Übungssammlung](https://github.com/patrickbucher/m346-go-exercises/tree/master).
+
+## :card_file_box: Ergebnissicherung
+
+In diesem Wahlprogramm wird Quellcode bearbeitet. Darum sollen die erarbeiteten
+Aufgaben mit Git verwaltet werden:
+
+1. Erstellen Sie einen Fork vom Repository (jetzt:
+   [Übungssammlung](https://github.com/patrickbucher/m346-go-exercises/tree/master),
+   später: _meow_).
+2. Klonen Sie Ihren persönlichen Fork.
+3. Erstellen Sie einen Commit mindestens nach dem Lösen einer Aufgabe.
+4. Pushen Sie den Commit auf ihr öffentliches Repository.
+5. Erstellen Sie zwischendurch einen Pull Request um eine Rückmeldung zu
+   erhalten.
+
+Falls dieses Vorgehen Schwierigkeiten bereitet, gibt die Lehrperson gerne
+auskunft.
+
+Am Ende des Moduls wird Ihre Arbeit anhand der bearbeiteten Repositories
+bewertet. Diese Bewertung fliesst nicht in die Modulnote, aber in die Prädikate
+ein.
