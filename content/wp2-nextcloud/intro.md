@@ -1,5 +1,5 @@
 +++
-title = "Nextcloud 1: Einführung"
+title = "Einführung: Nextcloud und Lizenzen"
 weight = 1
 +++
 
