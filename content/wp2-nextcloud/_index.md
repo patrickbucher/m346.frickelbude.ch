@@ -29,6 +29,9 @@ Das Ergebnis von diesem Wahlprogramm ist eine persönliche Dokumentation. Diese
 soll aufzeigen, wie man Nextcloud auf dem LAMP-Stack in Betrieb nimmt und den
 Storage vom Dateisystem auf S3 (Minio) migriert.
 
+Mithilfe der Dokumentation soll der letzte Stand in kurzer Zeit auf einer neuen
+virtuellen Maschine wiederhergestellt werden!
+
 Bei allen Aufgaben, in denen das Symbol :briefcase: zu sehen ist, müssen Inhalte
 in die Dokumentation aufgenommen werden.
 
