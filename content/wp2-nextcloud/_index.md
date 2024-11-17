@@ -19,8 +19,9 @@ systemd-Service betrieben werden soll.
 ## Themenblöcke
 
 - [Einführung in Nextcloud und OpenSource-Lizenzen](/wp2-nextcloud/intro)
-- systemd
+- [Service-Management mit systemd](/wp2-nextcloud/systemd)
 - LAMP-Stack
+- Nextcloud-Installation
 - S3-Migration
 
 ## :briefcase: Ergebnissicherung

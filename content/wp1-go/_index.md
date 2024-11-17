@@ -14,6 +14,11 @@ Blöcken sollen die folgenden Bereiche der Sprache erkundet werden:
 Zu diesen Theorieteilen gibt es eine
 [Übungssammlung](https://github.com/patrickbucher/m346-go-exercises/tree/master).
 
+Nach der Einführung in die Programmiersprache Go folgen weitere Themenblöcke:
+
+- HTTP-Monitoring mit `meow`
+- Migration der `meow`-Konfiguration vom Dateisystem auf Redis
+
 ## :card_file_box: Ergebnissicherung
 
 In diesem Wahlprogramm wird Quellcode bearbeitet. Darum sollen die erarbeiteten

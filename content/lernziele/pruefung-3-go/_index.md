@@ -50,4 +50,5 @@ weight = 3
 
 ## Unterlagen
 
-TODO
+- [Wahlprogramm 1: Go](/wp1-go)
+- [Go-Übungen](https://github.com/patrickbucher/m346-go-exercises)
