@@ -11,14 +11,14 @@ Blöcken sollen die folgenden Bereiche der Sprache erkundet werden:
 - [Go 3: Kontrollstrukturen: Verzweigungen und Schleifen](go-3.md)
 - [Go 4: Funktionen definieren und aufrufen](go-4.md)
 
+Zu diesen Theorieteilen gibt es eine
+[Übungssammlung](https://github.com/patrickbucher/m346-go-exercises/tree/master).
+
 Hierzu ist folgende Arbeitsweise sinnvoll:
 
 1. Überfliegen Sie den jeweiligen Theorieteil auf der Modulwebseite.
 2. Lesen Sie die Aufgabenstellung im Repository durch.
 3. Kehren Sie bei Unklarheiten zum Theorieteil auf der Modulwebseite zurück.
-
-Zu diesen Theorieteilen gibt es eine
-[Übungssammlung](https://github.com/patrickbucher/m346-go-exercises/tree/master).
 
 Nach der Einführung in die Programmiersprache Go folgen weitere Themenblöcke:
 
