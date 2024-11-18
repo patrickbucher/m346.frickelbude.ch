@@ -39,3 +39,36 @@ auskunft.
 Am Ende des Moduls wird Ihre Arbeit anhand der bearbeiteten Repositories
 bewertet. Diese Bewertung fliesst nicht in die Modulnote, aber in die Prädikate
 ein.
+
+## Warum Go?
+
+Warum soll im Modul 346 Go als Programmierspracahe zum Einsatz kommen? Dafür
+sprechen eine Menge Gründe. Go wurde als Programmiersprache **für
+Serveranwendungen** konzipiert. [Cloud Native
+Go](https://www.oreilly.com/library/view/cloud-native-go/9781492076322/) hebt
+Merkmale von Go hervor, die es für Cloud-Anwendungen besonders geeignet macht:
+
+1. Lesbarkeit: einfache Lesbarkeit aufgrund der wenigen (25) Schlüsselwörter und konsequenten, automatischen Formatierung des Quellcodes
+2. Nebenläufigkeit: mächtige und sichere Nebenläufigkeit mittels [_Communicating Sequential Processes_](https://en.wikipedia.org/wiki/Communicating_sequential_processes) (CSP) auf Basis leichtgewichtiger _Goroutines_ und _Channels_
+3. Stabilität: stabiler (und schlanker) Sprachkern mit Garantie der Kompatibilität von bestehendem Quellcode in zukünftigen Versionen
+4. Kompilierung: schnelle Kompilierzeiten und plattformübergreifende Kompilierung (_Cross Compilation_) ohne Zusatzwerkzeuge
+5. Sicherheit: Memorysicherheit, statische Typisierung und Garbage Collection
+6. Performance: hohe Performance bei geringem Speicherbedarf
+7. Standardbibliothek: umfassende Standardbibliothek, u.a. mit einem Package für HTTP-Server und -Clients
+8. Skalierbarkeit: kleinste Serveranwendungen in < 20 Zeilen Code, grössere Projekte mit > 500'000 Zeilen Code (z.B. Kubernetes)
+9. Lernbarkeit: in wenigen Stunden gelernt, in einigen Wochen gemeistert
+10. Verbreitung: viele Libraries, gute Lernmaterialien, grosse Community, viel Support
+
+Go ist eine relativ junge Sprache, ist aber im Cloud-Bereich schon sehr prominent vertreten, u.a. durch die folgenden Projekte:
+
+- Container
+    - Docker & Podman
+    - Kubernetes & OpenShift
+- Serverdienste
+    - etcd
+    - CoreDNS
+- Observability
+    - Prometheus
+    - Grafana
+
+Siehe auch die [CNCF-Landscape](https://landscape.cncf.io/). Sehr viele der dort aufgelisteten Projekte wurden in Go umgesetzt.
