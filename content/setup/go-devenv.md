@@ -25,8 +25,8 @@ Stellen Sie sicher, dass bei Git die Einstellungen `user.name` und `user.email`
 gesetzt sind:
 
 ```bash
-git config user.name "VORNAME NACHNAME"
-git config user.email VORNAME_NACHNAME@sluz.ch
+git config --global user.name "VORNAME NACHNAME"
+git config --global user.email VORNAME_NACHNAME@sluz.ch
 ```
 
 Falls Sie den Computer auch im Lehrbetrieb brauchen und dort eine andere
