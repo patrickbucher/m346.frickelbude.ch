@@ -8,7 +8,7 @@ uns die Problematik mit OpenSource-Lizenzen an, die von Nextcloud sehr
 überzeugend gelöst wird. Als nächstes geht es um Service-Management mit systemd,
 womit Dienste automatisch (neu)gestartet werden.
 
-Nextcloud basiert auf dem sogenannten LAMP-Stack bestehend aus Linux, apache,
+Nextcloud basiert auf dem sogenannten LAMP-Stack bestehend aus Linux, Apache,
 MySQL und PHP. Diese Komponenten werden in Betrieb genommen und zu einer
 Gesamtarchitektur zusammengefügt.
 
@@ -30,8 +30,8 @@ Das Ergebnis von diesem Wahlprogramm ist eine persönliche Dokumentation. Diese
 soll aufzeigen, wie man Nextcloud auf dem LAMP-Stack in Betrieb nimmt und den
 Storage vom Dateisystem auf S3 (Minio) migriert.
 
-Mithilfe der Dokumentation soll der letzte Stand in kurzer Zeit auf einer neuen
-virtuellen Maschine wiederhergestellt werden!
+Mithilfe der Dokumentation soll der letzte Stand bei Bedarf in kurzer Zeit auf
+einer neuen virtuellen Maschine wiederhergestellt werden können!
 
 Bei allen Aufgaben, in denen das Symbol :briefcase: zu sehen ist, müssen Inhalte
 in die Dokumentation aufgenommen werden.
