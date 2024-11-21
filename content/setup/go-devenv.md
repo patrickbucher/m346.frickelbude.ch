@@ -21,6 +21,10 @@ Zum Aufsetzen der Go-Entwicklungsumgebung gehen Sie folgendermassen vor:
    Windows](https://github.com/git-for-windows/git/releases/download/v2.47.0.windows.2/Git-2.47.0.2-64-bit.exe)
    herunter und installieren Sie ihn mit den Standardeinstellungen.
 
+Hinterlegen Sie Ihren öffentlichen SSH-Schlüssel auf
+[GitHub](https://github.com/settings/keys), damit Sie das Repository via SSH
+klonen und pushen können.
+
 Stellen Sie sicher, dass bei Git die Einstellungen `user.name` und `user.email`
 gesetzt sind:
 
