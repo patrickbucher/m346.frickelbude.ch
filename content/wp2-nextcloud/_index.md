@@ -43,4 +43,8 @@ fliesst nicht in die Modulnote, aber in die Prädikate ein.
 
 Erfolgt die Ergebnissicherung über einen Screenshot, wird dies mit dem Symbol :desktop_computer: angezeigt. Wird ein Screenshot von einer Shell-Session verlangt, soll der Prompt (z.B. `user@patrick-bucher$ `) klar ersichtlich sein. Beispiel:
 
+> Aufgabe X: Erbringen Sie per Screenshot den Nachweis, dass der Service `apache2` läuft:
+
+Nachweis:
+
 ![Beispiel: Screnshot einer SSH-Sitzung](/img/vm-ssh-session.png)
