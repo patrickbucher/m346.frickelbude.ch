@@ -38,3 +38,9 @@ in die Dokumentation aufgenommen werden.
 
 Am Ende des Moduls wird der Stand dieser Dokumentation bewertet. Diese Bewertung
 fliesst nicht in die Modulnote, aber in die Prädikate ein.
+
+### :screen: Screenshots
+
+Erfolgt die Ergebnissicherung über einen Screenshot, wird dies mit dem Symbol :screen: angezeigt. Wird ein Screenshot von einer Shell-Session verlangt, soll der Prompt (z.B. `user@patrick-bucher$ `) klar ersichtlich sein. Beispiel:
+
+![Beispiel: Screnshot einer SSH-Sitzung](/img/vm-ssh-session.png)
