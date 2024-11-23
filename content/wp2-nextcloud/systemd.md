@@ -442,7 +442,7 @@ Die Ausgabe sollte ungefähr folgendermassen aussehen:
        6704 user     grep pingpong
        6705 user     tee pingpong-ps.txt
 
-## Teil 2 (selbständig): Minio
+### Teil 2 (selbständig): Minio
 
 Mit [Minio](/hauptdatentypen/unstrukturierte/minio) haben Sie bereits
 gearbeitet. Dabei haben Sie den Minio-Server manuell ausgeführt und (teils
