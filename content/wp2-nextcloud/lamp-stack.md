@@ -1,6 +1,7 @@
 +++
 title = "Der LAMP-Stack"
 weight = 3
+draft = true
 +++
 
 ## Theorie
