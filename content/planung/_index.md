@@ -17,4 +17,5 @@ weight = 2
 - [Block 9](09-minio/): Unstrukturierte Daten und S3/Minio
 - [Block 10](10-uebungslektion/): Übungslektion bzw. Allerheiligen (Ausfall)
 - [Block 11](11-pruefung-2/): Prüfung 2
-- [Block 12](12-wahlprogramm-1/): Wahlprogramm 1
+- [Block 12](12-wahlprogramm-1/): Wahlprogramm Block 1
+- [Block 13](13-wahlprogramm-2/): Wahlprogramm Block 2
