@@ -29,7 +29,7 @@ Im Kontext vom Cloud-Computing wird es ab Schritt 4 interessant, wenn der Prozes
 
 ### SysVinit: die "alte Welt"
 
-_SysVinit_ (ausgesprochen: "System Five Init") stammt von der fünften Ausgabe von Unix aus dem JAhr 1983. Es ist als einzelnes C-Programm (`/usr/bin/init`) implementiert. Der Systemstart erfolgt in sogenannten _Runlevels_:
+_SysVinit_ (ausgesprochen: "System Five Init") stammt von der fünften Ausgabe von Unix aus dem Jahr 1983. Es ist als einzelnes C-Programm (`/usr/bin/init`) implementiert. Der Systemstart erfolgt in sogenannten _Runlevels_:
 
 - 0: Halt (Ausschalten)
 - 1: Single User Mode (Einbenutzermodus)
