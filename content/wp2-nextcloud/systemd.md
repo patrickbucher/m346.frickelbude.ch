@@ -351,6 +351,7 @@ diese beiden Flags nützlich sein:
 
 - `-addr 127.0.0.1`: Es sollen nur noch Verbindungen von `localhost`
   entgegengenommen werden, damit man von aussen nicht um den Proxy herumkommt.
+  (Mit dem Cloud-VM-Setup ist diese Einstellung aber nicht sinnvoll.)
 - `-port 8001`: Der Service soll unter Port `8001` laufen, da der Port `8000`
   neu vom Proxy besetzt wird.
 
@@ -360,7 +361,7 @@ diese beiden Flags nützlich sein:
 
 Passen Sie nun die `ExecStart`-Direktive folgendermassen an:
 
-    ExecStart=/usr/local/bin/pingpong -addr 127.0.0.1 -port 8001
+    ExecStart=/usr/local/bin/pingpong -addr 0.0.0.0 -port 8001
 
 Speichern Sie die Datei mit `[Ctrl]-[O]` und `[Enter]` ab. Schliessen Sie den editor mit `[Ctrl]-[X]`.
 
