@@ -197,7 +197,7 @@ Der Ping-Pong-Server steht als Datei [`pingpong.go`](/files/pingpong.go) zur Ver
 
 Kompilieren Sie das ausführbare Programm:
 
-    go build cmd/pingpong.go
+    go build pingpong.go
 
 Neu befindet sich die ausführbare Datei `pingpong` im Verzeichnis. Starten Sie den Server:
 
