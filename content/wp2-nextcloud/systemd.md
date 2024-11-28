@@ -435,13 +435,12 @@ Starten Sie nun den Ping-Pong-Service neu:
 
 Überprüfen Sie noch einmal, mit welchem Benutzer der Service nun ausgeführt wird:
 
-    $ ps -e -o pid,user,args | grep pingpong
+    ps -e -o pid,user,args | grep pingpong
 
 Die Ausgabe sollte ungefähr folgendermassen aussehen:
 
        6649 pingpong /usr/local/bin/pingpong -addr 127.0.0.1 -port 8001
        6704 user     grep pingpong
-       6705 user     tee pingpong-ps.txt
 
 ### Teil 2 (selbständig): Minio
 
