@@ -478,7 +478,7 @@ Starten Sie nun Minio ein letztes Mal manuell, indem Sie die folgenden Befehle a
 
     export MINIO_ROOT_USER=minio
     export MINIO_ROOT_PASSWORD=topsecret
-    /usr/local/bin/minio server /home/minio/minio-data
+    minio server --console-address ':9090' ~/minio-data
 
 Überprüfen Sie im Browser unter der URL [IP-ADRESSE:9090](http://IP-ADRESSE:9090)
 ob Minio wirklich läuft.
