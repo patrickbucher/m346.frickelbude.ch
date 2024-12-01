@@ -1,7 +1,6 @@
 +++
 title = "Der LAMP-Stack"
 weight = 3
-draft = true
 +++
 
 ## Theorie
@@ -37,15 +36,15 @@ In der [Einführung](/wp2-nextcloud/intro) wurde die Problematik der OpenSource-
 
 **Wichtig**: Alle Komponenten können uneingeschränkt und kostenlos verwendet werden!
 
-Im folgenden soll kurz auf die einzelnen Komponenten des LAMP-Stacks eingegangen werden:
+Im Folgenden soll kurz auf die einzelnen Komponenten des LAMP-Stacks eingegangen werden:
 
 ### Linux und Debian GNU/Linux
 
-Linux ist ein Unix-artiges Betriebssystem, das seit 1991 durch Linus Torvalds betreut wird. Das Original-Unix wurde 1969 von Ken Thompson entwickelt.
+Linux ist ein Unix-artiges Betriebssystem, das seit 1991 von Linus Torvalds betreut wird. Das Original-Unix wurde 1969 von Ken Thompson entwickelt.
 
 Seit 1983 arbeitet Richard Stallman an einer freien Neuimplementierung von Unix, die _GNU_ heisst ("GNU's Not Unix"). Aus dem GNU-Projekt stammt u.a. die GNU Compiler Collection (GCC) und die share-alike Lizenz GPL.
 
-Linus Torvalds verwendete GCC um Linux zu kompilieren und stellte deswegen sein Betriebssystem unter die gleiche Lizenz.
+Linus Torvalds verwendete GCC um Linux zu kompilieren und stellte deswegen sein Betriebssystem unter die gleiche Lizenz, die GCC bereits verwendete: die GPL.
 
 Debian verwendet nicht nur den Linux-Kernel, sondern auch viele Komponenten aus dem GNU-Projekt. Darum heisst die Distribution offiziell "Debian **GNU**/Linux".
 
@@ -67,19 +66,21 @@ MySQL ist ein relationales Datenbanksystem das von der schwedischen Firma MySQL 
 
 ### PHP
 
-Die Programmiersprache PHP wird seit 1995 von Rasmus Lerdorf entwickelt. Die Abkürzung PHP ist (wie GNU) ein sogenanntes _rekursives Akronym_ und bedeutet "PHP Hypertext Preprocessor". PHP ist also eine vorgelagerte Technologie, mit der Hypertext (sprich: HTML) ausgegeben wird.
+Die Programmiersprache PHP wird seit 1995 von Rasmus Lerdorf entwickelt. Die Abkürzung "PHP" ist (wie "GNU") ein sogenanntes _rekursives Akronym_ und bedeutet "PHP Hypertext Preprocessor". PHP ist also eine vorgelagerte Technologie, mit der Hypertext (sprich: HTML) ausgegeben wird.
 
 PHP ist eine dynamisch typisierte Skriptsprache und verfügt über einen sehr einfachen Deployment-Mechanismus: Man braucht nur die Skripte in einen bestimmten Ordner auf dem Webserver zu kopieren.
 
 PHP-Skripte können via CGI oder über ein Modul in den Webserver eingebunden werden. Wichtige PHP-Anwendungen sind: WordPress, Moodle – und Nextcloud.
 
-#### Ausführung von PHP-Skripten: CGI, FastCGI, `mod_php`, PHP-FPM
+#### PHP-Ausführung: CGI, FastCGI, mod_php, PHP-FPM
 
 Es gibt verschiedene Möglichkeiten, wie ein PHP-Skript in einen Webserver eingebunden werden kann.
 
-Die älteste ist _CGI_, das "Common Gateway Interface". Hierbei wird jede Anfrage in einem separaten Prozess behandelt. Das Aufstarten eines Prozesses ist langsam, weswegen CGI als sehr ineffizient gilt. Die folgende Grafik veranschaulicht den Ablauf bei der Ausführung eines CGI-Skripts:
+Die älteste ist _CGI_, das _Common Gateway Interface_. Hierbei wird jede Anfrage in einem separaten Prozess behandelt. Das Aufstarten eines Prozesses ist langsam, weswegen CGI als sehr ineffizient gilt. Die folgende Grafik veranschaulicht den Ablauf bei der Ausführung eines CGI-Skripts namens `script.php`:
 
 ![CGI (ein PHP-Prozess pro Request)](/img/cgi.png)
+
+Man sieht, dass bei jedem Request zuerst ein PHP-Prozess gestartet werden muss, was die Beantwortung der Anfrage verzögert.
 
 Webserver haben spezielle Module entwickelt, um PHP effizienter ausführen zu können. Hierbei wird ein Prozess wiederverwendet. Bei Apache kommt hierzu das Modul `mod_php` zum Einsatz, was standardmässig aktiv ist. Dadurch laufen der Apache Webserver und das PHP-Skript mit den gleichen Berechtigungen, was als unsicher gilt.
 
@@ -109,15 +110,15 @@ Die folgenden Links führen zu weiterführenden Informationen über den _DAMPF_-
 - [PHP](https://www.php.net/)
 - [PHP-FPM](https://www.php.net/manual/en/install.fpm.php)
 
-## Aufgaben
+## Übungen
 
-In den folgenden Aufgaben soll der LAMP-Stack basierend auf Debian GNU/Linux 12 (_Bookworm_) in Betrieb genommen werden, was die Grundlage für den Betrieb von Nextcloud bilden soll.
+In den folgenden Aufgaben soll der LAMP-Stack basierend auf Debian GNU/Linux 12 (_Bookworm_) in Betrieb genommen werden, was die Grundlage für den Betrieb von Nextcloud bildet.
 
 Für diese Aufgaben wird Ihnen eine virtuelle Maschine (Debian 12 "Bookworm") zur Verfügung gestellt.
 
 ### :briefcase: :desktop_computer: Aufgabe 1: Apache HTTP Server
 
-Installieren Sie den Apache-Webserver:
+Installieren Sie den Apache HTTP Server:
 
 ```bash
 sudo apt install -y apache2
@@ -183,7 +184,7 @@ Seiten_:
 sudo mv modulbaukasten.conf /etc/apache2/sites-available/
 ```
 
-:briefcase: **Kontrollfrage 1**: Was beinhalten die beiden Unterverzeichnisse `sites-available/` und `sites-enabled/` im Apache-Konfigurationsverzeichnis `/etc/apache2`? Tipp: Verwenden Sie den Befehl `ls -l`. Halten Sie die Ausgabe in Ihrer Dokumentation fest.
+:briefcase: :desktop_computer: **Kontrollfrage 1**: Was beinhalten die beiden Unterverzeichnisse `sites-available/` und `sites-enabled/` im Apache-Konfigurationsverzeichnis `/etc/apache2`? Tipp: Verwenden Sie den Befehl `ls -l`. Halten Sie die Ausgabe in Ihrer Dokumentation fest.
 
 Die Debian-Beispielseite soll nun _deaktiviert_; die neu konfigurierte
 Modulbaukasten-Seite _aktiviert_ werden:
@@ -193,7 +194,7 @@ sudo a2dissite 000-default.conf
 sudo a2ensite modulbaukasten.conf
 ```
 
-:briefcase: **Kontrollfrage 2**: Was beinhalten `sites-available/` und `sites-enabled/` _jetzt_? Halten Sie die Ausgabe von `ls -l` erneut in Ihrer Dokumentation fest.
+:briefcase: :desktop_computer: **Kontrollfrage 2**: Was beinhalten `sites-available/` und `sites-enabled/` _jetzt_? Halten Sie die Ausgabe von `ls -l` erneut in Ihrer Dokumentation fest.
 
 Veranlassen Sie Apache nun via systemd zum Neuladen der Konfiguration:
 
@@ -203,9 +204,9 @@ sudo systemctl reload apache2.service
 
 Die neue Beispielseite kann unter [http://IP-ADRESSE](http://IP-ADRESSE) betrachtet werden.
 
-:desktop_computer: Halten Sie einen Screenshot des Browsers mit angezeigter Seite fest.
+:briefcase: :desktop_computer: Halten Sie einen Screenshot des Browsers mit angezeigter Seite fest.
 
-## Übung 2: MariaDB
+## Aufgabe 2: MariaDB
 
 Der Modulbaukasten soll von einer statischen in eine dynamische Webseite
 umgewandelt werden. Die veränderbaren Daten sollen dazu in einer Datenbank
@@ -213,32 +214,42 @@ abgelegt werden. Hierzu soll MariaDB zum Einsatz kommen.
 
 Installieren Sie MariaDB:
 
-    $ sudo apt install -y mariadb-server
+```bash
+sudo apt install -y mariadb-server
+```
 
 Die Standardinstallation lässt sich zur Verbesserung der Sicherheit _härten_,
 wozu MariaDB einen Assistenten bietet, den Sie ausführen sollen:
 
-    $ sudo mariadb-secure-installation
+```bash
+sudo mariadb-secure-installation
+```
 
-Befolgen Sie die Anweisungen auf dem Bildschirm und halten Sie die Fragen und
-Ihre Antworten darauf (mit einer kurzen Begründung) unter **Kontrollfrage 3**
-fest.
+:briefcase: Befolgen Sie die Anweisungen auf dem Bildschirm und halten Sie die
+Fragen und Ihre Antworten darauf (mit einer kurzen Begründung) unter
+**Kontrollfrage 3** fest.
 
 Öffnen Sie nun eine interaktive `mariadb`-Sitzung:
 
-    $ sudo mariadb
+```bash
+sudo mariadb
+```
 
 Erstellen Sie einen neuen Benutzer mit dem Namen `moderator` und dem Passwort
 `topsecret`:
 
-    > CREATE USER moderator@localhost IDENTIFIED BY 'topsecret';
+```sql
+CREATE USER moderator@localhost IDENTIFIED BY 'topsecret';
+```
 
-**Kontrollfrage 4**: Wozu dient wohl das Suffix `@localhost` hinter dem
-Benutzernamen?
+:briefcase: **Kontrollfrage 4**: Wozu dient wohl das Suffix `@localhost` hinter
+dem Benutzernamen?
 
 Erstellen Sie eine Datenbank namens `modulbaukasten`:
 
-    > CREATE DATABASE modulbaukasten CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+```sql
+CREATE DATABASE modulbaukasten CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+```
 
 (Die Datenbank unterstützt den Unicode-Zeichensatz mithilfe der Kodierung UTF-8.)
 
@@ -246,9 +257,11 @@ Vergeben Sie dem Benutzer `moderator` alle Rechte für die Datenbank
 `modulbaukasten`, forcieren Sie ein Neuladen der Berechtigungen und verlassen
 Sie die MariaDB-Sitzung wieder:
 
-    > GRANT ALL PRIVILEGES ON modulbaukasten.* TO moderator@localhost;
-    > FLUSH PRIVILEGES;
-    > EXIT
+```sql
+GRANT ALL PRIVILEGES ON modulbaukasten.* TO moderator@localhost;
+FLUSH PRIVILEGES;
+EXIT
+```
 
 ### Datenbanktabelle erstellen und befüllen
 
@@ -282,12 +295,16 @@ Vergangenheitsbewältigung missbrauchen dürfen. (Der offizielle
 
 Führen Sie das Skript nun folgendermassen aus:
 
-    $ mariadb --database=modulbaukasten --user=moderator --password=topsecret <modules.sql
+```bash
+mariadb --database=modulbaukasten --user=moderator --password=topsecret <modules.sql
+```
 
 **Falls es beim Einfügen der Werte zu einem Fehler gekommen ist**, löschen Sie
 am besten die Tabelle:
 
-    $ echo 'DROP TABLE modules;' | mariadb -D modulbaukasten -u moderator -ptopsecret
+```bash
+echo 'DROP TABLE modules;' | mariadb -D modulbaukasten -u moderator -ptopsecret
+```
 
 (Die Parameter `--database`, `--user` und `--password` haben die Kurzvarianten
 `-D`, `-u` und `-p`. Beachten Sie, dass zwischen dem Parameter `-p` und dem
@@ -296,39 +313,49 @@ Passwort _kein_ Leerzeichen steht.)
 Korrigieren Sie Ihr Skript und versuchen Sie es erneut auszuführen, bis alle
 Werte erfolgreich eingefügt werden konnten.
 
-**Fügen Sie die Datei `modules.sql` dem Repository hinzu!**
+:briefcase: Halten Sie die Datei `modules.sql` in Iher Dokumentation fest.
 
 Sie können sich die Tabelle folgendermassen ausgeben lassen:
 
-    $ echo 'SELECT * FROM modules;' | mariadb -D modulbaukasten -u moderator -ptopsecret -t
+```bash
+echo 'SELECT * FROM modules;' | mariadb -D modulbaukasten -u moderator -ptopsecret -t
+```
 
-**Kontrollfrage 5**: Das Passwort `topsecret` ist in den obigen Befehlen direkt
-mit dem Parameter `--password` bzw. `-p` mitgegeben worden. Ist das eine gute
-Idee? Warum (nicht)?
+:briefcase: **Kontrollfrage 5**: Das Passwort `topsecret` ist in den obigen
+Befehlen direkt mit dem Parameter `--password` bzw. `-p` mitgegeben worden. Ist
+das eine gute Idee? Warum (nicht)?
 
-## Übung 3: PHP
+## Aufgabe 3: PHP
 
 Um die Informationen aus der Datenbank auf eine Webseite ausgeben zu können wird
 PHP mit einem Zusatzpaket für den Datenbankzugriff benötigt:
 
-    $ sudo apt install -y php8.2 php-mysql
+```bash
+sudo apt install -y php8.2 php-mysql
+```
 
 Der PHP-Interpreter kann sogleich mit einem Einzeiler getestet werden:
 
-    $ php -r 'echo("PHP Version " . phpversion() . " läuft.\n");'
+```bash
+php -r 'echo("PHP Version " . phpversion() . " läuft.\n");'
+```
 
-**Kontrollfrage 6**: Welche Version von PHP wurde installiert (dreistellige
-Versionsnummer)?
+:briefcase: **Kontrollfrage 6**: Welche Version von PHP wurde installiert
+(dreistellige Versionsnummer)?
 
 Die statische Seite unter `/var/www/modulbaukasten/index.html` soll zu einer
 dynamischen PHP-Seite umgewandelt werden. Hierzu muss zuerst deren Dateiendung
 angepasst werden:
 
-    $ sudo mv /var/www/modulbaukasten/index.html /var/www/modulbaukasten/index.php
+```bash
+sudo mv /var/www/modulbaukasten/index.html /var/www/modulbaukasten/index.php
+```
 
 Anschliessend soll sie mit einem Texteditor (wie z.B. `nano`) angepasst werden:
 
-    $ sudo nano /var/www/modulbaukasten/index.php
+```bash
+sudo nano /var/www/modulbaukasten/index.php
+```
 
 Fügen Sie der Datei folgenden Inhalt unterhalt vom `<h1>`-Element hinzu:
 
@@ -338,8 +365,8 @@ Fügen Sie der Datei folgenden Inhalt unterhalt vom `<h1>`-Element hinzu:
 ?>
 ```
 
-Unter [http://localhost](http://localhost) sollte nun auch die Version von PHP ausgegeben
-werden.
+Unter [http://IP-ADRESSE](http://IP-ADRESSE) sollte nun auch die Version von PHP
+ausgegeben werden.
 
 Erstellen Sie eine weitere Seite namens `info.php` mit folgendem Inhalt:
 
@@ -351,51 +378,62 @@ Erstellen Sie eine weitere Seite namens `info.php` mit folgendem Inhalt:
 
 Verschieben Sie die Datei ins selbe Verzeichnis wie `index.php`:
 
-    $ sudo mv info.php /var/www/modulbaukasten/
+```bash
+sudo mv info.php /var/www/modulbaukasten/
+```
 
-Rufen Sie nun die Seite unter [http://localhost/info.php](http://localhost/info.php) auf.
+Rufen Sie nun die Seite unter [http://IP-ADRESSE/info.php](http://IP-ADRESSE/info.php) auf.
 
-**Kontrollfrage 7**: Die Seite zeigt u.a. an, welche _Server API_ im Einsatz
-ist. Welcher Wert wird in der rechten Spalte zu _Server API_ angezeigt?
+:briefcase: :desktop_computer: **Kontrollfrage 7**: Die Seite zeigt u.a. an, welche
+_Server API_ im Einsatz ist. Welcher Wert wird in der rechten Spalte zu _Server
+API_ angezeigt?
 
-## Übung 4: PHP-FPM
+## Aufgabe 4: PHP-FPM
 
 Bei einer Standardinstallation von Apache unter Debian wird PHP mit dem Modul
 `mod_php` ausgeführt. Um die Ausführung von PHP per FastCGI besser skalierbar zu
 machen, muss PHP-FPM mit einem entsprechenden Apache-Modul installiert werden:
 
-    $ sudo apt install -y php8.2-fpm libapache2-mod-fcgid
+```bash
+sudo apt install -y php8.2-fpm libapache2-mod-fcgid
+```
 
 Beim ersten Paket handelt es sich um den PHP-FPM-Service, welcher die
 PHP-Prozesse verwaltet. Das zweite Paket ist ein Apache-Modul, welches die
 Ausführung von PHP-Code an PHP-FPM delegiert.
 
-**Kontrollfrage 8**: Was beinhalten die beiden Unterverzeichnisse
-`mods-enabled/` und `conf-enabled/` im Apache-Konfigurationsverzeichnis
-`/etc/apache2`?
+:briefcase: :desktop_computer: **Kontrollfrage 8**: Was beinhalten die beiden
+Unterverzeichnisse `mods-enabled/` und `conf-enabled/` im
+Apache-Konfigurationsverzeichnis `/etc/apache2`?
 
 Zuerst soll `mod_php` deaktiviert werden:
 
-    $ sudo a2dismod php8.2
+```bash
+sudo a2dismod php8.2
+```
 
 Anschliessend sollen die Konfiguration für PHP-FPM sowie das Modul für FastCGI
 aktiviert werden:
 
-    $ sudo a2enconf php8.2-fpm
-    $ sudo a2enmod proxy_fcgi
+```bash
+sudo a2enconf php8.2-fpm
+sudo a2enmod proxy_fcgi
+```
 
-**Kontrollfrage 9**: Was beinhalten die beiden Unterverzeichnisse
-`mods-enabled/` und `conf-enabled/` im Apache-Konfigurationsverzeichnis
-`/etc/apache2` _jetzt_?
+:briefcase: :desktop_computer: **Kontrollfrage 9**: Was beinhalten die beiden
+Unterverzeichnisse `mods-enabled/` und `conf-enabled/` im
+Apache-Konfigurationsverzeichnis `/etc/apache2` _jetzt_?
 
 Veranlassen Sie Apache zum Neuladen der Konfiguration:
 
-    $ sudo systemctl reload apache2.service
+```bash
+sudo systemctl reload apache2.service
+```
 
-Rufen Sie erneut die Seite unter [http://localhost/info.php](http://localhost/info.php) auf.
+Rufen Sie erneut die Seite unter [http://IP-ADRESSE/info.php](http://IP-ADRESSE/info.php) auf.
 
-**Kontrollfrage 10**: Welcher Wert wird nun in der rechten Spalte zu _Server
-API_ angezeigt?
+:briefcase: :desktop_computer: **Kontrollfrage 10**: Welcher Wert wird nun in
+der rechten Spalte zu _Server API_ angezeigt?
 
 Damit PHP-FPM auch ressourcenintensivere Anwendungen (wie z.B. Nextcloud)
 ausführen kann, soll die Oberlimite für den Arbeitsspeicher, der von einem
@@ -404,13 +442,17 @@ der Datei `/etc/php/8.2/fpm/php.ini`. Suchen Sie nach der Einstellung
 `memory_limit`, die standardmässig auf `128M` (128 Megabyte) gesetzt sein
 sollte. Erhöhen Sie diese Angabe auf `256M` (256 Megabyte):
 
-    memory_limit = 256M
+```ini
+memory_limit = 256M
+```
 
 Speichern Sie die Änderungen ab und starten Sie PHP-FPM neu:
 
-    $ sudo systemctl restart php8.2-fpm.service
+```bash
+sudo systemctl restart php8.2-fpm.service
+```
 
-## Übung 5: Dynamische PHP-Seite
+## Aufgabe 5: Dynamische PHP-Seite
 
 Da nun der ganze LAMP-Stack mit PHP-FPM in Betrieb ist, sollen die Module aus
 der Datenbank nun dynamisch als Webseite dargestellt werden. Erstellen Sie
@@ -446,17 +488,18 @@ hierzu eine Datei namens `modules.php` mit folgendem Inhalt:
 </html>
 ```
 
-**Kontrollfrage 11**: Ist es sinnvoll, Benutzername und Passwort in einer
-PHP-Datei zu hinterlegen? Warum (nicht)?
+:briefcase: **Kontrollfrage 11**: Ist es sinnvoll, Benutzername und Passwort in
+einer PHP-Datei zu hinterlegen? Warum (nicht)?
 
 Verschieben Sie dieses PHP-Skript ins selbe Verzeichnis wie zuvor `info.php`:
 
-    $ sudo mv modules.php /var/www/modulbaukasten/
+```bash
+sudo mv modules.php /var/www/modulbaukasten/
+```
 
-Rufen Sie die Seite unter [http://localhost/modules.php](http://localhost/modules.php) auf.
+Rufen Sie die Seite unter [http://IP-ADRESSE/modules.php](http://IP-ADRESSE/modules.php) auf.
 
-**Erstellen Sie einen Screenshot der ausgegebenen Seite und fügen Sie ihn als
-`before.png` dem Repository hinzu.**
+:briefcase: :desktop_computer: Erstellen Sie einen Screenshot der ausgegebenen Seite.
 
 ### Zusatzübung: Anpassung der Ausgabe
 
@@ -466,8 +509,9 @@ tabellarisch mit einer Titelzeile ausgegeben werden. Verwenden Sie hierzu die
 HTML-Tags `<table>` (Tabelle), `<tr>` (Tabellenzeile), `<th>` (Titelzelle) und
 `<td>` (normale Zelle).
 
-Testen Sie die angepasste Ausgabe unter [http://localhost/modules.php](http://localhost/modules.php) bis Sie
-mit der Darstellung zufrieden sind.
+Testen Sie die angepasste Ausgabe unter
+[http://IP-ADRESSE/modules.php](http://IP-ADRESSE/modules.php) bis Sie mit der
+Darstellung zufrieden sind.
 
-**Fügen Sie die angepasste Datei `modules.php` und einen Screenshot der Ausgabe
-als `after.png` dem Repository hinzu.**
+:briefcase: :desktop_computer: Fügen Sie die angepasste Datei `modules.php` und
+einen Screenshot der Ausgabe Ihrer Dokumentation hinzu.
