@@ -138,7 +138,7 @@ Sollte _nicht_ die Ausgabe `active` erscheinen, starten Sie den Server manuell:
 sudo systemctl start apache2.service
 ```
 
-Öffnen Sie im Browser die URL [http://IP-ADRESSE](http://IP-ADRSSE), wobei Sie `IP-ADRESSE` durch die IP-Adresse Ihrer VM ersetzen. Es sollte eine Debian-Beispielseite angezeigt werden.
+:briefcase: :desktop_computer: Öffnen Sie im Browser die URL [http://IP-ADRESSE](http://IP-ADRSSE), wobei Sie `IP-ADRESSE` durch die IP-Adresse Ihrer VM ersetzen. Es sollte eine Debian-Beispielseite angezeigt werden. Machen Sie einen Screenshot von Ihrem Browser.
 
 #### Statische Beispielseite
 
@@ -162,11 +162,7 @@ Erstellen Sie eine Datei namens `index.html` mit folgendem Inhalt:
 </html>
 ```
 
-Verschieben Sie die Datei nun ins zuvor erstellte Verzeichnis:
-
-```bash
-sudo mv index.html /var/www/modulbaukasten/
-```
+Verschieben Sie die Datei nun mit dem `mv`-Befehl ins zuvor erstellte Verzeichnis:
 
 Damit die Seite erreichbar wird, muss eine neuer _virtueller Host_ konfiguriert werden. Erstellen Sie hierzu eine Datei namens `modulbaukasten.conf` mit folgendem Inhalt:
 
@@ -178,11 +174,7 @@ Damit die Seite erreichbar wird, muss eine neuer _virtueller Host_ konfiguriert 
 ```
 
 Verschieben Sie die Datei anschliessend zum Apache-Verzeichnis der _verfügbaren
-Seiten_:
-
-```bash
-sudo mv modulbaukasten.conf /etc/apache2/sites-available/
-```
+Seiten_ `/etc/apache2/sites-available`:
 
 :briefcase: :desktop_computer: **Kontrollfrage 1**: Was beinhalten die beiden Unterverzeichnisse `sites-available/` und `sites-enabled/` im Apache-Konfigurationsverzeichnis `/etc/apache2`? Tipp: Verwenden Sie den Befehl `ls -l`. Halten Sie die Ausgabe in Ihrer Dokumentation fest.
 
@@ -196,11 +188,7 @@ sudo a2ensite modulbaukasten.conf
 
 :briefcase: :desktop_computer: **Kontrollfrage 2**: Was beinhalten `sites-available/` und `sites-enabled/` _jetzt_? Halten Sie die Ausgabe von `ls -l` erneut in Ihrer Dokumentation fest.
 
-Veranlassen Sie Apache nun via systemd zum Neuladen der Konfiguration:
-
-```bash
-sudo systemctl reload apache2.service
-```
+Veranlassen Sie Apache nun via systemd zum Neuladen der Konfiguration (siehe Ausgabe der letzten beiden Befehle).
 
 Die neue Beispielseite kann unter [http://IP-ADRESSE](http://IP-ADRESSE) betrachtet werden.
 
@@ -212,11 +200,7 @@ Der Modulbaukasten soll von einer statischen in eine dynamische Webseite
 umgewandelt werden. Die veränderbaren Daten sollen dazu in einer Datenbank
 abgelegt werden. Hierzu soll MariaDB zum Einsatz kommen.
 
-Installieren Sie MariaDB:
-
-```bash
-sudo apt install -y mariadb-server
-```
+Installieren Sie den MariaDB-Server mithilfe des `apt install`-Befehls. Tipp: Mit `apt search SUCHBEGRIFF` findet man den Namen des zu installierenden Pakets.
 
 Die Standardinstallation lässt sich zur Verbesserung der Sicherheit _härten_,
 wozu MariaDB einen Assistenten bietet, den Sie ausführen sollen:
@@ -357,7 +341,7 @@ Anschliessend soll sie mit einem Texteditor (wie z.B. `nano`) angepasst werden:
 sudo nano /var/www/modulbaukasten/index.php
 ```
 
-Fügen Sie der Datei folgenden Inhalt unterhalt vom `<h1>`-Element hinzu:
+Fügen Sie der Datei folgenden Inhalt unterhalb vom `<h1>`-Element hinzu:
 
 ```php
 <?php
@@ -367,6 +351,8 @@ Fügen Sie der Datei folgenden Inhalt unterhalt vom `<h1>`-Element hinzu:
 
 Unter [http://IP-ADRESSE](http://IP-ADRESSE) sollte nun auch die Version von PHP
 ausgegeben werden.
+
+:briefcase: :desktop_computer: Halten Sie einen Screenshot vom Browser fest, in dem die Versionsnummer von PHP zu sehen ist.
 
 Erstellen Sie eine weitere Seite namens `info.php` mit folgendem Inhalt:
 
@@ -424,33 +410,28 @@ sudo a2enmod proxy_fcgi
 Unterverzeichnisse `mods-enabled/` und `conf-enabled/` im
 Apache-Konfigurationsverzeichnis `/etc/apache2` _jetzt_?
 
-Veranlassen Sie Apache zum Neuladen der Konfiguration:
-
-```bash
-sudo systemctl reload apache2.service
-```
+Veranlassen Sie Apache zum Neuladen der Konfiguration, wie bereits weiter oben beim Konfigurieren der Modulbaukasten-Webseite.
 
 Rufen Sie erneut die Seite unter [http://IP-ADRESSE/info.php](http://IP-ADRESSE/info.php) auf.
 
 :briefcase: :desktop_computer: **Kontrollfrage 10**: Welcher Wert wird nun in
-der rechten Spalte zu _Server API_ angezeigt?
+der rechten Spalte zu _Server API_ angezeigt? Halten Sie das als Screenshot fest.
 
 Damit PHP-FPM auch ressourcenintensivere Anwendungen (wie z.B. Nextcloud)
 ausführen kann, soll die Oberlimite für den Arbeitsspeicher, der von einem
-PHP-Skript belegt werden darf, erhöht werden. Diese Einstellung befindet sich in
-der Datei `/etc/php/8.2/fpm/php.ini`. Suchen Sie nach der Einstellung
-`memory_limit`, die standardmässig auf `128M` (128 Megabyte) gesetzt sein
-sollte. Erhöhen Sie diese Angabe auf `256M` (256 Megabyte):
+PHP-Skript belegt werden darf, erhöht werden.
 
-```ini
-memory_limit = 256M
-```
+Diese Einstellung befindet sich in der Datei `/etc/php/8.2/fpm/php.ini`. Suchen
+Sie nach der Einstellung `memory_limit`, die standardmässig auf `128M` (128
+Megabyte) gesetzt sein sollte. Erhöhen Sie diese Angabe auf `256M` (256
+Megabyte).
 
-Speichern Sie die Änderungen ab und starten Sie PHP-FPM neu:
+Speichern Sie die Änderungen ab und starten Sie den Service `php8.2-fpm` neu.
 
-```bash
-sudo systemctl restart php8.2-fpm.service
-```
+Rufen Sie erneut die Seite unter [http://IP-ADRESSE/info.php](http://IP-ADRESSE/info.php) auf.
+
+:briefcase: :desktop_computer: **Kontrollfrage 11**: Welcher Wert wird nun in
+der rechten Spalte zu `memory_limit` angezeigt? Halten Sie das als Screenshot fest.
 
 ## Aufgabe 5: Dynamische PHP-Seite
 
@@ -488,7 +469,7 @@ hierzu eine Datei namens `modules.php` mit folgendem Inhalt:
 </html>
 ```
 
-:briefcase: **Kontrollfrage 11**: Ist es sinnvoll, Benutzername und Passwort in
+:briefcase: **Kontrollfrage 12**: Ist es sinnvoll, Benutzername und Passwort in
 einer PHP-Datei zu hinterlegen? Warum (nicht)?
 
 Verschieben Sie dieses PHP-Skript ins selbe Verzeichnis wie zuvor `info.php`:
