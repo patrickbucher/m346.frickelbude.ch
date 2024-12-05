@@ -16,4 +16,4 @@ Sie haben den dritten Block des jeweiligen Wahlprogramms fertig bearbeitet und d
 
 ### Hausaufgaben
 
-Schliessen Sie den zweiten Block ab und sichern Sie die Ergebnisse (Wahlprogramm 1: Git-Repository, Wahlprogramm 2: Dokumentation)
+Schliessen Sie den dritten Block ab und sichern Sie die Ergebnisse (Wahlprogramm 1: Git-Repository, Wahlprogramm 2: Dokumentation)
