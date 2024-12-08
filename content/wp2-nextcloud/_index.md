@@ -20,8 +20,8 @@ systemd-Service betrieben werden soll.
 
 - [Einführung in Nextcloud und OpenSource-Lizenzen](/wp2-nextcloud/intro)
 - [Service-Management mit systemd](/wp2-nextcloud/systemd)
-- LAMP-Stack
-- Nextcloud-Installation
+- [LAMP-Stack](/wp2-nextcloud/lamp-stack)
+- [Nextcloud-Installation](/wp2-nextcloud/nextcloud-setup)
 - S3-Migration
 
 ## :briefcase: Ergebnissicherung

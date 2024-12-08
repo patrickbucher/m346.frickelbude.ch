@@ -19,3 +19,5 @@ weight = 2
 - [Block 11](11-pruefung-2/): Prüfung 2
 - [Block 12](12-wahlprogramm-1/): Wahlprogramm Block 1
 - [Block 13](13-wahlprogramm-2/): Wahlprogramm Block 2
+- [Block 14](14-wahlprogramm-3/): Wahlprogramm Block 3
+- [Block 15](15-wahlprogramm-4/): Wahlprogramm Block 4
