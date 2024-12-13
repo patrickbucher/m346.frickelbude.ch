@@ -106,12 +106,18 @@ Befehle in Ihrer Dokumentation fest!
 ### Aufgabe 5: Nextcloud installieren {#aufgabe5}
 
 Besuchen Sie die [Download-Seite](https://download.nextcloud.com/) vom
-Nextcloud-Projekt. Laden Sie den Server-Release der Version 30.0.2 als Tarball
-(Endung: `.tar.bz2`) herunter. Laden Sie sich ausserdem die GPG-Signatur
-(Endung: `.asc`) und die SHA-512-Prüfsumme zur entsprechenden Datei (Endung:
-`.sha512`) herunter. Anhand letzterer beiden Dateien soll verifiziert werden,
-dass das Archiv tatsächlich von den Nextcloud-Entwicklern stammt und nicht
-manipuliert worden ist!
+Nextcloud-Projekt. Die folgenden Dateien müssen mit dem Befehl `wget` auf der VM heruntergeladen werden. Hierzu kann man sich die entsprechenden Download-Links in die Zwischenablage kopieren und dann ins Terminal einfügen:
+
+```bash
+wget URL-ZUR-DATEI
+```
+
+Laden Sie den Server-Release der Version 30.0.2 als Tarball (Endung:
+`.tar.bz2`) herunter. Laden Sie sich ausserdem die GPG-Signatur (Endung:
+`.asc`) und die SHA-512-Prüfsumme zur entsprechenden Datei (Endung: `.sha512`)
+herunter. Anhand letzterer beiden Dateien soll verifiziert werden, dass das
+Archiv tatsächlich von den Nextcloud-Entwicklern stammt und nicht manipuliert
+worden ist!
 
 :briefcase: **Kontrollfrage**: Wie lauten die vollständigen URLs zum Herunterladen dieser drei Dateien? Halten Sie diese URLs in der Dokumentation fest!
 
