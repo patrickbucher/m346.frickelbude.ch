@@ -19,7 +19,7 @@ Insgesamt gibt es Übungseinheiten in zehn aufeinanderfolgenden Wochen. In den e
 
 Berechnen Sie in einem ersten Schritt die ungefähre Anzahl an Stunden, während derer Compute- und/oder Storage-Kosten anfallen. Diese Berechnung soll möglichst gut nachvollziehbar dokumentiert werden. Falls Annahmen getroffen werden, müssen diese ebenfalls dokumentiert und begründet werden.
 
-**Wichtig**: Die VMs sollen nicht die ganze Zeit bestehen, sondern nur bei Bedarf erstellt und aufgestartet werden. Wird eine VM nicht mehr benötigt, kann sie heruntergefahren oder gar gelöscht werden. (Eine laufende VM erzeugt Compute- und Storage-Kosten. Eine gestoppte VM erzeugt nur Storage-Kosten. Eine gelöschte VM erzeugt gar keine Kosten.)
+**Wichtig**: Die VMs sollen nicht die ganze Zeit bestehen/laufen, sondern nur bei Bedarf erstellt und aufgestartet werden. Wird eine VM nicht mehr benötigt, kann sie heruntergefahren oder gar gelöscht werden. (Eine laufende VM erzeugt Compute- und Storage-Kosten. Eine gestoppte VM erzeugt nur Storage-Kosten. Eine gelöschte VM erzeugt gar keine Kosten.)
 
 Erstelle auf Basis dieser Parameter jeweils drei Schätzungen für die Storage- und Compute-Laufzeit: Eine minimale (Idealfall), eine mittlere (durchschnittlicher Fall) und eine maximale (schlimmster Fall).
 
