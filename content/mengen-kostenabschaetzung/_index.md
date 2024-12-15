@@ -9,31 +9,27 @@ Als freiwillige Zusatznote kann der folgende Auftrag erarbeitet und zur Benotung
 
 Die Berufsschule möchte den Lernenden virtuelle Maschinen in der Cloud zur Verfügung stellen. Im Rahmen eines Pilotprojekts ist davon zuerst das Modul 346 (Cloud-Lösungen konzipieren und realisieren) betroffen. Dieses Modul wird von allen Informatik-Lernenden eines Jahrgangs besucht.
 
-Während eines Semesters soll den Lernenden für Übungszwecke eine Linux-VM zur Verfügung gestellt werden. Diese soll jedoch nicht permanent laufen, sondern nur während der Übungsphasen im Unterricht und auf Wunsch vor Prüfungen.
+Während eines Semesters soll den Lernenden für Übungszwecke eine Linux-VM zur Verfügung gestellt werden. Diese soll jedoch nicht permanent laufen, sondern nur während der Übungsphasen im Unterricht.
 
-Insgesamt gibt es Übungseinheiten in zehn aufeinanderfolgenden Wochen. In den ersten sechs Einheiten werden Übungen bearbeitet, die nichts miteinander zu tun haben. Die Übungen in den letzten vier Wochen hängen jedoch miteinander zusammen, sodass während dieser Phase die VMs erhalten bleiben sollten. Laufen müssen die VMs aber nur jeweils während der Doppellektion.
+Insgesamt gibt es Übungseinheiten in zehn aufeinanderfolgenden Wochen. In den ersten sechs Einheiten werden Übungen bearbeitet, die nichts miteinander zu tun haben. Die Übungen in den letzten vier Wochen hängen jedoch miteinander zusammen, sodass während dieser Phase die VMs erhalten bleiben sollen. Laufen müssen die VMs aber nur jeweils während der Doppellektion.
 
 ## Mengenabschätzung
 
-Berechnen Sie in einem ersten Schritt die ungefähre Anzahl an Stunden, während derer Compute- und/oder Storage-Kosten anfallen. Diese Berechnung soll möglichst gut nachvollziehbar dokumentiert werden. Falls Annahmen getroffen werden müssen, müssen diese ebenfalls dokumentiert und begründet werden.
+Berechnen Sie in einem ersten Schritt die ungefähre Anzahl an Stunden, während derer Compute- und/oder Storage-Kosten anfallen. Diese Berechnung soll möglichst gut nachvollziehbar dokumentiert werden. Falls Annahmen getroffen werden, müssen diese ebenfalls dokumentiert und begründet werden.
 
-Wichtig: Die VMs sollen nicht die ganze Zeit bestehen, sondern nur bei Bedarf erstellt und aufgestartet werden. Wird eine VM nicht mehr benötigt, kann sie heruntergefahren oder gar gelöscht werden. (Eine laufende VM erzeugt Compute- und Storage-Kosten. Eine gestoppte VM erzeugt nur Storage-Kosten. Eine gelöschte VM erzeugt gar keine Kosten.)
-
-Zur Berechnung der VM-Laufzeit kann die Semesterplanung beigezogen werden.
+**Wichtig**: Die VMs sollen nicht die ganze Zeit bestehen, sondern nur bei Bedarf erstellt und aufgestartet werden. Wird eine VM nicht mehr benötigt, kann sie heruntergefahren oder gar gelöscht werden. (Eine laufende VM erzeugt Compute- und Storage-Kosten. Eine gestoppte VM erzeugt nur Storage-Kosten. Eine gelöschte VM erzeugt gar keine Kosten.)
 
 Erstelle auf Basis dieser Parameter jeweils drei Schätzungen für die Storage- und Compute-Laufzeit: Eine minimale (Idealfall), eine mittlere (durchschnittlicher Fall) und eine maximale (schlimmster Fall).
 
 ## Kostenabschätzung
 
-Finden Sie nun zwei verschiedene Cloud-Anbieter, die Linux-VMs anbieten und dabei zwischen Compute- und Storage-Kosten unterscheiden, sodass gestoppte VMs weniger Kosten als laufende VMs verursachen. Mindestens einer der beiden Anbieter darf nicht dem [CLOUD-Act](/theorie/dsgvo/#der-cloud-act) unterstehen. Stellen Sie die beiden Anbieter kurz vor. 
+Finden Sie nun zwei verschiedene Cloud-Anbieter, die Linux-VMs anbieten. Beachten Sie dabei, ob zwischen Compute- und Storage-Kosten unterschieden wird, sodass gestoppte VMs weniger Kosten als laufende VMs verursachen. Mindestens einer der beiden Anbieter darf nicht dem [CLOUD-Act](/theorie/dsgvo/#der-cloud-act) unterstehen. Stellen Sie die beiden Anbieter kurz vor. 
 
 Prüfen Sie verschiedene Arten bzw. Grössen von VMs und wählen Sie drei aus, die für das Modulprogramm passend sein könnten. (Nicht über- noch unterdimensioniert.) Begründen Sie die Auswahl.
 
-Berechnen Sie anschliessend anhand der Mengenabschätzung (drei Fälle) die Kosten für das ganze Semester bei beiden Anbietern pro Art/Grösse der VM. Das Ergebnis sollte für Storage- und Compute-Kosten je eine 3x3-Matrix pro Anbieter sein. Die beiden Matrizen (Storage- & Compute-Kosten) sind anschliessend aufzusummieren und in einer 3x3-Kostenmatrix wiederzugeben.
+Berechnen Sie anschliessend anhand der Mengenabschätzung (drei Fälle) die Kosten für das ganze Semester bei beiden Anbietern pro Art/Grösse der VM. Das Ergebnis sollte eine 3x3-Matrix pro Anbieter sein.
 
-Das Ergebnis sind zwei 3x3-Matrizen mit Kosten (eine pro Anbieter).
-
-Formulieren Sie anschliessend zu dieser Berechnung eine Empfehlung, welcher Anbieter berücksichtigt werden soll. (Ziehen Sie hierzu weitere relevante Kriterien hinzu, etwa das Vorhandensein einer API, Datenschutz, Kostenkontrolle, geografische Distanz, Vielfalt des Angebots usw.)
+Formulieren Sie anschliessend zu dieser Berechnung eine Empfehlung, welcher Anbieter berücksichtigt werden soll. Ziehen Sie hierzu weitere relevante Kriterien hinzu, etwa das Vorhandensein einer API, Datenschutz, Kostenkontrolle, geografische Distanz, Vielfalt des Angebots usw.
 
 ## Abgabe
 
