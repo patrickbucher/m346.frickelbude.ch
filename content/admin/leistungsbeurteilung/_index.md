@@ -24,7 +24,7 @@ Kenntnisse](/admin/hanok/) aufgelistet.
     - 3.2
     - 3.3
     - 4.1
-4. Partnerarbeit (100%): Mengen- und Kostenabschätzung
+4. Einzelarbeit (100%): Mengen- und Kostenabschätzung
     - 2.1
 5. Übungen (Prädikate): stichprobenartige Kontrolle
     - [alle HANOK]
