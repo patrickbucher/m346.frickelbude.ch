@@ -39,7 +39,7 @@ Das erarbeitete Dokument ist per E-Mail an [patrick.bucher@sluz.ch](mailto:patri
 
 ## Plagiate
 
-Der Auftrag ist als Einzelarbeit selbständig und ohne AI-Werkzeuge zu erstellen. Plagiate werden mit der Note 1 bewertet sowie der Fachbereichsleitung und dem Lehrbetrieb gemeldet.
+Der Auftrag ist als Einzelarbeit selbständig und ohne KI-Werkzeuge zu erstellen. Quellen sind als Fuss- oder Endnote anzugeben. Plagiate werden mit der Note 1 bewertet sowie der Fachbereichsleitung und dem Lehrbetrieb gemeldet.
 
 ## Bewertungsraster
 
