@@ -3,6 +3,8 @@ title = "Mengen- und Kostenabschätzung"
 weight = 10
 +++
 
+**tl;dr**: [Verpflichtung](#verpflichtung) bis am 23.12.2024 (10 Uhr), [Abgabe](#abgabe) bis am 06.01.2025 (10 Uhr).
+
 Als freiwillige Zusatznote kann der folgende Auftrag erarbeitet und zur Benotung eingereicht werden. Es geht dabei um eine Mengen- und Kostenabschätzung im Bereich Cloud Computing.
 
 ## Ausgangslage
