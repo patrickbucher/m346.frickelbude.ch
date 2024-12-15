@@ -3,7 +3,7 @@ title = "Mengen- und Kostenabschätzung"
 weight = 10
 +++
 
-**tl;dr**: [Verpflichtung](#verpflichtung) bis am 23.12.2024 (10 Uhr), [Abgabe](#abgabe) bis am 06.01.2025 (10 Uhr).
+**tl;dr**: [Verpflichtung](#verpflichtung) bis am Mo, 23.12.2024 (17 Uhr), [Abgabe](#abgabe) bis am Mo, 06.01.2025 (10 Uhr).
 
 Als freiwillige Zusatznote kann der folgende Auftrag erarbeitet und zur Benotung eingereicht werden. Es geht dabei um eine Mengen- und Kostenabschätzung im Bereich Cloud Computing.
 
@@ -83,7 +83,7 @@ Die Note zählt _voll_, d.h. hat eine Gewichtung von 1.
 
 ## Verpflichtung
 
-Wer die Arbeit auf sich nehmen möchte, um eine weitere Note zu erhalten, verpflichtet sich per E-Mail an [patrick.bucher@sluz.ch](mailto:patrick.bucher@sluz.ch) mit dem Betreff _Verpflichtung Mengen- und Kostenabschätzung_ bis am **Montag, 23. Dezember 2024 um 10 Uhr** zur Abgabe der Arbeit. Hierzu ist folgende Vorlage zu verwenden:
+Wer die Arbeit auf sich nehmen möchte, um eine weitere Note zu erhalten, verpflichtet sich per E-Mail an [patrick.bucher@sluz.ch](mailto:patrick.bucher@sluz.ch) mit dem Betreff _Verpflichtung Mengen- und Kostenabschätzung_ bis am **Montag, 23. Dezember 2024 um 17 Uhr** zur Abgabe der Arbeit. Hierzu ist folgende Vorlage zu verwenden:
 
 > Ich, VORNAME NACHNAME (KLASSE) verpflichte mich hiermit, den freiwilligen
 > Auftrag zur Mengen- und Kostenabschätzung auf gemäss den Bedingungen (Abgabe,
