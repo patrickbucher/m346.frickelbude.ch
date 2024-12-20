@@ -1,7 +1,6 @@
 +++
 title = "Backup und Restore"
 weight = 5
-draft = true
 +++
 
 In dieser geführten Übung erfahren Sie, wie man eine Datensicherung von Nextcloud einrichtet (Backup) und notfalls wieder einspielt (Restore). Der ganze Prozess soll testhalber anhand eines Notfallszenarios einmal durchgespielt werden.
