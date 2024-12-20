@@ -13,8 +13,8 @@ Für die Übung benötigen Sie folgendes:
 1. Eine funktionstüchtige Nextcloud-Installation.
     - siehe [Nextcloud-Setup](/wp2-nextcloud/nextcloud-setup) bzw. das entsprechende [Walkthrough-Video](https://www.youtube.com/watch?v=MwYIDH1vaBw)
 2. Einen Benutzeraccount mit einigen hochgeladenen Dateien.
-    - siehe [Übung ?]() und [Übung ?]() unter TODO
-3. TODO: Das Werkzeug `rsync`.
+    - siehe [Aufgabe 8](/wp2-nextcloud/nextcloud-setup/#aufgabe8) und [Aufgabe 9](/wp2-nextcloud/nextcloud-setup/#aufgabe9)
+3. Das Werkzeug `rsync`.
     - `sudo apt install -y rsync`
 
 **Achtung**: Die Anweisungen gehen davon aus, dass die Dateien _noch nicht_ auf Minio sondern immer noch im Dateisystem unter `/var/www/nextcloud/data`. Falls Sie hingegen Minio schon eingebunden haben, ersetzen Sie den genannten Pfad durch `/home/minio/minio-data`. Das Backup und Restore sollten gleichermassen funktionieren.
