@@ -3,7 +3,7 @@ title = "Block 15: Wahlprogramm 4"
 weight = 15
 +++
 
-Im vierzehnten Block fahren wir mit dem Wahlprogramm weiter. Es soll bis zum vierten Block (Wahlprogram 1: [Funktionen](/wp1-go/go-4) bzw. Wahlprogramm 2: [Nextcloud-Setup](/wp2-nextcloud/nextcloud-setup)) bearbeitet werden.
+Im fünfzehnten Block fahren wir mit dem Wahlprogramm weiter. Es soll bis zum vierten Block (Wahlprogram 1: [Funktionen](/wp1-go/go-4) bzw. Wahlprogramm 2: [Nextcloud-Setup](/wp2-nextcloud/nextcloud-setup)) bearbeitet werden.
 
 ## Ziel
 
