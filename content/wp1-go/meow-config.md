@@ -169,7 +169,7 @@ Der `config`-Server läuft nun (auf `localhost:8000`). Er unterstützt die folge
 
 **Aufgabe 7**: Erstellen Sie anschliessend einen Pull Request von _diesem_ Repository!
 
-### Zusatzaufgabe: Ergänzung des Config-Servers um `DELETE`-Endpunkt
+### Zusatzaufgabe: Ergänzung des Config-Servers um DELETE-Endpunkt
 
 Der `config`-Server (Datei `configCmd/config.go`) enthält in der `main()`-Funktion einen `TODO`-Kommentar. Der `/endpoints/[identifier]`-Endpunkt soll neu auch die `DELETE`-Methode unterstützen, damit man per `curl -X DELETE` auch Endpoints aus der Konfiguration heraus löschen kann, die man nicht länger monitoren möchte.
 
