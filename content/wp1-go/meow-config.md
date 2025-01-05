@@ -1,44 +1,47 @@
 +++
 title = "meow: Konfiguration per REST API"
 weight = 5
-draft = true
 +++
 
-## HTTP mit `curl`
+## HTTP mit curl
 
 Das Hypertext Transfer Protocol [HTTP](https://de.wikipedia.org/wiki/Hypertext_Transfer_Protocol) ist eines der wichtigsten Protokolle auf der [Anwendungsebene](https://de.wikipedia.org/wiki/OSI-Modell#Schicht_7_%E2%80%93_Anwendungsschicht_(Application_Layer)). Das Präfix `http://` (bzw. die mit [TLS](https://de.wikipedia.org/wiki/Transport_Layer_Security) verschlüsselte Variante `https://` ) von Webseiten-URLs dürfte von der Browser-Adresszeile bekannt sein. HTTP(S) wird jedoch nicht nur in Browsern verwendet, sondern beispielsweise auch für Anwendungsschnittstellen zwischen Frontend und Backend  einer Web-Anwendung (via [REST](https://de.wikipedia.org/wiki/Representational_State_Transfer)-API oder per [GraphQL](https://de.wikipedia.org/wiki/GraphQL)), oder aber zum klonen von Git-Repositories (ausserhalb des sluz-WiFis, wohlgemerkt).
 
 Eine übersichtliche, englischsprachige [Einführung in HTTP](https://www.freecodecamp.org/news/http-and-everything-you-need-to-know-about-it/) finden Sie auf FreeCodeCamp.org.
 
-### Einführung das `curl`-Kommandozeilenwerkzeug
+### Einführung das curl-Kommandozeilenwerkzeug
 
-Das Kommandozeilenwerkzeug [`curl`](https://curl.se/) erlaubt den Zugriff auf HTTP-Ressourcen über die Kommandozeile. Der `curl`-Befehl steht auf der Ubuntu-VM über das Terminal bzw. auf Windows über die Git Bash zur Verfügung. Das [offizielle Tutorial](https://curl.se/docs/manual.html) und die [manpage](https://curl.se/docs/manpage.html) erklären den Gebrauch von `curl`.
+Das Werkzeug [`curl`](https://curl.se/) erlaubt den Zugriff auf HTTP-Ressourcen über die Kommandozeile. Der `curl`-Befehl steht auf der Debian-VM über das Terminal bzw. auf Windows über die Git Bash zur Verfügung. Das [offizielle Tutorial](https://curl.se/docs/manual.html) und die [Manpage](https://curl.se/docs/manpage.html) erklären den Gebrauch von `curl`.
 
-Im Folgenden sollen die wichtigsten Handgriffe eingeübt werden, damit anschliessend die Konfiguration von [meow](https://code.frickelbude.ch/m346/meow) per HTTP durchgeführt werden kann.
+Im Folgenden sollen die wichtigsten Handgriffe eingeübt werden, damit anschliessend die Konfiguration von [meow](https://github.com/patrickbucher/meow) per HTTP durchgeführt werden kann.
 
-#### `GET`-Anfragen
+#### GET-Anfragen
+
+Die folgenden Beispiele verwenden die API von [REST Countries](https://restcountries.com/).
 
 Eine HTTP-Ressource kann mit dem `curl`-Befehl per `GET`-Methode anhand ihrer URL geladen werden:
 
-    $ curl -X GET https://code.frickelbude.ch/api/v1/version
-    {"version":"1.21.3"}
+    $ curl -X GET https://restcountries.com/v3.1/name/germany?fields=name
+    [{"name":{"common":"Germany","official":"Federal Republic of Germany","nativeName":{"deu":{"official":"Bundesrepublik Deutschland","common":"Deutschland"}}}}]
 
-In diesem Fall kommt ein JSON-Dokument zurück, welches die aktuelle Version des Gitea-Servers angibt.
+In diesem Fall kommt ein JSON-Dokument zurück, welches den Namen des Landes _Deutschland_ in verschiedenen Sprachen ausgibt.
 
 Mit dem Parameter `-X` kann die HTTP-Methode bestimmt werden. Da standardmässig `GET` verwendet wird, kann die Angabe im obigen Beispiel auch weggelassen werden:
 
-    $ curl https://code.frickelbude.ch/api/v1/version
-    {"version":"1.21.3"}
+    $ curl https://restcountries.com/v3.1/name/germany?fields=name
+    [{"name":{"common":"Germany","official":"Federal Republic of Germany","nativeName":{"deu":{"official":"Bundesrepublik Deutschland","common":"Deutschland"}}}}]
 
 Das Ergebnis kann via Umleitung (mit dem `>`-Operator) als Datei abgespeichert uns später mit dem `cat`-Befehl wieder ausgegeben werden:
 
-    $ curl https://code.frickelbude.ch/api/v1/version > version.json
-    $ cat version.json
-    {"version":"1.21.3"}
+    $ curl https://restcountries.com/v3.1/name/germany?fields=name > germany.json
+    $ cat germany.json
+    [{"name":{"common":"Germany","official":"Federal Republic of Germany","nativeName":{"deu":{"official":"Bundesrepublik Deutschland","common":"Deutschland"}}}}]
 
 Mit `GET`-Anfragen werden Informationen heruntergeladen, aber nicht auf dem Server modifiziert.
 
-#### `POST`-Anfragen
+#### POST-Anfragen
+
+Für `POST`-Anfragen wird als Beispiel [RESTFUL API](https://restful-api.dev/) verwendet.
 
 Will man eine serverseitige Ressource erstellen oder bearbeiten, verwendet man die Methode `POST`. Dies kann explizit mit dem Parameter `-X` angegeben werden:
 
@@ -85,7 +88,7 @@ Die Ausgabe kann wiederum mit `>` in eine Datei umgeleitet werden:
 
     $ curl -X POST -H 'Content-Type: application/json' -d @meal.json https://api.restful-api.dev/objects >response.json
 
-Dies sollte genügen, um die [Übungen](exercises.md) lösen zu können! Wenn Ihnen `curl` Mühe bereitet, können Sie auch [Postman](https://www.postman.com/) verwenden. (Der Vorteil von `curl` ist, dass man den Befehl in Skripten verwenden kann.)
+Dies sollte genügen, um die nachfolgenden Übungen lösen zu können! Wenn Ihnen `curl` Mühe bereitet, können Sie auch [Postman](https://www.postman.com/) verwenden. (Der Vorteil von `curl` ist, dass man den Befehl in Skripten verwenden kann.)
 
 ## Übungen zu HTTP und `curl`: `meow`-Konfiguration
 
@@ -97,7 +100,7 @@ Die `config`-Komponente wird optional (Zusatzaufgabe) erweitert, sodass man auch
 
 ### Repository forken und klonen
 
-1. Gehen Sie auf das [meow-Repository](https://code.frickelbude.ch/m346/meow).
+1. Gehen Sie auf das [meow-Repository](https://github.com/patrickbucher/meow).
 2. Erstellen Sie einen Fork von diesem Repository.
 3. Klonen Sie anschliessend diesen Fork.
 4. Öffnen Sie das geklonte `meow`-Verzeichnis in Ihrer Entwicklungsumgebung.
@@ -138,7 +141,7 @@ Betrachten Sie die Datei `sample.cfg.csv`. Diese definiert die folgenden drei En
 
 1. `go-dev`: https://go.dev/doc/
 2. `libvirt`: https://libvirt.org/
-3. `frickelbude`: https://code.frickelbude.ch/api/v1/version
+3. `m346`: https://m346.frickelbude.ch/
 
 **Aufgabe 2**: Kopieren Sie diese Datei `sample.cfg.csv` nach `config.csv` im `meow`-Repository.
 
