@@ -147,7 +147,7 @@ Betrachten Sie die Datei `sample.cfg.csv`. Diese definiert die folgenden drei En
 
 Betrachten Sie nun die Datei `endpoint.go`, genauer den Datentyp `Endpoint`. Diese Struktur definiert sechs Felder, die auch in der CSV-Datei (`config.csv`) mit konkreten Werten angegeben sind.
 
-**Aufgabe 3**: Betrachten Sie die CSV-Datei `config.csv` und überlegen Sie sich, welcher Wert zu welchem Feld in der Struktur `Endpoint` passt. Öffnen Sie anschliessend die Datei `endpoint-fields.md` **in diesem Repository** und ergänzen Sie die Tabelle mit den Angaben aus `config.csv`. Als vierte Zeile können Sie einen eigenen Endpoint definieren. Fügen Sie die Datei dem Git-Repository hinzu und synchronisieren Sie dieses mit dem Server.
+**Aufgabe 3**: Betrachten Sie die CSV-Datei `config.csv` und überlegen Sie sich, welcher Wert zu welchem Feld in der Struktur `Endpoint` passt. Definieren Sie nun einen eigenen Endpoint in der Datei `config.csv`. Nehmen Sie diese Datei ins Repository auf.
 
 Sie können den `config`-Server nun folgendermassen starten:
 
