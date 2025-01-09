@@ -1,10 +1,7 @@
 +++
 title = "Nextcloud-Migration auf S3/Minio"
 weight = 6
-draft = true
 +++
-
-# Nextcloud: Nächste Schritte
 
 In vergangenen Übungen haben wir Redis kennengelernt, den S3-Speicher Minio in
 Betrieb genommen und als systemd-Service konfiguriert, den LAMP-Stack aufgesetzt
@@ -13,15 +10,9 @@ Betrieb genommen.
 
 Nun sollen diese Komponenten kombiniert werden, sodass Nextcloud einerseits die
 Nutzdaten auf Minio ablegt und andererseits zwecks Performanceoptimierung mit
-Redis zwischenspeichert (Caching). Später sollen die Daten von Nextcloud –
+Redis zwischenspeichert (Caching). Weiter sollen die Daten von Nextcloud –
 Nutzdaten von Minio und Metadaten in MySQL – gesichert werden (Backup), damit
 sie im Notfall wiederhergestellt werden können (Restore).
-
-Gehen Sie folgendermassen vor:
-
-1. Erstellen Sie einen Fork von diesem Repository. Klonen Sie anschliessend Ihr persönliches Repository.
-2. Bearbeiten Sie die Aufgaben in der angegebenen Reihenfolge. Die gestellten Kontrollfragen beantworten Sie direkt in die Datei `Kontrollfragen.md`.
-3. Nehmen Sie Ihre beantworteten Kontrollfragen ins Repository auf und reichen Sie diese als Pull Request ein.
 
 ## Vorbereitung
 
@@ -38,14 +29,14 @@ Konfigurationsdatei in ein entsprechendes Verzeichnis gesichert werden:
     $ sudo cp /var/www/nextcloud/config/config.php /var/backup/config/
 
 Loggen Sie sich als Administrator (`admin`) und als ihren persönlichen Benutzer
-unter [localhost](http://localhost) in Nextcloud ein. (Verwenden Sie ein
+unter [IP-ADRESSE](http://IP-ADRESSE) in Nextcloud ein. (Verwenden Sie ein
 privates Browserfenster, damit Sie zwei Sessions gleichzeitig aktiv halten
 können.)
 
 ### Logs verfolgen
 
-Öffnen Sie zwei weitere Tabs in Ihrem Terminal (`[Ctrl]-[Shift]-[T]`). Dort
-sollen Sie mit `tail -f` die Ausgaben zweier Logs verfolgen.
+Öffnen Sie zwei weitere SSH-Sessions auf Ihre VM. Dort sollen Sie mit `tail -f`
+die Ausgaben zweier Logs verfolgen.
 
 Verfolgen Sie das Fehlerlog von Apache:
 
@@ -215,7 +206,7 @@ Läuft der Minio-Service nicht, müssen Sie noch den [zweiten Teil der
 systemd-Übungen](https://code.frickelbude.ch/m346/systemd#teil-2-selbst%C3%A4ndig-minio)
 abarbeiten.
 
-Läuft der Service, loggen Sie sich unter [localhost:9000](http://localhost:9000)
+Läuft der Service, loggen Sie sich unter [IP-ADRESSE:9090](http://IP-ADRESSE:9090)
 auf Minio ein.
 
 Erstellen Sie einen Bucket namens `nextcloud`.
@@ -274,7 +265,7 @@ durch den jeweiligen Benutzernamen.)
 
 Laden Sie nun einige Dateien in Nextcloud hoch.
 
-Schauen Sie auf dem [Minio-Server](http://localhost:9000) im _Object Browser_
+Schauen Sie auf dem [Minio-Server](http://IP-ADRESSE:9090) im _Object Browser_
 (Navigation links) nach, ob der Bucket nun Daten enthält. Sind Einträge zu
 sehen, hat die Umstellung des Datenspeichers auf Minio funktioniert!
 
