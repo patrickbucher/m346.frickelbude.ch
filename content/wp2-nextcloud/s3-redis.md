@@ -18,15 +18,19 @@ sie im Notfall wiederhergestellt werden können (Restore).
 
 Erstellen Sie ein Verzeichnis für die Datensicherung unter `/var/backup`:
 
-    $ sudo mkdir /var/backup
+```bash
+sudo mkdir /var/backup
+```
 
 ### Konfiguration sichern
 
 Da Konfigurationsänderungen an Nextcloud vorgenommen werden, soll zuerst die
 Konfigurationsdatei in ein entsprechendes Verzeichnis gesichert werden:
 
-    $ sudo mkdir /var/backup/config
-    $ sudo cp /var/www/nextcloud/config/config.php /var/backup/config/
+```bash
+sudo mkdir /var/backup/config
+sudo cp /var/www/nextcloud/config/config.php /var/backup/config/
+```
 
 Loggen Sie sich als Administrator (`admin`) und als ihren persönlichen Benutzer
 unter [IP-ADRESSE](http://IP-ADRESSE) in Nextcloud ein. (Verwenden Sie ein
@@ -40,11 +44,15 @@ die Ausgaben zweier Logs verfolgen.
 
 Verfolgen Sie das Fehlerlog von Apache:
 
-    $ sudo tail -f /var/log/apache2/error.log
+```bash
+sudo tail -f /var/log/apache2/error.log
+```
 
 Und verfolgen Sie das Log von Nextcloud:
 
-    $ sudo tail -f /var/www/nextcloud/data/nextcloud.log
+```bash
+sudo tail -f /var/www/nextcloud/data/nextcloud.log
+```
 
 Die Logdateien können im Fall eines Fehlers über dessen Ursache Auskunft geben.
 
@@ -71,8 +79,9 @@ die Redis-Einstellungen finden? Begeben wir uns auf Spurensuche!
 
 Zuerst soll überprüft werden, ob Redis überhaupt läuft:
 
-    $ systemctl is-active redis.service
-    active
+```bash
+systemctl is-active redis.service
+```
 
 ### Konfiguration sichern
 
@@ -81,7 +90,9 @@ wir also in der Service-Unit von Redis nach, wie das funktioniert. Doch in
 welcher Datei ist diese Service-Unit konfiguriert? Das lässt sich mit dem Befehl
 `systemctl show` herausfinden:
 
-    $ systemctl show redis.service
+```bash
+systemctl show redis.service
+```
 
 Dieser Befehl gibt viele Einstellungen aus. Doch welche Angabe enthält die
 Unit-Datei? Tipp: Suchen Sie nach `Path` und nach der Dateiendung `.service`.
@@ -115,23 +126,28 @@ Die persistierte Datenbank unter `/var/lib/redis/dump.rdb` muss gelöscht werden
 
 Starten Sie Redis neu, damit die Einstellungen aktiv werden:
 
-    $ sudo systemctl restart redis.service
+```bash
+sudo systemctl restart redis.service
+```
 
 Es soll nun überprüft werden, ob wirklich keine persistente Datenspeicherung
 mehr vorgenommen wird. Hierzu sollen Sie einen Wert schreiben und ihn aus Redis
 zurücklesen, beispielsweise so:
 
-    $ redis-cli set day Friday
-    OK
-    $ redis-cli get day
-    "Friday"
+```plain
+$ redis-cli set day Friday
+OK
+$ redis-cli get day
+"Friday"
+```
 
 Ist der Wert nach einem Neustart von Redis nicht mehr da, wurde die Persistenz
 erfolgreich deaktiviert:
 
-    $ sudo systemctl restart redis.service
-    $ redis-cli get day
-    (nil)
+```bash
+sudo systemctl restart redis.service
+redis-cli get day
+```
 
 Redis ist nun korrekt konfiguriert, um als Cache von Nextcloud eingesetzt werden zu können.
 
@@ -155,8 +171,10 @@ Endung `.config.php` haben.)
 Legen Sie zuerst die Datei `/var/www/nextcloud/config/redis.config.php` an und
 ordnen Sie ihr den gleichen Besitzer zu, wie ihn `config.php` hat:
 
-    $ sudo touch /var/www/nextcloud/config/redis.config.php
-    $ sudo chown www-data:www-data /var/www/nextcloud/config/redis.config.php
+```bash
+sudo touch /var/www/nextcloud/config/redis.config.php
+sudo chown www-data:www-data /var/www/nextcloud/config/redis.config.php
+```
 
 Fügen Sie der Datei folgenden Inhalt hinzu. Ersetzen Sie dabei die Angaben
 `host` und `port` durch die entsprechenden Angaben von Redis:
@@ -185,7 +203,9 @@ Kann die Nextcloud-Seite erfolgreich geladen werden, ist der Cache nun aktiv.
 Redis sollte nun verschiedenste Angaben von Nextcloud zwischenspeichern, die
 dann nicht mehr von der Festplatte gelesen werden müssen:
 
-    $ redis-cli keys '*'
+```bash
+redis-cli keys '*'
+```
 
 Es sollten dutzende von Angaben ausgegeben werden.
 
@@ -199,8 +219,9 @@ Cloud oder selber gehosted.)
 
 Stellen Sie zunächst sicher, ob der Minio-Service läuft:
 
-    $ sudo systemctl is-active minio.service
-    active
+```bash
+sudo systemctl is-active minio.service
+```
 
 Läuft der Minio-Service nicht, müssen Sie noch den [zweiten Teil der
 systemd-Übungen](https://code.frickelbude.ch/m346/systemd#teil-2-selbst%C3%A4ndig-minio)
@@ -220,8 +241,10 @@ In der Nextcloud-Dokumentation ist die Einbindung von S3-Speichern unter [Primar
 
 Legen Sie eine neue Nextcloud-Konfigurationsdatei namens `minio.config.php` an und setzen Sie den Benutzer `www-data` als deren Besitzer:
 
-    $ sudo touch /var/www/nextcloud/config/minio.config.php
-    $ sudo chown www-data:www-data /var/www/nextcloud/config/minio.config.php
+```bash
+sudo touch /var/www/nextcloud/config/minio.config.php
+sudo chown www-data:www-data /var/www/nextcloud/config/minio.config.php
+```
 
 Kopieren Sie folgendes Konfigurationsgerüst in diese Datei:
 
