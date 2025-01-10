@@ -161,13 +161,11 @@ Der `config`-Server läuft nun (auf `localhost:8000`). Er unterstützt die folge
 - `GET /endpoints/[identifier]`: gibt einen Endpoint anhand seines Identifiers zurück
 - `POST /endpoints/[identifier]`: erstellt oder überschreibt einen Endpoint in der Konfiguration
 
-**Aufgabe 4**: Machen Sie mit `curl` einen `GET`-Request auf `/endpoints`. Leiten Sie die Ausgabe nach `all-endpoints.json` um. Dokumentieren Sie Ihren Befehl in der Datei `get-endpoints.sh`. Fügen Sie beide Dateien diesem Git-Repository hinzu.
+**Aufgabe 4**: Machen Sie mit `curl` einen `GET`-Request auf `/endpoints`. Leiten Sie die Ausgabe nach `all-endpoints.json` um. Dokumentieren Sie Ihren Befehl in der Datei `get-endpoints.sh`. Fügen Sie beide Dateien ihrem Repository hinzu.
 
-**Aufgabe 5**: Machen Sie mit `curl` einen `GET`-Request auf einen spezifischen Endpoint anhand dessen Identifiers. Leiten Sie die Ausgabe nach `endpoint-[identifier].json` um, wobei Sie den Platzhalter `[identifier]` durch Ihren spezifischen Identifier ersetzen. Dokumentieren Sie Ihren Befehl in der Datei `get-endpoint-[identifier].sh`. Fügen Sie beide Dateien diesem Git-Repository hinzu.
+**Aufgabe 5**: Machen Sie mit `curl` einen `GET`-Request auf einen spezifischen Endpoint anhand dessen Identifiers. Leiten Sie die Ausgabe nach `endpoint-[identifier].json` um, wobei Sie den Platzhalter `[identifier]` durch Ihren spezifischen Identifier ersetzen. Dokumentieren Sie Ihren Befehl in der Datei `get-endpoint-[identifier].sh`. Fügen Sie beide Dateien ihrem Repository hinzu.
 
-**Aufgabe 6**: Kopieren Sie die Datei `endpoint-[identifier].json` nach `new-endpoint.json`. Öffnen Sie nun `new-endpoint.json` in einem Texteditor. Ersetzen Sie alle Werte in dieser Datei durch diejenigen, die Sie vorher bei Aufgabe 3 als vierte Zeile ergänzt haben. Machen Sie nun mit `curl` eine `POST`-Anfrage ([siehe Einführung](README.md#post-anfragen)) an den `config`-Server. Dieser sollte den neuen Endpunkt nun in seine Datenbank (siehe `config.csv` im `meow`-Verzeichnis) aufgenommen haben. Dokumentieren Sie Ihren Befehl in der Datei `post-endpoint-[identifier].sh`. Fügen Sie diese Datei und `new-endpoint.json` diesem Git-Repository hinzu.
-
-**Aufgabe 7**: Erstellen Sie anschliessend einen Pull Request von _diesem_ Repository!
+**Aufgabe 6**: Kopieren Sie die Datei `endpoint.json` nach `new-endpoint.json`. Öffnen Sie nun `new-endpoint.json` in einem Texteditor. Ersetzen Sie alle Werte in dieser Datei durch diejenigen, die Sie vorher bei Aufgabe 3 als vierte Zeile ergänzt haben. Machen Sie nun mit `curl` eine `POST`-Anfrage an den `config`-Server. Dieser sollte den neuen Endpunkt nun in seine Datenbank (siehe `config.csv`) aufgenommen haben. Dokumentieren Sie Ihren Befehl in der Datei `post-endpoint-[identifier].sh`. Fügen Sie diese Datei und `new-endpoint.json` ihrem Repository hinzu.
 
 ### Zusatzaufgabe: Ergänzung des Config-Servers um DELETE-Endpunkt
 
