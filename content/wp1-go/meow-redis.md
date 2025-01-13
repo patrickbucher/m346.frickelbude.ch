@@ -1,10 +1,9 @@
 +++
 title = "meow: Migration auf Redis"
-weight = 5
-draft = true
+weight = 6
 +++
 
-Das Monitoring-System [`meow`](https://code.frickelbude.ch/m346/meow) erlaubt
+Das Monitoring-System [`meow`](https://github.com/patrickbucher/meow) erlaubt
 es, eigens konfigurierte Endpunkte mit einer _Liveness Probe_ zu monitoren.
 Grundsätzlich ist `meow` als verteiltes System konzipiert, verfügt über eine
 HTTP-Schnittstelle und liesse sich so nicht nur auf einer virtuellen Maschine
@@ -15,10 +14,10 @@ Einige Aspekte von `meow` stehen dem aber im Wege: So wird die Konfiguration
 es beispielsweise, die Konfiguration in Redis zu verwalten.
 
 Die Voraussetzung für den folgenden Arbeitsauftrag ist, dass Sie mit Redis
-arbeiten können sowie [meow](https://code.frickelbude.ch/m346/meow) in Betrieb
+arbeiten können sowie [meow](https://github.com/patrickbucher/meow) in Betrieb
 genommen und konfiguriert haben. Hierzu gibt es folgende Hilfestellungen:
 
-- Die [Übungen zu HTTP und `curl`: `meow`-Konfiguration](https://code.frickelbude.ch/m346/meow-http-curl), die Sie hoffentlich gelöst haben.
+- Die [Übungen zu HTTP und `curl`: `meow`-Konfiguration](/wp1-go/meow-config/), die Sie hoffentlich gelöst haben.
 - Die [YouTube-Playlist zu
   `meow`](https://www.youtube.com/playlist?list=PLoID6wkkuS3c70NzN2LyoxAanVHBUImvB),
   welche die
@@ -29,7 +28,7 @@ genommen und konfiguriert haben. Hierzu gibt es folgende Hilfestellungen:
   des Monitoring-Systems demonstriert.
 
 Arbeiten Sie auf Ihrem persönlichen Fork vom
-[`meow`-Repository](https://code.frickelbude.ch/m346/meow). Sichern Sie Ihren
+[`meow`-Repository](https://github.com/patrickbucher/meow). Sichern Sie Ihren
 Code regelmässig in Ihrem persönlichen Repository. Für eine Rückmeldung zu Ihrem
 Code können Sie einen Pull Request einreichen.
 
