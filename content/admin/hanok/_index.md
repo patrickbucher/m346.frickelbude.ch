@@ -43,7 +43,7 @@ Siehe [Modulidentifikation](https://www.modulbaukasten.ch/module/346/1/de-DE)
    Lösung und bestimmt die zweckmässige Cloud Adoption.
     1. Kennt Kostenmodelle und das Vorgehen für einfache Kostenanalysen anhand
        von Beispielen.
-        - TODO: Mengen- & Kostenabschätzung
+        - [/mengen-kostenabschaetzung](/mengen-kostenabschaetzung)
     2. Kennt die Grundsätze für Cloudmigrationen (z.B. Lift-and-Shift und
        Lift-and-Reshape).
         - [/theorie/cloud-migration](/theorie/cloud-migration)

@@ -29,7 +29,7 @@ Im Kontext vom Cloud-Computing wird es ab Schritt 4 interessant, wenn der Prozes
 
 ### SysVinit: die "alte Welt"
 
-_SysVinit_ (ausgesprochen: "System Five Init") stammt von der fünften Ausgabe von Unix aus dem JAhr 1983. Es ist als einzelnes C-Programm (`/usr/bin/init`) implementiert. Der Systemstart erfolgt in sogenannten _Runlevels_:
+_SysVinit_ (ausgesprochen: "System Five Init") stammt von der fünften Ausgabe von Unix aus dem Jahr 1983. Es ist als einzelnes C-Programm (`/usr/bin/init`) implementiert. Der Systemstart erfolgt in sogenannten _Runlevels_:
 
 - 0: Halt (Ausschalten)
 - 1: Single User Mode (Einbenutzermodus)
@@ -197,7 +197,7 @@ Der Ping-Pong-Server steht als Datei [`pingpong.go`](/files/pingpong.go) zur Ver
 
 Kompilieren Sie das ausführbare Programm:
 
-    go build cmd/pingpong.go
+    go build pingpong.go
 
 Neu befindet sich die ausführbare Datei `pingpong` im Verzeichnis. Starten Sie den Server:
 
@@ -351,6 +351,7 @@ diese beiden Flags nützlich sein:
 
 - `-addr 127.0.0.1`: Es sollen nur noch Verbindungen von `localhost`
   entgegengenommen werden, damit man von aussen nicht um den Proxy herumkommt.
+  (Mit dem Cloud-VM-Setup ist diese Einstellung aber nicht sinnvoll.)
 - `-port 8001`: Der Service soll unter Port `8001` laufen, da der Port `8000`
   neu vom Proxy besetzt wird.
 
@@ -360,7 +361,7 @@ diese beiden Flags nützlich sein:
 
 Passen Sie nun die `ExecStart`-Direktive folgendermassen an:
 
-    ExecStart=/usr/local/bin/pingpong -addr 127.0.0.1 -port 8001
+    ExecStart=/usr/local/bin/pingpong -addr 0.0.0.0 -port 8001
 
 Speichern Sie die Datei mit `[Ctrl]-[O]` und `[Enter]` ab. Schliessen Sie den editor mit `[Ctrl]-[X]`.
 
@@ -434,15 +435,14 @@ Starten Sie nun den Ping-Pong-Service neu:
 
 Überprüfen Sie noch einmal, mit welchem Benutzer der Service nun ausgeführt wird:
 
-    $ ps -e -o pid,user,args | grep pingpong
+    ps -e -o pid,user,args | grep pingpong
 
 Die Ausgabe sollte ungefähr folgendermassen aussehen:
 
        6649 pingpong /usr/local/bin/pingpong -addr 127.0.0.1 -port 8001
        6704 user     grep pingpong
-       6705 user     tee pingpong-ps.txt
 
-## Teil 2 (selbständig): Minio
+### Teil 2 (selbständig): Minio
 
 Mit [Minio](/hauptdatentypen/unstrukturierte/minio) haben Sie bereits
 gearbeitet. Dabei haben Sie den Minio-Server manuell ausgeführt und (teils
@@ -453,7 +453,7 @@ automatisch mitgestartet werden.
 
 #### Aufgabe 7: Minio vorbereiten
 
-Die beiden ausführbaren Dateien `minio` und `mc` sollten bereits auf dem System vorhanden sein. Laden Sie diese Programme andernfalls mit `wget` herunter. Die Download-Links erhalten Sie auf der [offiziellen Download-Seite](https://min.io/open-source/download?platform=linux) (MinIO SErver und MinIO Client für Linux) und verschieben Sie diese ausführbaren Dateien nach `/usr/local/bin`.
+Die beiden ausführbaren Dateien `minio` und `mc` sollten bereits auf dem System vorhanden sein. Laden Sie diese Programme andernfalls mit `wget` herunter. Die Download-Links erhalten Sie auf der [offiziellen Download-Seite](https://min.io/open-source/download?platform=linux) (MinIO Server und MinIO Client für Linux) und verschieben Sie diese ausführbaren Dateien nach `/usr/local/bin`.
 
 Erstellen Sie anschliessend einen eigenen Benutzer für Minio:
 
@@ -478,7 +478,7 @@ Starten Sie nun Minio ein letztes Mal manuell, indem Sie die folgenden Befehle a
 
     export MINIO_ROOT_USER=minio
     export MINIO_ROOT_PASSWORD=topsecret
-    /usr/local/bin/minio server /home/minio/minio-data
+    minio server --console-address ':9090' ~/minio-data
 
 Überprüfen Sie im Browser unter der URL [IP-ADRESSE:9090](http://IP-ADRESSE:9090)
 ob Minio wirklich läuft.

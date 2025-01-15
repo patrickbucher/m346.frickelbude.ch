@@ -20,6 +20,8 @@ Hierzu ist folgende Arbeitsweise sinnvoll:
 2. Lesen Sie die Aufgabenstellung im Repository durch.
 3. Kehren Sie bei Unklarheiten zum Theorieteil auf der Modulwebseite zurück.
 
+Wer weitere Übungsmöglichkeiten benötigt, findet im Repository [frickelcloud](https://github.com/patrickbucher/frickelcloud) zusätzliche [Aufgaben](https://github.com/patrickbucher/frickelcloud/blob/master/exercises.md).
+
 Nach der Einführung in die Programmiersprache Go folgen weitere Themenblöcke:
 
 - HTTP-Monitoring mit `meow`

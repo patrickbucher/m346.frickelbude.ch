@@ -82,7 +82,7 @@ Grundsätzlich unterscheidet man zwischen zwei Arten von FLOSS-Lizenzen:
     - Apache License: Apache HTTP Server, Kubernetes
     - BSD Licenses: FreeBSD, NetBSD, Go
 2. _share-alike_:  Es gilt das sogenannte _Copyleft_-Prinzip: Die Bedingungen
-   "risen mit" der Software mit. Änderungen an der Software müssen unter den
+   "reisen mit" der Software mit. Änderungen an der Software müssen unter den
    gleichen Bedingungen veröffentlicht werden. Beispiele für
    share-alike-Lizenzen und dazugehörige Projekte sind:
     - General Public License (GPL): Linux, GCC
