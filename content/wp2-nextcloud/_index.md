@@ -22,7 +22,7 @@ systemd-Service betrieben werden soll.
 - [Service-Management mit systemd](/wp2-nextcloud/systemd)
 - [LAMP-Stack](/wp2-nextcloud/lamp-stack)
 - [Nextcloud-Installation](/wp2-nextcloud/nextcloud-setup)
-- S3-Migration
+- [S3-Migration](/wp2-nextcloud/s3-redis)
 
 ## :briefcase: Ergebnissicherung
 
