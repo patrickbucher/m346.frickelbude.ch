@@ -1,0 +1,16 @@
+[Unit]
+Description=Minio S3 Storage
+Documentation=https://docs.min.io
+After=ntework.target
+
+[Service]
+WorkingDirectory={{ minio_data_dir }}
+ExecStart=/usr/local/bin/minio server {{ minio_data_dir }}
+Type=simple
+Restart=always
+User={{ minio_user }}
+Group={{ minio_group }}
+EnvironmentFile={{ environment_file }}
+
+[Install]
+WantedBy=multi-user.target

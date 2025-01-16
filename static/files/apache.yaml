@@ -1,0 +1,10 @@
+- name: Setup a Web Server
+  hosts: webservers
+  become: yes
+  become_method: sudo
+  remote_user: user
+  tasks:
+    - name: Install Apache 2
+      package:
+        name: apache2
+        state: present
