@@ -6,7 +6,7 @@
     $ cd m346.frickelbude.ch
     $ hugo mod init m346.frickelbude.ch
 
-Add the following to `hugo.tmol`:
+Add the following to `hugo.toml`:
 
     [module]
       [[module.imports]]
