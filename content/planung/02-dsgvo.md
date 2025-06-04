@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Block 2: DSGVO & Cloud Computing"
 weight = 2
 +++

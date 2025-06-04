@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Go 1: Variablen, Datentypen und formatierte Ausgabe"
 weight = 1
 +++

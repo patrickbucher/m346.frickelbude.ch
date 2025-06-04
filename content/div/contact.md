@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Kontakt"
 weight = 2
 +++

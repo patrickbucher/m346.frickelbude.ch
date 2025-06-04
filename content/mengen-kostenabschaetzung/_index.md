@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Mengen- und Kostenabschätzung"
 weight = 10
 +++

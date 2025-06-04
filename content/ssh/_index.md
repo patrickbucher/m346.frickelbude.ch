@@ -1,4 +1,5 @@
 +++
+draft = true
 archetype = "chapter"
 title = "SSH: Secure Shell"
 weight = 5

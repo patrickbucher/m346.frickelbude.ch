@@ -1,4 +1,5 @@
 +++
+draft = true
 title = 'Handlungsziele & HANOK'
 date = 2024-08-16T14:02:40+02:00
 +++

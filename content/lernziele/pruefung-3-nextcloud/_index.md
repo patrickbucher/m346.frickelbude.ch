@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Prüfung 3 (Nextcloud): Lernziele"
 weight = 4
 +++

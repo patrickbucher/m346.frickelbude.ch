@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Go 2: Strukturen, Slices und Maps"
 weight = 2
 +++

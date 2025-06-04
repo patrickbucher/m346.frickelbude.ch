@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "meow: Konfiguration per REST API"
 weight = 5
 +++

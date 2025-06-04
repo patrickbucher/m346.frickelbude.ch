@@ -1,4 +1,5 @@
 +++
+draft = true
 archetype = "chapter"
 title = "Diverses"
 weight = 11

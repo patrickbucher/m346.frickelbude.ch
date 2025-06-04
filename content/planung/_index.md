@@ -1,4 +1,5 @@
 +++
+draft = true
 archetype = "chapter"
 title = "Planung"
 weight = 2

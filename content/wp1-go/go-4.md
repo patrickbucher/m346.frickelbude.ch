@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Go 4: Funktionen definieren und aufrufen"
 weight = 4
 +++

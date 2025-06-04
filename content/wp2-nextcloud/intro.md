@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Einführung: Nextcloud und Lizenzen"
 weight = 1
 +++

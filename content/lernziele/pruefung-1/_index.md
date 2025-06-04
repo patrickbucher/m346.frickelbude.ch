@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Prüfung 1: Lernziele"
 weight = 1
 +++

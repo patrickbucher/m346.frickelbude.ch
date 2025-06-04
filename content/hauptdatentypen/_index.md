@@ -1,4 +1,5 @@
 +++
+draft = true
 archetype = "chapter"
 title = "Hauptdatentypen"
 weight = 7

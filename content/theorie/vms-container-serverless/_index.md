@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Virtuelle Maschinen, Container und Serverless Computing"
 weight = 3
 +++

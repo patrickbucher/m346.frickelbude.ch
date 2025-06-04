@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Cloud-Infrastruktur"
 weight = 5
 +++

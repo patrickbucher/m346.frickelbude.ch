@@ -1,4 +1,5 @@
 +++
+draft = true
 archetype = "chapter"
 title = "Lernziele und Stoffabgrenzung"
 weight = 3

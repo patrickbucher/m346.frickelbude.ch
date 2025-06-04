@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Der LAMP-Stack"
 weight = 3
 +++

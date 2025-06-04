@@ -5,6 +5,8 @@ title = "Modul 346: Cloud-Lösungen konzipieren und realisieren"
 
 Willkommen beim Modul 346!
 
+**Die Seite ist derzeit in der Frühlings- und Sommerpause. Sie wird auf das nächste Schuljahr überarbeitet.**
+
 # Ablauf
 
 ```mermaid

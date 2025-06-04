@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Nextcloud-Setup"
 weight = 4
 +++

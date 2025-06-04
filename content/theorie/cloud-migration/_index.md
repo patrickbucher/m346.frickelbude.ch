@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Cloud-Migration"
 weight = 4
 +++

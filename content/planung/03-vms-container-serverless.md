@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Block 3: Virtuelle Maschinen, Container und Serverless Computing"
 weight = 3
 +++

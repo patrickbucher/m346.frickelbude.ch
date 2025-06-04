@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Strukturierte Daten"
 weight = 1
 +++

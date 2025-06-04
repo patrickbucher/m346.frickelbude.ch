@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Go 3: Kontrollstrukturen: Verzweigungen und Schleifen"
 weight = 3
 +++

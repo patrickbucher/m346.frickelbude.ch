@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "DSGVO & Cloud Computing"
 weight = 2
 +++

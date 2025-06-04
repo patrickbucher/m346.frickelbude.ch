@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Block 9: Unstrukturierte Daten und S3/Minio"
 weight = 9
 +++

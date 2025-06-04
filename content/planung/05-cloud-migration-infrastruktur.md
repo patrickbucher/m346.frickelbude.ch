@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Block 5: Cloud-Migration und Cloud-Infrastruktur"
 weight = 5
 +++

@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Block 8: Teilweise strukturierte Daten und Redis"
 weight = 8
 +++

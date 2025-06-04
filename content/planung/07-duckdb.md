@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Block 7: Strukturierte Daten und DuckDB"
 weight = 7
 +++

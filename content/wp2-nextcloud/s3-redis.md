@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Nextcloud-Migration auf S3/Minio"
 weight = 6
 +++

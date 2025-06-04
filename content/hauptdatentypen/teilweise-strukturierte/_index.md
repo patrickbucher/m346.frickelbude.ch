@@ -1,4 +1,5 @@
 +++
+draft = true
 title = "Teilweise Strukturierte Daten"
 weight = 2
 +++
