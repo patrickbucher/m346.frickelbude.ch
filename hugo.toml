@@ -12,15 +12,11 @@ math = true
 openapi = false
 showVisitedLinks = true
 collapsibleMenu = true
+theme-variant = 'green'
+hideAuthorDate = true
 
 [params.author]
 name = 'Patrick Bucher'
-
-[[params.themeVariant]]
-identifier = 'relearn-dark'
-
-[[params.themeVariant]]
-identifier = 'relearn-light'
 
 [module]
 [[module.imports]]
