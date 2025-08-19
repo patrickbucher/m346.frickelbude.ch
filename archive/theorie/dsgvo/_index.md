@@ -15,7 +15,7 @@ betrachtet werden. Da dieser Kontext ein internationaler ist, tritt dabei unsere
 nationale Gesetzgebung in den Hintergrund und die DSGVO in den Vordergrund.
 
 An dieser Stelle werden nur die wichtigsten Konzepte wiedergebeben, siehe auch
-[Lernziele](http://localhost:1313/lernziele/pruefung-1/#datenschutz---sicherheit).
+[Lernziele](/lernziele/pruefung-1/#datenschutz---sicherheit).
 
 **Wichtig**: Diese Webseite enthält keine belastbaren rechtlichen Ratschläge!
 Bei Fragen zum Datenschutz wenden Sie sich an den _Datenschutzbeauftragten_
