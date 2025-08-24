@@ -1,5 +1,6 @@
 +++
 title = "Vorteile & Risiken"
+weight = 2
 +++
 
 Cloud Computing bietet zahlreiche Vorteile gegenüber intern bereitgestellter IT-Ressourcen, bringt aber auch einige Risiken mit sich.

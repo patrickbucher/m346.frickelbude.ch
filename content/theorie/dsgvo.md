@@ -1,7 +1,6 @@
 +++
 title = "DSGVO & Cloud Computing"
-weight = 2
-draft = true
+weight = 3
 +++
 
 Datenschutz war bereits das Thema im [Modul 231](https://www.modulbaukasten.ch/module/231/1/de-DE?title=Datenschutz-und-Datensicherheit-anwenden).  Neben den Grundlagen zum Datenschutz und zur Datensicherheit wurden auch konkrete Datenschutzgesetze wie das Schweizer DSG und die europäische DSGVO betrachtet.
@@ -22,7 +21,7 @@ Frühere Datenschutz-Gesetzgebungen standen mit dem Cloud Computing im Konflikt.
 
 ## Datenschutz (zur Wiederholung)
 
-Der Datenschutz ist kein reiner Selbstzweck und schützt auch nicht alle Daten.  Zur Wiederholung (siehe [Modul 231](https://www.modulbaukasten.ch/module/231/1/de-DE)) sind Ziel, Gegenstand und Grundsatz der DSGVO hier aufgeführt:
+Der Datenschutz ist kein reiner Selbstzweck und schützt auch nicht alle Daten. Zur Wiederholung:
 
 - **Ziel**
     - Die Freiheit _natürlicher_ Personen, selbst über den Umgang mit ihren _personenbezogenen_ Daten entscheiden zu können, soll bewahrt werden.

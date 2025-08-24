@@ -1,6 +1,6 @@
 +++
 title = "Prüfung 1: Theorie"
-draft = true
+weight = 1
 +++
 
 ## Definition von «Cloud Computing»
@@ -12,6 +12,14 @@ draft = true
 ### Unterlagen
 
 - [Definition](/theorie/definition)
+
+## Vorteile & Risiken
+
+1. Sie können mindestens drei Vorteile von Cloud Computing gegenüber selber betriebener IT-Infrastruktur mit je einem Risiko dazu benennen und erklären.
+
+### Unterlagen
+
+- [Vorteile & Risiken](/theorie/vorteile-risiken)
 
 ## DSGVO & Cloud Computing
 
