@@ -87,6 +87,7 @@ Wer kaum noch Informatikmittel selber bereitstellt, verliert auch das notwendige
 
 ## Fragen
 
-1. Welche der aufgezeigten Vorteile und Risiken sind für Ihren Lehrbetrieb relevant?
+1. Welche der aufgezeigten Vorteile sind für Ihren Lehrbetrieb relevant?
 2. Ist in Ihrem Lehrbetrieb bereits eines der erwähnten Risiken eingetroffen?
 3. Kennen Sie noch weitere Vorteile und Risiken?
+
