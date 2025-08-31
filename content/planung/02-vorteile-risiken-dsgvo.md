@@ -1,5 +1,6 @@
 +++
 title = "Block 2: Vorteile, Risiken und Datenschutz"
+weight = 2
 +++
 
 Im zweiten Block geht es zunächst über die Vorteile und Risiken des Cloud-Computings. Anschliessend schauen wir uns zum Thema Datenschutz an, für den die DSGVO in der Cloud eine wichtige Rolle spielt.
