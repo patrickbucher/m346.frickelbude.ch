@@ -37,3 +37,13 @@ weight = 1
     - Buchzusammenfassung: [PDF](https://raw.githubusercontent.com/patrickbucher/books/master/hennrich_cloud-computing-dsgvo.pdf)
     - Video (YouTube): [Vortrag](https://www.youtube.com/watch?v=8lz2lwo9vT4)
 
+## Virtuelle Maschinen, Container und Serverless Computing
+
+1. Sie können die Vorteile virtueller gegenüber physischer Maschinen mithilfe der Begriffe _Multiplizität_, _Entkopplung_ und _Isolation_ erklären.
+2. Sie können die Para-Virtualisierung (Typ 1) von der Voll-Virtualisierung (Typ 2) unterscheiden.
+3. Sie können die Vor- und Nachteile von _Serverless Computing_ bzw. _Function as a Service_ (FaaS als Spezialfall von PaaS) gegenüber dem IaaS-Modell (Server) und die Problematik beim _Vendor Lock-in_ erklären.
+4. Sie können die Betriebssystemvirtualisierung für Container von der Para- und Voll-Virtualisierung (Typ 1 und 2) unterscheiden und Vorteile von CaaS gegenüber PaaS/FaaS und IaaS benennen.
+
+### Unterlagen
+
+- [Virtuelle Maschinen, Container und Serverless Computing](/theorie/vms-container-serverless/)
