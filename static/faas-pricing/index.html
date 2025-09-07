@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>FaaS Pricing</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>FaaS Pricing</h1>
+    <form>
+      <ul>
+        <li>
+          <label for="requests">Number of Requests/Executions</label>
+          <input type="number" min="0" step="1" name="requests" />
+        </li>
+        <li>
+          <label for="cpuTime">CPU Time (Seconds)</label>
+          <input type="number" min="0" step="0.1" name="cpuTime"></select>
+        </li>
+        <li>
+          <label for="gbSeconds">Memory (Megabytes)</label>
+          <input type="number" min="0" step="0.1" name="gbSeconds"></select>
+        </li>
+        <li>
+          <label for="calculate"></label>
+          <input type="button" name="calculate" value="Calculate" />
+        </li>
+      </ul>
+    </form>
+    <section id="results"></section>
+    <script src="main.js"></script>
+  </body>
+</html>

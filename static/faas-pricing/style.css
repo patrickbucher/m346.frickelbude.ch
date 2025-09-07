@@ -1,0 +1,27 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: 16pt;
+}
+
+input {
+  font-size: 100%;
+}
+
+form li {
+  list-style-type: none;
+  width: 800px;
+  margin: 5px 0 0 0;
+}
+
+form label {
+  display: inline-block;
+  width: 16em;
+  text-align: right;
+  padding: 5px;
+}
