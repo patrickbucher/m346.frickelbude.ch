@@ -20,4 +20,4 @@ Sie lernen verschiedene Varianten der Cloud-Migration und die Aufteilung der Clo
 
 ### Hausaufgaben
 
-Schliessen Sie den Auftrag auf nächste Woche ab
+Bereiten Sie sich auf die Prüfung vor.
