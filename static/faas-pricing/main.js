@@ -64,6 +64,14 @@ const flush = (node) => {
   }
 };
 
+const formatCurrency = (n) =>
+  n.toLocaleString("ch", {
+    style: "currency",
+    currency: "CHF",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
 document.addEventListener("DOMContentLoaded", () => {
   const requestsTextBox = document.getElementsByName("requests")[0];
   const cpuTimeTextBox = document.getElementsByName("cpuTime")[0];
@@ -75,14 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const cpuTime = Number.parseFloat(cpuTimeTextBox.value);
     const gbSeconds = Number.parseInt(gbSecondsTextBox.value);
     const results = calculate(requests, cpuTime, gbSeconds);
-    // TODO: price formatting for results!
     flush(resultsDiv);
     rows = [block("tr", inline("th", "Cloud"), inline("th", "Costs"))].concat(
       ...results
         .entries()
-        .map(([k, v]) => block("tr", inline("td", k), inline("td", v)))
+        .map(([k, v]) =>
+          block("tr", inline("td", k), inline("td", formatCurrency(v)))
+        )
     );
-    console.log(rows);
     resultsDiv.appendChild(block("table", ...rows));
   });
 });
