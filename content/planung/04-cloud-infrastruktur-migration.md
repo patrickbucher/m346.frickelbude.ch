@@ -14,7 +14,7 @@ Sie lernen verschiedene Varianten der Cloud-Migration und die Aufteilung der Clo
 - [5 min.] Administratives
 - [5 min.] Selbsteinschreibung Moodle-Kurs
 - [15 min.] Besprechung der Hausaufgaben
-- [15 min.] Durchlesen und Besprechung der Lernziele
+- [15 min.] Durchlesen und Besprechung der [Lernziele](/lernziele/pruefung1)
 - [50 min.] Arbeit am Auftrag
     - [Cloud-Infrastruktur](/theorie/cloud-infrastruktur/)
     - [Cloud-Migration](/theorie/cloud-migration/)
