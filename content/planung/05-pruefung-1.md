@@ -20,4 +20,4 @@ Sie haben die erste Prüfung abgelegt und den öffentlichen SSH-Schlüssel einge
 
 ### Hausaufgaben
 
-Reichen Sie ihren öffentlichen SSH-Schlüssel ein.
+Reichen Sie Ihren öffentlichen SSH-Schlüssel ein.
