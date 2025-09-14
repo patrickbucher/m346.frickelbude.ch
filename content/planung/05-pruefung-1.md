@@ -14,9 +14,9 @@ Sie haben die erste Prüfung abgelegt und den öffentlichen SSH-Schlüssel einge
 - [5 min.] Administratives
 - [5 min.] Einsammeln der handschriftlichen Zusammenfassungen
 - [10 min.] Durchlesen des Auftrags
-- [5 min.] Einrichten zur Prüfung
+- [10 min.] Einrichten zur Prüfung und Fragerunde
 - [45 min.] Prüfung
-- [20 min.] Selbständige Arbeit am Auftrag
+- [15 min.] Selbständige Arbeit am Auftrag
 
 ### Hausaufgaben
 
