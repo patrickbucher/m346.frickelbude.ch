@@ -7,7 +7,7 @@ Für den Zugriff auf eine virtuelle Maschine wird ein SSH-Schlüsselpaar benöti
 
 ## Windows: Git Bash installieren
 
-Laden Sie sich die [Git Bash](https://github.com/git-for-windows/git/releases/download/v2.51.0.windows.1/Git-2.51.0-64-bit.exe) für Windows (64-Bit) herunter. Installieren Sie die Software mit den Standardeinstellungen.
+Laden Sie sich die [Git Bash](https://github.com/git-for-windows/git/releases/download/v2.51.0.windows.1/Git-2.51.0-64-bit.exe) für Windows (64-Bit) herunter. Installieren Sie die Software mit den Standardeinstellungen. (Wenn die Git Bash bereits installiert ist, kann dieser Schritt übersprungen werden.)
 
 ## SSH-Schlüsselpaar generieren
 
@@ -50,6 +50,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIyJq+TnCGe38yUZoBlGH2y4jJ+aNmeeA6lGYIOFoWps
 
 Markieren Sie die komplette Ausgabe mit dem Mauszeiger, betätigen Sie die rechte Maustaste und wählen Sie den Kontextmenüeintrag _Copy_ aus, um den öffentlichen Schlüssel in die Zwischenablage zu kopieren.
 
-Speichern Sie den Schlüssel in einer Datei namens `pubkey.txt` ab und reichen Sie diese Datei als Abgabe zur Teams-Aufgabe ein.
+Speichern Sie den Schlüssel in einer Datei namens `[vorname]_[nachname].txt` ab, wobei Sie Ihren Vor- und Nachnamen entsprechend einsetzen, also für den Lernenden _Hans Meier_ `hans_meier.txt`. Reichen Sie diese Datei als Abgabe zur Teams-Aufgabe ein.
 
-Hinterlegt die Lehrperson den Schlüssel auf einem anderen System, kann von dann an via SSH interaktiv auf dieses System zugegriffen werden.
+Die Lehrperson kopiert diesen öffentlichen Schlüssen dann auf die virtuelle Maschine, auf welcher sich der Besitzer des dazu passenden privaten Schlüssels dann passwortlos authentifizieren kann.
+
