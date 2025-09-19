@@ -12,7 +12,7 @@ Sie können mit SSH auf der bereitgestellten Cloud-Infrastruktur arbeiten und Po
 ### Lektion 1
 
 - [5 min.] Administratives
-- [5 min.] Lernziele zu SSH
+- [5 min.] [Lernziele](/lernziele/pruefung2/#ssh--ssh-tunnel) zu SSH
 - [35 min.] [Einführung in SSH](/ssh/einfuehrung) (Theorie)
 - [5 min.] Hochfahren der Cloud-Infrastruktur
 
@@ -22,4 +22,4 @@ Sie können mit SSH auf der bereitgestellten Cloud-Infrastruktur arbeiten und Po
 
 ### Hausaufgaben
 
-Dokjumentieren Sie die Übungen gemäss Teams-Auftrag.
+Dokumentieren Sie die Übungen gemäss Teams-Auftrag.
