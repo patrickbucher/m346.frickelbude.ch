@@ -92,7 +92,7 @@ Stellen Sie sicher, dass die Anwendung `pingpong` läuft, aber dass sie auf Port
 Um von aussen auf den Server zugreifen zu können, muss nun ein Local Forwarding eingerichtet werden. Öffnen Sie hierzu eine neue Shell (Bash).
 
 Richten Sie die entsprechende Weiterleitung ein, sodass man von aussen wieder auf die Anwendung zugreifen kann. Tipp: `ssh -L` ist unter [Local
-Forwarding](/ssh/intro/index.html#local-forwarding) dokumentiert.
+Forwarding](/ssh/einfuehrung#local-forwarding) dokumentiert.
 
 Mit welchen Parametern muss der `pingpong`-Server nun gestartet werden?
 
