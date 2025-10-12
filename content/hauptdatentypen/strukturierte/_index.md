@@ -196,3 +196,9 @@ Das Ergebnis sieht dann folgendermassen aus:
 | Patrick | Bucher   | Composed GmbH       | Full Stack Developer | 50.0   | 1           |
 
 Solche einfachen Auswertungen können direkt beim Auslesen der Daten angestellt und müssen nicht noch zuerst ausprogrammiert werden.
+
+## Fragen
+
+1. Warum wird in der relationalen Datenbank im Gegensatz zu einer dokumentbasierten Datenbank ein künstliches ID-Attribut benötigt?
+2. Welche Vor- und Nachteile haben relationale bzw. dokumentbasierte Datenbanken im Bezug auf den beschriebenen Anwendungsfall?
+3. Mit welchen relationalen bzw. dokumentbasierten Datenbanken hast du schon Erfahrungen gemacht?
