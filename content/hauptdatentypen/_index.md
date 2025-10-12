@@ -1,6 +1,6 @@
 +++
 title = "Hauptdatentypen"
-weight = 5
+weight = 6
 +++
 
 Im Modul 346 unterscheiden wir zwischen drei Arten bzw. Formen, in denen Daten vorliegen können: _strukturierte_, _teilweise strukturierte_ und _unstrukturierte_ Daten.
