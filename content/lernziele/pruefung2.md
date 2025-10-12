@@ -28,3 +28,5 @@ title = "Prüfung 2: Hauptdatentypen"
 - [Hauptdatentypen](/hauptdatentypen)
 - [Strukturierte Daten](/hauptdatentypen/strukturierte)
 - [DuckDB](/hauptdatentypen/strukturierte/duckdb)
+- [Einführung](/ssh/einfuehrung/)
+- [Übung](/ssh/uebung/)

@@ -46,16 +46,51 @@ const calculate = (requests, seconds, memory) => {
   ]);
 };
 
+const block = (tag, ...children) => {
+  const element = document.createElement(tag);
+  children.forEach((c) => element.appendChild(c));
+  return element;
+};
+
+const inline = (tag, text) => {
+  const element = document.createElement(tag);
+  element.appendChild(document.createTextNode(text));
+  return element;
+};
+
+const flush = (node) => {
+  while (node.hasChildNodes()) {
+    node.removeChild(node.firstChild);
+  }
+};
+
+const formatCurrency = (n) =>
+  n.toLocaleString("ch", {
+    style: "currency",
+    currency: "CHF",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
 document.addEventListener("DOMContentLoaded", () => {
   const requestsTextBox = document.getElementsByName("requests")[0];
   const cpuTimeTextBox = document.getElementsByName("cpuTime")[0];
   const gbSecondsTextBox = document.getElementsByName("gbSeconds")[0];
   const calculateButton = document.getElementsByName("calculate")[0];
+  const resultsDiv = document.getElementById("results");
   calculateButton.addEventListener("click", () => {
     const requests = Number.parseInt(requestsTextBox.value);
     const cpuTime = Number.parseFloat(cpuTimeTextBox.value);
     const gbSeconds = Number.parseInt(gbSecondsTextBox.value);
     const results = calculate(requests, cpuTime, gbSeconds);
-    console.log(results);
+    flush(resultsDiv);
+    rows = [block("tr", inline("th", "Cloud"), inline("th", "Costs"))].concat(
+      ...results
+        .entries()
+        .map(([k, v]) =>
+          block("tr", inline("td", k), inline("td", formatCurrency(v)))
+        )
+    );
+    resultsDiv.appendChild(block("table", ...rows));
   });
 });
