@@ -37,11 +37,11 @@ Jede Person verfügt über keine, eine oder mehrere Anstellungen. Eine Anstellun
 Es sollen in diesem Beispiel zwei Personen mit je zwei Anstellungen verwaltet werden:
 
 1. Patrick Bucher (24.06.1987)
-    - 50% als Lehrer im BBZW
+    - 50% als Lehrer am BBZW
     - 50% als Full Stack Developer bei Composed GmbH
 2. Alice Bobson (12.03.1971)
     - 80% als Key Account Manager bei der UBS
-    - 20% als Lehrer bei der IMD Business School
+    - 20% als Dozentin bei der IMD Business School
 
 ### Datenstruktur beim Programmieren
 
@@ -111,7 +111,7 @@ Eine Software, die Zugriff auf diese Daten bietet, kann dem Benutzer die Daten �
       },
       {
         "institution": "IMD Business School",
-        "role": "Teacher",
+        "role": "Lecturer",
         "workload": 0.2,
         "since": "2020-07-01",
         "active": true
@@ -162,7 +162,7 @@ insert into employment (personnel_id, institution, role, workload, since, active
 (1, 'BBZW', 'Teacher', 0.5, '2021-08-01', true),
 (1, 'Composed GmbH', 'Full Stack Developer', 0.5, '2023-02-14', true),
 (2, 'UBS', 'Key Account Manager', 0.8, '2009-03-01', true),
-(2, 'IMD Business School', 'Teacher', 0.2, '2020-07-01', true);
+(2, 'IMD Business School', 'Lecturer', 0.2, '2020-07-01', true);
 ```
 
 Fügt man die Anstellungen ein, muss die generierte ID der zuzuordnenden Person bereits bekannt sein!
@@ -191,7 +191,7 @@ Das Ergebnis sieht dann folgendermassen aus:
 | Vorname | Nachname |    Organisation     |        Rolle         | Pensum | Dienstjahre |
 |---------|----------|---------------------|----------------------|-------:|------------:|
 | Alice   | Bobson   | UBS                 | Key Account Manager  | 80.0   | 15          |
-| Alice   | Bobson   | IMD Business School | Teacher              | 20.0   | 4           |
+| Alice   | Bobson   | IMD Business School | Lecturer             | 20.0   | 4           |
 | Patrick | Bucher   | BBZW                | Teacher              | 50.0   | 3           |
 | Patrick | Bucher   | Composed GmbH       | Full Stack Developer | 50.0   | 1           |
 

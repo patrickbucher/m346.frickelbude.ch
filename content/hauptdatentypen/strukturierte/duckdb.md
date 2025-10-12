@@ -29,13 +29,13 @@ Die erste Übung ist _geführt_, d.h. die Schritte müssen gemäss Anleitung aus
 
 ### Übung 1 (geführt): Vorratslager
 
-Die Datei [foodstock.csv](/files/foodstock.csv) beschreibt den Bestand eines Lebensmittel-Vorratslagers. Die Datei kann auf der VM folgendermassen betrachtet werden:
+Die Datei [foodstock.csv](/files/foodstock.csv) beschreibt den Bestand eines Lebensmittel-Vorratslagers. Die Datei ist auf der VM bereits abgelegt und kann folgendermassen betrachtet werden:
 
 ```bash
 cat foodstock.csv
 ```
 
-Starten Sie DuckDB mit dem Befehl `duckdb` und dem Parameter `foodstock-db`, worauf der Prompt `D ` erscheinen sollte:
+Starte DuckDB mit dem Befehl `duckdb` und dem Parameter `foodstock-db`, worauf der Prompt `D ` erscheinen sollte:
 
 ```bash
 duckdb foodstock-db
@@ -46,7 +46,7 @@ Der Parameter `foodstock-db` sorgt dafür, dass die eingelesenen Daten als persi
 
 Der `describe`-Befehl analysiert ein Datenbankobjekt (Tabelle, Ansicht) oder eine Datenquelle (Datei, URL) und gibt aus, in welcher Struktur die Daten vorliegen.
 
-Geben Sie die Struktur der Datei `foodstock.csv` aus:
+Gib die Struktur der Datei `foodstock.csv` aus:
 
 ```sql
 describe from "foodstock.csv";
@@ -142,9 +142,9 @@ having category_worth > 150
 order by category_worth desc;
 ```
 
-- Mit `sum(worth)` wird die Spalte `worth` aufsummiert.  gruppiert.
+- Mit `sum(worth)` wird die Spalte `worth` aufsummiert.
 - Mit `where` wird eine Filter-Bedingung auf die Originaldaten angewendet.  Konkret werden mit `where vegan = false` werden nur Produkte berücksichtigt, die nicht vegan sind.
-- Mit `group by category` werden die Einträge nach der Spalte `category`
+- Mit `group by category` werden die Einträge nach der Spalte `category` gruppiert.
 - Mit `having` wird eine Filter-Bedingung auf die _aggregierten_ (d.h.  gruppierten bzw. summierten) Daten angewendet. Konkret werden mit `having category_worth > 150` nur Kategorien zurückgeliefert, deren Gesamtwert 150.- übersteigt.
 - Mit `order by category_worth desc` werden die Einträge absteigend ("descending") nach ihrem Gesamtwert sortiert.
 
@@ -262,9 +262,9 @@ Das Schema der JSON-Dateien kann folgendermassen beschrieben werden:
 describe from "leagues/bundesliga/day*.json";
 ```
 
-**Aufgabe**: Erstellen Sie eine Sequenz namens `bundesliga_match_id` und eine Tabelle namens `bundesliga_matches`. Neben den vier Informationen aus den JSON-Dateien soll eine automatisch nummerierte ID aus der Sequenz `bundesliga_match_id` vergeben werden. Halten Sie die Befehle fest! Lesen Sie anschliessend die Daten der Bundesliga ein (`insert into … from "leagues/bundesliga/day*.json`).
+**Aufgabe**: Erstelle eine Sequenz namens `bundesliga_match_id` und eine Tabelle namens `bundesliga_matches`. Neben den vier Informationen aus den JSON-Dateien soll eine automatisch nummerierte ID aus der Sequenz `bundesliga_match_id` vergeben werden. Halte die Befehle fest! Lies anschliessend die Daten der Bundesliga ein (`insert into … from "leagues/bundesliga/day*.json`).
 
-Tipp: Bei Unklarheiten schauen Sie oben bei [Übung 1](#übung-1-geführt-vorratslager) nach.
+Tipp: Schaue bei Unklarheiten oben bei [Übung 1](#übung-1-geführt-vorratslager) nach.
 
 Die Tabelle sollte ungefähr folgendermassen aussehen (Auszug von `select * from bundesliga_matches;`):
 
@@ -298,7 +298,7 @@ Die View sollte ungefähr folgendermassen aussehen (Auszug von `select * from bu
 | 79     | FC St. Pauli        | 1            | 2              |
 | 83     | Werder Bremen       | 1            | 4              |
 
-**Aufgabe**: Erstellen Sie anhand dieser Informationen eine neue View namens `bundesliga_result_day`, welche für jeden Eintrag die folgenden Informationen als berechnete Felder enthält:
+**Aufgabe**: Erstelle anhand dieser Informationen eine neue View namens `bundesliga_result_day`, welche für jeden Eintrag die folgenden Informationen als berechnete Felder enthält:
 
 - Tordifferenz: `goals_scored` - `goals_conceded`
 - Anzahl Punkte: 3 für einen Sieg, 1 für ein Unentschieden, 0 für eine Niederlage
@@ -307,7 +307,7 @@ Die View sollte ungefähr folgendermassen aussehen (Auszug von `select * from bu
 - Anzahl Unentschieden: 1 falls es sich um ein Unentschieden handelt, 0 andernfalls
 - Anzahl Niederlagen: 1 falls es sich um eine Niederlage handelt, 0 andernfalls
 
-Halten Sie den dazu verwendeten Befehl fest.
+Halte den dazu verwendeten Befehl fest.
 
 Die View sollte ungefähr folgendermassen aussehen (Auszug von `select * from bundesliga_result_day;`):
 
@@ -321,7 +321,7 @@ Die View sollte ungefähr folgendermassen aussehen (Auszug von `select * from bu
 
 Die Einträge dieser View entsprechen nun einer Mini-Tabelle pro Spieltag und Mannschaft. Nun sollen die Einträge pro Mannschaft aggregiert werden, indem man die Summe aller Felder berechnet und sie nach der Spalte `team` gruppiert.
 
-**Aufgabe**: Erstellen Sie eine View `bundesliga_table`, in welcher die Daten aus der View `bundesliga_result_day` wie beschrieben aggregiert werden. Die View sollte nach Punkten und Tordifferenz absteigend sortiert sein. Halten Sie den dazu verwendeten Befehl fest.
+**Aufgabe**: Erstelle eine View `bundesliga_table`, in welcher die Daten aus der View `bundesliga_result_day` wie beschrieben aggregiert werden. Die View sollte nach Punkten und Tordifferenz absteigend sortiert sein. Halte den dazu verwendeten Befehl fest.
 
 Die Tabelle sollte ungefähr folgendermassen aussehen (Auszug aus `select * from bundesliga_table;`):
 
