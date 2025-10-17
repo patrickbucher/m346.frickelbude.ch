@@ -12,8 +12,8 @@ Sie wissen in welcher Form strukturierte Daten vorliegen und können diese mit D
 ### Lektion 1
 
 - [5 min.] Administratives
+- [10 min.] Inbetriebnahme der Infrastruktur via Cloud Castle
 - [30 min.] Theorie zu [strukturierten Daten](/hauptdatentypen/strukturierte/)
-- [10 min.] Inbetriebnahme der Infrastruktur
 
 ### Lektion 2
 

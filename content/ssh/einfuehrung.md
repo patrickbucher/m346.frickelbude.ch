@@ -21,15 +21,15 @@ Da Desktop-Umgebungen sehr ressourcenintensiv sind, wird auf Server-Systemen oft
 - 1 CPU mit 2198 MHz
 - 10 GB Festplattenspeicher
 
-Das sind Hardware-Spezifikationen, wie sie ungefähr vor 20 Jahren bei Desktop-Computern verbreitet waren, genügen aber heutzutage noch völlig, um kleinere Web-Anwendungen mit relativ wenig Zugriffen auszuführen. Und je weniger Ressourcen verbraucht werden, desto weniger Kosten entstehen, wenn das System über einen Cloud-Anbieter bezogen wird (IaaS).
+Das sind Hardware-Spezifikationen, wie sie ungefähr vor 20 Jahren bei Desktop-Computern verbreitet waren, genügen aber heutzutage noch völlig, um kleinere Web-Anwendungen mit relativ wenigen Zugriffen auszuführen. Und je weniger Ressourcen verbraucht werden, desto weniger Kosten entstehen, wenn das System über einen Cloud-Anbieter bezogen wird (IaaS).
 
-Steht keine Desktop-Umgebung zur Verfügung, verwendet Lösungen wie _Windows Remote Management_ (WinRM) oder die _Secure Shell_ (SSH). In diesem Modul soll SSH im Vordergrund stehen, weil dies eine weit verbreitete, sehr erprobte, sichere und zuverlässige Lösung ist, die Clients für alle gängigen Betriebssysteme anbietet. Ausserdem ist SSH der Industriestandard für den Fernzugriff auf Linux-Systeme, die in diesem Modul zum Einsatz kommen.
+Steht keine Desktop-Umgebung zur Verfügung, verwendet man Lösungen wie _Windows Remote Management_ (WinRM) oder die _Secure Shell_ (SSH). In diesem Modul soll SSH im Vordergrund stehen, weil dies eine weit verbreitete, sehr erprobte, sichere und zuverlässige Lösung ist, die Clients für alle gängigen Betriebssysteme anbietet. Ausserdem ist SSH der Industriestandard für den Fernzugriff auf Linux-Systeme, die in diesem Modul zum Einsatz kommen.
 
 ## Telnet
 
 Eine ältere Lösung zum Fernzugriff auf andere Systeme ist _Telnet_. Damit lässt sich eine textorientierte Verbindung zu beispielsweise einem Webserver aufnehmen, indem man eine Adresse und einen Port angibt:
 
-```bash
+```bash:
 telnet ADDRESS PORT
 ```
 
