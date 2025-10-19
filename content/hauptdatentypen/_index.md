@@ -9,7 +9,7 @@ Für jede Form von Daten gibt es Software, womit diese Daten verwaltet und persi
 
 1. [strukturierte Daten](/hauptdatentypen/strukturierte/)
     - [DuckDB](/hauptdatentypen/strukturierte/duckdb)
-2. teilweise strukturierte Daten
-    - Redis
+2. [teilweise strukturierte Daten](/hauptdatentypen/teilweise-strukturierte)
+    - [Valkey](/hauptdatentypen/teilweise-strukturierte/valkey)
 3. unstrukturierte Daten
     - Minio (S3)
