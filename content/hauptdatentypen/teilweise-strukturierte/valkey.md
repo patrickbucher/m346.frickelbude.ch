@@ -91,7 +91,7 @@ OK
 
 ### Befehlstruktur
 
-Valkey kennt über 400 [Befehle](https://valkey.io/commands/). Diese muss man nicht auswendig kennen. Es ist aber hlfreich, sich mit folgenden Regeln durch die Befehlsstruktur orientieren zu können:
+Valkey kennt über 400 [Befehle](https://valkey.io/commands/). Diese muss man nicht auswendig kennen. Es ist aber hilfreich, sich mit folgenden Regeln durch die Befehlsstruktur orientieren zu können:
 
 - Befehle haben ein _Präfix_. Dieses richtet sich nach der Datenstruktur, auf welcher der Befehl operiert:
     - List: `L` bzw. `R` für Operationen am linken bzw. rechten Listenende
