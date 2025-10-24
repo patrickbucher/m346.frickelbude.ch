@@ -282,7 +282,7 @@ Erstellen Sie eine TODO-Liste mithilfe des [`LPUSH`](https://valkey.io/commands/
 
 Geben Sie nun die komplette Liste mithilfe des [`LRANGE`](https://valkey.io/commands/lrange/)-Befehls aus. (Tipp: Der Index ist 0-basierend, und -1 bezeichnet das letzte Listenelement.)
 
-Angenommen, Sie hätten nun eine dieser TODO-Aufgaben erledigt: Entfernen Sie das Element mithilfe des [`LREM`](https://valkey.io/commands/lrange/)-Befehls aus der Liste. Erstellen Sie nun eine zweite Liste mit erledigten Aufgaben, und fügen Sie die erledigte Aufgabe dieser neuen Liste hinzu.
+Angenommen, Sie hätten nun eine dieser TODO-Aufgaben erledigt: Entfernen Sie das Element mithilfe des [`LREM`](https://valkey.io/commands/lrem/)-Befehls aus der Liste. Erstellen Sie nun eine zweite Liste mit erledigten Aufgaben, und fügen Sie die erledigte Aufgabe dieser neuen Liste hinzu.
 
 Verschieben Sie eine weitere erledigte Aufgabe mit dem [`RPOPLPUSH`](https://valkey.io/commands/rpoplpush/)-Befehl von der einen in die andere Liste. Geben Sie anschliessend beide Listen noch einmal aus.
 
