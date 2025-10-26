@@ -39,3 +39,14 @@ title = "Prüfung 2: Hauptdatentypen"
 
 - [Teilweise strukturierte Daten](/hauptdatentypen/teilweise-strukturierte)
 - [Valkey](/hauptdatentypen/teilweise-strukturierte/valkey)
+
+### Unstrukturierte Daten
+
+1. Sie können verschiedene Datenspeicher anhand der Kriterien Zugriffsgeschwindigkeit, Speicherkapazität und Kosten pro Speichereinheit richtig in der Speicherhierarchie einordnen.
+2. Sie können die Organisation von S3 in Buckets und Objects vom Dateisystem abgrenzen und verstehen den Zusammenhang zwischen S3-Speicherklassen und der Speicherhierarchie.
+3. Sie können bei gegebener Befehlsdokumentation mit dem Minio-Server `minio`, dem Minio Client `mc` sowie den Hilfsprogrammen `s3cmd` und `s3fs` (FUSE) arbeiten sowie den Zweck, die Funktionsweise und die Rolle der einzelnen Programme im Kontext eines S3-Speichers voneinander unterscheiden.
+   
+#### Unterlagen
+
+- [unstrukturierte Daten](/hauptdatentypen/unstrukturierte)
+- [Minio](/hauptdatentypen/unstrukturierte/minio)
