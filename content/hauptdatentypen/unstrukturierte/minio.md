@@ -72,11 +72,11 @@ Du solltest nun die leere Bucket-Übersicht sehen.
 
 ### Bucket erstellen
 
-Erstelle nun einen neuen Bucket per Klick auf den entsprechenden Link ("Create Bucket"). Nenne diesen "hello". Du brauchst keine anderen Optionen anzuwählen. Klicke anschliessend auf die Schaltfläche "Create Bucket", um den neuen Bucket definitiv zu erstellen.
+Erstelle nun einen neuen Bucket per Klick auf den entsprechenden Link ("Create Bucket"). Nenne diesen "hello". Klicke anschliessend auf die Schaltfläche "Create Bucket", um den neuen Bucket definitiv zu erstellen.
 
 ### Datei hochladen
 
-Klicke in der Navigation links unter dem Abschnitt "User" auf den Link "Object Browser". Wähle nun den zuvor neu erstellten Bucket "hello" aus.
+Klicke in der Navigation links unter dem Abschnitt "Buckets" auf den zuvor neu erstellten Bucket "hello".
 
 Betätige als nächstes die "Upload"-Schaltfläche oben rechts. Klicke dann auf "Upload File". Lade nun **drei** Dateien unterschiedlichen Typs von deinem lokalen Dateisystem (BYOD-Laptop) hoch:
 
@@ -89,7 +89,7 @@ Betätige als nächstes die "Upload"-Schaltfläche oben rechts. Klicke dann auf 
 Beantworte die folgende Fragen für deine persönliche Dokumentation:
 
 1. Wie gross sind die drei Dateien gemäss Anzeige im Web-Interface (grob zusammengerechnet)?
-2. Wie gross ist der `hello`-Bucket auf dem Dateisystem unter `~/minio-data`?  Verwenden Sie den Befehl `du -hs` um die Grösse zu ermitteln!
+2. Wie gross ist der `hello`-Bucket auf dem Dateisystem unter `~/minio-data`?  Verwende den Befehl `du -hs` um die Grösse zu ermitteln!
 3. Betrachte die Dateien und Ordner im Verzeichnis `~/minio-data/hello` mithilfe des `ls`-Befehls. Wie sind die Daten organisiert, und warum ist das wohl so gelöst?
 
 ## Übung 2: Minio-Client verwenden
