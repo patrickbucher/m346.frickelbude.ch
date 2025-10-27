@@ -9,9 +9,7 @@ Teilweise strukturierte Daten im Sinne von abstrakten Datentypen geben eine gewi
 um die Einhaltung der Datentypen und um sonstige Einschränkungen muss man sich
 als Nutzer der entsprechenden Technologien selber kümmern. Bei _unstrukturierten_ Daten hat man es mit einer Reihe von Bytes zu tun. Folglich kann man sinnvollerweise keine Annahmen über die Struktur dieser Inhalte treffen.
 
-Bei der Verwaltung von unstrukturierten Daten im Kontext vom Cloud Computing geht es nicht um die Inhalte der betreffenden Daten (seien dies nun Word-Dokumente, Video-Dateien oder Zip-Archive) sondern darum, dass die Daten kostengünstig, effizient und fehlerfrei verwaltet und bereitgestellt werden können. 
-
-Administriert man einen Service zur Verwaltung von unstrukturierten Daten, geht es nicht darum, was diese Dateien beinhalten, sondern darum, den Anwendern Zugriff auf diese Daten zu gewährleisten. Kriterien wie Vertrauenswürdigkeit, Integrität und Verfügbarkeit sind hier besonders wichtig. Der Inhalt der Daten ist jedoch hierfür völlig irrelevant: es kann sich auch um verschlüsselte Daten handeln, hinter denen der verwaltende Service nichts weiter als einen Byte-Salat erkennt.
+Bei der Verwaltung von unstrukturierten Daten im Kontext vom Cloud Computing geht es nicht um die Inhalte der betreffenden Daten, seien dies nun Word-Dokumente, Video-Dateien oder Zip-Archive. Es kann sich auch um verschlüsselte Daten handeln, hinter denen der verwaltende Service nichts weiter als einen Byte-Salat erkennt. Es geht darum, dass die Daten kostengünstig, effizient und fehlerfrei verwaltet und bereitgestellt werden können. Kriterien wie Vertrauenswürdigkeit, Integrität und Verfügbarkeit sind hier besonders wichtig.  
 
 ## Speicherhierarchie
 
