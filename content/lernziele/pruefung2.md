@@ -1,5 +1,6 @@
 +++
 title = "Prüfung 2: Hauptdatentypen"
+weight = 2
 +++
 
 ## SSH & SSH-Tunnel
