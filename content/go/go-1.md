@@ -5,7 +5,7 @@ weight = 1
 
 Beim Programmieren in Go sind vorab einige wichtige Sachen zu berücksichtigen:
 
-- Go ist eine stark typisierte Programmiersprache. Variablen haben einen bestimmen Datentyp, und können nur Werte dieses einen Typs annehmen.  - *Bezeichner* (von Variablen, Konstanten, Typen usw.) beginnen mit einem Buchstaben oder einem Unterstrich (Underscore, `_`), worauf weitere Buchstaben, Ziffern und Underscores folgen können. Es wird zwischen Gross- und Kleinschreibung unterschieden. Man verwendet `CamelCase` (und nicht `snake_case` oder `kebab-case`).
+- Go ist eine stark typisierte Programmiersprache. Variablen haben einen bestimmen Datentyp, und können nur Werte dieses einen Typs annehmen.  - *Bezeichner* (von Variablen, Konstanten, Typen usw.) beginnen mit einem Buchstaben oder einem Unterstrich (Underscore, `_`), worauf weitere Buchstaben, Ziffern und Underscores folgen können. Es wird zwischen Gross- und Kleinschreibung unterschieden. Man verwendet `camelCase` (und nicht `snake_case` oder `kebab-case`).
 - Werden Variablen deklariert aber nirgends verwendet, kann das Programm nicht kompiliert werden. Damit soll sichergestellt werden, dass sich keine unnötigen Variablen in den Code einschleichen. Für diesen ersten Teil ist es also nötig, die deklarierten Variablen im Verlauf des Programms einmal zu verwenden, etwa indem man sie mit `fmt.Println()` ausgibt: `fmt.Println(a, b, c)`, falls man die Variablen `a`, `b` und `c` deklariert hat.
 
 ## Variablen
