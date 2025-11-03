@@ -1,5 +1,4 @@
 +++
-draft = true
 title = "Go-Entwicklungsumgebung"
 weight = 2
 +++
