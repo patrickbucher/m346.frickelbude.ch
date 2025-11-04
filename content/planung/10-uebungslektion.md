@@ -15,7 +15,7 @@ Sie haben die Übungen zu den Hauptdatentypen abgeschlossen und inhaltliche Frag
 - [60 min.]: selbständige Arbeit
     1. Abschliessen der Übungen zu den Hauptdatentypen
     2. individuelle Prüfungsvorbereitung
-- [10 min.] Fragerunde zu den Lernzielen
+- [10 min.] Fragerunde zu den [Lernzielen](/lernziele/pruefung2.md)
 
 ### Hausaufgaben
 
