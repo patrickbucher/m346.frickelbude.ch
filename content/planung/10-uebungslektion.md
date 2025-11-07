@@ -12,7 +12,8 @@ Sie haben die Übungen zu den Hauptdatentypen abgeschlossen und inhaltliche Frag
 ### Lektionen 1 & 2
 
 - [5 min.] Administratives
-- [60 min.]: selbständige Arbeit
+- [10 min.] Kurzbesprechung Prüfung 1 (schwierigste Fragen)
+- [65 min.]: selbständige Arbeit
     1. Abschliessen der Übungen zu den Hauptdatentypen
     2. individuelle Prüfungsvorbereitung
 - [10 min.] Fragerunde zu den [Lernzielen](/lernziele/pruefung2.md)
