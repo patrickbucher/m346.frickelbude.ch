@@ -11,5 +11,5 @@ Für jede Form von Daten gibt es Software, womit diese Daten verwaltet und persi
     - [DuckDB](/hauptdatentypen/strukturierte/duckdb)
 2. [teilweise strukturierte Daten](/hauptdatentypen/teilweise-strukturierte)
     - [Valkey](/hauptdatentypen/teilweise-strukturierte/valkey)
-3. unstrukturierte Daten
-    - Minio (S3)
+3. [unstrukturierte Daten](/hauptdatentypen/unstrukturierte)
+    - [Minio (S3)](/hauptdatentypen/unstrukturierte/minio)
