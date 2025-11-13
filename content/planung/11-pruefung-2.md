@@ -6,12 +6,14 @@ weight = 11
 Im fünften Block legen Sie die zweite Modulprüfung auf Moodle ab. Das Programm nach der Prüfung unterscheidet sich je nach Klasse:
 
 - **INA24b**: Im Anschluss reichen alle die URL zum Git-Repository für die Go-Übungen ein, worauf die erste Aufgabenreihe mittlerweile erledigt sein sollte.
+- **INA24a/d**: Im Anschluss wird die Go-Entwicklungsumgebung aufgesetzt.
 
 ## Ziel
 
 Sie haben die zweite Prüfung abgelegt.
 
 - **INA24b**: Sie haben die erste Go-Aufgabenserie abgeschlossen.
+- **INA24a/d**: Sie haben die Go-Entwicklungsumgebung eingerichtet.
 
 ### Lektionen 1 & 2
 
