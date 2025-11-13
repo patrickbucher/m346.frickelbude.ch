@@ -24,7 +24,7 @@ Schliessen Sie die [erste Aufgabenserie](https://github.com/patrickbucher/m346-g
 
 ## Vertiefungsprogramm Nextcloud
 
-Heute fangen wir mit dem Vertiefungsprogramm zu Nextcloud an. Zuerst verschaffen wir uns einen Überblick über die kommenden Themenblöcke. Andererseits betrachten wir uns die Problematik von Open-Source-Lizenzen, und wie Nextcloud dieses Problem überzeugend löst.
+Heute fangen wir mit dem Vertiefungsprogramm zu Nextcloud an. Zuerst verschaffen wir uns einen Überblick über die kommenden Themenblöcke. Andererseits betrachten wir uns die Problematik von Open-Source-Lizenzen, und wie Nextcloud dieses Problem überzeugend löst. Wer noch Zeit dafür hat, kann sich bereits mit Themenblock 2 über Service-Management mit systemd befassen.
 
 ### Ziel
 
@@ -36,7 +36,8 @@ Sie können nachvollziehen und begründen, wie Nextcloud eine Open-Source-Lizenz
 
 - [5 min.] Administratives
 - [10 min.] [Einführung](/nextcloud/)
-- [] [Nextcloud und Open-Source-Lizenzen](/nextcloud/intro)
+- [45 min] [Nextcloud und Open-Source-Lizenzen](/nextcloud/intro)
+- [30 min] evtl. [Service-Management mit systemd](/nextcloud/systemd)
 
 #### Hausaufgaben
 
