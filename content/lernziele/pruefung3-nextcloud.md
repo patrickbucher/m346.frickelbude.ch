@@ -1,5 +1,5 @@
 +++
-title = "Pruefung 3: Nextcloud"
+title = "Prüfung 3: Nextcloud"
 weight = 4
 +++
 
