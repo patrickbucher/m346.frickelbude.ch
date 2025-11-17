@@ -5,8 +5,8 @@ weight = 7
 
 Im ersten Wahlprogramm wird zunächst die Programmiersprache Go gelernt. In vier Blöcken sollen die folgenden Bereiche der Sprache erkundet werden:
 
-- [Go 1: Variablen, Datentypen und formatierte Ausgabe](go-1.md)
-- Go 2: Strukturen, Slices und Maps
+- [Go 1: Variablen, Datentypen und formatierte Ausgabe](/go/go-1)
+- [Go 2: Strukturen, Slices und Maps](/go/go-2)
 - Go 3: Kontrollstrukturen: Verzweigungen und Schleifen
 - Go 4: Funktionen definieren und aufrufen
 
