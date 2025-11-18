@@ -19,3 +19,19 @@ Die folgenden beiden Lernziele werden im weiteren Modulverlauf erarbeitet:
 ### Unterlagen
 
 - [Einführung: Nextcloud und Open-Source-Lizenzen](/nextcloud/intro/)
+
+## Service-Management mit systemd
+
+- Sie können die vier Hauptschritte, in denen ein System gestartet wird, voneinander abgrenzen und erklären, welche Komponenten in den einzelnen Vorgänge involviert sind.
+- Sie können Vorteile von Services gegenüber dem manuellen Aufstarten von Programmen benennen.
+- Sie können die wichtigsten Merkmale eines Service-Modells erklären.
+- Sie können die Funktionsweise von _SysVinit_ basierend auf _Runlevels_ erklären und können Probleme von diesem Ansatz nennen.
+- Sie können erklären, wie _systemd_ die Probleme von SysVinit löst und erklären, welche Vorteile und Konsequenzen das hat.
+- Sie können Abhängigkeiten von Services in einem gerichteten Graph erkennen und deren Startreihenfolge in Phasen einteilen (sequenzielles und paralleles Aufstarten).
+- Sie können mithilfe von `systemctl` Services starten, stoppen, aktivieren, deaktivieren und deren Zustand abfragen.
+- Sie können mithilfe von `journalctl` Logmeldungen des ganzen Systems sowie von einzelnen Services anzeigen lassen.
+- Sie können eine gegebene Service-Unit-Datei analysieren und kennen die Bedeutung der Abschnitte `[Unit]`, `[Service]`, `[Install]` sowie den Direktiven `Description`, `Documentation`, `After`, `ExecStart`, `Restart`, `User`, `Group` und `WantedBy`.
+
+### Unterlagen
+
+- [Service-Management mit systemd](/nextcloud/systemd/index.html)
