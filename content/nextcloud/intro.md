@@ -96,7 +96,7 @@ Beantworten Sie folgende Frage in Ihre persönliche Dokumentation:
 
 ### Copyright und Copyleft
 
-Lizenzen basieren auf der Idee des Urherberrechts (engl. _Copyright_), welches geistiges Eigentum schútzen soll. Der Urheber hat das Recht zu bestimmen, was mit seinem Werk gemacht werden darf und was nicht. In der Regel dürfen keine Kopien von urheberrechtlich geschützten Werken angelegt werden (Urheberrechtsverletzung). Das Copyright schützt die _Urheberrechte_ gegenüber dem Verbraucher.
+Lizenzen basieren auf der Idee des Urherberrechts (engl. _Copyright_), welches geistiges Eigentum schützen soll. Der Urheber hat das Recht zu bestimmen, was mit seinem Werk gemacht werden darf und was nicht. In der Regel dürfen keine Kopien von urheberrechtlich geschützten Werken angelegt werden (Urheberrechtsverletzung). Das Copyright schützt die _Urheberrechte_ gegenüber dem Verbraucher.
 
 Das sogenannte _Copyleft_ basiert auf dem Copyright, kehrt aber dessen Zweck um: Mithilfe des Copylefts sollen _Verbraucherrechte_ gegenüber den Urhebern geschützt werden. Auf Basis des Copyrights kann der Autor eines Werkes bestimmen, dass dieses kopiert werden darf (permissive Lizenzen), ja sogar dass diese Modifikationen weitergegeben werden müssen (share-alike-Lizenzen). Durch das Copyleft wird das Kopieren und Bearbeiten von Werke ermöglicht und gefördert!
 
