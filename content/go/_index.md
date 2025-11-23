@@ -7,7 +7,7 @@ Im ersten Wahlprogramm wird zunächst die Programmiersprache Go gelernt. In vier
 
 - [Go 1: Variablen, Datentypen und formatierte Ausgabe](/go/go-1)
 - [Go 2: Strukturen, Slices und Maps](/go/go-2)
-- Go 3: Kontrollstrukturen: Verzweigungen und Schleifen
+- [Go 3: Kontrollstrukturen: Verzweigungen und Schleifen](/go/go-3)
 - Go 4: Funktionen definieren und aufrufen
 
 Zu diesen Theorieteilen gibt es eine [Übungssammlung](https://github.com/patrickbucher/m346-go-exercises/).

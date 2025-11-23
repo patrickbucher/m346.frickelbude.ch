@@ -1,5 +1,6 @@
 +++
 title = "Block 12: Vertiefungsprogramm 1"
+weight = 12
 +++
 
 ## Vertiefungsprogramm Go
