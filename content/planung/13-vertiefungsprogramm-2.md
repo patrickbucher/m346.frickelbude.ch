@@ -23,3 +23,23 @@ Sie können mit Strukturen, Slices und Maps in Go umgehen.
 #### Hausaufgaben
 
 Schliessen Sie die [zweite Aufgabenserie](https://github.com/patrickbucher/m346-go-exercises/blob/master/go-2-exercises.md) zu Go ab.
+
+## Vertiefungsprogramm Nextcloud
+
+Nextcloud ist ein System, das aus verschiedenen Komponenten besteht, die voneinander abhängig sind. Um so ein System betreiben zu können, müssen wir uns mit Service-Management befassen. Heute betrachten wir uns Service-Management unter Linux mit systemd.
+
+### Ziel
+
+Sie können mithilfe von systemd Services unter Linux verwalten.
+
+### Ablauf
+
+#### Lektionen 1 & 2
+
+- [5 min.] Administratives
+- [25 min.] [Theorie](/nextcloud/systemd/#theorie) zu Service-Management mit systemd inkl. Besprechung
+- [60 min.] [Übungen](/nextcloud/systemd/#übungen) zu Service-Management mit systemd inkl. Besprechung
+
+#### Hausaufgaben
+
+Schliessen Sie die Übungen ab und führen Sie ihre persönliche Dokumentation entsprechend nach.
