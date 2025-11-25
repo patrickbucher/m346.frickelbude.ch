@@ -8,7 +8,7 @@ weight = 2
 Beim Aufstarten eines modernen Betriebssystems passiert einiges:
 
 1. Das BIOS bzw. UEFI wird gestartet.
-    - Initialisierung die Hardware
+    - Initialisierung der Hardware
     - Ausführung von Selbsttests
 2. Der Master Boot Record (MBR) wird geladen.
     - Ermittlung des Speicherorts des Bootloaders
