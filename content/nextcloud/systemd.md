@@ -21,7 +21,7 @@ Beim Aufstarten eines modernen Betriebssystems passiert einiges:
 Im Kontext vom Cloud-Computing wird es ab Schritt 4 interessant, wenn der Prozessmanager gestartet wird. Ein Prozessmanager ist eine Implementierung eines _Service-Modells_. Betriebssysteme verwenden unterschiedliche Service-Modelle:
 
 - Windows verwendet den _Windows Services Manager_ (`services.msc`).
-- Unix/Linux/BSDs verfügt bietet verschiedene Systeme:
+- Unix/Linux/BSDs bietet verschiedene Systeme:
     - SysVinit ist das traditionelle System; es ist skriptbasiert und verwendet sogenannte Runlevels.
     - OpenRC ist ein moderneres skriptbasiertes System.
     - **systemd** ist ein modernes und sehr umfassendes System mit Targets, Timers usw. Dieses System kommt bei den meisten Linux-Distributionen zum Einsatz.
