@@ -31,5 +31,7 @@ weight = 3
 - Sie können Verzweigungen mit `if`, `else if`, `else` und mit `switch`, `case`, `default` ausprogrammieren.
 - Sie können Schleifen mit `for` ausprogrammieren, mithilfe von `for`, `range` über Slices und Maps iterieren und die Iteration mittels `continue` und `break` beeinflussen bzw. vorzeitig abbrechen.
 
+### Unterlagen
+
 - [Kontrollstrukturen](/go/go-3)
 - [Go-Übungen: Teil 3](https://github.com/patrickbucher/m346-go-exercises/blob/master/go-3-exercises.md)
