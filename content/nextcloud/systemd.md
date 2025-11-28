@@ -453,9 +453,9 @@ automatisch mitgestartet werden.
 
 #### Aufgabe 7: Minio vorbereiten
 
-Die beiden ausführbaren Dateien `minio` und `mc` sollten bereits auf dem System vorhanden sein. Laden Sie diese Programme andernfalls mit `wget` herunter. Die Download-Links erhalten Sie auf der [offiziellen Download-Seite](https://min.io/open-source/download?platform=linux) (MinIO Server und MinIO Client für Linux) und verschieben Sie diese ausführbaren Dateien nach `/usr/local/bin`.
+Die beiden ausführbaren Dateien `minio` und `mc` sollten bereits auf dem System vorhanden sein. 
 
-Erstellen Sie anschliessend einen eigenen Benutzer für Minio:
+Erstellen Sie einen eigenen Benutzer für Minio:
 
     sudo useradd -m -d /home/minio -U -s /usr/bin/bash minio
 
