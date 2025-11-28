@@ -54,7 +54,7 @@ Diese Probleme sollen durch modernere Init-Systeme bzw. Prozessmanager gelöst w
 
 Der Prozessmanager systemd wurde entwickelt, um die genannten Probleme von SysVinit zu lösen. Diese werden durch systemd folgendermassen gelöst, was Vorteile bietet, aber auch entsprechende Konsequenzen hat:
 
-1. Services können parallel voneinander gestartet werden.
+1. Services können parallel gestartet werden.
     - Der Systemstart erfolgt wesentlich schneller.
     - Abhängigkeiten müssen beachtet und korrekt definiert werden.
 2. Services können zu _Targets_ gebündelt werden.
@@ -139,7 +139,7 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-Hierbei handelt es sich um eine INI-Datei, die aus den drei Bereichen `Unit`, `Service` und `Install` besteht. Die einzelnen _Direktiven_ haben die folgende Bedeutung:
+Hierbei handelt es sich um eine INI-Datei, die aus den drei Bereichen `Unit`, `Service` und `Install` besteht. Die einzelnen Abschnitte und _Direktiven_ haben die folgende Bedeutung:
 
 - `Unit`: Allgemeine Informationen zur Unit, unabhängig von der Art (z.B. Service, Target usw.)
     - `Description`: Eine textuelle Beschreibung der Unit.
