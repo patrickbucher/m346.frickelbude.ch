@@ -1,7 +1,7 @@
 +++
 date = '2025-11-23T20:56:55+01:00'
 title = 'Block 14: Vertiefungsprogramm 3'
-weight =14
+weight = 14
 +++
 
 ## Vertiefungsprogramm Go

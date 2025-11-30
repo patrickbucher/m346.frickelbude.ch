@@ -35,3 +35,24 @@ weight = 3
 
 - [Kontrollstrukturen](/go/go-3)
 - [Go-Übungen: Teil 3](https://github.com/patrickbucher/m346-go-exercises/blob/master/go-3-exercises.md)
+
+
+## Funktionen und Methoden
+
+- Sie können Funktionen mit und ohne Parametern/Rückgabewerten definieren, anhand einer gegebenen Problemstellung ausprogrammieren und aufrufen.
+- Sie können Funktionen mit Fehlerbehandlung schreiben und beim Aufruf entsprechend auf mögliche Fehler reagieren.
+- Sie können Funktionen als Methoden implementieren und aufrufen.
+
+### Unterlagen
+
+- [Funktionen](/go/go-4)
+- [Go-Übungen: Teil 4](https://github.com/patrickbucher/m346-go-exercises/blob/master/go-4-exercises.md)
+
+## Entwicklungsprozess
+
+- Sie können die genannten Sprachkonstrukte zu Programmen kombinieren und Programme mit dem `go`-Tool starten.
+- Sie kennen den Entwicklungsprozess mit Git und Fork/Pull-Request und können diesen anwenden.
+
+### Unterlagen
+
+- [Video zum Entwicklungsprozess](https://www.youtube.com/watch?v=adevO4GSVMM)
