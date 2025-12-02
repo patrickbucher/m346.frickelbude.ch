@@ -34,4 +34,15 @@ Die folgenden beiden Lernziele werden im weiteren Modulverlauf erarbeitet:
 
 ### Unterlagen
 
-- [Service-Management mit systemd](/nextcloud/systemd/index.html)
+- [Service-Management mit systemd](/nextcloud/systemd/)
+
+## LAMP-Stack
+
+- Sie können die Komponenten des LAMP-Stacks bzw. des konkretisierten _DAMPF_-Stacks benennen.
+- Sie können die Vor- und Nachteile von PHP-FPM gegenüber CGI benennen und nachvollziehen.
+- Sie kennen den Unterschied zwischen verfügbaren und aktivierten Seiten und Modulen von Apache 2 und wissen, wie man solche aktivieren bzw. deaktivieren kann.
+- Sie können erklären, wann es sinnvoll ist einen MySQL/MariaDB-Benutzer mit dem Suffix `@localhost` zu definieren.
+
+## Unterlagen
+
+- [Der LAMP-Stack](/nextcloud/lamp-stack/)

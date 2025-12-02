@@ -38,7 +38,7 @@ Sie können mithilfe von systemd Services unter Linux verwalten.
 
 - [5 min.] Administratives
 - [25 min.] [Theorie](/nextcloud/systemd/#theorie) zu Service-Management mit systemd inkl. Besprechung
-- [60 min.] [Übungen](/nextcloud/systemd/#übungen) zu Service-Management mit systemd inkl. Besprechung
+- [60 min.] [Übungen](/nextcloud/systemd/#übungen) zu Service-Management mit systemd
 
 #### Hausaufgaben
 
