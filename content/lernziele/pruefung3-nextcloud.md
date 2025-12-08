@@ -19,6 +19,7 @@ Die folgenden beiden Lernziele werden im weiteren Modulverlauf erarbeitet:
 ### Unterlagen
 
 - [Einführung: Nextcloud und Open-Source-Lizenzen](/nextcloud/intro/)
+- [Nextcloud-Setup](/nextcloud/setup/)
 
 ## Service-Management mit systemd
 

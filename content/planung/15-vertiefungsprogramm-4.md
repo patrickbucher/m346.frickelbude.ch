@@ -25,3 +25,22 @@ Sie können Funktionen (und Methoden) in Go schreiben.
 Schliessen Sie die [vierte Aufgabenserie](https://github.com/patrickbucher/m346-go-exercises/blob/master/go-4-exercises.md) zu Go ab.
 
 Bereiten Sie sich auf die Prüfung vor.
+
+## Vertiefungsprogramm Nextcloud
+
+Basierend auf dem LAMP-Stack, der letzte Woche in Betrieb genommen worden ist, kann nun Nextcloud aufgesetzt werden.
+
+### Ziel
+
+Sie können Nextcloud auf ihrem Server installieren.
+
+### Ablauf
+
+#### Lektionen 1 & 2
+
+- [5 min.] Administratives
+- [85 min.] [Nextcloud-Setup](/nextcloud/setup)
+
+#### Hausaufgaben
+
+Schliessen Sie die Übungen ab und führen Sie ihre persönliche Dokumentation entsprechend nach.
