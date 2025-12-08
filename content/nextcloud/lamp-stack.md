@@ -174,13 +174,11 @@ Damit die Seite erreichbar wird, muss eine neuer _virtueller Host_ konfiguriert 
 </VirtualHost>
 ```
 
-Verschieben Sie die Datei anschliessend zum Apache-Verzeichnis der _verfügbaren
-Seiten_ `/etc/apache2/sites-available`:
+Verschieben Sie die Datei anschliessend zum Apache-Verzeichnis der _verfügbaren Seiten_ `/etc/apache2/sites-available`:
 
 :briefcase: :desktop_computer: **Kontrollfrage 1**: Was beinhalten die beiden Unterverzeichnisse `sites-available/` und `sites-enabled/` im Apache-Konfigurationsverzeichnis `/etc/apache2`? Tipp: Verwenden Sie den Befehl `ls -l`. Halten Sie die Ausgabe in Ihrer Dokumentation fest.
 
-Die Debian-Beispielseite soll nun _deaktiviert_; die neu konfigurierte
-Modulbaukasten-Seite _aktiviert_ werden:
+Die Debian-Beispielseite soll nun _deaktiviert_; die neu konfigurierte Modulbaukasten-Seite _aktiviert_ werden:
 
 ```bash
 sudo a2dissite 000-default.conf
@@ -197,22 +195,17 @@ Die neue Beispielseite kann unter [http://IP-ADRESSE](http://IP-ADRESSE) betrach
 
 ## Aufgabe 2: MariaDB
 
-Der Modulbaukasten soll von einer statischen in eine dynamische Webseite
-umgewandelt werden. Die veränderbaren Daten sollen dazu in einer Datenbank
-abgelegt werden. Hierzu soll MariaDB zum Einsatz kommen.
+Der Modulbaukasten soll von einer statischen in eine dynamische Webseite umgewandelt werden. Die veränderbaren Daten sollen dazu in einer Datenbank abgelegt werden. Hierzu soll MariaDB zum Einsatz kommen.
 
 Installieren Sie den MariaDB-Server mithilfe des `apt install`-Befehls. Tipp: Mit `apt search SUCHBEGRIFF` findet man den Namen des zu installierenden Pakets.
 
-Die Standardinstallation lässt sich zur Verbesserung der Sicherheit _härten_,
-wozu MariaDB einen Assistenten bietet, den Sie ausführen sollen:
+Die Standardinstallation lässt sich zur Verbesserung der Sicherheit _härten_, wozu MariaDB einen Assistenten bietet, den Sie ausführen sollen:
 
 ```bash
 sudo mariadb-secure-installation
 ```
 
-:briefcase: Befolgen Sie die Anweisungen auf dem Bildschirm und halten Sie die
-Fragen und Ihre Antworten darauf (mit einer kurzen Begründung) unter
-**Kontrollfrage 3** fest.
+:briefcase: Befolgen Sie die Anweisungen auf dem Bildschirm und halten Sie die Fragen und Ihre Antworten darauf (mit einer kurzen Begründung) unter **Kontrollfrage 3** fest.
 
 Öffnen Sie nun eine interaktive `mariadb`-Sitzung:
 
@@ -220,15 +213,13 @@ Fragen und Ihre Antworten darauf (mit einer kurzen Begründung) unter
 sudo mariadb
 ```
 
-Erstellen Sie einen neuen Benutzer mit dem Namen `moderator` und dem Passwort
-`topsecret`:
+Erstellen Sie einen neuen Benutzer mit dem Namen `moderator` und dem Passwort `topsecret`:
 
 ```sql
 CREATE USER moderator@localhost IDENTIFIED BY 'topsecret';
 ```
 
-:briefcase: **Kontrollfrage 4**: Wozu dient wohl das Suffix `@localhost` hinter
-dem Benutzernamen?
+:briefcase: **Kontrollfrage 4**: Wozu dient wohl das Suffix `@localhost` hinter dem Benutzernamen?
 
 Erstellen Sie eine Datenbank namens `modulbaukasten`:
 
@@ -238,9 +229,7 @@ CREATE DATABASE modulbaukasten CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 (Die Datenbank unterstützt den Unicode-Zeichensatz mithilfe der Kodierung UTF-8.)
 
-Vergeben Sie dem Benutzer `moderator` alle Rechte für die Datenbank
-`modulbaukasten`, forcieren Sie ein Neuladen der Berechtigungen und verlassen
-Sie die MariaDB-Sitzung wieder:
+Vergeben Sie dem Benutzer `moderator` alle Rechte für die Datenbank `modulbaukasten`, forcieren Sie ein Neuladen der Berechtigungen und verlassen Sie die MariaDB-Sitzung wieder:
 
 ```sql
 GRANT ALL PRIVILEGES ON modulbaukasten.* TO moderator@localhost;
@@ -250,8 +239,7 @@ EXIT
 
 ### Datenbanktabelle erstellen und befüllen
 
-Für den Modulbaukasten soll eine Tabelle namens `modules` erstellt werden. Diese
-Tabelle soll sogleich mit einigen Beispieldaten gefüllt werden.
+Für den Modulbaukasten soll eine Tabelle namens `modules` erstellt werden. Diese Tabelle soll sogleich mit einigen Beispieldaten gefüllt werden.
 
 Erstellen Sie eine Datei `modules.sql` mit folgendem Inhalt:
 
@@ -273,10 +261,7 @@ INSERT INTO modules (number, name, comment) VALUES
     (450, "Applikationen testen", "Überschneidungen zu M426");
 ```
 
-Fügen Sie dem Skript drei weitere `INSERT`-Befehle mit bereits absolvierten
-Modulen hinzu, wobei Sie die `comment`-Spalte für Ihre persönliche
-Vergangenheitsbewältigung missbrauchen dürfen. (Der offizielle
-[Modulbaukasten](https://www.modulbaukasten.ch/) kann dabei hilfreich sein.)
+Fügen Sie dem Skript drei weitere `INSERT`-Befehle mit bereits absolvierten Modulen hinzu, wobei Sie die `comment`-Spalte für Ihre persönliche Vergangenheitsbewältigung missbrauchen dürfen. (Der offizielle [Modulbaukasten](https://www.modulbaukasten.ch/) kann dabei hilfreich sein.)
 
 Führen Sie das Skript nun folgendermassen aus:
 
@@ -291,12 +276,9 @@ am besten die Tabelle:
 echo 'DROP TABLE modules;' | mariadb -D modulbaukasten -u moderator -ptopsecret
 ```
 
-(Die Parameter `--database`, `--user` und `--password` haben die Kurzvarianten
-`-D`, `-u` und `-p`. Beachten Sie, dass zwischen dem Parameter `-p` und dem
-Passwort _kein_ Leerzeichen steht.)
+(Die Parameter `--database`, `--user` und `--password` haben die Kurzvarianten `-D`, `-u` und `-p`. Beachten Sie, dass zwischen dem Parameter `-p` und dem Passwort _kein_ Leerzeichen steht.)
 
-Korrigieren Sie Ihr Skript und versuchen Sie es erneut auszuführen, bis alle
-Werte erfolgreich eingefügt werden konnten.
+Korrigieren Sie Ihr Skript und versuchen Sie es erneut auszuführen, bis alle Werte erfolgreich eingefügt werden konnten.
 
 :briefcase: Halten Sie die Datei `modules.sql` in Iher Dokumentation fest.
 
@@ -306,14 +288,11 @@ Sie können sich die Tabelle folgendermassen ausgeben lassen:
 echo 'SELECT * FROM modules;' | mariadb -D modulbaukasten -u moderator -ptopsecret -t
 ```
 
-:briefcase: **Kontrollfrage 5**: Das Passwort `topsecret` ist in den obigen
-Befehlen direkt mit dem Parameter `--password` bzw. `-p` mitgegeben worden. Ist
-das eine gute Idee? Warum (nicht)?
+:briefcase: **Kontrollfrage 5**: Das Passwort `topsecret` ist in den obigen Befehlen direkt mit dem Parameter `--password` bzw. `-p` mitgegeben worden. Ist das eine gute Idee? Warum (nicht)?
 
 ## Aufgabe 3: PHP
 
-Um die Informationen aus der Datenbank auf eine Webseite ausgeben zu können wird
-PHP mit einem Zusatzpaket für den Datenbankzugriff benötigt:
+Um die Informationen aus der Datenbank auf eine Webseite ausgeben zu können wird PHP mit einem Zusatzpaket für den Datenbankzugriff benötigt:
 
 ```bash
 sudo apt install -y php8.4 php-mysql
@@ -325,12 +304,9 @@ Der PHP-Interpreter kann sogleich mit einem Einzeiler getestet werden:
 php -r 'echo("PHP Version " . phpversion() . " läuft.\n");'
 ```
 
-:briefcase: **Kontrollfrage 6**: Welche Version von PHP wurde installiert
-(dreistellige Versionsnummer)?
+:briefcase: **Kontrollfrage 6**: Welche Version von PHP wurde installiert (dreistellige Versionsnummer)?
 
-Die statische Seite unter `/var/www/modulbaukasten/index.html` soll zu einer
-dynamischen PHP-Seite umgewandelt werden. Hierzu muss zuerst deren Dateiendung
-angepasst werden:
+Die statische Seite unter `/var/www/modulbaukasten/index.html` soll zu einer dynamischen PHP-Seite umgewandelt werden. Hierzu muss zuerst deren Dateiendung angepasst werden:
 
 ```bash
 sudo mv /var/www/modulbaukasten/index.html /var/www/modulbaukasten/index.php
@@ -350,8 +326,7 @@ Fügen Sie der Datei folgenden Inhalt unterhalb vom `<h1>`-Element hinzu:
 ?>
 ```
 
-Unter [http://IP-ADRESSE](http://IP-ADRESSE) sollte nun auch die Version von PHP
-ausgegeben werden.
+Unter [http://IP-ADRESSE](http://IP-ADRESSE) sollte nun auch die Version von PHP ausgegeben werden.
 
 :briefcase: :desktop_computer: Halten Sie einen Screenshot vom Browser fest, in dem die Versionsnummer von PHP zu sehen ist.
 
@@ -371,27 +346,19 @@ sudo mv info.php /var/www/modulbaukasten/
 
 Rufen Sie nun die Seite unter [http://IP-ADRESSE/info.php](http://IP-ADRESSE/info.php) auf.
 
-:briefcase: :desktop_computer: **Kontrollfrage 7**: Die Seite zeigt u.a. an, welche
-_Server API_ im Einsatz ist. Welcher Wert wird in der rechten Spalte zu _Server
-API_ angezeigt?
+:briefcase: :desktop_computer: **Kontrollfrage 7**: Die Seite zeigt u.a. an, welche _Server API_ im Einsatz ist. Welcher Wert wird in der rechten Spalte zu _Server API_ angezeigt?
 
 ## Aufgabe 4: PHP-FPM
 
-Bei einer Standardinstallation von Apache unter Debian wird PHP mit dem Modul
-`mod_php` ausgeführt. Um die Ausführung von PHP per FastCGI besser skalierbar zu
-machen, muss PHP-FPM mit einem entsprechenden Apache-Modul installiert werden:
+Bei einer Standardinstallation von Apache unter Debian wird PHP mit dem Modul `mod_php` ausgeführt. Um die Ausführung von PHP per FastCGI besser skalierbar zu machen, muss PHP-FPM mit einem entsprechenden Apache-Modul installiert werden:
 
 ```bash
 sudo apt install -y php8.4-fpm libapache2-mod-fcgid
 ```
 
-Beim ersten Paket handelt es sich um den PHP-FPM-Service, welcher die
-PHP-Prozesse verwaltet. Das zweite Paket ist ein Apache-Modul, welches die
-Ausführung von PHP-Code an PHP-FPM delegiert.
+Beim ersten Paket handelt es sich um den PHP-FPM-Service, welcher die PHP-Prozesse verwaltet. Das zweite Paket ist ein Apache-Modul, welches die Ausführung von PHP-Code an PHP-FPM delegiert.
 
-:briefcase: :desktop_computer: **Kontrollfrage 8**: Was beinhalten die beiden
-Unterverzeichnisse `mods-enabled/` und `conf-enabled/` im
-Apache-Konfigurationsverzeichnis `/etc/apache2`?
+:briefcase: :desktop_computer: **Kontrollfrage 8**: Was beinhalten die beiden Unterverzeichnisse `mods-enabled/` und `conf-enabled/` im Apache-Konfigurationsverzeichnis `/etc/apache2`?
 
 Zuerst soll `mod_php` deaktiviert werden:
 
@@ -399,46 +366,34 @@ Zuerst soll `mod_php` deaktiviert werden:
 sudo a2dismod php8.4
 ```
 
-Anschliessend sollen die Konfiguration für PHP-FPM sowie das Modul für FastCGI
-aktiviert werden:
+Anschliessend sollen die Konfiguration für PHP-FPM sowie das Modul für FastCGI aktiviert werden:
 
 ```bash
 sudo a2enconf php8.4-fpm
 sudo a2enmod proxy_fcgi
 ```
 
-:briefcase: :desktop_computer: **Kontrollfrage 9**: Was beinhalten die beiden
-Unterverzeichnisse `mods-enabled/` und `conf-enabled/` im
-Apache-Konfigurationsverzeichnis `/etc/apache2` _jetzt_?
+:briefcase: :desktop_computer: **Kontrollfrage 9**: Was beinhalten die beiden Unterverzeichnisse `mods-enabled/` und `conf-enabled/` im Apache-Konfigurationsverzeichnis `/etc/apache2` _jetzt_?
 
 Veranlassen Sie Apache zum Neuladen der Konfiguration, wie bereits weiter oben beim Konfigurieren der Modulbaukasten-Webseite.
 
 Rufen Sie erneut die Seite unter [http://IP-ADRESSE/info.php](http://IP-ADRESSE/info.php) auf.
 
-:briefcase: :desktop_computer: **Kontrollfrage 10**: Welcher Wert wird nun in
-der rechten Spalte zu _Server API_ angezeigt? Halten Sie das als Screenshot fest.
+:briefcase: :desktop_computer: **Kontrollfrage 10**: Welcher Wert wird nun in der rechten Spalte zu _Server API_ angezeigt? Halten Sie das als Screenshot fest.
 
-Damit PHP-FPM auch ressourcenintensivere Anwendungen (wie z.B. Nextcloud)
-ausführen kann, soll die Oberlimite für den Arbeitsspeicher, der von einem
-PHP-Skript belegt werden darf, erhöht werden.
+Damit PHP-FPM auch ressourcenintensivere Anwendungen (wie z.B. Nextcloud) ausführen kann, soll die Oberlimite für den Arbeitsspeicher, der von einem PHP-Skript belegt werden darf, erhöht werden.
 
-Diese Einstellung befindet sich in der Datei `/etc/php/8.4/fpm/php.ini`. Suchen
-Sie nach der Einstellung `memory_limit`, die standardmässig auf `128M` (128
-Megabyte) gesetzt sein sollte. Erhöhen Sie diese Angabe auf `256M` (256
-Megabyte).
+Diese Einstellung befindet sich in der Datei `/etc/php/8.4/fpm/php.ini`. Suchen Sie nach der Einstellung `memory_limit`, die standardmässig auf `128M` (128 Megabyte) gesetzt sein sollte. Erhöhen Sie diese Angabe auf `256M` (256 Megabyte).
 
 Speichern Sie die Änderungen ab und starten Sie den Service `php8.4-fpm` neu.
 
 Rufen Sie erneut die Seite unter [http://IP-ADRESSE/info.php](http://IP-ADRESSE/info.php) auf.
 
-:briefcase: :desktop_computer: **Kontrollfrage 11**: Welcher Wert wird nun in
-der rechten Spalte zu `memory_limit` angezeigt? Halten Sie das als Screenshot fest.
+:briefcase: :desktop_computer: **Kontrollfrage 11**: Welcher Wert wird nun in der rechten Spalte zu `memory_limit` angezeigt? Halten Sie das als Screenshot fest.
 
 ## Aufgabe 5: Dynamische PHP-Seite
 
-Da nun der ganze LAMP-Stack mit PHP-FPM in Betrieb ist, sollen die Module aus
-der Datenbank nun dynamisch als Webseite dargestellt werden. Erstellen Sie
-hierzu eine Datei namens `modules.php` mit folgendem Inhalt:
+Da nun der ganze LAMP-Stack mit PHP-FPM in Betrieb ist, sollen die Module aus der Datenbank nun dynamisch als Webseite dargestellt werden. Erstellen Sie hierzu eine Datei namens `modules.php` mit folgendem Inhalt:
 
 ```php
 <!DOCTYPE html>
@@ -470,8 +425,7 @@ hierzu eine Datei namens `modules.php` mit folgendem Inhalt:
 </html>
 ```
 
-:briefcase: **Kontrollfrage 12**: Ist es sinnvoll, Benutzername und Passwort in
-einer PHP-Datei zu hinterlegen? Warum (nicht)?
+:briefcase: **Kontrollfrage 12**: Ist es sinnvoll, Benutzername und Passwort in einer PHP-Datei zu hinterlegen? Warum (nicht)?
 
 Verschieben Sie dieses PHP-Skript ins selbe Verzeichnis wie zuvor `info.php`:
 
@@ -485,15 +439,8 @@ Rufen Sie die Seite unter [http://IP-ADRESSE/modules.php](http://IP-ADRESSE/modu
 
 ### Zusatzübung: Anpassung der Ausgabe
 
-Der Modulbaukasten wird als geordnete Liste (HTML-Tags `<ol>` und `<li>`)
-ausgegeben. Passen Sie die Datei `modules.php` so an, dass die Module
-tabellarisch mit einer Titelzeile ausgegeben werden. Verwenden Sie hierzu die
-HTML-Tags `<table>` (Tabelle), `<tr>` (Tabellenzeile), `<th>` (Titelzelle) und
-`<td>` (normale Zelle).
+Der Modulbaukasten wird als geordnete Liste (HTML-Tags `<ol>` und `<li>`) ausgegeben. Passen Sie die Datei `modules.php` so an, dass die Module tabellarisch mit einer Titelzeile ausgegeben werden. Verwenden Sie hierzu die HTML-Tags `<table>` (Tabelle), `<tr>` (Tabellenzeile), `<th>` (Titelzelle) und `<td>` (normale Zelle).
 
-Testen Sie die angepasste Ausgabe unter
-[http://IP-ADRESSE/modules.php](http://IP-ADRESSE/modules.php) bis Sie mit der
-Darstellung zufrieden sind.
+Testen Sie die angepasste Ausgabe unter [http://IP-ADRESSE/modules.php](http://IP-ADRESSE/modules.php) bis Sie mit der Darstellung zufrieden sind.
 
-:briefcase: :desktop_computer: Fügen Sie die angepasste Datei `modules.php` und
-einen Screenshot der Ausgabe Ihrer Dokumentation hinzu.
+:briefcase: :desktop_computer: Fügen Sie die angepasste Datei `modules.php` und einen Screenshot der Ausgabe Ihrer Dokumentation hinzu.
