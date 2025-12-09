@@ -120,13 +120,13 @@ Wenn in der Ausgabe `Good signature` zu lesen ist, dürfte das Release-Archiv mi
 Prüfen Sie zusätzlich die Integrität der Datei anhand der SHA-512-Prüfsumme:
 
 ```bash
-sha512sum -c nextcloud-30.0.2.tar.bz2.sha512
+sha512sum -c nextcloud-32.0.2.tar.bz2.sha512
 ```
 
 Es sollte die folgende Ausgabe erscheinen:
 
 ```plain
-nextcloud-30.0.2.tar.bz2: OK
+nextcloud-32.0.2.tar.bz2: OK
 ```
 
 (Die Integritätsprüfung ist zwar schon durch die obenstehende Zertifikatsprüfung erfolgt, es sollen aber beide Mechanismen kennengelernt werden.)
