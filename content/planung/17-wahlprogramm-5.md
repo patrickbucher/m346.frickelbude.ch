@@ -1,23 +1,25 @@
 +++
 date = '2026-01-04T21:59:36+01:00'
-title = 'Block 17: Wahlprogramm 5'
+title = 'Block 17: Vertiefungsprogramm 5'
 weight = 17
 +++
 
-Im siebzehnten Block fahren wir mit dem Wahlprogramm weiter. Im Go-Wahlprogramm wird die Monitoring-Software _meow_ in Betrieb genommen und per REST-API konfiguriert. Bei Nextcloud wird das Backup und Restore eingeübt.
+Im siebzehnten Block fahren wir mit dem Vertiefungsprogramm weiter. Im Go-Vertiefungsprogramm wird die Monitoring-Software _meow_ in Betrieb genommen und per REST-API konfiguriert. Bei Nextcloud geht es um TLS.
 
 ## Ziel
 
-Sie können auf der im bisherigen Wahlprogramm erarbeiteten Grundlage aufbauen.
+Sie können auf der bisher im Vertiefungsprogramm erarbeiteten Grundlage weiteres Wissen aufbauen.
 
 ## Ablauf
 
 ### Lektionen 1 & 2
 
 - [5 min.] Administratives
-- [85 min.] Individuelle Arbeit am Wahlprogramm
-    - Wahlprogramm 1: Einführung in `meow`
+- [30 min.] Einführung in das heutige Thema
+    - Vertiefungsprogramm Go: Einführung in `meow`
+    - Vertiefungsprogramm Nextcloud: Einführung in TLS
+- [55 min.] Individuelle Arbeit am Vertiefungsprogramm
 
 ### Hausaufgaben
 
-Schliessen Sie den vierten Block ab und sichern Sie die Ergebnisse (Wahlprogramm 1: Git-Repository, Wahlprogramm 2: Dokumentation)
+Schliessen Sie den vierten Block ab.
