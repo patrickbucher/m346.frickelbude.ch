@@ -176,9 +176,9 @@ Konfiguriere folgende Befehle, die täglich ausgeführt werden sollen. (D.h. `do
 
 | Minute | Stunde | Befehl |
 |-------:|-------:|--------|
-|     30 |     16 | `systemd-cat -t acme dehydrated --cron` |
-|     35 |     16 | `systemd-cat -t acme dehydrated --cleanup` |
-|     40 |     16 | `systemd-cat -t acme find /var/acme/archive -type f -mtime 300 -delete` |
+|     05 |     15 | `systemd-cat -t acme dehydrated --cron` |
+|     10 |     15 | `systemd-cat -t acme dehydrated --cleanup` |
+|     15 |     15 | `systemd-cat -t acme find /var/acme/archive -type f -mtime 300 -delete` |
 
 Der erste Befehl erneuert die Zertifikate, die kurz vor dem Ablauf sind.
 
