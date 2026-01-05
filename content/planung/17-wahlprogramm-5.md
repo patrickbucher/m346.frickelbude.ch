@@ -17,7 +17,7 @@ Sie können auf der bisher im Vertiefungsprogramm erarbeiteten Grundlage weitere
 - [5 min.] Administratives
 - [30 min.] Einführung in das heutige Thema
     - Vertiefungsprogramm Go: Einführung in `meow`
-    - Vertiefungsprogramm Nextcloud: Einführung in TLS
+    - Vertiefungsprogramm Nextcloud: Einführung in [TLS](/nextcloud/tls)
 - [55 min.] Individuelle Arbeit am Vertiefungsprogramm
 
 ### Hausaufgaben
