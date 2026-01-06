@@ -4,11 +4,11 @@ title = 'TLS: Transport Layer Security'
 weight = 5
 +++
 
-_Transport Layer Security_ (TLS) bietet Verschlüsselung auf Layer 4: der Transport-Schicht. Es wird fälschlicherweise oftmals mit HTTPS gleichgesetzt. HTTPS ist ein Anwendungsprotokoll auf Layer 7, das HTTP in TLS einpackt und dadurch verschlüsseltes HTTP ermöglicht. Es lassen sich aber auch andere Protokolle per TLS verschlüsseln, so beispielsweise auch der Zugriff auf ein LDAP.
+_Transport Layer Security_ (TLS) bietet Verschlüsselung auf Layer 4: der Transport-Schicht. Es wird fälschlicherweise oftmals mit HTTPS gleichgesetzt. HTTPS ist ein Anwendungsprotokoll auf Layer 7, das HTTP in TLS einpackt und dadurch verschlüsseltes HTTP ermöglicht. Es lassen sich aber auch andere Protokolle per TLS verschlüsseln, so beispielsweise auch der Zugriff auf ein LDAP oder auf relationale Datenbanksysteme.
 
 Das Thema TLS ist sehr umfassend. Einen guten Gesamtüberblick bietet [TLS Mastery](https://www.tiltedwindmillpress.com/product/tls/) von Michael W. Lucas oder die [Zusammenfassung](https://raw.githubusercontent.com/patrickbucher/docs/master/tls/tls-mastery.pdf) davon.
 
-Oftmals ist noch die Abkürzung _Secure Socket Layer_ (SSL) zu lesen, wobei es sich jedoch um ein altes Protokoll handelt, das als unsicher gilt. Stand Januar 2026 sollte nur noch TLS 1.3 (oder neuer) verwendet verweden. Ältere TLS- (1.1, 1.2) und SSL-Versionen (2, 3) gelten als unsicher. Die Abkürzung "SSL" wird sich wohl noch lange halten, da sie auch im Projektnamen der [OpenSSL-Library](https://www.openssl.org/) sowie in deren OpenBSD-Fork [LibreSSL](https://www.libressl.org/) vorkommt. (Auch der Kommandozeilenbefehl beider Projekte heisst nach wie vor `openssl`).
+Oftmals ist noch die Abkürzung _Secure Socket Layer_ (SSL) zu lesen, wobei es sich jedoch um ein altes Protokoll handelt, das als unsicher gilt. Stand Januar 2026 sollte nur noch TLS 1.3 (oder neuer) verwendet werden. Ältere TLS- (1.1, 1.2) und SSL-Versionen (2, 3) gelten als unsicher. Die Abkürzung "SSL" wird sich wohl noch lange halten, da sie auch im Projektnamen der [OpenSSL-Library](https://www.openssl.org/) sowie in deren OpenBSD-Fork [LibreSSL](https://www.libressl.org/) vorkommt. (Auch der Kommandozeilenbefehl beider Projekte heisst nach wie vor `openssl`).
 
 Hier soll es jedoch nicht um die Details von TLS gehen, sondern darum, wie man für eine selbst gehostete Webseite ein Zertifikat ausliefert, sodass der Verkehr zwischen Browser und Webserver über HTTPS verschlüsselt wird.
 
@@ -31,11 +31,11 @@ Diese reine HTTP-Konfiguration soll später durch eine HTTPS-Konfiguration erset
 
 ## Dehydrated
 
-Das Paket `certbot` ist zwar sehr komfortabel, hat aber auch sehr viele Abhänigkeiten und übernimmt dabei Aufgaben, die ein Systemadministrator möglicherweise selber vornehmen möchte. Darum soll hier das Paket `dehydrated` zum Einsatz kommen.
+Das Paket `certbot` ist zwar sehr komfortabel, hat aber auch sehr viele Abhänigkeiten und übernimmt dabei Aufgaben, die ein Systemadministrator möglicherweise selber vornehmen möchte. Darum soll hier das einfachere (und besser portierbare) Paket `dehydrated` zum Einsatz kommen.
 
 **Aufgabe**: Installiere das Paket `dehydrated`.
 
-Als nächstes soll ein Benutzer namens `acme` (für "Automated Certificate Management Environment) angelegt werden:
+Als nächstes soll ein Benutzer namens `acme` (für "Automated Certificate Management Environment") angelegt werden:
 
 ```bash
 sudo useradd -m -d /var/acme -s /usr/bin/false acme
@@ -87,7 +87,7 @@ Erɡänze die bestehende Webseitenkonfiguration um folgende Instruktion:
 Include /etc/apache2/acme.config
 ```
 
-Starte den Webserver anschliessend neu. Wenn dies nicht funktioniert, prüfe das systemd-Log von Apache.
+Lade die Konfiguration des Webservers anschliessend neu. Wenn dies nicht funktioniert, prüfe das systemd-Log von Apache.
 
 ## ACME-Registrierung und HTTP-01-Challenge
 
@@ -117,11 +117,7 @@ Fordere nun ein Testzertifikat über folgenden Befehl an:
 sudo -u acme dehydrated --cron
 ```
 
-Wenn `Challenge is valid!` und `Done!` in der Ausgabe erscheint, hat alles geklappt.
-
-Der Eintrag `CA` kann in der Dehydrated-Konfiguration kann nun von `"letsencrypt-test"` auf `"letsencrypt"` umgestellt werden.
-
-Anschliessend kannst du erneut ein Zertifikat anfragen.
+Wenn `Challenge is valid!` und `Done!` in der Ausgabe erscheint, hat alles geklappt. Du verfügst nun über ein Testzertifikat, das später noch durch ein richtiges ersetzt werden soll.
 
 ## TLS in Apache konfigurieren
 
@@ -134,7 +130,7 @@ Erweitere deine Apache-Konfiguration um folgenden Abschnitt:
 </VirtualHost>
 ```
 
-Übernehme die Einstellungen `DocumentRoot` und `ServerName` von der bestehenden Konfiguration für Port 80. Ergänze die neue Konfiguration um folgende Direktiven, wobei du die absoluten Pfade von vorher verwenden musst:
+Übernehme die Einstellungen `DocumentRoot` und `ServerName` sowie die `Include`-Direktive für die ACME-Konfiguration von der bestehenden Konfiguration für Port 80. Ergänze die neue Konfiguration um folgende Direktiven, wobei du die absoluten Pfade von vorher verwenden musst:
 
 ```apache
 SSLEngine             on
@@ -142,15 +138,29 @@ SSLCertificateFile    TODO: absoluter Pfad auf fullchain.pem
 SSLCertificateKeyFile TODO: absoluter Pfad auf privkey.pem
 ```
 
-Starte den Webserver anschliessend neu. Wenn alles geklappt hat, ist die Seite nun unter `https://john-doe.frickelcloud.ch` verfügbar.
+Damit das funktioniert, muss noch das entsprechende Apache-Modul namens `ssl` aktiviert werden.
+
+**Aufgabe**: Aktiviere das Apache-Modul `ssl`! Du brauchst den SErver anschliessend neu zu starten.
+
+Wenn alles geklappt hat, ist die Seite nun unter `https://john-doe.frickelcloud.ch` verfügbar. Da es sich um ein Testzertifikat handelt, erscheint beim Zugriff auf die Webseite via `https://` eine Sicherheitswarnung. Der Verkehr ist aber bereits verschlüsselt.
+
+Der Eintrag `CA` kann in der Dehydrated-Konfiguration kann nun von `"letsencrypt-test"` auf `"letsencrypt"` umgestellt werden.
+
+Anschliessend kannst du dich bei der produktiven CA registrieren. 
+
+Bevor du ein neues Zertifikat anfragen kannst, muss das bestehende zuerst noch entfernt werden. Verschiebe das entsprechende Verzeichnis unterhalb von `/var/acme/certs/` nach `/tmp`, damit es notfalls wiederhergestellt werden kann.
+
+Frage nun ein neues Zertifikat an. Wenn alles geklappt hat, kannst du anschliessend wieder die Webserver-Konfiguration neu laden.
+
+Die Webseite sollte nun ohne Warnung per HTTPS verschlüsselt ausgeliefert werden.
 
 ## Automatisierung
 
 Zertifikate, die von _Let's Encrypt_ ausgestellt werden, sind nur drei Monate lang gültig. Dies soll den Systemadministrator zur Automatisierung der Zertifikatsaktualisierung motivieren.
 
-Vorgänge können mit systemd-Timer-Units oder klassisch über sogenannte _Cronjobs_ automatisch zeitlich ausgelöst werden.
+Vorgänge können mit systemd-Timer-Units oder klassisch über sogenannte _Cronjobs_ automatisch zeitlich ausgelöst werden. Wir verwenden wiederum den einfacheren und besser portablen Ansatz mit Cronjobs.
 
-Installiere `cron` und bearbeite anschliessend die Cronjobs vom `acme`-Benutzer mit dem `nano`-Texteditor:
+Installiere das Paket `cron` und bearbeite anschliessend die Cronjobs vom `acme`-Benutzer mit dem `nano`-Texteditor:
 
 ```bash
 sudo apt install -y cron
@@ -190,4 +200,6 @@ Speichere die Änderungen ab und verlasse `nano`. Es sollte eine Meldung erschei
 
 Das Befehlspräfix `systemd-cat -t acme` bewirkt, dass die Ausgabe des Befehls im sytemd-Journal landet und dort über `journalctl -t acme` betrachtet werden kann.
 
-**Aufgabe**: Stelle die Zeiten so um, dass du die Ausführung der Befehle mit `journalctl -f -t acme` verfolgen kannst. (Achte darauf, dass die Befehle mit mindestens einer Minute zeitlichem Abstand ausgeführt werden.)
+**Aufgabe**: Stelle die Zeiten so um, dass du die Ausführung der Befehle mit live mit `journalctl -f -t acme` verfolgen kannst. (Achte darauf, dass die Befehle mit mindestens einer Minute zeitlichem Abstand ausgeführt werden.) **Wichtig**: Prüfe zuerst die aktuelle Systemzeit mit dem `date`-Befehl. Cloud-VMs verwenden oftmals UTC als Zeitzone.
+
+In der Praxis sollte man den ersten Befehl **nicht** zur vollen Stunde ausführen, weil beim CA dann tendenziell am meisten Traffic herrscht. Besser ist eine Ausführung zu einer "ungeraden" Zeit.
