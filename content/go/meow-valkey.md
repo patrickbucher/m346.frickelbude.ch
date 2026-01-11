@@ -34,47 +34,52 @@ go get github.com/valkey-io/valkey-go
 
 ### Valkey-URL konfigurierbar machen
 
-TODO
-
 Damit eine Verbindung zu Redis aufgenommen werden kann, muss zuerst eine URL
-definiert werden. Lokal lautet diese jeweils `localhost:6379`. In einer
-produktiven Umgebung soll die URL jedoch konfigurierbar sein, etwa über eine
-Umgebungsvariable. (So ähnlich funktioniert das bereits mit der
+definiert werden. Diese soll über eine Umgebungsvariable konfigurierbar sein. So ähnlich funktioniert das bereits mit der
 Umgebungsvariable `CONFIG_URL` in der `probe`-Komponente; siehe
-`probeCmd/probe.go` ganz oben in der `main`-Funktion.) 
+`cmd/probe/main.go` ganz oben in der `main`-Funktion.
 
-Implementieren Sie den Zugriff auf die Umgebungsvariable `REDIS_URL`
-entsprechend in `configCmd/config.go`.
+Implementieren Sie den Zugriff auf die Umgebungsvariable `VALKEY_URL`
+entsprechend in `cmd/config/main.go`.
 
 ### Verbindung zu Redis aufnehmen
 
-Eine Verbindung zu Redis kann folgendermassen erstellt werden:
+Eine Verbindung zu Valkey kann folgendermassen erstellt werden:
 
 ```go
-rdb := redis.NewClient(&redis.Options{
-    Addr:     [Redis URL from environment variable],
-    Password: "", // no password set
-    DB:       0,  // use default DB
-})
+options := valkey.ClientOption{
+    InitAddress: []string{"valkey.frickelcloud.ch:6379"},
+    SelectDB:    0, // TODO: use your number
+}
+client, err := valkey.NewClient(options)
 ```
 
-Sie können den Code direkt in der `main`-Funktion von `configCmd/config.go`
-einfügen. Die Variable `rdb` vom Typ `*redis.Client` bietet Ihnen nun die
-bekannten [Redis-Befehle](https://redis.io/commands/) als Methoden an,
-beispielsweise:
+Die Datenbank-Nummer fÜr `SelectDB` wird im Unterricht kommuniziert. (Alle haben ihre eigene Datenbank.)
+
+Du kannst den Code direkt in der `main`-Funktion von `cmd/config/main.go`
+einfügen. Die Variable `client` vom Typ `valkey.Client` bietet nun die
+bekannten [Valkey-Befehle](https://valkey.io/commands/) an, wobei das _Builder-Pattern_ zum Einsatz kommt, beispielsweise:
 
 ```go
-rdb.Set("key", "value", 0) // 0 as expiration value (never expires)
-value := rdb.Get("key")
-fmt.Println(value) // prints "value"
+// SET purpose=meow
+if err = client.Do(ctx, client.B().Set().Key("purpose").Value("meow").Build()).Error(); err != nil {
+    log.Fatalf("set purpose=meow: %v", err)
+}
+
+// GET purpose
+result, err := client.Do(ctx, client.B().Get().Key("purpose").Build()).AsBytes()
+if err != nil {
+    log.Fatalf("get purpose: %v", err)
+}
+fmt.Println(string(result))
 ```
 
 ### Funktionssignaturen anpassen
 
 Die Funktionen `getEndpoint`, `postEndpoint` und `getEndpoints` ‒ sowie
-`deleteEndpoint`, sofern Sie die Zusatzaufgabe gemacht haben ‒ benötigen die
-Redis-Verbindung als zusätzlichen Parameter. Ergänzen Sie die Parameterlisten
-entsprechend (Parametername: beispielsweise `rdb`, Datentyp: `*redis.Client`).
+`deleteEndpoint`, sofern du die Zusatzaufgabe gemacht hast ‒ benötigen die
+Valkey-Verbindung als zusätzlichen Parameter. Ergänze die Parameterlisten
+entsprechend (Parametername: beispielsweise `vk`, Datentyp: `valkey.Client`).
 
 Vorher (Beispiel):
 
@@ -85,86 +90,68 @@ func getEndpoints(w http.ResponseWriter, r *http.Request)
 Nachher (Beispiel):
 
 ```go
-func getEndpoints(w http.ResponseWriter, r *http.Request, rdb *redis.Client)
+func getEndpoints(w http.ResponseWriter, r *http.Request, vk valkey.Client)
 ```
 
-Sie können nun innerhalb dieser Funktionen auf die Redis-Datenbank zugreifen.
+Du kannst nun innerhalb dieser Funktionen auf die Valkey-Datenbank zugreifen.
 
-Führen Sie im Terminal noch den Befehl `go mod tidy` aus, damit alle
+Führen im Terminal noch den Befehl `go mod tidy` aus, damit alle
 Abhängigkeiten korrekt aufgelöst werden.
 
 ### Datenzugriffe implementieren
 
-Mithilfe des `KEYS`-Befehls erhalten Sie eine Liste aller Schlüssel anhand eines
+Mithilfe des `KEYS`-Befehls erhälst du eine Liste aller Schlüssel anhand eines
 gegebenen Musters. In der
 [Musterlösung](https://www.youtube.com/watch?v=slYrv5R6oOY&list=PLoID6wkkuS3dvY2kdg1QdkoJjhDw--2i8&index=7&t=304s)
-habe ich das Präfix `endpoint:` verwendet; Sie können sich somit alle Endpunkte
-mit dem Redis-Befehl `KEYS endpoint:*` auflisten lassen. 
+habe ich das Präfix `endpoint:` verwendet; man kann somit alle Endpunkte
+mit dem Keys-Befehl `KEYS endpoint:*` auflisten lassen. 
 
 #### Funktion `getEndpoints` anpassen
 
-Im Go-Code können Sie hierzu die Methode `rdb.Keys` verwenden
-(`getEndpoints`-Funktion):
+Mithilfe der `Keys()`-Methode kann man alle Schlüssel in Erfahrung bringen, die auf ein bestimmtes Muster passen:
 
 ```go
-keys, err := rdb.Keys("endpoint:*").Result()
+keys, err := client.Do(ctx, client.B().Keys().Pattern("endpoints:*").Build()).AsStrSlice()
 if err != nil {
-    log.Printf("fetch keys by pattern endpoint:*: %v", err)
-    w.WriteHeader(http.StatusInternalServerError)
+    log.Fatalf("get keys for endpoints:*: %v", err)
 }
-for _, key := range keys {
-    fmt.Println(key) // TODO: replace with calls to rdb.HGet
-}
+fmt.Println(keys)
 ```
 
-In der unteren Schleife können Sie nun mittels `rdb.HGet` auf die einzelnen
-Felder zugreifen, beispielsweise:
+Die komplette Map zu einem Key, z.B. zu `endpoints:m346` erhält man dann folgendermassen:
 
 ```go
-identifier, err := rdb.HGet(key, "identifier").Result()
+kvs, err := client.Do(ctx, client.B().Hgetall().Key("endpoints:m346").Build()).AsStrMap()
+if err != nil {
+    log.Fatalf("hget endpoints:m346: %v", err)
+}
+fmt.Println(kvs)
 ```
 
-Wobei `identifier` der gesuchte Wert und `err` ein möglicherweise auftretender
-Fehler ist.
-
-Alternativ können Sie sich mittels `rdb.HGetAll` eine Map zurückgeben lassen.
-(`H` steht bekanntlich als Präfix für "Hash", was nichts anderes als eine Map
-ist.):
-
-```go
-fields, err := rdb.HGetAll(key).Result()
-```
-
-In beiden Fällen müssen Sie den Fehler `err` angemessen behandeln. Den `payload`
-erstellen Sie anschliessend anhand der Informationen aus Redis, wobei Sie den
-bestehenden Code anpassen müssen.
+In allen Fällen muss der Fehler `err` angemessen behandelt werden. Den `payload`
+erstellt man anschliessend anhand der Informationen aus Valkey, wobei der 
+bestehende Code angepasst werden muss.
 
 #### Weitere Funktionen
 
 Für die weiteren Funktionen `getEndpoint` (Singular) und `postEndpoint`
-(schreibender Zugriff) benötigen Sie neben den bereits bekannten
-Redis-Funktionen noch `HSET`, um einen Hash zu erstellen (`rdb.HSet`). Als Key
-können Sie das Präfix `endpoint:` mit dem Identifier kombinieren.
+(schreibender Zugriff) wird neben den bereits bekannten
+Valkey-Funktionen noch `HSET` benötigt, um einen Hash zu erstellen. Als Key
+kann man das Präfix `endpoint:` mit dem Identifier kombinieren.
 
 ### Änderungen testen
 
-Testen Sie Ihre Anpassungen, indem Sie die `config`-Komponente folgendermassen
-starten:
+Teste deine Anpassungen, indem du die `config`-Komponente folgendermassen
+startest:
 
 ```bash
-REDIS_URL=localhost:6379 go run configCmd/config.go
+VALKEY_URL=valkey.frickelbude.ch go run cmd/config/main.go
 ```
 
-Falls Sie die kostenlose Redis-Instanz aus der Cloud verwenden, müssen Sie die
-URL entsprechend anpassen.
-
-Zum Testen können Sie die `curl`-Befehle verwenden, die Sie im [entsprechenden
-Aufgabenblock](https://code.frickelbude.ch/m346/meow-http-curl) umgesetzt haben
-bzw. dem [entsprechenden
-Video](https://www.youtube.com/watch?v=9HMnfyw_EUk&t=711s) entnehmen können.
+Zum Testen kannst du die `curl`-Befehle verwenden, die du im [letzten Aufgabenblock](/go/http-meow-config) umgesetzt hast.
 
 ### Code bereinigen
 
-Wenn alles funktioniert, können Sie den bestehenden Code bereinigen, indem Sie
-Dateizugriffe, das Flag `-file` usw. entfernen. Testen Sie das Programm nach den
-Änderungen, damit Sie nicht versehentlich zu viel Code entfernen.
+Wenn alles funktioniert, kannst du den bestehenden Code bereinigen, indem du 
+Dateizugriffe, das Flag `-file` usw. entfernst. Testen das Programm nach den
+Änderungen, damit du nicht versehentlich zu viel Code entfernst.
