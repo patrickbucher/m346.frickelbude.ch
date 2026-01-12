@@ -4,7 +4,7 @@ title = 'Block 18: Vertiefungsprogramm 6'
 weight = 18
 +++
 
-Im achzehnten Block fahren wir mit dem Vertiefungsprogramm weiter. Im Go-Vertiefungsprogramm migrieren wir die Persistierung der `meow`-Konfiguration vom Dateisystem auf Valkey.
+Im achzehnten Block fahren wir mit dem Vertiefungsprogramm weiter. Im Go-Vertiefungsprogramm migrieren wir die Persistierung der `meow`-Konfiguration vom Dateisystem auf Valkey. Im Nextcloud-Vertiefungsprogramm migrieren wir den Datenspeicher vom lokalen Dateisystem auf Minio/S3.
 
 ## Ziel
 
