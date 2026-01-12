@@ -167,6 +167,8 @@ Rufen Sie nun die Seite [http://IP-ADRESSE](http://IP-ADRESSE) in Ihrem Browser 
 
 Die Fehlerseite weist Sie auf fehlende PHP-Module hin.
 
+Erscheint keine Fehlerseite, lassen sich Hinweise auf fehlende Pakete im der Logdatei `/var/log/php8.4-fpm.log` finden.
+
 Suchen Sie nun mithilfe des Befehls `apt search` nach den Paketen, welche die entsprechenden PHP-Module bereitstellen, beispielsweise so:
 
 ```bash
